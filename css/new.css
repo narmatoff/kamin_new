@@ -1,0 +1,140 @@
+
+div.inside_goodcontent {
+	margin: 0;
+	width: 100%;
+	/* outline: red dotted 1px; */
+}
+
+
+
+
+div.inside_goodcontent div.gallerynminiinf_block{
+    width: 525px;
+
+    float: left;
+}
+
+div.good_moreinfo {
+	margin: 40px 0 0 0;
+
+	padding: 0 0 20px 0;
+}
+div.good_moreinfo div.good_moreinfobtns {
+	height: 49px;
+	width: 500px;
+
+
+	margin: 0 0 40px 0;
+}
+
+div.good_moreinfo div.good_moreinfoblock_about {
+	
+	
+
+}
+div.good_moreinfo div.good_moreinfoblock_about p{
+	
+
+
+}
+div.good_moreinfo table.good_moreinfoblock_details{
+    width: 100%;
+	
+div.good_moreinfobtn_about {
+	float: left;
+	margin: 0 15px 0 0;
+	padding: 11px 40px 0 40px;
+	text-decoration: none;
+	height: 38px;
+
+
+	font-size: 1.2em;
+	width: 135px;
+	text-align: center;
+	cursor: auto;
+		
+	background-color: #B8E1FF;
+	color: #0279c2;
+	cursor: pointer;
+	-moz-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	transition: all .1s linear;
+}
+
+div.good_moreinfobtn_details {
+	float: left;
+	margin: 0;
+	padding: 11px 34px 0 34px;
+	color: #FFF;
+	background: #0279C2;
+	text-decoration: none;
+	height: 38px;
+	font-size: 1.2em;
+	width: 135px;
+	text-align: center;
+	background-color: #B8E1FF;  color: #0279C2;
+	cursor: pointer; 
+		-moz-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	transition: all .1s linear;
+	 }
+div.good_gallery{
+	width: 525px;
+
+	height: 400px;
+	float: left;
+	/* outline: 1px dotted blue; */
+	background-color: #ebeef1;
+}
+div.good_gallery a img.goodimg_lupanka{
+	width: 23px;
+	height: 23px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border: none;
+	outline: none;
+}
+div.good_gallery a.FansyMainImage img#mainImage{
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	width: 100%;
+	height: initial;
+	border: none;
+	-moz-transition: all 0.1s linear;
+	-o-transition: all 0.1s linear;
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+
+}
+div.good_gallery ul.thumbnails{
+	list-style: none;
+
+	margin-top: 8px;
+}
+div.good_gallery ul.thumbnails li{
+	display: inline-block;
+	margin: 8px 0 18px 18px;
+}
+div.good_gallery ul.thumbnails li:last-child{
+	margin: 0 0 0 18px;
+}
+div.good_gallery ul.thumbnails li a.thumbnail{
+	width: 100px;
+	height: 100px;  display: block;  overflow: hidden;  
+	border: 4px solid #EBEEF1 !important;
+	cursor: pointer;
+	-moz-transition: all 0.1s linear;  -o-transition: all 0.1s linear;  -webkit-transition: all 0.1s linear;  transition: all 0.1s linear;
+}
+div.good_gallery ul.thumbnails li a.thumbnail:hover{
+	border-color: #0279C2 !important;
+
+}
+div.good_gallery ul.thumbnails li a.thumbnail img{
+	padding: 0 0 0 0;  margin: 0 0 0 0;  width: 100%;  height: initial;  border: none;
+
+}
