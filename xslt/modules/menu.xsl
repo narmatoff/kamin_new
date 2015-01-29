@@ -15,7 +15,19 @@
 	</xsl:template>
 
 	<xsl:template match="page" mode="left_menu_where_buy_one">
-		<option value='{@link}'><xsl:value-of select="document(concat('upage://', @parentId))/udata/page/name" disable-output-escaping="yes" /></option>
+		<xsl:choose>
+			<xsl:when test="document(concat('upage://', $page-id))/udata/page/@link = @link">
+				<!-- Активный пункт меню -->
+				<option selected="selected" value='{@link}'>
+					<xsl:value-of select="document(concat('upage://', @parentId))/udata/page/name" disable-output-escaping="yes" /></option>
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- Пасисивный пункт меню -->
+				<option value='{@link}'>
+					<xsl:value-of select="document(concat('upage://', @parentId))/udata/page/name" disable-output-escaping="yes" />
+				</option>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
  
 	<xsl:template match="udata[@module = 'content'][@method = 'menu']" mode="top_menu">
@@ -30,7 +42,17 @@
     <xsl:template match="udata[@module = 'content'][@method = 'menu']" mode="left_menu">
 		<xsl:choose>
 			<xsl:when test="$parents-page-id = 9097">
-                <xsl:apply-templates select="document('usel://wherebuy')" mode="left_menu_where_buy" />
+				<xsl:choose>
+					<xsl:when test="document(concat('upage://', $page-id))/udata/page/@type-id = 300">
+                		<xsl:apply-templates select="document('usel://wherebuy/300')" mode="left_menu_where_buy" />
+					</xsl:when>
+					<xsl:when test="document(concat('upage://', $page-id))/udata/page/@type-id = 301">
+                		<xsl:apply-templates select="document('usel://wherebuy/301')" mode="left_menu_where_buy" />
+					</xsl:when>
+					<xsl:when test="document(concat('upage://', $page-id))/udata/page/@type-id = 302">
+                		<xsl:apply-templates select="document('usel://wherebuy/302')" mode="left_menu_where_buy" />
+					</xsl:when>
+				</xsl:choose>
 			</xsl:when>
 		</xsl:choose>
     

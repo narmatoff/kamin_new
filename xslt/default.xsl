@@ -397,7 +397,7 @@
                                             <div class="catmenu_head">
                                                 <xsl:value-of select="result/@header" />
                                             </div>
-                                            <xsl:apply-templates select="document('usel://wherebuy')" mode="left_menu_where_buy" />
+                                            <xsl:apply-templates select="document('usel://wherebuy/302')" mode="left_menu_where_buy" />
                                         </xsl:when>
                                         <xsl:when test="result/page/@parentId=0">
                                             <div class="catmenu_head">
