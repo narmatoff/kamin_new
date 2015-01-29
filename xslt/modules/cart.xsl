@@ -88,9 +88,17 @@
 				<div class="filter_hdr">
 					так же рекомендуем
 				</div>
+				<!-- <xsl:apply-templates select="document(usel://accessories)/udata/page" mode="accessories" /> -->
 
+			</div>
+		</aside>
+
+		<div class="clearfix"></div>
+	</xsl:template>
+
+<!-- 	<xsl:template select="page" mode="accessories">
 				<div class="maingoodinfo">
-					<a href="#">
+					<a href="@link">
 				<span>
 					<img src="{$template-resources}img/good_image.jpg" alt="картинка товара"/>
 				</span>
@@ -104,49 +112,7 @@
 
 					<div class="clearfix"></div>
 				</div>
-				<div class="maingoodinfo">
-					<a href="#">
-				<span>
-					<img src="{$template-resources}img/good_image.jpg" alt="картинка товара"/>
-				</span>
-					</a>
-					<h4><a href="#">Камин SILVER 654654</a></h4>
-					<span class="manufacturer_block">edilKamin</span>
-					<span class="summa_asidebl">27 000 руб</span>
-
-					<a href="#" class="aside_button" title="Оформить заказ">купить</a>
-
-
-					<div class="clearfix"></div>
-				</div>
-								<div class="maingoodinfo">
-					<a href="#">
-				<span>
-					<img src="{$template-resources}img/good_image.jpg" alt="картинка товара"/>
-				</span>
-					</a>
-					<h4><a href="#">Камин SILVER bjsdg</a></h4>
-					<span class="manufacturer_block">edilKamin</span>
-									<span class="summa_asidebl">27 000 руб</span>
-
-									<a href="#" class="aside_button" title="Оформить заказ">купить</a>
-
-
-					<div class="clearfix"></div>
-				</div>
-
-
-			</div>
-		</aside>
-
-		<div class="clearfix"></div>
-		
-		
-
-	
-
-	</xsl:template>
-	
+	</xsl:template> -->
 
 	<xsl:template match="item" mode="itemb">
 	

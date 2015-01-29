@@ -149,7 +149,7 @@
                 
 
                    <div class="clearfix"></div>
-                    <h3>Обратите внимание на товары, которые описаны ниже</h3>
+                    <h3>Обратите внимание на товары, которые описаны выше</h3>
                         <div id="catalog_list" class="cat_item_list">
                             <div id="towars" class="flexslider">
                                 <ul class="slides">

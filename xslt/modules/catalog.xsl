@@ -21,16 +21,16 @@
             <div class="sortnview">
                 <span>Сортировать по:</span>
                 <!-- <div class="back_filter_sort">
-						<div class="select_sortnview">
-							<p></p>
-							<select name="">
-								<option class="first" value="">Выберите вариант</option>
-								<option value="">Вариант номер один</option>
-								<option value="">Вариант номер два</option>
-								<option value="">Вариант номер три</option>
-							</select>
-						</div>
-					</div> -->
+                        <div class="select_sortnview">
+                            <p></p>
+                            <select name="">
+                                <option class="first" value="">Выберите вариант</option>
+                                <option value="">Вариант номер один</option>
+                                <option value="">Вариант номер два</option>
+                                <option value="">Вариант номер три</option>
+                            </select>
+                        </div>
+                    </div> -->
 
                 <div class="floatinrgh_sort">
                     <span>Вид каталога:</span>
@@ -44,20 +44,26 @@
             <div id="catalog_list" class="cat_item_list">
                 <!--cat_item_list-->
                 <!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/')/udata/items/item" mode="categorylist" />  -->
-                <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15/280/1')/udata" mode="catalogus_current" />
-
+                <xsl:choose>
+                    <xsl:when test="@pageId=3172">
+                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15')/udata" mode="catalogus_current" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15/280/1')/udata" mode="catalogus_current" />
+                    </xsl:otherwise>
+                </xsl:choose>
             </div>
             <!--конец списка товаров-->
-			<xsl:if test="$total&gt;$per_page">
-	            <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" alt="{$tonext}" href="?p={$tonext}">показать еще</a>
-	            <!-- 
-					<xsl:call-template name="numpages">
-						<xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" />
-						<xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
-					</xsl:call-template>  -->
+            <xsl:if test="$total&gt;$per_page">
+                <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" alt="{$tonext}" href="?p={$tonext}">показать еще</a>
+                <!-- 
+                    <xsl:call-template name="numpages">
+                        <xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" />
+                        <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
+                    </xsl:call-template>  -->
 
-	            <span class="more_goods_inf">Показано <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" /> товаров из <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /></span>
-			</xsl:if>
+                <span class="more_goods_inf">Показано <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" /> товаров из <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /></span>
+            </xsl:if>
             <div style="display:none">
                 <xsl:call-template name="numpages">
                     <xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /> 
@@ -270,15 +276,15 @@
                 </a>
                 <h4><a href="{@link}"><xsl:value-of select="$item/page/properties/group/property[@name='nazvanie']/value"/></a></h4> 
                 <span class="manufacturer_block">Производитель: 
-						<a href="{$brand_name/properties/group/property[@name='linkthis']/value}">
-							<xsl:value-of select="$item/page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/>
-						</a>
-					</span>
+                        <a href="{$brand_name/properties/group/property[@name='linkthis']/value}">
+                            <xsl:value-of select="$item/page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/>
+                        </a>
+                    </span>
                 <span class="articul_block">Артикул:  
-						<a href="{@link}">
-							<xsl:value-of select="$item/page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/>
-						</a>
-					</span>
+                        <a href="{@link}">
+                            <xsl:value-of select="$item/page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/>
+                        </a>
+                    </span>
 
                 <p>
                     <xsl:value-of select="$item/page/properties/group/property[@name='kratkoe_opisanie']/value" disable-output-escaping="yes" />
@@ -300,8 +306,8 @@
                 <xsl:otherwise>
                     <div class="pricenbuttons">
                         <span class="goodsprice">
-								<xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/>
-							 руб</span>
+                                <xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/>
+                             руб</span>
                         <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
                         <span class="not_instok">отсутствует</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -772,7 +778,7 @@
         <form class="popup" action="/podbor" method="GET">
             <input type="hidden" name="fields_filter[non_filtered]" value="0" />
             <xsl:apply-templates select="group" mode="search" />
-            <!-- <xsl:apply-templates select="document('udata://catalog/search/(/katalog/proizvoditel_1/)/')/udata" mode="search_form"/>	 -->
+            <!-- <xsl:apply-templates select="document('udata://catalog/search/(/katalog/proizvoditel_1/)/')/udata" mode="search_form"/>     -->
 
         </form>
 
@@ -996,15 +1002,15 @@
 
 
     <!-- <xsl:template
-		match="field[@data-type = 'relation' or @data-type = 'symlink'][@name!='pennyj' or @name!='koncentrat']" mode="search">
-		<span class="name"><xsl:value-of select="@title"/></span>
-				<xsl:apply-templates select="values/item" mode="search">
-					<xsl:sort select="@id"/>
-					<xsl:with-param name="name" select="@name"/>
-				</xsl:apply-templates>
+        match="field[@data-type = 'relation' or @data-type = 'symlink'][@name!='pennyj' or @name!='koncentrat']" mode="search">
+        <span class="name"><xsl:value-of select="@title"/></span>
+                <xsl:apply-templates select="values/item" mode="search">
+                    <xsl:sort select="@id"/>
+                    <xsl:with-param name="name" select="@name"/>
+                </xsl:apply-templates>
 
 
-	</xsl:template> -->
+    </xsl:template> -->
 
     <xsl:template match="field[@data-type = 'relation']" mode="search">
 
@@ -1033,19 +1039,19 @@
 
 
     <!-- <xsl:template match="field/values/item" mode="search">
-		<xsl:param name="name"/>
-		<div class="box">
+        <xsl:param name="name"/>
+        <div class="box">
 
-			<input id="n{@id}" name="fields_filter[{$name}][]" type="checkbox" value="{@id}" class="check">
-				<xsl:if test="@selected">
-						<xsl:attribute name="checked"></xsl:attribute>
-				</xsl:if>
-			</input>
-			<label for="n{@id}"><xsl:value-of select="." /></label>
-		</div>
+            <input id="n{@id}" name="fields_filter[{$name}][]" type="checkbox" value="{@id}" class="check">
+                <xsl:if test="@selected">
+                        <xsl:attribute name="checked"></xsl:attribute>
+                </xsl:if>
+            </input>
+            <label for="n{@id}"><xsl:value-of select="." /></label>
+        </div>
 
 
-	</xsl:template> -->
+    </xsl:template> -->
 
 
 
@@ -1057,26 +1063,26 @@
 
 
     <!--
-		<xsl:template match="udata[@module = 'catalog' and @method =
-		'getCategoryList']/items"> <ul umi:module="catalog"
-		umi:element-id="{../@category-id}" umi:method="getCategoryList"
-		umi:button-position="bottom left" umi:region="list"
-		umi:sortable="sortable"> <xsl:apply-templates /> </ul> <br /> <br />
-		</xsl:template> <xsl:template match="result[@module = 'catalog' and
-		@method = 'object']"> <p> <xsl:apply-templates
-		select="document(concat('udata://emarket/price/', page/@id))/udata" />
-		</p> <p> <xsl:apply-templates
-		select="document(concat('udata://emarket/stores/', page/@id))/udata"
-		/> </p> <form method="post"
-		action="/emarket/basket/put/element/{page/@id}/"> <input type="hidden"
-		name="redirect-uri" value="{$request-uri}" /> <xsl:apply-templates
-		select="page//group[@name = 'catalog_option_props']" /> <div
-		class="buttons"> <input type="submit" value="Положить в корзину" />
-		<xsl:text> </xsl:text> <input type="button" value="Добавить к
-		сравнению" /> </div> </form> </xsl:template> <xsl:template
-		match="group[@name = 'catalog_option_props']"> <h2> <xsl:text>Выберите
-		дополнительные опции</xsl:text> </h2> <input type="hidden"
-		name="redirect-uri" value="{$request-uri}" /> <xsl:apply-templates
-		select="property[@type = 'optioned']" /> </xsl:template>
-	-->
+        <xsl:template match="udata[@module = 'catalog' and @method =
+        'getCategoryList']/items"> <ul umi:module="catalog"
+        umi:element-id="{../@category-id}" umi:method="getCategoryList"
+        umi:button-position="bottom left" umi:region="list"
+        umi:sortable="sortable"> <xsl:apply-templates /> </ul> <br /> <br />
+        </xsl:template> <xsl:template match="result[@module = 'catalog' and
+        @method = 'object']"> <p> <xsl:apply-templates
+        select="document(concat('udata://emarket/price/', page/@id))/udata" />
+        </p> <p> <xsl:apply-templates
+        select="document(concat('udata://emarket/stores/', page/@id))/udata"
+        /> </p> <form method="post"
+        action="/emarket/basket/put/element/{page/@id}/"> <input type="hidden"
+        name="redirect-uri" value="{$request-uri}" /> <xsl:apply-templates
+        select="page//group[@name = 'catalog_option_props']" /> <div
+        class="buttons"> <input type="submit" value="Положить в корзину" />
+        <xsl:text> </xsl:text> <input type="button" value="Добавить к
+        сравнению" /> </div> </form> </xsl:template> <xsl:template
+        match="group[@name = 'catalog_option_props']"> <h2> <xsl:text>Выберите
+        дополнительные опции</xsl:text> </h2> <input type="hidden"
+        name="redirect-uri" value="{$request-uri}" /> <xsl:apply-templates
+        select="property[@type = 'optioned']" /> </xsl:template>
+    -->
 </xsl:stylesheet>
