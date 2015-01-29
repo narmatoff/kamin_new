@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selection>
+	<target result="pages">
+			<type id="60" />
+			<category depth="10">/slajder/</category> 
+	</target>
+	
+	<extended>
+	    <properties>
+	    	header_pic
+	    </properties>
+	    <groups>common</groups>
+    
+	</extended>
+	<limit>{limit}</limit>	
+ </selection>   
