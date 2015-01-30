@@ -1,6 +1,12 @@
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
-button,html,input,select,textarea {color: #222}
+button,
+html,
+input,
+select,
+textarea {
+    color: #222
+}
 html {
     font-size: .8em;
     line-height: 1.4
@@ -26,7 +32,12 @@ hr {
     margin: 1em 0;
     padding: 0
 }
-audio,canvas,img,video {vertical-align: middle}
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle
+}
 fieldset {
     border: 0;
     margin: 0;
@@ -434,7 +445,7 @@ nav ul li:last-child {
     text-align: right;
     width: 12.3%;
 }
-nav ul li:last-child a {
+nav ul#menu > li:last-child > a {
     border: none;
     padding: 15px 10px 0 0;
     -webkit-box-shadow: none;
@@ -2950,7 +2961,7 @@ div.filter_block div.filter_hdr {
     border-bottom: 1px solid #2C2C2C;
 }
 div.back_filterslid {
-    margin: 0 25.4px 18px 17px;
+    margin: 0 25.4px 0 17px;
     text-align: center;
     font-size: 0.9em;
 }
@@ -3428,20 +3439,31 @@ ul#my-menu li ul li a:hover {
     margin: 0 0 0 10px;
     _margin: 0;
     /*IE6 only*/
+    box-shadow: -1px 0 0 rgba(255,255,255,.3);
+}
+#menu li:last-child ul ul {
+    top: 0;
+    left: -235px;
+    margin: 0 0 0 10px;
+    width: auto;
+    _margin: 0;
+    /*IE6 only*/
     /* box-shadow: -1px 0 0 rgba(255,255,255,.3); */
+    width: 100%;
 }
 #menu ul li {
     /* display: block; */
     /* border: 0; */
     _line-height: 0;
     /*IE6 only*/
-    /* box-shadow: 0 1px 0 #BABABA, 0 2px 0 #FFFFFF; */
+    box-shadow: 0 1px 0 #BABABA, 0 2px 0 #FFFFFF;
     /* height: auto; */
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
+    width: 100%;
 }
 #menu ul li:last-child {
-    /* box-shadow: none; */
-    width: auto;
+    box-shadow: none;
+    width: 100%;
     border-bottom: 3px solid rgb(87, 88, 87);
 }
 #menu ul a {
@@ -3922,7 +3944,7 @@ div.empty_cart_block div.cart_block_inner div.chechout_cartbtn p {
 div.back_filter {
     background-color: #fff;
     width: 86.6%;
-    margin: 0 0 18px 18px;
+    margin: 18px 0 18px 18px;
     -moz-border-radius-topright: 7px;
     -webkit-border-top-right-radius: 7px;
     border-top-right-radius: 7px;
