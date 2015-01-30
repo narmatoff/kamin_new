@@ -570,7 +570,7 @@
                             <!-- str = $(this).val(); -->
                             <!-- alert (str); -->
 
-                            $.post("/contacts.php", { contacts_id: <xsl:value-of select="$region-id" />, pid: <xsl:value-of select="result/@pageId" /> },
+                        $.post("/contacts.php", { contacts_id: <xsl:value-of select="$region-id" />, pid: <xsl:value-of select="result/@pageId" /> },
                                 function(data){
 <!--                                alert ('ну и славненько');-->
                                 $(".region_quwstion_selct").hide();
@@ -589,7 +589,7 @@
                             <!-- str = $(this).val(); -->
                             <!-- alert (str); -->
 
-                            $.post("/contacts.php", { contacts_id: <xsl:value-of select="$region-id" />, pid: <xsl:value-of select="result/@pageId" /> },
+                        $.post("/contacts.php", { contacts_id: <xsl:value-of select="$region-id" />, pid: <xsl:value-of select="result/@pageId" /> },
                                 function(data){
 <!--                                alert ('ну и славненько');-->
                                 $(".region_quwstion_selct").hide();

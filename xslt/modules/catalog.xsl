@@ -921,7 +921,7 @@
 
     <xsl:template match="field[ @data-type = 'int' or @data-type = 'float' or @data-type = 'string' or @data-type = 'price'][@name != 'obem_parilki_from' or @name != 'obem_parilki_to']" mode="search">
         <xsl:param name="typeid" />
-        <xsl:variable name="max_val" select="document(concat('usel://max_val/', @name,'/', $typeid))/udata/page/extended/properties/property/value" />
+        <xsl:variable name="max_val" select="document(concat('usel://max_val/', @name,'/', $typeid,'/1'))/udata/page/extended/properties/property/value" />
 
         <div class="back_filterslid">
 
@@ -1017,7 +1017,7 @@
     </xsl:template> -->
 
     <xsl:template match="field[@data-type = 'relation']" mode="search">
-
+        
         <div class="back_filter">
             <div class="select_filterbl">
                 <p></p>

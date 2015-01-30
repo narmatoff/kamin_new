@@ -346,4 +346,67 @@
 		</div>
 	</xsl:template>
 
+	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='121']">
+		<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+		<script type="text/javascript">
+			var myMap;
+			ymaps.ready(init);
+
+			function init () {
+			    myMap = new ymaps.Map('yamapsdlr', {
+			        center: [59.939095, 30.315868],
+			        zoom: 3,
+			        controls: ['zoomControl', 'typeSelector']
+			    });
+			    clusterer = new ymaps.Clusterer({
+	            preset: 'islands#invertedOrangeClusterIcons',
+	            groupByCoordinates: false,
+	            clusterDisableClickZoom: false,
+	            clusterHideIconOnBalloonOpen: false,
+	            geoObjectHideIconOnBalloonOpen: true
+	        	});
+
+	       		cord = [<xsl:apply-templates select="document('usel://contacts/')/udata/page/extended/groups/group/property[@name='koordinaty']" mode="maps" />];
+				head = [<xsl:apply-templates select="document('usel://contacts/')/udata/page/extended/groups/group/property[@name='nazvanie']" mode="maps" />];
+				adr = [<xsl:apply-templates select="document('usel://contacts/')/udata/page/extended/groups/group/property[@name='adres']" mode="maps" />];
+				footer = [<xsl:apply-templates select="document('usel://contacts/')/udata/page/extended/groups/group/property[@name='phone']" mode="maps" />];
+				cont = [<xsl:apply-templates select="document('usel://contacts/')/udata/page/extended/groups/group/property[@name='e_mail']" mode="maps" />];
+				geoObjects = [];
+				
+				for(var i = 0, len = cord.length; i &lt; len; i++) {
+		        		geoObjects[i] = new ymaps.Placemark(cord[i], {balloonContentHeader:head[i], balloonContentBody:adr[i]+cont[i], balloonContentFooter:footer[i]}, {
+	     						iconLayout: 'default#image',
+	        					iconImageHref: '<xsl:value-of select="$template-resources"/>img/map/map-icon-logo.png'
+	    				});
+		    	}
+		    	clusterer.add(geoObjects);
+	    		myMap.geoObjects.add(clusterer);
+	    		myMap.setBounds(clusterer.getBounds());
+			    
+			    if (cord.length == 1){
+			   		myMap.setZoom(9);
+			    }
+			}
+		</script>
+
+	 	<article>
+           	<h1 class="dialog_par"><xsl:value-of select="@header"/></h1>
+        </article>
+        <div id="yamapsdlr">
+		</div>
+		<table border="0">
+	    <tbody>
+	        <tr>
+	            <td><strong>Название</strong></td>
+	            <td><strong>Адрес</strong></td>
+	            <td><strong>Телефон</strong></td>
+	            <td><strong>Сайт</strong></td>
+	        </tr>
+	       	<xsl:apply-templates select="document('usel://contacts/')/udata/page/extended/groups" mode="concat_node" />
+		    </tbody>
+		</table>
+	
+	<!-- <xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/> -->
+	</xsl:template>
+
 </xsl:stylesheet>

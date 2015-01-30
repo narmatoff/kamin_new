@@ -36,7 +36,7 @@
 	</xsl:template>
 
 	<xsl:template match="confirm_mail_admin">
-		<xsl:text>В базу знаний поступил новый вопрос:</xsl:text><br />
+		<xsl:text>В faq новый вопрос:</xsl:text><br />
 		<a href="{question_link}">
 			<xsl:value-of select="question_link" />
 		</a><br />
