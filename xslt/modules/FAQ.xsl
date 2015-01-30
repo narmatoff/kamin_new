@@ -29,7 +29,7 @@
 	<article>
             <div id="faq_question">
                 <h1><xsl:value-of select="@header" /></h1>
-        		<xsl:apply-templates select="document(concat('udata://faq/category//', @pageId, '/10/0/0/?extProps=publish_time,old_name'))/udata" />
+        		<xsl:apply-templates select="document(concat('udata://faq/category//', @pageId, '/10/0/1/?extProps=publish_time,old_name'))/udata" />
 			</div>
 	</article>
     </xsl:template>
@@ -118,9 +118,11 @@
     </xsl:template>
 
     <xsl:template match="result[@module = 'faq'][@method = 'post_question']">
-        <div>
-            <xsl:text>Ваш вопрос отправлен.</xsl:text>
-        </div>
+        <article>
+            <div>
+                <xsl:text>Ваш вопрос отправлен.</xsl:text>
+            </div>
+        </article>
     </xsl:template>
 
 

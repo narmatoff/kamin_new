@@ -6,7 +6,7 @@
 
 
 	<xsl:template match="result[@method = 'purchasing_one_step']">
-
+		<xsl:variable name="onestep" select="document('udata://emarket/purchasing_one_step/')/udata" />
 
 		<h1>Оформление заказа</h1>
             <section class="cartpage_sec">
@@ -18,14 +18,14 @@
 
 
                     <ul class="tabsch">
-                    	<xsl:if test="udata/onestep/customer">
+                    	<xsl:if test="$onestep/onestep/customer">
                         	<li class="active_chbtn">
                             <!--                           name="tab1" - необходим для переключения вкладок  $('#' + $(this).attr('name')).fadeIn();-->
                         	    <a name="tab1" href="javascript://">Информация о покупателе</a>
                        		</li>
                     	</xsl:if>
                         <li>
-                        	<xsl:if test="not(udata/onestep/customer)">
+                        	<xsl:if test="not($onestep/onestep/customer)">
                         		<xsl:attribute name="class">
                         			active_chbtn
                         		</xsl:attribute>
@@ -66,12 +66,12 @@
 			
 			
 
-						<xsl:if test="udata/onestep/customer">
+						<xsl:if test="$onestep/onestep/customer">
                             <span id="tab1">
 
                             <fieldset class="personalinfo">
 
-                            	<xsl:apply-templates select="udata/onestep/customer/group" mode="onestep_group" />
+                            	<xsl:apply-templates select="$onestep/onestep/customer/group" mode="onestep_group" />
                                 
                             </fieldset>	
                            
@@ -85,14 +85,14 @@
 
 
                             <span id="tab2">
-                            	<xsl:if test="udata/onestep/customer">
+                            	<xsl:if test="$onestep/onestep/customer">
                             		<xsl:attribute name="style">display:none;</xsl:attribute>
 	                            </xsl:if>
 	                         <div class="chkbx_filt">
 
 
 								
-								<xsl:apply-templates select="udata/onestep/delivery_choose" mode="delivery_choose" />
+								<xsl:apply-templates select="$onestep/onestep/delivery_choose" mode="delivery_choose" />
 									
                                 
 
@@ -102,7 +102,7 @@
 
                             <fieldset class="commentinfo">
                             	
-                            	<xsl:apply-templates select="udata/onestep/delivery/items"   mode="adress_choose"/>
+                            	<xsl:apply-templates select="$onestep/onestep/delivery/items"   mode="adress_choose"/>
                             
                             </fieldset>
 
@@ -114,7 +114,7 @@
                             <p class="address_samov">
 
 								<b>Укажите пункт самовывоза, где Вы хотели бы забрать товар</b>&br;
-                            	<xsl:apply-templates select="udata/onestep/delivery_choose/items/item" mode="option_choose_options" />
+                            	<xsl:apply-templates select="$onestep/onestep/delivery_choose/items/item" mode="option_choose_options" />
  
                                 
 
@@ -128,7 +128,7 @@
                             
                                 <fieldset class="paymentvariable">
                                    
-								<xsl:apply-templates select="udata/onestep/payment/items" mode="payment" />
+								<xsl:apply-templates select="$onestep/onestep/payment/items" mode="payment" />
                                     
                     
                                 
@@ -349,10 +349,13 @@
 	</xsl:template>
 
 	<xsl:template match="item" mode="option_choose">
+		<xsl:variable name="delivertity" select="document(concat('uobject://', @id))/udata/object//property[@name='region']/value/item/@id"></xsl:variable>
+		<xsl:if test="$delivertity = $system/@object-id">
 		
 		<input type="radio" value="{@id}" name="delivery-id" id="radio{@id}" class="css-checkbox2 {@type-guid} " />
         <label for="radio{@id}" class="css-label2 {@type-guid} " ><xsl:value-of select="@name" /></label>
-		
+		</xsl:if>
+	
 	</xsl:template>
 
 
@@ -360,13 +363,19 @@
 	</xsl:template>
 
 	<xsl:template match="item[@type-guid='emarket-delivery-783']" mode="option_choose_options">
+		
+	<xsl:variable name="delivertity" select="document(concat('uobject://', @id))/udata/object//property[@name='region']/value/item/@id"></xsl:variable>
+		<xsl:if test="$delivertity = $system/@object-id">
+			<input type="radio" value="{@id}" name="delivery-id" id="radio{@id}" class="css-checkbox2">
+				<xsl:if test="position()=1">
+					<xsl:attribute name="checked">checked</xsl:attribute>
+				</xsl:if>
+			</input>
 
-		<input type="radio" value="{@id}" name="delivery-id" id="radio{@id}" class="css-checkbox2">
-			<xsl:if test="position()=1">
-				<xsl:attribute name="checked">checked</xsl:attribute>
-			</xsl:if>
-		</input>
-        <label for="radio{@id}" class="css-label2 {@type-guid} " ><xsl:value-of select="@name" /></label>
+
+
+	        <label for="radio{@id}" class="css-label2 {@type-guid} " ><xsl:value-of select="@name" /></label>
+		</xsl:if>
 		
 	</xsl:template>
 
