@@ -22,6 +22,7 @@
   
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<<<<<<< HEAD
 
     <title>
             <xsl:choose>
@@ -151,6 +152,13 @@
             </xsl:otherwise>
         </xsl:choose>
 
+=======
+    <title><xsl:value-of select="result/@title" /></title>
+    <!-- <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" /> -->
+    <meta name="DESCRIPTION" content="{result/meta/description}" />
+    <!-- <meta name="viewport" content="ya-title=white,ya-dock=#000000" /> -->
+    <meta name="KEYWORDS" content="{result/meta/keywords}" />
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="viewport" content="ya-title=fade,ya-dock=#00CCCC" />
     <link rel="stylesheet" href="{$template-resources}css/normalize.css"/>
@@ -501,16 +509,20 @@
                             <xsl:otherwise>
                                 <xsl:attribute name="class">secondpage_asd</xsl:attribute>
                                     <xsl:if test="result/@module='catalog'">
+<<<<<<< HEAD
                                         
                                             
                                        
 
+=======
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
 
                                         <!-- filter-->
                                         <div class="filter_block">
                                             <div class="filter_hdr">
                                                 Подбор по параметрам
                                             </div>
+<<<<<<< HEAD
                                             <xsl:choose>
                                                  <xsl:when test="result/@method = 'object'">
                                                         
@@ -563,6 +575,9 @@
                                                         
                                                  </xsl:otherwise>
                                             </xsl:choose>
+=======
+                                            <xsl:apply-templates select="document('udata://catalog/search/')" mode="find_model"/>
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
 
                                         </div>
 
@@ -606,7 +621,11 @@
 
 
 
+<<<<<<< HEAD
 <!--<div class="page-buffer"></div>-->
+=======
+<div class="page-buffer"></div>
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
         <!-- футер -->
         
 
@@ -618,7 +637,10 @@
 
         
     </div>
+<<<<<<< HEAD
     <div class="clearfix"></div>
+=======
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
     <footer>
 
             <ul class="dublicate_mainmenu">
@@ -691,7 +713,11 @@
             <script src="{$template-resources}js/jquery.fancybox.js"></script>
             <script src="{$template-resources}js/plugins.js"></script>
             <script src="{$template-resources}js/main.js"></script>
+<<<<<<< HEAD
             <script src="{$template-resources}js/clicker.js?q=123456789098765432"></script>
+=======
+            <script src="{$template-resources}js/clicker.js"></script>
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
             <script type="text/javascript" src="/js/site/__common.js"></script>
            <script>
                 $(document).ready(function() {
@@ -701,7 +727,11 @@
                             str = $(this).attr('id');
                             <!-- alert (str); -->
 
+<<<<<<< HEAD
                             $.post("/contacts.php", { contacts_id: str, pid: '<xsl:value-of select="result/@pageId" />', redirection_url: '<xsl:value-of select="result/@request-uri" />' },
+=======
+                            $.post("/contacts.php", { contacts_id: str, pid: <xsl:value-of select="result/@pageId" /> },
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
                                 function(data){
                                 <!-- alert (data); -->
                                 document.location.href = data;
@@ -721,7 +751,11 @@
                             <!-- str = $(this).val(); -->
                             <!-- alert (str); -->
 
+<<<<<<< HEAD
                         $.post("/contacts.php", { contacts_id: '<xsl:value-of select="$region-id" />', pid: '<xsl:value-of select="result/@pageId" />', redirection_url: '<xsl:value-of select="result/@request-uri" />' },
+=======
+                            $.post("/contacts.php", { contacts_id: <xsl:value-of select="$region-id" />, pid: <xsl:value-of select="result/@pageId" /> },
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
                                 function(data){
 <!--                                alert ('ну и славненько');-->
                                 $(".region_quwstion_selct").hide();
@@ -740,7 +774,11 @@
                             <!-- str = $(this).val(); -->
                             <!-- alert (str); -->
 
+<<<<<<< HEAD
                         $.post("/contacts.php", { contacts_id: '<xsl:value-of select="$region-id" />', pid: '<xsl:value-of select="result/@pageId" />', redirection_url: '<xsl:value-of select="result/@request-uri" />' },
+=======
+                            $.post("/contacts.php", { contacts_id: <xsl:value-of select="$region-id" />, pid: <xsl:value-of select="result/@pageId" /> },
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
                                 function(data){
 <!--                                alert ('ну и славненько');-->
                                 $(".region_quwstion_selct").hide();
@@ -804,6 +842,10 @@
        <xsl:apply-templates select="document('usel://brends')/udata/page" mode="brends" />
     </ul>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
         </body>
 </html>
 

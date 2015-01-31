@@ -61,13 +61,21 @@ $("a.more_goods").click(function() {
     tonext_1 = tonext + 1
     next = tonext_1 * perpage;
     jQuery.ajax({
+<<<<<<< HEAD
                 url: '/udata://catalog/getObjectsList/notemplate/' + id + '///15' + href +'&transform=/modules/catalog_popap.xsl',
+=======
+                url: '/udata://catalog/getObjectsList/notemplate/' + id + '///15/280/1' + href  + '&transform=/modules/catalog_popap.xsl',
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
                 dataType: 'html',
                 success: function (data) {
                 // alert (test);
                 $(".cat_item_plits:last-child").after(data);
                 $(id_text).attr("alt", tonext + 1);
+<<<<<<< HEAD
                 $(id_text).attr("href", href + "&p=" + tonext_1 );
+=======
+                $(id_text).attr("href", "?p=" + tonext_1 );
+>>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
 
                 if (next>=total){
                     $('.more_goods_inf').text('Показано ' + total + " товаров из " + total );
