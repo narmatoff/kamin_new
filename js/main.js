@@ -535,10 +535,6 @@ $(document).ready(function () {
     
     
     
-<<<<<<< HEAD
-=======
-    
->>>>>>> 2fae45de4042c059b8573aa1a8f6ff71a028e71b
 //    
 });
 
