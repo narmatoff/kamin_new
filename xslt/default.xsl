@@ -434,7 +434,7 @@
             <xsl:apply-templates select="document('usel://slider/')/udata" mode="slider_banner" /> 
         </xsl:if>
         <!-- каталог главной стр -->
-        <xsl:apply-templates select="$errors" /> 
+        
         <xsl:choose>
             <xsl:when test="result/@module = 'emarket'">
                        <div class="checkout_block">
@@ -442,12 +442,14 @@
                             <xsl:apply-templates select="document('udata://core/navibar')/udata"  mode="bread"/>
                             <xsl:apply-templates select="result" disable-output-escaping="yes" />
                             
+ 
                         </div>
 
             </xsl:when>
             <xsl:otherwise>
                 
                 <section>
+                   
                     <xsl:choose>
                         <xsl:when test="result/page/@is-default">
                             <xsl:attribute name="class">mainpage_section</xsl:attribute>
@@ -667,13 +669,13 @@
                                 </span>
                              </li>
                              <li><span class="h_mail_address"></span><a href="mailto:info@kamin.ru?subject=тема письма" alt="Письмо">info@kamin.ru</a></li>
-                             <li><a href="#" title="Вход для диллероа" class="diller_entry">вход для диллеров <span></span></a></li>
+                             <li><a href="http://dlr.kamin.ru" title="Вход для диллероа" class="diller_entry">вход для диллеров <span></span></a></li>
                              <li><img src="{$template-resources}img/ya_markt.png" height="105" width="198" alt="z"/></li>
                          </ul>
             </div>
 
 	
-            <div class="copyright"><a href="http://lum.ru" target="_blank" title="Люм - SEO, Продвижение, Модернизация корпоративных сайтов"></a><span>© 2014  «ДомоТехника-КАМИНЫ» <br/>
+            <div class="copyright"><a href="http://lum.ru" target="_blank" title="Люм - SEO, Продвижение, Модернизация корпоративных сайтов"></a><span>© 2015  «ДомоТехника-КАМИНЫ» <br/>
 Все права защищены</span></div>
        		
 

@@ -2620,6 +2620,13 @@ div#catalog_list div.cat_item_plits div.maingoodinfo h4 {
     text-transform: uppercase;
     margin: 0 0 10px 0;
     font-family: 'a_avantebs';
+    
+}
+div#catalog_list.cat_item_list div.cat_item_plits div.maingoodinfo h4 {
+    display: block;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    font-family: 'a_avantebs';
     clear: both;
 }
 div#catalog_list div.cat_item_plits div.maingoodinfo span.manufacturer_block {
@@ -3099,6 +3106,9 @@ div.ch_formblock form fieldset.paymentvariable label {
     font-size: 1em;
     display: block;
     margin: 0 0 5px 0;
+    text-indent: inherit;
+    height: initial;
+    width: inherit;
 }
 div.ch_formblock form fieldset.personalinfo input,
 div.ch_formblock form fieldset.paymentvariable input {
@@ -3174,7 +3184,10 @@ div.ch_formblock form fieldset.commentinfo label {
     font-weight: 700;
     font-size: 1em;
     display: block;
-    margin: 0 0 5px 0;
+    margin: 15px 0 5px 0;
+    text-indent: inherit;
+    width: inherit;
+    height: inherit;
 }
 div.ch_formblock form fieldset.commentinfo textarea {
     width: 596px;
@@ -4121,7 +4134,9 @@ input[type=radio].css-checkbox2 + label.css-label2.clr {
     font-weight: bold;
     vertical-align: middle;
     cursor: pointer;
-    margin: 0 35px 0 0;
+    margin: 10px 35px 0 0;
+    text-indent: inherit;
+    width: inherit;
 }
 input[type=radio].css-checkbox2:checked + label.css-label2,
 input[type=radio].css-checkbox2 + label.css-label2.chk {
@@ -4699,11 +4714,43 @@ background-color:#FF848C;
     color: #ff2f2f;
 }
 
+div.errors{
+    padding: 20px;
+	
+}
+
+div.errors h3{
+	
+}
+section.cartpage_sec article div.errors ul{
+    padding: 0;
+	
+    margin: 0;
+    background: inherit;
+}
+section.cartpage_sec article div.errors ul li{
+    padding: 0 15px 0 15px;
+	
+    margin: 0;
+    height: inherit;
+    list-style-type: circle;
+    background-color: rgb(255, 0, 0);
+    border-radius: 0;
+    color: #fff;
+}
+
+
+
+
+
 
 /*фикс футера*/
 .page-buffer {
     height: 325px;
 }
+
+
+
 
 
 /* ==========================================================================Media Queries========================================================================== */

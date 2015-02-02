@@ -42,6 +42,8 @@
                     </ul>
 
                     <div class="ch_formblock">
+                       <!--                            ошибки формы заказаз-->
+ <xsl:apply-templates select="$errors" />
                         <form id="payment_choose" style="text-align: left;" method="POST" action="/emarket/saveInfo">
                         	<!-- <script>
 						<![CDATA[
