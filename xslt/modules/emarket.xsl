@@ -7,12 +7,14 @@
 
 	<xsl:template match="result[@method = 'purchasing_one_step']">
 		<xsl:variable name="onestep" select="document('udata://emarket/purchasing_one_step/')/udata" />
-
+		<xsl:variable name="cart" select="document('udata://emarket/cart')/udata" />
 		<h1>Оформление заказа</h1>
             <section class="cartpage_sec">
                 <article>
                     <span class="help_checkout">
-                    Вы собираетесь купить <span>2 товара</span> на сумму <span>73 645 руб</span>
+                    Вы собираетесь купить <span><xsl:value-of select="$cart/summary/amount"  /> шт товара</span> на сумму 
+                    <span>
+                    	<xsl:value-of select="$cart/summary/price/actual"  /> руб</span>
                     </span>
 
 
@@ -41,27 +43,27 @@
 
                     <div class="ch_formblock">
                         <form id="payment_choose" style="text-align: left;" method="POST" action="/emarket/saveInfo">
-                        	<script>
-                        <![CDATA[
-                            window.paymentId = null;
-                            jQuery('#payment_choose').submit(function(){
-                            
-                                if (window.paymentId) {
-                                    var checkPaymentReceipt = function(id) {
-                                        if (jQuery('.receipt').attr('checked') == 'checked') {
-                                            var url = "/emarket/saveInfo";
-                                            var win = window.open("", "_blank", "width=710,height=620,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no");
-                                            win.document.write("<html><head><" + "script" + ">location.href = '" + url + "?payment-id=" + id + "'</" + "script" + "></head><body></body></html>");
-                                            win.focus();
-                                            return false;
-                                        }
-                                    }
-                                    return checkPaymentReceipt(window.paymentId);
-                                }
-                                else return false;
-                            });
-                        ]]>
-                    </script>
+                        	<!-- <script>
+						<![CDATA[
+							window.paymentId = null;
+							jQuery('#payment_choose').submit(function(){
+							
+								if (window.paymentId) {
+									var checkPaymentReceipt = function(id) {
+										if (jQuery('.receipt').attr('checked') == 'checked') {
+											var url = "/emarket/saveInfo";
+											var win = window.open("", "_blank", "width=710,height=620,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no");
+											win.document.write("<html><head><" + "script" + ">location.href = '" + url + "?payment-id=" + id + "'</" + "script" + "></head><body></body></html>");
+											win.focus();
+											return false;
+										}
+									}
+									return checkPaymentReceipt(window.paymentId);
+								}
+								else return false;
+							});
+						]]>
+					</script> -->
                         	
 			
 			
@@ -167,52 +169,8 @@
                     <div class="filter_hdr">
                         товары в корзине
                     </div>
-
-                    <div class="maingoodinfo">
-                        <a href="#">
-                            <span>
-                    <img src="{$template-resources}img/good_image.jpg" alt="картинка товара"/>
-                </span>
-                        </a>
-                        <h4><a href="#">Камин SILVER t54fg54g</a></h4>
-                        <span class="manufacturer_block">edilKamin</span>
-                        <span class="summa_asidebl">27 000 руб</span>
-
-
-
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="maingoodinfo">
-                        <a href="#">
-                            <span>
-                        <img src="{$template-resources}img/good_image.jpg" alt="картинка товара"/>
-                    </span>
-                        </a>
-                        <h4><a href="#">Камин SILVER 654654</a></h4>
-                        <span class="manufacturer_block">edilKamin</span>
-                        <span class="summa_asidebl">27 000 руб</span>
-
-
-
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="maingoodinfo">
-                        <a href="#">
-                            <span>
-                    <img src="{$template-resources}img/good_image.jpg" alt="картинка товара"/>
-                </span>
-                        </a>
-                        <h4><a href="#">Камин SILVER bjsdg</a></h4>
-                        <span class="manufacturer_block">edilKamin</span>
-                        <span class="summa_asidebl">27 000 руб</span>
-
-
-
-                        <div class="clearfix"></div>
-                    </div>
-
-
-                </div>
+                    <xsl:apply-templates select="$cart/items/item" mode="purchase_items" />
+				</div>
             </aside>
 
             <div class="clearfix"></div>
@@ -322,7 +280,7 @@
 		</div>
 				<xsl:if test="items/item[@type-guid='emarket-delivery-783']">
 					<input checked="checked" type="radio" id="radio34011" class="css-checkbox2"/>
-					<label for="radio34011" class="css-label2 emarket-delivery-783 ">Самовывоз</label>
+					<label for="radio34011" class="css-label2 emarket-delivery-783 ">Самовывоз</label><br/>
 				</xsl:if>
 				<xsl:apply-templates select="items/item" mode="option_choose" />
 			
@@ -354,6 +312,7 @@
 		
 		<input type="radio" value="{@id}" name="delivery-id" id="radio{@id}" class="css-checkbox2 {@type-guid} " />
         <label for="radio{@id}" class="css-label2 {@type-guid} " ><xsl:value-of select="@name" /></label>
+		<br/>
 		</xsl:if>
 	
 	</xsl:template>
@@ -375,6 +334,7 @@
 
 
 	        <label for="radio{@id}" class="css-label2 {@type-guid} " ><xsl:value-of select="@name" /></label>
+	       <br/>	
 		</xsl:if>
 		
 	</xsl:template>
@@ -391,22 +351,21 @@
 
 	<xsl:template match="item" mode="option_payment">
         
-				<xsl:if test="(position() = 1) and (@type-name = 'receipt')">
+					<!-- <xsl:if test="(position() = 1) and (@type-name = 'receipt')">
 						<script>
 							window.paymentId = <xsl:value-of select="@id" />;
 						</script>
-					</xsl:if>
+					</xsl:if> -->
 				<input type="radio" name="payment-id" class="{@type-name} css-checkbox2" value="{@id}" id="{@id}" >
-					<xsl:attribute name="onclick">
+					<!-- <xsl:attribute name="onclick">
 						<xsl:text>this.form.target = </xsl:text>
 						<xsl:choose>
-							
-							<xsl:when test="@type-name = 'receipt'">
-								<xsl:text>'receipt';</xsl:text>
+							<xsl:when test="@type-name != 'receipt'">
+								'/emarket/saveInfo';
 							</xsl:when>
-							
+							<xsl:otherwise>'/emarket/ordersList/'; window.paymentId = '<xsl:value-of select="@id" />';</xsl:otherwise>
 						</xsl:choose>
-					</xsl:attribute>
+					</xsl:attribute> -->
 					<xsl:if test="@active = 'active'">
 						<xsl:attribute name="checked">
 							<xsl:text>checked</xsl:text>
@@ -651,12 +610,12 @@
                                     	</a>
                                     </h4>
                                     <span class="articul_block">
-                                    	Артикул:  &br;
+                                    	Артикул:  
                                     	<a href="#">
                                     		<xsl:value-of select="$item_page/page/properties/group/property[@name='artikul']/value" />
                                     	</a>
                                     </span>
-                <xsl:choose>
+                <!-- <xsl:choose>
 					<xsl:when test="$item_page/page/properties/group/property[@name='common_quantity']/value&gt;0">
 						
 							<span class="instok">в наличии</span>
@@ -668,7 +627,7 @@
 							<span class="not_instok">отсутствует</span>
 							
 					</xsl:otherwise>
-				</xsl:choose>
+				</xsl:choose> -->
                                     
                                     <div class="clearfix"></div>
                                 </div>

@@ -1,15 +1,43 @@
-# humanstxt.org/
-# The humans responsible & technology colophon
+/* TEAM */
+	
+    Chef:Хан Альберт
+	Contact: albert@lum.ru
+	From:Санкт-Петербург, Россия
+    
+    Project manager: Калинина Елизавета
+    Contact: http://vk.com/elise_kalinina
+	From:Санкт-Петербург, Россия
 
-# TEAM
+	Main programmer: Кушнарев Александр
+	Contact: aikushnarev@gmail.com
+	From:Санкт-Петербург, Россия
 
-    <name> -- <role> -- <twitter>
+	Web designer: Студия Мёд
+	Contact: info@madeinmed.ru
+	From:Санкт-Петербург, Россия
 
-# THANKS
+	Interface coder: Нарматов Сергей
+	Contact: narmatoff@ya.ru
+    From:Санкт-Петербург, Россия
+    
+	Programmer: Корнилов Алексей
+	Contact: alexejkornilov@gmail.com
+	From:Санкт-Петербург, Россия
 
-    <name>
+	Marketing: Исламов Марат
+	Contact: http://vk.com/id886101
+	From:Санкт-Петербург, Россия
 
-# TECHNOLOGY COLOPHON
 
-    HTML5, CSS3
-    jQuery, Modernizr
+/* THANKS */
+
+    Dev. Helper: Будовля Максим
+    Contact: max@lum.ru
+	From:Санкт-Петербург, Россия
+
+
+/* SITE */
+	Last update:2015/02/01
+	Language: Russian
+	Doctype:HTML5
+	IDE: Sublime Text, Brackets, Notepad++, FileZilla, Photoshop

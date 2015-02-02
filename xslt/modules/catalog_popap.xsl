@@ -91,7 +91,9 @@
                         <span class="goodsprice">
                                 <xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/>
                              руб</span>
-                        <input class="buybutton outnstock" type="button" value="Под заказ" />
+                        <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
+                        
+                        <!-- <input class="buybutton outnstock" type="button" value="Под заказ" /> -->
                         <span class="not_instok">отсутствует</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
                     </div>

@@ -99,6 +99,7 @@ html {
     -ms-text-size-adjust:100%;
     /* 2 */
     -webkit-text-size-adjust:100%;
+	height: 100%;
     /* 2 */
 }
 /*** Address `font-family` inconsistency between `textarea` and other form* elements.*/
@@ -106,11 +107,14 @@ html {
 html,button,input,select,textarea {font-family:'Ubuntu',sans-serif;}
 /*** Address margins handled incorrectly in IE 6/7.*/
 
-body {
-    min-height: 100%;            
+body {            
     line-height: 1;
-    height: 100%;      margin: 0;      padding: 0;
+    margin: 0;      
+	
+    padding: 0;
     position: relative;
+    height: 100% !important;
+    min-height: 100% !important;
 }
 /* ==========================================================================Links========================================================================== */
 

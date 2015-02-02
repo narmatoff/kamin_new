@@ -61,6 +61,7 @@
 
     <!--Подключенные шаблоны-->
 	<xsl:include href="modules/fast.xsl" />
+
 	<xsl:include href="modules/cart.xsl"/> 
 	<xsl:include href="modules/forms.xsl"/>
 	<xsl:include href="default.xsl" />
@@ -78,5 +79,7 @@
 	<xsl:include href="modules/comments.xsl" />
 	<xsl:include href="modules/slider.xsl" />
 	<xsl:include href="modules/wherebuy.xsl" />
+	<xsl:include href="modules/brend_item.xsl" />
+	<xsl:include href="modules/meta.xsl" />
 	
 </xsl:stylesheet> 

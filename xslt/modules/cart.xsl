@@ -157,7 +157,7 @@
 								<span class="bgpm2"><input type="button" value="+"  onclick="var e = $('#input_pice_count_{@id}'); site.basket.modify({@id}, parseInt(parseInt(e.val())+1));" class="input_pice_count_plus"/></span>
 							</div>
 						</td>
-						<td class="summa_td">
+						<td class="summa_td cart_item_price_{@id}">
 							<xsl:value-of select="total-price/actual"/> <xsl:value-of select="total-price/@suffix"/>.
 						</td>
 						<td class="floating_td">
@@ -166,6 +166,27 @@
 						<div class="clearfix"></div>
 					</tr>
 
+		
+	</xsl:template>
+	<xsl:template match="item" mode="purchase_items">
+        <xsl:variable name="item" select="document(concat('upage://', page/@id))/udata/page" />
+				
+				<div class="maingoodinfo">
+					<a href="{page/@link}">
+				<span>
+					<xsl:call-template name="thumbing">
+                        <xsl:with-param name="source" select="$item//property[@name = 'foto_1']/value" />
+                        <xsl:with-param name="width" select="86" />
+                        <xsl:with-param name="height">86</xsl:with-param>
+                    </xsl:call-template>
+				</span>
+					</a>
+					<h4><a href="{page/@link}"><xsl:value-of select="$item//property[@name = 'nazvanie']/value" /></a></h4>
+					<span class="manufacturer_block"><xsl:value-of select="$item//property[@name = 'brend']/value/item/@name" /></span>
+					<span class="summa_asidebl"><xsl:value-of select="$item//property[@name = 'price']/value" /> руб</span>
+					<!-- <a class="aside_button" href="/emarket/basket/put/element/{@id}">Купить</a> -->
+					<div class="clearfix"></div>
+				</div>
 		
 	</xsl:template>
 </xsl:stylesheet>

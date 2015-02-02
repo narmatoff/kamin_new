@@ -3,7 +3,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="udata[@module = 'comments'][@method = 'insert']">
         <div class="comment">
-            <div class="comment-text"><span>На данный товар отзывы еще никто не оставлял.</span>
+            <div class="comment-text"><span>К сожалению, отзывы пока отсутствуют.</span>
             </div>
         </div>
     </xsl:template>

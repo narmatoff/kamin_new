@@ -26,11 +26,18 @@
 					</div> 
 						<h2>Посмотреть товары бренда <xsl:value-of select="@header"/></h2>
 					<section class="mainpage_section" style="width: auto; margin: 0;">
-						<xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/(katalog)')/udata/items/item" mode="categorylist_main">
+						<!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/(katalog)')/udata/items/item" mode="categorylist_main">
+
+
 							<xsl:with-param name="cat" select="page/@object-id" />
-						</xsl:apply-templates>
+						</xsl:apply-templates> -->
+
+						<xsl:apply-templates select="document(concat('udata://content/menu/notemplate/0/', @pageId))/udata/items/item" mode="categorylist_main_brend" />
+
+
 					</section>
 				</xsl:if>
+				
 				<xsl:if test="page/properties/group/property[@name='fotogalereya']/value/page">
 					
 						<xsl:apply-templates select="document(concat('udata://photoalbum/album_sort/',page/properties/group/property[@name='fotogalereya']/value/page/@id ))/udata/items" mode="photos"/>
@@ -391,7 +398,7 @@
 
 	 	<article>
            	<h1 class="dialog_par"><xsl:value-of select="@header"/></h1>
-        </article>
+        
         <div id="yamapsdlr">
 		</div>
 		<table border="0">
@@ -405,8 +412,163 @@
 	       	<xsl:apply-templates select="document('usel://contacts/')/udata/page/extended/groups" mode="concat_node" />
 		    </tbody>
 		</table>
-	
+		</article>
 	<!-- <xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/> -->
 	</xsl:template>
+
+	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@id='6498']">
+		<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+		<script type="text/javascript">
+			var myMap;
+			ymaps.ready(init);
+
+			function init () {
+			    myMap = new ymaps.Map('yamapsdlr', {
+			        center: [59.939095, 30.315868],
+			        zoom: 3,
+			        controls: ['zoomControl', 'typeSelector']
+			    });
+			    clusterer = new ymaps.Clusterer({
+	            preset: 'islands#invertedOrangeClusterIcons',
+	            groupByCoordinates: false,
+	            clusterDisableClickZoom: false,
+	            clusterHideIconOnBalloonOpen: false,
+	            geoObjectHideIconOnBalloonOpen: true
+	        	});
+
+	       		cord = [<xsl:apply-templates select="document('usel://dilers/')/udata/page/extended/groups/group/property[@name='koordinaty']" mode="maps" />];
+				head = [<xsl:apply-templates select="document('usel://dilers/')/udata/page/extended/groups/group/property[@name='nazvanie']" mode="maps" />];
+				adr = [<xsl:apply-templates select="document('usel://dilers/')/udata/page/extended/groups/group/property[@name='adres']" mode="maps" />];
+				footer = [<xsl:apply-templates select="document('usel://dilers/')/udata/page/extended/groups/group/property[@name='phone']" mode="maps" />];
+				cont = [<xsl:apply-templates select="document('usel://dilers/')/udata/page/extended/groups/group/property[@name='e_mail']" mode="maps" />];
+				geoObjects = [];
+				
+				for(var i = 0, len = cord.length; i &lt; len; i++) {
+		        		geoObjects[i] = new ymaps.Placemark(cord[i], {balloonContentHeader:head[i], balloonContentBody:adr[i]+cont[i], balloonContentFooter:footer[i]}, {
+	     						iconLayout: 'default#image',
+	        					iconImageHref: '<xsl:value-of select="$template-resources"/>img/map/map-icon-logo.png'
+	    				});
+		    	}
+		    	clusterer.add(geoObjects);
+	    		myMap.geoObjects.add(clusterer);
+	    		myMap.setBounds(clusterer.getBounds());
+			    
+			    if (cord.length == 1){
+			   		myMap.setZoom(9);
+			    }
+			}
+		</script>
+
+	 	<article>
+           	<h1 class="dialog_par"><xsl:value-of select="@header"/></h1>
+        
+        <div id="yamapsdlr">
+		</div>
+		
+		<div class="clearfix"></div>
+			<h2>8-800-555-444-0 - бесплатные звонки из регионов РФ</h2>
+			<h2><a href="/gde_kupit/">Где купить</a></h2>
+		<div class="clearfix"></div>
+		<p>
+		<a href="javascript://" class="answer_showhide" title="Кликните, чтобы раскрыть ">Ещё ></a>
+        </p>
+		<div class="clearfix"></div>
+
+        <div class="answeronquestionbl">
+			<xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/>	
+		</div>
+		</article>
+	</xsl:template>
+
+	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='283']">
+		<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+		<script type="text/javascript">
+			var myMap;
+			ymaps.ready(init);
+
+			function init () {
+			    myMap = new ymaps.Map('yamapsdlr', {
+			        center: [59.939095, 30.315868],
+			        zoom: 3,
+			        controls: ['zoomControl', 'typeSelector']
+			    });
+			    clusterer = new ymaps.Clusterer({
+	            preset: 'islands#invertedOrangeClusterIcons',
+	            groupByCoordinates: false,
+	            clusterDisableClickZoom: false,
+	            clusterHideIconOnBalloonOpen: false,
+	            geoObjectHideIconOnBalloonOpen: true
+	        	});
+
+	       		cord = [<xsl:apply-templates select="document(concat('upage://', page/properties/group/property[@name='region_id']/value/page/@id))/udata/page/properties/group/property[@name='koordinaty']" mode="maps" />];
+				head = [<xsl:apply-templates select="document(concat('upage://', page/properties/group/property[@name='region_id']/value/page/@id))/udata/page/properties/group/property[@name='nazvanie']" mode="maps" />];
+				adr = [<xsl:apply-templates select="document(concat('upage://', page/properties/group/property[@name='region_id']/value/page/@id))/udata/page/properties/group/property[@name='adres']" mode="maps" />];
+				footer = [<xsl:apply-templates select="document(concat('upage://', page/properties/group/property[@name='region_id']/value/page/@id))/udata/page/properties/group/property[@name='phone']" mode="maps" />];
+				cont = [<xsl:apply-templates select="document(concat('upage://', page/properties/group/property[@name='region_id']/value/page/@id))/udata/page/properties/group/property[@name='e_mail']" mode="maps" />];
+				geoObjects = [];
+				
+				for(var i = 0, len = cord.length; i &lt; len; i++) {
+		        		geoObjects[i] = new ymaps.Placemark(cord[i], {balloonContentHeader:head[i], balloonContentBody:adr[i]+cont[i], balloonContentFooter:footer[i]}, {
+	     						iconLayout: 'default#image',
+	        					iconImageHref: '<xsl:value-of select="$template-resources"/>img/map/map-icon-logo.png'
+	    				});
+		    	}
+		    	clusterer.add(geoObjects);
+	    		myMap.geoObjects.add(clusterer);
+	    		myMap.setBounds(clusterer.getBounds());
+			    
+			    if (cord.length == 1){
+			   		myMap.setZoom(9);
+			    }
+			}
+		</script>
+		 <article>
+		 <h1><xsl:value-of select="@header"/></h1>
+            <div class="good_bookmopt">
+                <ul class="good_bookmarks">
+                    <li>
+                        <a name="tab1" href="javascript://">О салоне</a>
+                    </li>
+                    <xsl:if test="page/properties/group/property[@name='video']/value/page">
+	                    <li>
+	                        <a name="tab2" href="javascript://">Видеообзор</a>
+	                    </li>
+                	</xsl:if>
+                    <li>
+                        <a name="tab3" href="javascript://">Сотрудники</a>
+                    </li>                    
+                    <li>
+                        <a name="tab4" href="javascript://">Новости и акции</a>
+                    </li>                    
+                    <li>
+                        <a name="tab5" href="javascript://">Отзывы</a>
+                    </li>
+                </ul>
+
+                <div id="tab1">
+                    <xsl:value-of select="page/properties/group/property[@name='info']/value" disable-output-escaping="yes" />
+                    <div id="yamapsdlr">
+					</div>
+                </div>
+
+                <div id="tab2" style="display:none;">
+                	<ul class="content_gallery">
+                        <xsl:apply-templates select="page/properties/group/property[@name='video']/value/page" mode="slider2_video" />
+                    </ul>
+				</div>
+				<div id="tab3" style="display:none;">
+                    <xsl:value-of select="page/properties/group/property[@name='staff']/value" disable-output-escaping="yes" />
+				</div>
+				<div id="tab4" style="display:none;">
+
+				</div>	
+				<div id="tab5" style="display:none;">
+                    <xsl:apply-templates select="document('udata://comments/insert/')/udata" />
+                    <xsl:apply-templates select="user" mode="addcomment" />
+				</div>	
+			</div>
+			</article>	
+	</xsl:template>
+
 
 </xsl:stylesheet>
