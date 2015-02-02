@@ -1701,6 +1701,9 @@ article form {} article form label {
     font-size: 1em;
     display: block;
     margin: 0 0 5px 0;
+    text-indent: inherit;
+    height: inherit;
+    width: inherit;
 }
 article form input {
     height: 27px;
@@ -3060,6 +3063,7 @@ div.back_filterslid p label {
     text-align: left;
     font-weight: bold;
     height: 15px;
+    text-indent: inherit;    width: inherit;
 }
 div.back_filterslid input {
     display: inline-block;
