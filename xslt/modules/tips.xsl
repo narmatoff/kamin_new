@@ -149,7 +149,7 @@
         <div>
             <label for="{@id}">
                 <xsl:value-of select="@title" disable-output-escaping="no" /><em>*</em>:</label>
-            <input id="{@id}" placeholder="{@tip}" name="{@input_name}" type="text" value="{.}" class="input" />
+            <input id="{@id}" placeholder="{@tip}" name="{@input_name}" type="text" value="{.}" class="input ntSaveForms" />
         </div>
     </xsl:template>
     <xsl:template match="field[@name='country']">

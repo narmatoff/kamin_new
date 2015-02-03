@@ -547,7 +547,24 @@ $(document).ready(function () {
           return false;
    });
     
-    
+	
+	
+	
+//	прижатие футера
+//    function footerToBottom() {
+//var browserHeight = $(window).height(),
+//footerOuterHeight = $('footer').outerHeight(true),
+//mainHeightMarginPaddingBorder = $('.main_wrapper').outerHeight(true) - $('.main_wrapper').height();
+//$('.main_wrapper').css({
+//'min-height': browserHeight - footerOuterHeight - mainHeightMarginPaddingBorder,
+//});
+//};
+//	
+//footerToBottom();
+//	
+//$(window).resize(function () {
+//footerToBottom();
+//});
 
 
     
