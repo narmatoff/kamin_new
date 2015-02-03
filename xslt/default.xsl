@@ -27,6 +27,9 @@
 
     <title>
             <xsl:choose>
+                <xsl:when test="substring(result/@request-uri,2,6) = 'search'">
+                    Домотехника | kamin.ru
+                </xsl:when>
                 <xsl:when test="result[@module='catalog'][@method='object'][@method='object']/parents/page[@id=3236]">
                     <xsl:value-of select="result/page/name" /> в Санкт-Петербурге и Москве | Купить <xsl:value-of select="result/page/name" /> по низкой цене
                 </xsl:when>
@@ -167,25 +170,9 @@
     <script src="{$template-resources}js/less.js"></script>
 -->
 <!--    less-->
-  
-    
-    
-    
-    <link rel="stylesheet" href="{$template-resources}css/jqui.css"/>
-    <link rel="stylesheet" href="{$template-resources}css/catalog.css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
-    <script>window.jQuery || document.write('&lt;script src="{$template-resources}js/vendor/jquery-1.11.0.js">&lt;\/script>')</script>
 
-    <link rel="stylesheet" href="{$template-resources}css/jquery.fancybox.css" media="screen" />
-    
- 
-    <!--[if lt IE 9]>
-    <script src="{$template-resources}js/vendor/html5-3.6-respond-1.1.0.min.js"></script>
-    <![endif]-->
-    
-    <link rel="stylesheet" type="text/css" href="{$template-resources}js/fancybox/jquery.fancybox.css" media="screen" />
-    <script type="text/javascript">
-        $(document).ready(function () {
+    <!--script type="text/javascript">
+        
             var cPos = document.cookie.indexOf('flash='); // Заданы ли куки?
             var flashDetectTimer = null;
             if (cPos >= 0) {
@@ -212,25 +199,79 @@
                document.getElementById('flash').style.display = 'none';
                document.getElementById('noflash').style.display = 'block';
             }
-        
-        });
-    </script>
+
+    </script-->
 
     
-   <script>
+    
+    
+    <link rel="stylesheet" href="{$template-resources}css/jqui.css"/>
+    <link rel="stylesheet" href="{$template-resources}css/catalog.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+    <script>window.jQuery || document.write('&lt;script src="{$template-resources}js/vendor/jquery-1.11.0.js">&lt;\/script>')</script>
+
+    <link rel="stylesheet" href="{$template-resources}css/jquery.fancybox.css" media="screen" />
+    
+ 
+    <!--[if lt IE 9]>
+    <script src="{$template-resources}js/vendor/html5-3.6-respond-1.1.0.min.js"></script>
+    <![endif]-->
+    
+    <link rel="stylesheet" type="text/css" href="{$template-resources}js/fancybox/jquery.fancybox.css" media="screen" />
+    
+    
+    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-42148027-2', 'auto');
-  ga('require', 'displayfeatures');
+  ga('create', 'UA-26636027-1', 'auto');
   ga('send', 'pageview');
 
 </script>
 </head>
 <body>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+            try {
+                w.yaCounter7760038 = new Ya.Metrika({id: 7760038,
+                    webvisor: true,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true});
+            } catch (e) {
+            }
+        });
 
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () {
+                    n.parentNode.insertBefore(s, n);
+                };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+            f();
+        }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<!-- Yandex.Metrika counter -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
+          webvisor:true,
+          clickmap:true});
+} catch(e) { }
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/27431942" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
     
 <!--
@@ -263,7 +304,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="brend_item">
-                <a href="/" title="камины">
+                <a href="http://gekospb.ru/" title="камины">
                     <span class="elektrost_img">
                     <!-- на фоне этого спана логотип -->
                     </span>
@@ -273,7 +314,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="brend_item ">
-                <a href="#" title="камины">
+                <a href="http://kotly-ctc.ru/" title="камины">
                     <span class="kotli_img">
                     <!-- на фоне этого спана логотип -->
                     </span>
@@ -283,7 +324,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="brend_item">
-                <a href="#" title="камины">
+                <a href="/katalog/dymohody/" title="камины">
                     <span class="dimohodi_img">
                     <!-- на фоне этого спана логотип -->
                     </span>
@@ -293,7 +334,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="brend_item">
-                <a href="#" title="камины">
+                <a href="http://1914.ru/catalogue.html" title="камины">
                     <span class="stihl_img">
                     <!-- на фоне этого спана логотип -->
                     </span>
@@ -419,12 +460,12 @@
             <div class="choose_customer"><a href="#customer_choose" class="fancybox">выбрать производителя</a></div>
             
             <div class="social_btns_b">
-                <div class="vk_btn"><a title="Наша группа ВКонтакте" href="#"></a></div>
-                <div class="fb_btn"><a title="Наша группа в Фейсбук" href="#"></a></div>
-                <div class="twt_btn"><a title="Подписывайтесь в Твиттер" href="#"></a></div>
-                <div class="ytb_btn"><a title="Наш канал на Ютуб" href="#"></a></div>
-                <div class="inst_btn"><a title="Подписывайтесь в Инстаграмм" href="#"></a></div>
-                <div class="odnkl_btn"><a title="Наша группа в Одноклассниках" href="#"></a></div>
+                <div class="vk_btn"><a title="Наша группа ВКонтакте" href="http://vk.com/domotechnika" target="_blank"></a></div>
+                <div class="fb_btn"><a title="Наша группа в Фейсбук" href="https://www.facebook.com/DomotehnikaKaminy" target="_blank"></a></div>
+                <div class="twt_btn"><a title="Подписывайтесь в Твиттер" href="https://twitter.com/domotspb" target="_blank"></a></div>
+                <div class="ytb_btn"><a title="Наш канал на Ютуб" href="http://www.youtube.com/user/KaminRu" target="_blank"></a></div>
+                <div class="inst_btn"><a title="Подписывайтесь в Инстаграмм" href="http://instagram.com/domotehnika#" target="_blank"></a></div>
+                <div class="odnkl_btn"><a title="Наша группа в Одноклассниках" href="http://www.odnoklassniki.ru/group/51899147747462" target="_blank"></a></div>
             </div>
             
             <div class="clearfix"></div>
@@ -669,7 +710,7 @@
                                 </span>
                              </li>
                              <li><span class="h_mail_address"></span><a href="mailto:info@kamin.ru?subject=тема письма" alt="Письмо">info@kamin.ru</a></li>
-                             <li><a href="http://dlr.kamin.ru" title="Вход для диллероа" class="diller_entry">вход для диллеров <span></span></a></li>
+                             <li><a href="http://dlr.kamin.ru" title="Вход для дилероа" class="diller_entry">вход для дилеров <span></span></a></li>
                              <li><img src="{$template-resources}img/ya_markt.png" height="105" width="198" alt="z"/></li>
                          </ul>
             </div>
@@ -697,6 +738,7 @@
             <script src="{$template-resources}js/main.js"></script>
             <script src="{$template-resources}js/clicker.js?q=123456789098765432"></script>
             <script type="text/javascript" src="/js/site/__common.js"></script>
+            <script src="{$template-resources}js/jquery.swfobject.1-1-1.min.js"></script>
            <script>
                 $(document).ready(function() {
                 $(".itemregion").click(function () {
@@ -808,6 +850,54 @@
        <xsl:apply-templates select="document('usel://brends')/udata/page" mode="brends" />
     </ul>
 </div>
+<!-- он-лайн консильтант -->
+
+<script type="text/javascript">
+<![CDATA[
+var liveTex = true,
+   liveTexID = 72098,
+   liveTex_object = true;
+
+/* ********************************** */
+var LiveTex = {
+   onLiveTexReady: function() {
+     var btnClose = document.createElement('a');
+     var container = document.querySelector('.lt-content');
+     var opInfo = document.querySelector('.lt-content iframe');
+
+     btnClose.className = 'lt-cancel-invite';
+     btnClose.innerHTML = '&times;';    
+
+     if (!btnClose.addEventListener) {
+         btnClose.attachEvent("onclick", function(e){
+           LiveTex.hideInvitation();
+           e.preventDefault();
+         });
+     }
+     else {
+         btnClose.addEventListener("click", function(e){
+           LiveTex.hideInvitation();
+           e.preventDefault();
+         }, false);
+     }      
+     container.insertBefore(btnClose, opInfo);
+   }
+};
+/* ********************************** */
+ 
+(function() {
+   var lt = document.createElement('script');
+   lt.type = 'text/javascript';
+   lt.async = true;
+   lt.src = '//cs15.livetex.ru/js/client.js';
+   var sc = document.getElementsByTagName('script')[0];
+   if (sc) sc.parentNode.insertBefore(lt, sc);
+   else  document.documentElement.firstChild.appendChild(lt);
+})();
+]]>
+</script>
+
+<!-- он-лайн консильтант -->
         </body>
 </html>
 

@@ -654,6 +654,7 @@
                 </ul>
 
                 <div id="tab1">
+                    <h3><xsl:apply-templates select="$errors/items/item" mode="error" /></h3>
                     <xsl:value-of select="page/properties/group/property[@name='polnoe_opisanie']/value" disable-output-escaping="yes" />
                 </div>
 

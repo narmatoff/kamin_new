@@ -1760,6 +1760,11 @@ article.news_item img {
     float: left;
     margin: 1.5em 10px 10px 0;
 }
+
+div#new-legal-person{
+    margin: 40px 0 0 0;
+    
+}
 div.pice_count {
     height: 24px;
     width: 77px;
@@ -3122,6 +3127,12 @@ div.ch_formblock form fieldset.paymentvariable input {
     padding: 0 0 0 10px;
     margin: 0 0 20px 0;
 }
+
+div.line{
+	margin: 0 0 20px 0;
+	text-transform: uppercase;
+}
+
 div.ch_formblock form fieldset.deliveryinfo {
     width: 265px;
     display: inline-block;

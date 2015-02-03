@@ -444,7 +444,26 @@ $(document).ready(function () {
 
 
     //    обработка кнопки продолжить в чекауте
-    var tabIdForButton = 2;
+	
+	
+   var tabIdForButton;
+	
+	var counterLi = $('ul.tabsch li');
+	var countLi = $(counterLi).size();
+	console.log(countLi);
+	
+	
+//условие, если вкладок в чекауте меньше чем три шт.(фикс от лишнего клика по кнопке "Продолжить")
+	if (countLi < 3){
+		tabIdForButton = 3;
+	}else{
+		tabIdForButton = 2;
+	}
+	
+	
+	
+	
+ 
 
     $('a.checkout_btnxt').click(function (e) {
         e.preventDefault();

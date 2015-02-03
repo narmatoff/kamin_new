@@ -423,8 +423,16 @@
 						<xsl:text>this.form.action = </xsl:text>
 						<xsl:choose>
 							<xsl:when test="@type-name != 'receipt'"><xsl:text>'do/';</xsl:text></xsl:when>
-							<xsl:otherwise><xsl:text>'/emarket/ordersList/'; window.paymentId = '</xsl:text><xsl:value-of
-						select="@id" /><xsl:text>';</xsl:text></xsl:otherwise>
+							<xsl:otherwise>
+							
+							<xsl:text>'/emarket/ordersList/'; window.paymentId = '</xsl:text>
+							
+							<xsl:value-of
+						select="@id" />
+						
+						<xsl:text>';</xsl:text>
+						
+						</xsl:otherwise>
 						</xsl:choose>
 					</xsl:attribute>
 					<xsl:if test="position() = 1">
