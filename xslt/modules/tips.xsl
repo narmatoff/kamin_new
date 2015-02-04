@@ -184,7 +184,7 @@
         <xsl:choose>
             <xsl:when test="discount">
                
-<!--             <p class="price_word_usualy"><span><xsl:value-of select="price/original"/> Руб.</span></p>-->
+             <p class="price_word_usualy"><span><xsl:value-of select="price/original"/> Руб.</span></p>
                
                 
                     <span class="goodsprice" >
@@ -200,7 +200,15 @@
                 </span>
             </xsl:otherwise>
         </xsl:choose>
-        <!-- цена со скидкой
+        
+        
+        
+        
+        
+        
+        
+<!--         цена со скидкой-->
+<!--
         <xsl:choose>
             <xsl:when test="discount">
                 <span class="price_word_usualy">Обычная цена: </span>
@@ -228,7 +236,24 @@
         </font>
     </xsl:when>
     <xsl:otherwise>
-        обычная цена<span class="price_word_usualy"> </span><font class="good_priceview_usualy"><span class="good_priceview_separate"></span><span class="rub"><span class="rur"></span></span></font><div class="clearfix"></div><xsl:choose><xsl:when test="$price_for"><span class="price_word">Обычная цена: </span><font class="good_priceview"><span class="good_priceview_separate" ><xsl:value-of select="$price_for"/></span><span class="rub"><span class="rur">p<span>уб.</span></span></span></font><br/><span class="price_word">Ваша цена: </span></xsl:when><xsl:otherwise><span class="price_word">Цена: </span></xsl:otherwise></xsl:choose><font class="good_priceview"><span class="good_priceview_separate" ><xsl:value-of select="price/actual"/></span><span class="rub"><span class="rur">p<span>уб.</span></span></span></font></xsl:otherwise></xsl:choose> --></xsl:template>
+-->
+       
+<!--         обычная цена-->
+        
+<!--        <span class="price_word_usualy"> </span><font class="good_priceview_usualy"><span class="good_priceview_separate"></span><span class="rub"><span class="rur"></span></span></font><div class="clearfix"></div><xsl:choose><xsl:when test="$price_for"><span class="price_word">Обычная цена: </span><font class="good_priceview"><span class="good_priceview_separate" ><xsl:value-of select="$price_for"/></span><span class="rub"><span class="rur">p<span>уб.</span></span></span></font><br/><span class="price_word">Ваша цена: </span></xsl:when><xsl:otherwise><span class="price_word">Цена: </span></xsl:otherwise></xsl:choose><font class="good_priceview"><span class="good_priceview_separate" ><xsl:value-of select="price/actual"/></span><span class="rub"><span class="rur">p<span>уб.</span></span></span></font></xsl:otherwise>
+       
+       </xsl:choose> -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </xsl:template>
 
 
 

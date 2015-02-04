@@ -713,7 +713,7 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                              </li>
                              <li><span class="h_mail_address"></span><a href="mailto:info@kamin.ru?subject=тема письма" alt="Письмо">info@kamin.ru</a></li>
                              <li><a href="http://dlr.kamin.ru" title="Вход для дилероа" class="diller_entry">вход для дилеров <span></span></a></li>
-                             <li><img src="{$template-resources}img/ya_markt.png" height="105" width="198" alt="z"/></li>
+                             <li><a href="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2508/*http://market.yandex.ru/shop/98576/reviews"><img src="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2507/*http://grade.market.yandex.ru/?id=98576&amp;action=image&amp;size=3" border="0" width="200" height="125" alt="Читайте отзывы покупателей и оценивайте качество магазина на Яндекс.Маркете" /></a></li>
                          </ul>
             </div>
 

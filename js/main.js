@@ -450,7 +450,7 @@ $(document).ready(function () {
 	
 	var counterLi = $('ul.tabsch li');
 	var countLi = $(counterLi).size();
-	console.log(countLi);
+//	console.log(countLi);
 	
 	
 //условие, если вкладок в чекауте меньше чем три шт.(фикс от лишнего клика по кнопке "Продолжить")

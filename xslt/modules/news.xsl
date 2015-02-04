@@ -93,6 +93,69 @@
         </div>
          
     </xsl:template>
+<!-- Новости в салонах... -->
+       <xsl:template match="page" mode="news_salon">
+        <div class="newsblock">
+            <xsl:variable name="page" select="document(concat('upage://',@id))/udata" />
+
+           
+           
+              <span class="dateofnews">
+               
+               <xsl:value-of select="document(concat('udata://system/convertDate/', @update-time, '/(d)'))/udata"  disable-output-escaping="yes"/>
+              
+                <xsl:choose>
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 1"> января</xsl:when>
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 2"> февраля</xsl:when>
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 3"> марта</xsl:when>
+
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 4"> апреля</xsl:when>
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 5"> мая</xsl:when>
+
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 6"> июня </xsl:when>
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 7"> июля </xsl:when>
+
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 8"> августа</xsl:when>
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 9"> сентября</xsl:when>
+
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 10"> октября</xsl:when>
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 11"> ноября</xsl:when>
+
+                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 12"> декабря</xsl:when>
+                        </xsl:choose>
+                        <br/>
+
+                <xsl:value-of select="document(concat('udata://system/convertDate/', @update-time, '/(Y)'))/udata"  disable-output-escaping="yes"/>
+            </span>
+            
+            <div class="newsfromdatemarg">
+            <h3><a href="{@link}"><xsl:value-of select="name"/></a></h3>
+                        <xsl:if test="$page/page/properties/group/property[@name='publish_pic']/value">
+                <a class="newsaimg" href="{@link}">
+                    <xsl:call-template name="thumbing">
+                        <xsl:with-param name="source" select="$page/page/properties/group/property[@name='publish_pic']/value" />
+                        <xsl:with-param name="width" select="150" />
+                        <xsl:with-param name="height">150</xsl:with-param>
+                    </xsl:call-template>
+                </a>
+            </xsl:if>
+
+
+
+            <xsl:value-of select="$page/page/properties/group/property[@name='anons']/value" disable-output-escaping="yes" />
+                       <div class="clearfix"></div>
+            </div>
+             <div class="clearfix"></div>
+<!--            <div class="clearfix"></div>-->
+<!--            <a class="newsmorelink" href="{@link}">подробнее</a> -->
+        
+
+            <!-- <div class="news"><span>[<xsl:value-of select="document(concat('udata://system/convertDate/', @publish_time, '/(d.m.Y)'))/udata"  disable-output-escaping="yes"/>]</span>&br;<strong><xsl:value-of select="$page/page/properties/group/property[@name='h1']/value" disable-output-escaping="yes"/></strong>&br;<xsl:value-of select="$page/page/properties/group/property[@name='anons']/value" disable-output-escaping="yes"/><a  href="{@link}" ><strong>[...]</strong></a></div>&br;     -->
+<!--            <div class="clearfix"></div>-->
+        </div>
+         
+    </xsl:template>
+<!-- Новости в салонах... -->
 
        <xsl:template match="item" mode="stateyki">
         <div class="newsblock">

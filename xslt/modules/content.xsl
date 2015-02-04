@@ -280,7 +280,11 @@
 		<div class="yandexreview">
 			<div class="yandexreview__title">
 				<div class="yandexreview-user">
-					<div class="yandexreview-user__image"><img src="{author-info/avatar}"/></div>
+					<div class="yandexreview-user__image">
+						<xsl:if test="author-info/avatar">
+							<img src="{author-info/avatar}"/>
+						</xsl:if>
+					</div>		
 						<xsl:choose>
 							<xsl:when test="anonymous = 'true'"><span class="yandexreview-username_anonymous">Пользователь скрыл свои данные</span></xsl:when>
 							<xsl:when test="anonymous = 'false'"><span class="yandexreview-username">
@@ -480,7 +484,7 @@
 		</article>
 	</xsl:template>
 
-	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='283']">
+	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='283'][page/@id!='6497']">
 		<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 		<script type="text/javascript">
 			var myMap;
@@ -561,6 +565,7 @@
                     <xsl:value-of select="page/properties/group/property[@name='staff']/value" disable-output-escaping="yes" />
 				</div>
 				<div id="tab4" style="display:none;">
+					<xsl:apply-templates select="document(concat('usel://salon_news/', @pageId))/udata/page" mode="news_salon" />
 
 				</div>	
 				<div id="tab5" style="display:none;">
@@ -570,6 +575,41 @@
 			</div>
 			</article>	
 	</xsl:template>
+	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='283'][page/@id='6497']">
+		<article>
+		 <h1><xsl:value-of select="@header"/></h1>
+            <div class="good_bookmopt">
+                <ul class="good_bookmarks">
+                    <li>
+                        <a name="tab1" href="javascript://">Информация</a>
+                    </li>
+                    <li>
+                        <a name="tab2" href="javascript://">Сотрудники</a>
+                    </li>                    
+                    <li style="width: 200px;">
+                        <a name="tab3" href="javascript://">Отправить сообщение</a>
+                    </li>                    
+                    <li>
+                        <a name="tab4" href="javascript://">Отзывы</a>
+                    </li>
+                </ul>
 
+                <div id="tab1">
+                    <h3><xsl:apply-templates select="$errors/items/item" mode="error" /></h3>
+                    <xsl:value-of select="page/properties/group/property[@name='info']/value" disable-output-escaping="yes" />
+                </div>
+				<div id="tab2" style="display:none;">
+                    <xsl:value-of select="page/properties/group/property[@name='staff']/value" disable-output-escaping="yes" />
+				</div>
+				<div id="tab3" style="display:none;">
+					<xsl:apply-templates select="document('udata://webforms/add/308')/udata"  mode="form" />
+				</div>	
+				<div id="tab4" style="display:none;">
+                    <xsl:apply-templates select="document('udata://comments/insert/')/udata" />
+                    <xsl:apply-templates select="user" mode="addcomment" />
+				</div>	
+			</div>
+		</article>	
+	</xsl:template>
 
 </xsl:stylesheet>

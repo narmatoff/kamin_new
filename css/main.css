@@ -1749,7 +1749,7 @@ article.news_item h1 {} article.news_item span.opened_news_date {
 }
 article.news_item img {
     float: left;
-    margin: 1.5em 10px 10px 0;
+    margin: 1.5em 30px 10px 0;
 }
 
 div#new-legal-person{
@@ -2810,12 +2810,18 @@ div#catalog_list.cat_item_list div.cat_item_plits div.maingoodinfo p {
     height: 111px;
     margin: 10px 0 0 0;
 }
-div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons {} div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons {
+div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons {} 
+
+div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons {
     float: none;
     width: auto;
     height: 100%;
     position: relative;
 }
+div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons p.price_word_usualy {
+display:none;
+}
+
 div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons span.goodsprice {
     font-size: 1.3em;  
     font-family: 'a_avantebs';  
