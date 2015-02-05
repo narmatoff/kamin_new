@@ -550,27 +550,37 @@ $(document).ready(function () {
 	
 	
 	
-//	прижатие футера
-//    function footerToBottom() {
-//var browserHeight = $(window).height(),
-//footerOuterHeight = $('footer').outerHeight(true),
-//mainHeightMarginPaddingBorder = $('.main_wrapper').outerHeight(true) - $('.main_wrapper').height();
-//$('.main_wrapper').css({
-//'min-height': browserHeight - footerOuterHeight - mainHeightMarginPaddingBorder,
-//});
-//};
-//	
-//footerToBottom();
-//	
-//$(window).resize(function () {
-//footerToBottom();
-//});
+//Кнопка подняться наверх
 
-
-    
-    
-    
-    
-//    
+	
+	if ($(".site-up").length) {
+		(function () {
+			$(".site-up").click(function () {
+				$("html:not(:animated), body:not(animated)").animate({
+					scrollTop: 0
+				}, 600);
+			});
+			var timer;
+			$(window).scroll(function () {
+				var st = $(window).scrollTop();
+				$(".site-up")[st > 250 ? "addClass" : "removeClass"]("show");
+				if (timer) {
+					clearTimeout(timer);
+					timer = null;
+				}
+				
+//				шевеление при движении
+//				timer = setTimeout(function () {
+//					$(".site-up").removeClass("onscroll");
+//				}, 400);
+//				$(".site-up").addClass("onscroll");
+			});
+		})();
+	}
+	
+	
+	
+	
+	
 });
 

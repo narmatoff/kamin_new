@@ -25,6 +25,15 @@
             </div>
 
 <!--       тут кнопку наверх-->
+      
+      
+
+     
+      <a href="javascript://" title="Подняться наверх сайта" class="site-up show"><div>наверх</div>
+      
+<!--      <img src="{$template-resources}img/totop.png" alt=""/>-->
+      
+      </a>
        
        
         </div>
@@ -49,6 +58,10 @@
 				</div>
 			
 				<!--       тут кнопку наверх-->
+				 <a href="javascript://" title="Подняться наверх сайта" class="site-up show" ><div>наверх</div>
+<!--      <img src="{$template-resources}img/totop.png" alt=""/>-->
+      </a>
+       
 			</div>
 		</div>
 		

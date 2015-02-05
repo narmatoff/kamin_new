@@ -4506,7 +4506,7 @@ span.rasp_sprite {
     z-index: 99;
     background-color: #ED1C24;
     color: #fff;
-    left: 210px;  top: 10px;
+    left: 255px;  top: 10px;
     padding: 5px 10px 5px 12px;
     font-family: 'a_avantebs';
     font-size: 1em;
@@ -4758,6 +4758,33 @@ section.cartpage_sec article div.errors ul li{
 .page-buffer {
     height: 325px;
 }
+
+
+
+
+/*кнопка наверх*/
+
+a.site-up{
+/*	display: none;*/opacity: 0;color: #bebebe;float: right;text-decoration: none;text-transform: uppercase; font-family: 'a_avantebs';  
+font-size: 0.85em;  color: #bebebe;margin: 15px 5px 0 0;/*	outline: 1px dotted red !important;*/height: 30px;
+width: 85px;	background-image: url("../img/totop.png");background-repeat: no-repeat;
+background-position: 50px -30px;/*	анимации*/-moz-transition: all .1s linear;-o-transition: all .1s linear;-webkit-transition: all .1s linear;-ms-transition: all .1s linear;transition: all .1s linear;
+}
+a.site-up:hover{
+	color: #fff;
+	background-position: 50px 0;
+}
+a.site-up div{
+	margin: 9px 0 0 0;	
+}
+a.site-up.show {
+	opacity: 1;
+}
+a.site-up.onscroll {
+	color: #fff;
+	background-position: 60px 0;
+}
+
 
 
 
