@@ -227,19 +227,46 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-26636027-1', 'auto');
+  ga('require', 'ec');
   ga('require', 'displayfeatures');
   ga('require', 'linkid', 'linkid.js');
   ga('send', 'pageview');
 
 </script>
+
+
+
+           
 </head>
 <body>
+
+<xsl:if test="substring(result/@request-uri,2,34) = 'emarket/purchase/result/successful'">
+    <xsl:variable name="order_id" select="document('udata://emarket/ordersList')/udata/items/item[last()]/@id" />
+    <xsl:variable name="order_info" select="document(concat('udata://emarket/order/', $order_id))/udata" />
+    <!-- Параметры для метрики.. -->
+    <script type="text/javascript">
+        var yaParams = {
+            order_id: "<xsl:value-of select="$order_id" />",
+            order_price: "<xsl:value-of select="$order_info/summary/price/actual" />", 
+            currency: "RUR",
+            exchange_rate: 1,
+            goods: 
+               [
+                <xsl:apply-templates select="$order_info/items/item" mode="order_info_metrika" />
+               ]
+        };
+    </script>
+    <!-- Параметры для метрики -->
+</xsl:if>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function () {
             try {
                 w.yaCounter7760038 = new Ya.Metrika({id: 7760038,
+            <xsl:if test="substring(result/@request-uri,2,34) = 'emarket/purchase/result/successful'">
+                params:window.yaParams||{ },
+            </xsl:if>
                     webvisor: true,
                     clickmap: true,
                     trackLinks: true,
@@ -898,6 +925,31 @@ var LiveTex = {
 })();
 ]]>
 </script>
+ <div style="display:none">
+            <div id="show1" style="padding: 0 30px 0 25px;" class="contscts_form popuppriceenq">
+                <article>
+                <p class="error">
+                            
+                </p>
+                <form id="opaopaopapa" action="/webforms/send/" method="post">
+                    
+                    <div class="cartform">
+                    <div id="forminputter">
+                        
+                        
+
+
+                    </div>
+                    </div>
+                    
+                    <div class="cart_kont_buttons">
+                        <input type="submit" value="Отправить"/>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+                 </article>                  
+            </div>
+        </div>
 
 <!-- он-лайн консильтант -->
         </body>

@@ -111,31 +111,7 @@
             <xsl:value-of select=".//property[@name = 'content']/value" disable-output-escaping="yes" />
             <xsl:apply-templates select="$errors" />
         </article>
-        <div style="display:none">
-            <div id="show1" style="padding: 0 30px 0 25px;" class="contscts_form popuppriceenq">
-                <article>
-                <p class="error">
-                            
-                </p>
-                <form id="opaopaopapa" action="/webforms/send/" method="post">
-                    
-                    <div class="cartform">
-                    <div id="forminputter">
-                        
-                        
-
-
-                    </div>
-                    </div>
-                    
-                    <div class="cart_kont_buttons">
-                        <input type="submit" value="Отправить"/>
-                        <div class="clearfix"></div>
-                    </div>
-                </form>
-                 </article>                  
-            </div>
-        </div>
+       
     </xsl:template>
 
 
@@ -715,31 +691,7 @@
                 </xsl:if>
 
         </article>
-        <div style="display:none">
-            <div id="show1" style="padding: 0 30px 0 25px;" class="contscts_form popuppriceenq">
-                <article>
-                <p class="error">
-                            
-                </p>
-                <form id="opaopaopapa" action="/webforms/send/" method="post">
-                    
-                    <div class="cartform">
-                    <div id="forminputter">
-                        
-                        
-
-
-                    </div>
-                    </div>
-                    
-                    <div class="cart_kont_buttons">
-                        <input type="submit" value="Отправить"/>
-                        <div class="clearfix"></div>
-                    </div>
-                </form>
-                 </article>                  
-            </div>
-        </div>
+       
 
     </xsl:template>
     
@@ -1091,8 +1043,9 @@
 
     </xsl:template> -->
 
-    <xsl:template match="field[@data-type = 'relation']" mode="search">
-        
+   <xsl:template match="field[@data-type = 'relation']" mode="search">
+         <xsl:param name="typeid" />
+         <xsl:variable name="all_brends" select="document(concat('usel://max_val/', @name,'/', $typeid))/udata/page" />
         <div class="back_filter">
             <div class="select_filterbl">
                 <p></p>
@@ -1100,11 +1053,30 @@
                     <option class="first" value="">
                         <xsl:value-of select="@title" />
                     </option>
-                    <xsl:apply-templates select="values/item" mode="search_select" />
+                    <xsl:apply-templates select="document(concat('usel://max_val/', @name,'/', $typeid))/udata" mode="brands">
+                        <xsl:with-param name="selected_id"
+                            ><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param>
+                    </xsl:apply-templates>
+                    <!-- <xsl:apply-templates select="values/item" mode="search_select" /> -->
                 </select>
 
             </div>
         </div>
+    </xsl:template>
+
+    <xsl:template match="udata" mode="brands">
+        <xsl:param name="selected_id"/>
+        <xsl:for-each select="page[not(extended/properties/property/value/item/@name=preceding-sibling::page/extended/properties/property/value/item/@name)]" >
+            <xsl:if test="extended/properties/property/value/item/@name!=''">
+            <option value="{extended/properties/property/value/item/@id}">
+                <xsl:if test="$selected_id=extended/properties/property/value/item/@id">
+                    <xsl:attribute name="selected">selected</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="extended/properties/property/value/item/@name" />
+            </option>
+            </xsl:if>
+
+        </xsl:for-each>
     </xsl:template>
 
     <xsl:template match="field/values/item" mode="search_select">

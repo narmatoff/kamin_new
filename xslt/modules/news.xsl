@@ -210,6 +210,13 @@
             <xsl:apply-templates select="page/properties/group/property[@name='otdelnye_foto_iz_fotogalarei']/value/page" mode="only_photo" />
                 <xsl:if test="page/properties/group[@name='svyazannye_tovary'] or page/properties/group/property[@name='tovary']/value">
                 
+                <xsl:if test="page/properties/group/property[@name='video']/value">
+                    <h3>Видео</h3>
+                    <ul class="content_gallery">
+                        <xsl:apply-templates select="page/properties/group/property[@name='video']/value/page" mode="slider2_video" />
+                        <!-- <xsl:value-of select="page/properties/group/property[@name='video']/value" disable-output-escaping="yes" /> -->
+                    </ul>
+                </xsl:if>
 
                    <div class="clearfix"></div>
                     <h3>Обратите внимание на товары, которые описаны выше</h3>
@@ -223,12 +230,6 @@
                         </div>
                 </xsl:if>
 
-                <xsl:if test="page/properties/group/property[@name='video']/value">
-                    <ul class="content_gallery">
-                        <xsl:apply-templates select="page/properties/group/property[@name='video']/value/page" mode="slider2_video" />
-                        <!-- <xsl:value-of select="page/properties/group/property[@name='video']/value" disable-output-escaping="yes" /> -->
-                    </ul>
-                </xsl:if>
         </article>
     </xsl:template>
 

@@ -88,10 +88,8 @@
 
 	<xsl:template match="item" mode="level1top">
 		<li class="li">
-
 			<a href="{@link}"><xsl:value-of select="@name" disable-output-escaping="yes" /></a>
 			<xsl:apply-templates select="document(concat('udata://content/menu///', @id))/udata/items" mode="level2"/>
-
 		</li>
 	</xsl:template>
 
@@ -124,7 +122,7 @@
 		<ul>
 
   			<xsl:apply-templates select="item" mode="level2" />
-
+			
         </ul>
         
 		
@@ -145,11 +143,15 @@
 			<a href="{@link}">
 				<xsl:value-of select="@name" disable-output-escaping="yes" />
 			</a>
-
+			
 			<xsl:apply-templates select="document(concat('udata://content/menu///', @id))/udata/items" mode="level3"/>
 
 		</li>
-
+		<xsl:if test="@id = 6310">
+			<li>
+				<a href="/concats/">Наши салоны</a>
+			</li>
+        </xsl:if>
 	</xsl:template>
 	<xsl:template match="item[@status = 'active']" mode="level2">
 		<li class="active">

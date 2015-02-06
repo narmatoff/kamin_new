@@ -443,6 +443,8 @@ nav ul li:last-child {
     text-align: right;
     width: 12.3%;
 }
+
+
 nav ul#menu > li:last-child > a {
     border: none;
     padding: 15px 10px 0 0;
@@ -3230,6 +3232,9 @@ display:block;
 font-weight:bold;
 }
 
+p.comment-text{
+    text-align:justify;
+}
 
 div.comment a.autor_name:hover{
     text-decoration:none;
@@ -3460,6 +3465,14 @@ ul#my-menu li ul li a:hover {
     height: auto;
     z-index: 9999;
 }
+
+nav ul#menu li:last-child > ul{
+    left: -74px;
+    
+
+
+}
+
 #menu li:hover > ul {
     opacity: 1;
     visibility: visible;
@@ -4765,10 +4778,31 @@ section.cartpage_sec article div.errors ul li{
 /*кнопка наверх*/
 
 a.site-up{
-/*	display: none;*/opacity: 0;color: #bebebe;float: right;text-decoration: none;text-transform: uppercase; font-family: 'a_avantebs';  
-font-size: 0.85em;  color: #bebebe;margin: 15px 5px 0 0;/*	outline: 1px dotted red !important;*/height: 30px;
-width: 85px;	background-image: url("../img/totop.png");background-repeat: no-repeat;
-background-position: 50px -30px;/*	анимации*/-moz-transition: all .1s linear;-o-transition: all .1s linear;-webkit-transition: all .1s linear;-ms-transition: all .1s linear;transition: all .1s linear;
+/*	display: none;*/
+
+opacity: 0;
+color: #bebebe;
+float: right;
+text-decoration: none;
+text-transform: uppercase;
+font-family: 'a_avantebs';
+font-size: 0.85em;
+color: #bebebe;
+margin: 15px 5px 0 0;
+/*	outline: 1px dotted red !important;*/
+
+height: 30px;
+width: 85px;
+background-image: url("../img/totop.png");
+background-repeat: no-repeat;
+background-position: 50px -30px;
+/*	анимации*/
+
+-moz-transition: all .3s linear;
+-o-transition: all .3s linear;
+-webkit-transition: all .3s linear;
+-ms-transition: all .3s linear;
+transition: all .3s linear;
 }
 a.site-up:hover{
 	color: #fff;

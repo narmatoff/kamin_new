@@ -533,9 +533,22 @@
 	</xsl:template>
 
 	<xsl:template match="purchasing[@stage = 'result'][@step = 'successful']"  mode="purch">
-
 		<xsl:variable name="order_id" select="document('udata://emarket/ordersList')/udata/items/item[last()]/@id" />
 		<xsl:variable name="order_info" select="document(concat('udata://emarket/order/', $order_id))/udata" />
+		<!-- Параметры для метрики.. -->
+		<script type="text/javascript">
+			var yaParams = {
+				order_id: "<xsl:value-of select="$order_id" />",
+				order_price: "<xsl:value-of select="$order_info/summary/price/actual" />", 
+				currency: "RUR",
+				exchange_rate: 1,
+				goods: 
+				   [
+				   	<xsl:apply-templates select="$order_info/items/item" mode="order_info_metrika" />
+				   ]
+			};
+		</script>
+		<!-- Параметры для метрики -->
 
 		<h1>Спасибо за оформление заказа</h1>
             <p>Уважаемый 
@@ -589,6 +602,16 @@
 		
 	</xsl:template>
 
+<xsl:template match="item" mode="order_info_metrika">
+	<xsl:variable name="item_page" select="document(concat('upage://',page/@id))/udata" />
+	{
+		id: "<xsl:value-of select="@id" />", 
+		name: "<xsl:value-of select="$item_page/page/properties/group/property[@name='h1']/value" />", 
+		price: <xsl:value-of select="price/actual" />, 
+		quantity: <xsl:value-of select="amount" />
+	}
+	<xsl:if test="position() != last()">,</xsl:if>
+</xsl:template>
 
  	<xsl:template match="item" mode="order_info_del">
 		<xsl:variable name="item_page"
