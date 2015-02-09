@@ -81,5 +81,6 @@
 	<xsl:include href="modules/wherebuy.xsl" />
 	<xsl:include href="modules/brend_item.xsl" />
 	<xsl:include href="modules/meta.xsl" />
+	<xsl:include href="modules/ganalytics.xsl" />
 	
 </xsl:stylesheet> 

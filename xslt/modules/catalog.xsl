@@ -538,9 +538,14 @@
                 <div class="goodpage_info">
                     <xsl:choose>
                         <xsl:when test="page/properties/group/property[@name='common_quantity']/value&gt;0">
+                            <script type="text/javascript">
+                                $( document ).on( "click", "<xsl:value-of select="concat('add_basket_', @pageId)" />", function() {
+                                    console.log("zzz");
+                                });
+                            </script>
                             <div class="buy_price">
                                 <xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id))/udata" mode="price" />
-                                <input href="javascript://" onclick="site.basket.add({@pageId})" id="add_basket_{@pageId}" class="buybutton" type="button" value="Купить" />
+                                <input href="javascript://" onclick="site.basket.add({@pageId}); return true;" id="add_basket_{@pageId}" class="buybutton" type="button" value="Купить" />
                                 
                             </div>
                         </xsl:when>
@@ -911,7 +916,13 @@
 
     <xsl:template match="udata[@module='catalog'][@method='search']" mode='find_model'>
         <xsl:param name="type_id"/>
+        <xsl:param name="object"/>
         <form action="" method="get">
+            <xsl:if test="$object">
+                <xsl:attribute name="action">
+                    <xsl:value-of select="$object"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:apply-templates select="group/field" mode="search">
                 <xsl:with-param name="typeid" select="$type_id" />
             </xsl:apply-templates>
@@ -1045,7 +1056,7 @@
 
    <xsl:template match="field[@data-type = 'relation']" mode="search">
          <xsl:param name="typeid" />
-         <xsl:variable name="all_brends" select="document(concat('usel://max_val/', @name,'/', $typeid))/udata/page" />
+        
         <div class="back_filter">
             <div class="select_filterbl">
                 <p></p>
@@ -1053,11 +1064,21 @@
                     <option class="first" value="">
                         <xsl:value-of select="@title" />
                     </option>
-                    <xsl:apply-templates select="document(concat('usel://max_val/', @name,'/', $typeid))/udata" mode="brands">
-                        <xsl:with-param name="selected_id"
-                            ><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param>
-                    </xsl:apply-templates>
-                    <!-- <xsl:apply-templates select="values/item" mode="search_select" /> -->
+                    <xsl:choose>
+                        <xsl:when test="$typeid = '86'">
+                            
+                            <xsl:apply-templates select="values/item" mode="search_select" />
+
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:apply-templates select="document(concat('usel://select/', @name,'/', $typeid))/udata" mode="brands">
+                                <xsl:with-param name="selected_id"
+                                    ><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param>
+                            </xsl:apply-templates>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    
+                    <!--  -->
                 </select>
 
             </div>

@@ -591,7 +591,10 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                         <xsl:variable name="type_id_item" select="result/page/@type-id"/>
                                                         <xsl:apply-templates select="document(concat('udata://catalog/search////', $type_id_item))" mode="find_model">
                                                             <xsl:with-param name="type_id">
-                                                                <xsl:value-of select="$type_id_item" />
+                                                                <xsl:value-of select="$type_id_item" />                  
+                                                            </xsl:with-param>
+                                                            <xsl:with-param name="object">
+                                                                <xsl:value-of select="result/parents/page[position()=last()]/@link"  />
                                                             </xsl:with-param>
                                                         </xsl:apply-templates>
                                                         
