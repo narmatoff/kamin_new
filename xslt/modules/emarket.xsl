@@ -580,7 +580,9 @@
                     <div class="cart_itogo">
                         <div>Итого: 
                         	<span>
-                        		<xsl:value-of select="$order_info/summary/price/actual" disable-output-escaping="yes" /> <xsl:value-of select="$order_info/summary/price/@suffix" disable-output-escaping="yes" />
+                        		<xsl:value-of select="$order_info/summary/price/actual" disable-output-escaping="yes" /> руб.
+                        		
+<!--                        		<xsl:value-of select="$order_info/summary/price/@suffix" disable-output-escaping="yes" />-->
                         		
                         	</span>
                         </div>
@@ -658,13 +660,15 @@
                                 </div>
                             </td>
                             <td class="price_td">
-                            	<xsl:value-of select="price/actual"/> <xsl:value-of select="price/@suffix"/>
+                            	<xsl:value-of select="price/actual"/> руб.
+<!--                            	<xsl:value-of select="price/@suffix"/>-->
                             </td>
                             <td class="count_td">
                             	<xsl:value-of select="amount"/>
                             </td>
                             <td class="summa_td">
-                            	<xsl:value-of select="total-price/actual"/> <xsl:value-of select="price/@suffix"/>
+                            	<xsl:value-of select="total-price/actual"/> руб.
+<!--                            	<xsl:value-of select="price/@suffix"/>-->
                             </td>
                             <td class="floating_td"></td>
                             <div class="clearfix"></div>

@@ -51,10 +51,7 @@
     </xsl:template>
 
     <xsl:template match="item" mode="question">
-       
-           
-            
-
+        <xsl:param name="faq_page" select="document(concat('upage://', @id))/udata/page" />
         <li>
             <p class="samquestn" id="q{@id}">
                     <a href="{@link}">
@@ -62,14 +59,26 @@
                     </a>
             </p>
             <p>
+                <!-- <a href="#">Прикрепленный файл</a><br/> -->
                 <a href="javascript://" class="answer_showhide" title="Кликните, чтобы раскрыть ответ">Ответ ></a>
-                <span><xsl:value-of select="extended/properties/property[@name='old_name']/value" /></span>
+                <span>
+                
+                    <xsl:choose>
+                        <xsl:when test="$faq_page/properties/group/property[@name='author_id']/value/item/@name != ''">
+                            <xsl:value-of select="substring-before($faq_page/properties/group/property[@name='author_id']/value/item/@name, ' ')" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="extended/properties/property[@name='old_name']/value" />
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    , <xsl:value-of select=" substring-before(extended/properties/property[@name='publish_time']/value/@formatted-date, ' ')" />
+                </span>
             </p>
-<div class="clearfix"></div>
+            <div class="clearfix"></div>
             <div class="answeronquestionbl">
                 <xsl:value-of select="answer" disable-output-escaping="yes" />
-                <p><a href="#faq_ask" class="scroll">Задать уточняющий вопрос</a>
-            </p>
+                <!-- <p><a href="#faq_ask" class="scroll">Задать уточняющий вопрос</a>
+                </p> -->
             
             </div>
 <div class="clearfix"></div>
@@ -133,16 +142,16 @@
 
     <!-- вопрос на главной -->
 
-    <xsl:template match="item" mode="faq_main">
+    <xsl:template match="page" mode="faq_main">
 
         <p class="aside_dialog_par">
-            <xsl:value-of select="question" disable-output-escaping="yes" />
+            <xsl:value-of select=".//property[@name='question']/value" disable-output-escaping="yes" />
             <span class="aside_date">
-		 		<xsl:value-of select="extended/properties/property[@name='old_name']/value" />, <xsl:value-of select="extended/properties/property[@name='publish_time']/value/@formatted-date" />
+		 		<xsl:value-of select="substring-before(.//property[@name='author_id']/value/item/@name, ' ')" />, <xsl:value-of select="substring-before(.//property[@name='publish_time']/value/@formatted-date, ' ')" />
 		 	</span>
         </p>
         <p>
-            <xsl:value-of select="answer" disable-output-escaping="yes" />
+            <xsl:value-of select=".//property[@name='answer']/value" disable-output-escaping="yes" />
             <!-- 	<span class="more_link">
          		<a title="Читать далее" href="#">...</a>
          	</span> -->
@@ -154,19 +163,21 @@
     <xsl:template match="result[@module = 'faq'][@method = 'question']">
         <article class="insetqustanswpage">
             <div id="faq_question">
-               
-                <ul class="question_answer">
+               <ul class="question_answer">
                      <li>
-			            
-			                   
-			                        <h1><xsl:value-of select="page//property[@name='question']/value" disable-output-escaping="yes" /></h1>
-			                    
-			            
+                        <h1><xsl:value-of select="page//property[@name='question']/value" disable-output-escaping="yes" /></h1>
 			            <p>
 			               <a style="float:left;" href="javascript://" class="answer_showhide" title="Кликните, чтобы раскрыть ответ">Ответ ></a>
 			                <span>
-			                
-			            		<xsl:value-of select="page//property[@name='old_name']/value" disable-output-escaping="yes" />
+    			                <xsl:choose>
+                                    <xsl:when test=".//property[@name='author_id']/value/item/@name != ''">
+                                        <xsl:value-of select="substring-before(.//property[@name='author_id']/value/item/@name, ' ')" />
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select=".//property[@name='old_name']/value" />
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            , <xsl:value-of select=" substring-before(.//property[@name='publish_time']/value/@formatted-date, ' ')" />
 			                </span>
 			            </p>
 						<div class="clearfix"></div>
@@ -178,11 +189,6 @@
 			            
 			            </div>
 						<div class="clearfix"></div>
-			            
-
-
-
-
 			        </li>
                 </ul>
          	</div>

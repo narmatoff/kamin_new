@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE xsl:stylesheet SYSTEM "ulang://i18n/constants.dtd:file">
 <xsl:stylesheet version="1.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/TR/xlink">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/TR/xlink" xmlns:umi="http://www.umi-cms.ru/TR/umi">
 
 
     
@@ -233,6 +233,14 @@
   ga('send', 'pageview');
 
 </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-57518359-1', 'auto');
+  ga('send', 'pageview');
+</script>
 
 
 
@@ -291,6 +299,8 @@
         }
     })(document, window, "yandex_metrika_callbacks");
 </script>
+<noscript><div><img src="//mc.yandex.ru/watch/7760038" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- Yandex.Metrika counter -->
 <!-- Yandex.Metrika counter -->
 <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -482,7 +492,7 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
         </header>
 
 
-        <xsl:apply-templates select="document('udata://content/menu')/udata" mode="top_menu"/>
+        <xsl:apply-templates select="document('udata://menu/draw/14010')/udata" mode="top_menu"/>
         <div class="search_block">
             <xsl:apply-templates select="document('udata://search/insert_form')/udata" />
             
@@ -565,7 +575,11 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                 <div class="aside_separate"></div>
                                 <!-- Наши работы -->
                                 <span class="h_timed">Вопрос - ответ</span>
-                                <xsl:apply-templates select="document('udata://faq/category/notemplate/8027?extProps=publish_time,old_name')/udata/items/item[position()=1]" mode="faq_main" />
+                                <xsl:variable name="last_faq_id" select="document('usel://last_faq/')/udata/page/@id" />
+                                <!-- <xsl:param name="last_faq_id" select="document('usel://last_faq/')/udata/page/@id" /> -->
+                                <!-- <xsl:value-of select="document('usel://last_faq/')/udata/page/@id" /> -->
+                                <xsl:apply-templates select="document(concat('upage://', $last_faq_id))/udata/page" mode="faq_main" />
+                                <!-- <xsl:apply-templates select="document('udata://faq/category/notemplate/8027?extProps=publish_time,old_name')/udata/items/item[position()=1]" mode="faq_main" /> -->
                                 
                                
                                 <a href="/poleznaya_informaciya/vopros/" class="learn_more">все вопросы - ответы</a>

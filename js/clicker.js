@@ -1,4 +1,31 @@
 $(document).ready(function(){
+	
+	//разделение чисел на десятки сотни тысячи по классу goodsprice
+	var priceSep = function (selPriceSep) {
+		$(selPriceSep).each(function () {
+			var str_price = $(this).text();
+			$(this).text(str_price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '))
+		});
+	}
+	
+priceSep(".goodsprice");
+priceSep(".cart_counternsum>p" );
+priceSep(".price_td" );
+priceSep(".cart_summary" );
+priceSep(".summa_asidebl" );
+priceSep(".summa_td" );
+priceSep(".help_checkout>span" );
+priceSep(".cart_itogo>div>span" );
+	
+	
+	
+/////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
 $('#opaopaopapa').bind('submit', function(){
 // alert ('1111');
     
@@ -54,14 +81,26 @@ $("a.more_goods").click(function() {
      $("#clickerator").css('visibility','visible');
     id = $(this).attr('id');
     id_text = "#" + id;
-    href = $(this).attr("href");
+    href =  "?" + $(this).attr("filter");
     total = parseInt($(this).attr("rel"));
     perpage =  parseInt($(this).attr("title"));
     tonext =  parseInt($(this).attr("alt"));
+    parent =  parseInt($(this).attr("parent"));
     tonext_1 = tonext + 1
+    if (parent) {
+        urla = '/udata://catalog/getObjectsList/notemplate/' + id + '///15/' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl';
+		
+    }
+    else
+    {
+         urla ='/udata://catalog/getObjectsList/notemplate/' + id + '///15' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl'
+    } 
+
+	
+	
     next = tonext_1 * perpage;
     jQuery.ajax({
-                url: '/udata://catalog/getObjectsList/notemplate/' + id + '///15' + href +'&transform=/modules/catalog_popap.xsl',
+                url: urla,
                 dataType: 'html',
                 success: function (data) {
                 // alert (test);
@@ -72,16 +111,24 @@ $("a.more_goods").click(function() {
                 if (next>=total){
                     $('.more_goods_inf').text('Показано ' + total + " товаров из " + total );
                     $("a.more_goods").remove();
+					priceSep(".goodsprice" );
                 }
                 else{
                     $('.more_goods_inf').text('Показано ' + next + " товаров из " + total );
+					priceSep(".goodsprice" );
                 }
                  $("#clickerator").css('visibility','hidden');
 
                 }
+		
+		
+		
             });
 
+	
     return false;
+	
+	
     });
 
 //////////////////////////////////////////

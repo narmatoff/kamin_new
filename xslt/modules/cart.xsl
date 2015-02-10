@@ -92,7 +92,7 @@
 					
 				</table>
 				<div class="cart_itogo">
-					<div>Итого: <span class="cart_summary"> <xsl:value-of select="udata/summary/price/actual" /></span>  руб.</div>
+					<div>Итого: <span class="cart_summary"> <xsl:value-of select="udata/summary/price/actual" /></span> руб.</div>
 					<a href="/emarket/purchasing_one_step/">Оформить заказ</a>
 				</div>
 			</article>
@@ -174,7 +174,8 @@
 							</div>
 						</td>
 						<td class="summa_td cart_item_price_{@id}">
-							<xsl:value-of select="total-price/actual"/> <xsl:value-of select="total-price/@suffix"/>.
+							<xsl:value-of select="total-price/actual"/> руб.
+<!--							<xsl:value-of select="total-price/@suffix"/>.-->
 						</td>
 						<td class="floating_td">
 							<a href="/emarket/basket/remove/item/{@id}/">удалить</a>

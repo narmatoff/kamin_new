@@ -1857,10 +1857,10 @@ div.pice_count span.bgpm2 input {
 section.cartpage_sec article table tr td.summa_td {
     margin: 0;
     width: 90px;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: 0.95em;
     font-family: 'a_avantebs';
 }
 section.cartpage_sec article table tr td.floating_td {
@@ -1891,10 +1891,10 @@ section.cartpage_sec article table tr td div.maingoodinfo h4 {
     text-transform: uppercase;
     margin: 0 0 10px 0;
     font-family: 'a_avantebs';
-    float: left;
+    float: right;
     width: 100px;
     text-align: left;
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 section.cartpage_sec article table tr td div.maingoodinfo h4 a {
     display: block;
@@ -1908,10 +1908,9 @@ section.cartpage_sec article table tr.tab_row:hover td div.maingoodinfo h4 a {
     color: #F49D30;
 }
 section.cartpage_sec article table tr td div.maingoodinfo span.articul_block {
-    float: left;
+    float: right;
     display: block;
     margin: 0 0 7px 0;
-    text-align: left;
     color: #999;
     font-size: 0.9em;
 }
@@ -2582,7 +2581,7 @@ div#catalog_list div.cat_item_plits:last-child {
     margin: 25px 0 50px 0;
 }
 div#catalog_list div.cat_item_plits div.maingoodinfo {
-    width: 82.1%;
+    width: 77.1%;
     border-right: 3px solid #e6e6e6;
     float: left;
 }
@@ -2657,9 +2656,10 @@ div#catalog_list div.cat_item_plits div.maingoodinfo p {
 }
 div#catalog_list div.cat_item_plits div.pricenbuttons {
     float: right;
-    width: 16%;
+    width: 20%;
     height: 100%;
     position: relative;
+    text-align: center;
 }
 div#catalog_list div.cat_item_plits div.pricenbuttons span.goodsprice {
     font-size: 1.5em;
@@ -2676,11 +2676,12 @@ span.not_instok {
     background-repeat: no-repeat;
     padding: 0 0 0 25px;
     position: absolute;
-    bottom: 25px;
-    right: 0;
+    bottom: 5px;
+    left: 15%;
     height: 15px;
     color: #999;
     font-size: 0.9em;
+    margin: 0 auto;  width: 70px;
 }
 div#catalog_list div.cat_item_plits div.pricenbuttons span.goodcompare {
     background-image: url("../img/compare.png");
@@ -2701,11 +2702,13 @@ div#catalog_list div.cat_item_plits div.pricenbuttons span.goodcompare a:hover {
     border: none;
 }
 div#catalog_list div.cat_item_plits div.pricenbuttons input.buybutton {
-    width: 100%;
+    width: 70%;
+    margin: 0 auto;
 }
 .buybutton.outnstock {
     background-color: #ccc;
     /*cursor: default;*/
+    margin: 0 auto;
 }
 div#catalog_list.cat_item_list div.cat_item_plits {
     clear: both;
@@ -2819,6 +2822,7 @@ div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons {
     width: auto;
     height: 100%;
     position: relative;
+    text-align: left;
 }
 div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons p.price_word_usualy {
 display:none;
@@ -2840,11 +2844,13 @@ span.instok {
     background-repeat: no-repeat;
     padding: 0 0 0 25px;
     position: absolute;
-    bottom: 25px;
-    right: 0;
+    bottom: 15px;
+    left: 15%;
     height: 15px;
     color: #999;
     font-size: 0.9em;
+    margin: 0 auto;
+    width: 70px;
 }
 div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons span.goodcompare {
     background-image: url("../img/compare.png");
@@ -2870,6 +2876,23 @@ div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons input.buybut
     bottom: 10px;
     margin: 25px 0 0 0;
 }
+
+div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons span.instok {
+    width: auto;
+    
+    margin: 0;
+    right: 0;
+    left: auto;
+}
+
+div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons span.not_instok {
+    width: auto;
+    
+    margin: 0;
+    right: 0;
+    left: auto;
+}
+
 div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons input.buybutton.outnstock {
     background-color: #ccc;
     cursor: default;
@@ -2986,6 +3009,20 @@ div.back_filterslid {
     text-align: center;
     font-size: 0.9em;
 }
+div.back_filterslid label {
+    text-indent: inherit;
+
+
+    color: #fff;
+    height: inherit;
+    text-shadow: inherit;
+    margin: 0 18px 0 0;
+    padding: 0;
+    width: auto;
+    text-align: left;
+    display: inline-block;
+    font-weight: bold;
+}
 div.submit_filtbutt {
     font-size: 1em;
     font-weight: bold;
@@ -3067,7 +3104,8 @@ div.back_filterslid p label {
     text-align: left;
     font-weight: bold;
     height: 15px;
-    text-indent: inherit;    width: inherit;
+    text-indent: inherit;    
+    width: inherit;
 }
 div.back_filterslid input {
     display: inline-block;

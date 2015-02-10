@@ -52,7 +52,7 @@
                         <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15')/udata" mode="catalogus_current" />
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15/280/1')/udata" mode="catalogus_current" />
+                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15')/udata" mode="catalogus_current" />
                     </xsl:otherwise>
                 </xsl:choose>
             </div>
@@ -61,7 +61,7 @@
                 <xsl:choose>
                     <xsl:when test="page/@parentId = 0">
 
-                         <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" alt="{$tonext}" href="?p={$tonext}">
+                         <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" filter="{$filter}" parent="1" alt="{$tonext}" href="?p={$tonext}">
                             <xsl:if test="$filter">
                             <xsl:attribute name="href" >
                                 ?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"  />
@@ -72,10 +72,10 @@
                     </xsl:when>
                     <xsl:otherwise>
                         
-                        <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" alt="{$tonext}" href="/280/1/?p={$tonext}">
+                        <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="0"  filter="{$filter}" href="?p={$tonext}">
                             <xsl:if test="$filter">
                             <xsl:attribute name="href" >
-                                /280/1/?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"/>
+                                ?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"/>
                             </xsl:attribute>
                             </xsl:if>показать еще
                         </a>
@@ -342,7 +342,7 @@
             <xsl:choose>
                 <xsl:when test="$item/page/properties/group/property[@name='common_quantity']/value&gt;0">
                     <div class="pricenbuttons">
-                        <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id))/udata" mode="price" />
+                        <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
                         <input class="buybutton" onclick="site.basket.add({@id})" id="add_basket_{@id}" type="button" value="Купить" />
                         <span class="instok">в наличии</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -422,7 +422,7 @@
             <xsl:choose>
                 <xsl:when test="$item/page/properties/group/property[@name='common_quantity']/value&gt;0">
                     <div class="pricenbuttons">
-                        <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id))/udata" mode="price" />
+                        <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
                         <input class="buybutton" onclick="site.basket.add({@id})" id="add_basket_{@id}" type="button" value="Купить" />
                         <span class="instok">в наличии</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -538,14 +538,9 @@
                 <div class="goodpage_info">
                     <xsl:choose>
                         <xsl:when test="page/properties/group/property[@name='common_quantity']/value&gt;0">
-                            <script type="text/javascript">
-                                $( document ).on( "click", "<xsl:value-of select="concat('add_basket_', @pageId)" />", function() {
-                                    console.log("zzz");
-                                });
-                            </script>
                             <div class="buy_price">
-                                <xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id))/udata" mode="price" />
-                                <input href="javascript://" onclick="site.basket.add({@pageId}); return true;" id="add_basket_{@pageId}" class="buybutton" type="button" value="Купить" />
+                                <xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id,'//0'))/udata" mode="price" />
+                                <input href="javascript://" onclick="site.basket.add({@pageId})" id="add_basket_{@pageId}" class="buybutton" type="button" value="Купить" />
                                 
                             </div>
                         </xsl:when>
@@ -553,7 +548,7 @@
                         <xsl:otherwise>
 
                             <div class="buy_price">
-                                <xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id))/udata" mode="price" />
+                                <xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id,'//0'))/udata" mode="price" />
                         <a id="{page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
                                 
                                 
@@ -1064,19 +1059,19 @@
                     <option class="first" value="">
                         <xsl:value-of select="@title" />
                     </option>
-                    <xsl:choose>
-                        <xsl:when test="$typeid = '86'">
+                   <!--  <xsl:choose>
+                        <xsl:when test="$typeid = '86'"> -->
                             
                             <xsl:apply-templates select="values/item" mode="search_select" />
 
-                        </xsl:when>
+                        <!-- </xsl:when>
                         <xsl:otherwise>
                             <xsl:apply-templates select="document(concat('usel://select/', @name,'/', $typeid))/udata" mode="brands">
                                 <xsl:with-param name="selected_id"
                                     ><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param>
                             </xsl:apply-templates>
                         </xsl:otherwise>
-                    </xsl:choose>
+                    </xsl:choose> -->
                     
                     <!--  -->
                 </select>

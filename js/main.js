@@ -446,10 +446,7 @@ $(document).ready(function () {
 
 
     //    обработка кнопки продолжить в чекауте
-	
-	
    var tabIdForButton;
-	
 	var counterLi = $('ul.tabsch li');
 	var countLi = $(counterLi).size();
 //	console.log(countLi);
@@ -461,17 +458,10 @@ $(document).ready(function () {
 	}else{
 		tabIdForButton = 2;
 	}
-	
-	
-	
-	
- 
 
     $('a.checkout_btnxt').click(function (e) {
         e.preventDefault();
-
         $("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-        
                         
         
     });
@@ -580,15 +570,8 @@ $(document).ready(function () {
 		})();
 	}
 	
-
-      
-//					инициализация идентификаторов для слайдера
-	               
-
+	
 	
 
 	
 });
-
-
-	

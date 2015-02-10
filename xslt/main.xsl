@@ -82,5 +82,6 @@
 	<xsl:include href="modules/brend_item.xsl" />
 	<xsl:include href="modules/meta.xsl" />
 	<xsl:include href="modules/ganalytics.xsl" />
+	<xsl:include href="modules/menu_draw.xsl" />
 	
 </xsl:stylesheet> 
