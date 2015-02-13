@@ -16,9 +16,12 @@
        
         <article>
             <h1><xsl:value-of select="@header"/></h1>
-            <section class="mainpage_section" style="width: auto; margin: 0;">
-                        <xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorylist_main" />
-            </section>
+           
+                       
+                       
+<!--                       ////////////////////////////////////-->
+                        <xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items" mode="categorylist_main" />
+           
                         <xsl:apply-templates select="document('udata://catalog/getObjectsList/')/udata" mode="catalogus_current">
                             <xsl:with-param name="filter">
                                 <xsl:value-of select="substring-after(@request-uri,'?')"  />
@@ -84,12 +87,25 @@
 
     </xsl:template>
 
-    <xsl:template match="item" mode="categorylist_main">
-        <xsl:param name="cat"/>
+    <xsl:template match="items" mode="categorylist_main">
+       
+
+		<section class="mainpage_section" style="width: auto; margin: 0;">
+
+<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorylist_main2" />
+		</section>
+
+
+
+    </xsl:template>
+    
+    
+    
+<!--    ///////////////////////-->
+    <xsl:template match="item" mode="categorylist_main2">
+     <xsl:param name="cat"/>
         <xsl:variable name="catalog_page" select="document(concat('upage://',@id))/udata/page/properties" />
-
-
-        <div class="cat_item">
+    <div class="cat_item">
             <div class="image_radius">
                 <a href="{@link}" title="Перейти к категории">
                     <xsl:if test="$cat">
@@ -119,12 +135,16 @@
                     </xsl:if><xsl:value-of select="."/></a></h4>
             <span></span>
         </div>
-
-
-
-
-
-    </xsl:template>
+           </xsl:template>
+        
+        
+        
+<!--        //////////////////-->
+    
+    
+    
+    
+    
 
     <xsl:template match="item" mode="categorylist_main_brend">
         <xsl:param name="cat"/>
@@ -257,7 +277,8 @@
                     <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
                 </xsl:call-template>
             </div>
-            <div id="clickerator">
+           
+                <div id="clickerator">
                 <div class="loader">
                     <span></span>
                     <span></span>
@@ -340,7 +361,7 @@
                 </xsl:call-template>
             </div>
             <div id="clickerator">
-                <img src="{$template-resources}js/fancybox/fancybox_loading.gif" />
+<!--                <img src="{$template-resources}js/fancybox/fancybox_loading.gif" />-->
                 <div class="loader">
                     <span></span>
                     <span></span>

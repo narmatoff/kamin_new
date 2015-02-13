@@ -4997,6 +4997,7 @@ a.site-up.onscroll {
   list-style: none outside none;
   padding: 10px;  
 }
+/*
 .loader{
   display: none;
   position: fixed;
@@ -5007,4 +5008,4 @@ a.site-up.onscroll {
   background-color: #fff !important;
   padding: 10px;
   border: 1px solid #ddd;
-}
+}*/
