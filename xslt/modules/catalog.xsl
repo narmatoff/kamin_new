@@ -9,106 +9,28 @@
 
 
     <xsl:template match="result[@module = 'catalog' and @method = 'category']">
-        <xsl:variable name="tonext" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/numpages/tonext_link/@page-num" />
-        <xsl:variable name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" />
-        <xsl:variable name="per_page" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
-        <xsl:variable name="filter" select="substring-after(@request-uri,'?')" />
+       
+        
         <!-- <xsl:value-of select="$filter" /> -->
 
        
         <article>
             <h1><xsl:value-of select="@header"/></h1>
-
-            
-            <!-- sort_catalog    -->
-            <div class="sortnview">
-                <!-- <span>Сортировать по:</span> -->
-                <!-- <div class="back_filter_sort">
-                        <div class="select_sortnview">
-                            <p></p>
-                            <select name="">
-                                <option class="first" value="">Выберите вариант</option>
-                                <option value="">Вариант номер один</option>
-                                <option value="">Вариант номер два</option>
-                                <option value="">Вариант номер три</option>
-                            </select>
-                        </div>
-                    </div> -->
-
-                <div class="floatinrgh_sort">
-                    <span>Вид каталога:</span>
-                    <img class="plitka_view" src="{$template-resources}img/sort_plit.png" height="18" width="31" alt="плитка" />
-                    <img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />
-                </div>
-            </div>
-            <!-- end_sort_catalog -->
-
-
-            <div id="catalog_list" class="cat_item_list">
-                <!--cat_item_list-->
-                <!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/')/udata/items/item" mode="categorylist" />  -->
-                <xsl:choose>
-                    <xsl:when test="@pageId=3172">
-                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15')/udata" mode="catalogus_current" />
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/notemplate////15')/udata" mode="catalogus_current" />
-                    </xsl:otherwise>
-                </xsl:choose>
-            </div>
-            <!--конец списка товаров-->
-            <xsl:if test="$total&gt;$per_page">
-                <xsl:choose>
-                    <xsl:when test="page/@parentId = 0">
-
-                         <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" filter="{$filter}" parent="1" alt="{$tonext}" href="?p={$tonext}">
-                            <xsl:if test="$filter">
-                            <xsl:attribute name="href" >
-                                ?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"  />
-                            </xsl:attribute>
-                            </xsl:if>показать еще
-                        </a>
-
-                    </xsl:when>
-                    <xsl:otherwise>
-                        
-                        <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="0"  filter="{$filter}" href="?p={$tonext}">
-                            <xsl:if test="$filter">
-                            <xsl:attribute name="href" >
-                                ?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"/>
-                            </xsl:attribute>
-                            </xsl:if>показать еще
-                        </a>
-                         
-                    </xsl:otherwise>
-                </xsl:choose>
-            
-                <!-- 
-                    <xsl:call-template name="numpages">
-                        <xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" />
-                        <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
-                    </xsl:call-template>  -->
-
-                <span class="more_goods_inf">Показано <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" /> товаров из <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /></span>
-            </xsl:if>
-            <div style="display:none">
-                <xsl:call-template name="numpages">
-                    <xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /> 
-                    <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
-                </xsl:call-template>
-            </div>
-            <div id="clickerator">
-                <div class="loader">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+            <section class="mainpage_section" style="width: auto; margin: 0;">
+                        <xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorylist_main" />
+            </section>
+                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/')/udata" mode="catalogus_current">
+                            <xsl:with-param name="filter">
+                                <xsl:value-of select="substring-after(@request-uri,'?')"  />
+                            </xsl:with-param>
+                        </xsl:apply-templates>
+                    
+           
 
             <!-- <span class="more_goods_inf">Товаров всего <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /></span> -->
 
             <xsl:apply-templates select="$errors" />
-            <xsl:value-of select=".//property[@name = 'content']/value" disable-output-escaping="yes" />
+            <xsl:value-of select=".//property[@name = 'descr']/value" disable-output-escaping="yes" />
             <xsl:apply-templates select="$errors" />
         </article>
        
@@ -258,24 +180,173 @@
 
 
     <xsl:template match="udata[lines|items]" mode="catalogus">
+        <xsl:param name="filter"/>
+        <xsl:variable name="tonext" select="document('udata://catalog/getObjectsList/')/udata/numpages/tonext_link/@page-num" />
+        <xsl:variable name="total" select="document('udata://catalog/getObjectsList/')/udata/total" />
+        <xsl:variable name="per_page" select="document('udata://catalog/getObjectsList/')/udata/per_page" />
+         <!-- sort_catalog    -->
+            <div class="sortnview">
+                <!-- <span>Сортировать по:</span> -->
+                <!-- <div class="back_filter_sort">
+                        <div class="select_sortnview">
+                            <p></p>
+                            <select name="">
+                                <option class="first" value="">Выберите вариант</option>
+                                <option value="">Вариант номер один</option>
+                                <option value="">Вариант номер два</option>
+                                <option value="">Вариант номер три</option>
+                            </select>
+                        </div>
+                    </div> -->
+
+                <div class="floatinrgh_sort">
+                    <span>Вид каталога:</span>
+                    <img class="plitka_view" src="{$template-resources}img/sort_plit.png" height="18" width="31" alt="плитка" />
+                    <img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />
+                </div>
+            </div>
+            <!-- end_sort_catalog -->
 
 
+            <div id="catalog_list" class="cat_item_list">
+                <!--cat_item_list-->
+                 <!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/')/udata/items/item" mode="categorylist" />  -->
 
-        <xsl:apply-templates select="lines/item" mode="catalog_item" />
-        <xsl:apply-templates select="items/item" mode="catalog_item" />
+                  <xsl:apply-templates select="lines/item" mode="catalog_item" />
+                <xsl:apply-templates select="items/item" mode="catalog_item" />
+                
+            </div>
+            <!--конец списка товаров-->
+            <xsl:if test="$total&gt;$per_page">
+                <xsl:choose>
+                    <xsl:when test="page/@parentId = 0">
+
+                         <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" filter="{$filter}" parent="1" alt="{$tonext}" href="?p={$tonext}">
+                            <xsl:if test="$filter">
+                            <xsl:attribute name="href" >
+                                ?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"  />
+                            </xsl:attribute>
+                            </xsl:if>показать еще
+                        </a>
+
+                    </xsl:when>
+                    <xsl:otherwise>
+                        
+                        <a class="more_goods" id="{@pageId}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="0"  filter="{$filter}" href="?p={$tonext}">
+                            <xsl:if test="$filter">
+                            <xsl:attribute name="href" >
+                                ?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"/>
+                            </xsl:attribute>
+                            </xsl:if>показать еще
+                        </a>
+                         
+                    </xsl:otherwise>
+                </xsl:choose>
+            
+                <!-- 
+                    <xsl:call-template name="numpages">
+                        <xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" />
+                        <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
+                    </xsl:call-template>  -->
+
+                <span class="more_goods_inf">Показано <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" /> товаров из <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /></span>
+            </xsl:if>
+            <div style="display:none">
+                <xsl:call-template name="numpages">
+                    <xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /> 
+                    <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
+                </xsl:call-template>
+            </div>
+            <div id="clickerator">
+                <div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+       
 
     </xsl:template>
     <xsl:template match="udata" mode="catalogus">
 
-        К сожалению таких товаров не найдено!
+        <!-- К сожалению таких товаров не найдено! -->
 
     </xsl:template>
 
     <xsl:template match="udata[lines|items]" mode="catalogus_current">
+ <xsl:param name="filter"/>
+        <xsl:variable name="tonext" select="document('udata://catalog/getObjectsList/')/udata/numpages/tonext_link/@page-num" />
+        <xsl:variable name="total" select="document('udata://catalog/getObjectsList/')/udata/total" />
+        <xsl:variable name="per_page" select="document('udata://catalog/getObjectsList/')/udata/per_page" />
+         <!-- sort_catalog    -->
+            <div class="sortnview">
+                <!-- <span>Сортировать по:</span> -->
+                <!-- <div class="back_filter_sort">
+                        <div class="select_sortnview">
+                            <p></p>
+                            <select name="">
+                                <option class="first" value="">Выберите вариант</option>
+                                <option value="">Вариант номер один</option>
+                                <option value="">Вариант номер два</option>
+                                <option value="">Вариант номер три</option>
+                            </select>
+                        </div>
+                    </div> -->
 
-        <xsl:apply-templates select="lines/item" mode="catalog_item" />
-        <xsl:apply-templates select="items/item" mode="catalog_item" />
+                <div class="floatinrgh_sort">
+                    <span>Вид каталога:</span>
+                    <img class="plitka_view" src="{$template-resources}img/sort_plit.png" height="18" width="31" alt="плитка" />
+                    <img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- end_sort_catalog -->
 
+
+            <div id="catalog_list" class="cat_item_list">
+                <!--cat_item_list-->
+                 <!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/')/udata/items/item" mode="categorylist" />  -->
+
+                  <xsl:apply-templates select="lines/item" mode="catalog_item" />
+                <xsl:apply-templates select="items/item" mode="catalog_item" />
+                
+            </div>
+            <!--конец списка товаров-->
+            <xsl:if test="$total&gt;$per_page">
+               
+                        
+                        <a class="more_goods" id="{$page-id}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="0"  filter="{$filter}" href="?p={$tonext}">
+                            <xsl:if test="$filter">
+                            <xsl:attribute name="href" >
+                                ?p=<xsl:value-of select="$tonext"/>}&amp;<xsl:value-of select="$filter"/>
+                            </xsl:attribute>
+                            </xsl:if>показать еще
+                        </a>
+                         
+               
+                <!-- 
+                    <xsl:call-template name="numpages">
+                        <xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" />
+                        <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" />
+                    </xsl:call-template>  -->
+
+                <span class="more_goods_inf">Показано <xsl:value-of select="document('udata://catalog/getObjectsList')/udata/per_page" /> товаров из <xsl:value-of select="document('udata://catalog/getObjectsList/')/udata/total" /></span>
+            </xsl:if>
+            <div style="display:none">
+                <xsl:call-template name="numpages">
+                    <xsl:with-param name="total" select="document('udata://catalog/getObjectsList')/udata/total" /> 
+                    <xsl:with-param name="limit" select="document('udata://catalog/getObjectsList')/udata/per_page" />
+                </xsl:call-template>
+            </div>
+            <div id="clickerator">
+                <img src="{$template-resources}js/fancybox/fancybox_loading.gif" />
+                <div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
 
 
 
@@ -287,11 +358,11 @@
 
 
 
-        <p>
+        <!-- <p>
             К сожалению таких товаров не найдено!
 
         </p>
-
+ -->
 
 
     </xsl:template>
@@ -343,7 +414,7 @@
                 <xsl:when test="$item/page/properties/group/property[@name='common_quantity']/value&gt;0">
                     <div class="pricenbuttons">
                         <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
-                        <input class="buybutton" onclick="site.basket.add({@id})" id="add_basket_{@id}" type="button" value="Купить" />
+                        <input class="buybutton" onclick="site.basket.add({@id}); yaCounter27431942.reachGoal('to_cart'); return true;" id="add_basket_{@id}" type="button" value="Купить" />
                         <span class="instok">в наличии</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
                     </div>
@@ -423,7 +494,7 @@
                 <xsl:when test="$item/page/properties/group/property[@name='common_quantity']/value&gt;0">
                     <div class="pricenbuttons">
                         <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
-                        <input class="buybutton" onclick="site.basket.add({@id})" id="add_basket_{@id}" type="button" value="Купить" />
+                        <input class="buybutton" onclick="site.basket.add({@id}); yaCounter27431942.reachGoal('to_cart'); return true;" id="add_basket_{@id}" type="button" value="Купить" />
                         <span class="instok">в наличии</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
                     </div>
@@ -540,7 +611,7 @@
                         <xsl:when test="page/properties/group/property[@name='common_quantity']/value&gt;0">
                             <div class="buy_price">
                                 <xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id,'//0'))/udata" mode="price" />
-                                <input href="javascript://" onclick="site.basket.add({@pageId})" id="add_basket_{@pageId}" class="buybutton" type="button" value="Купить" />
+                                <input href="javascript://" onclick="site.basket.add({@pageId}); yaCounter27431942.reachGoal('to_cart'); return true;" id="add_basket_{@pageId}" class="buybutton" type="button" value="Купить" />
                                 
                             </div>
                         </xsl:when>

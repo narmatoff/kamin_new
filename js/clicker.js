@@ -6,7 +6,7 @@ $(document).ready(function(){
 			var str_price = $(this).text();
 			$(this).text(str_price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '))
 		});
-	}
+	};
 	
 priceSep(".goodsprice");
 priceSep(".cart_counternsum>p" );

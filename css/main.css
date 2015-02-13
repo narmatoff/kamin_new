@@ -541,6 +541,7 @@ div.search_block form.search_hform {
     display: inline-block;
     margin: 10px 0 0 0;
     float: left;
+    position: relative;
 }
 section.cartpage_sec article div.ch_formblock form {} div.search_block form.search_hform input {
     width: 380px;
@@ -4857,7 +4858,10 @@ a.site-up.onscroll {
 	background-position: 60px 0;
 }
 
-
+.faq_attach{
+    text-decoration: none;
+    float: right;
+}
 
 
 
@@ -4963,4 +4967,44 @@ a.site-up.onscroll {
     h3 {
         page-break-after: avoid;
     }
+}
+
+
+
+
+
+/*выпадение*/
+
+.ajax-hint{
+  border-left: 1px solid #DDDDDD;
+  border-right: 1px solid #DDDDDD;
+  display: none;
+  position: absolute;
+  z-index: 999999;
+  top: 15px;
+  left: 19px;    
+  -webkit-box-shadow: 3px 3px 16px 0px rgba(50, 50, 50, 0.82);  -moz-box-shadow:    3px 3px 16px 0px rgba(50, 50, 50, 0.82);  box-shadow:         3px 3px 16px 0px rgba(50, 50, 50, 0.82);
+}
+.ajax-hint li:hover, .ajax-hint li.hover{
+  background: #EEEEEE;
+}
+.ajax-hint a{
+  text-decoration: none;
+}
+.ajax-hint li{
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-top: 1px solid #DDDDDD;
+  list-style: none outside none;
+  padding: 10px;  
+}
+.loader{
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  margin: -20px 0 0 -20px;
+  background-color: #fff !important;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
