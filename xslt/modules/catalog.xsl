@@ -22,7 +22,11 @@
 <!--                       ////////////////////////////////////-->
                         <xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items" mode="categorylist_main" />
            
+<<<<<<< HEAD
                         <xsl:apply-templates select="document('udata://catalog/getObjectsList//////280/1')/udata" mode="catalogus_current">
+=======
+                        <xsl:apply-templates select="document('udata://catalog/getObjectsList/')/udata" mode="catalogus_current">
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                             <xsl:with-param name="filter">
                                 <xsl:value-of select="substring-after(@request-uri,'?')"  />
                             </xsl:with-param>
@@ -94,7 +98,10 @@
 
 <xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorylist_main2" />
 		</section>
+<<<<<<< HEAD
 		<div class="clearfix"></div>
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
 
 
@@ -326,7 +333,11 @@
             <!-- end_sort_catalog -->
 
 
+<<<<<<< HEAD
             <div id="catalog_list">
+=======
+            <div id="catalog_list" class="cat_item_list">
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 <!--cat_item_list-->
                  <!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/')/udata/items/item" mode="categorylist" />  -->
 
@@ -425,7 +436,10 @@
                             <xsl:value-of select="$item/page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/>
                         </a>
                     </span>
+<<<<<<< HEAD
                     
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
                 <p>
                     <xsl:value-of select="$item/page/properties/group/property[@name='kratkoe_opisanie']/value" disable-output-escaping="yes" />
@@ -446,8 +460,14 @@
 
                 <xsl:otherwise>
                     <div class="pricenbuttons">
+<<<<<<< HEAD
                         <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
                         
+=======
+                        <span class="goodsprice">
+                                <xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/>
+                             руб</span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                         <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
                         <span class="not_instok">отсутствует</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -525,7 +545,13 @@
 
                 <xsl:otherwise>
                     <div class="pricenbuttons">
+<<<<<<< HEAD
                         <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
+=======
+                        <span class="goodsprice">
+                                <xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/>
+                             руб</span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                         <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
                         <span class="not_instok">отсутствует</span>
                         <!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -553,6 +579,7 @@
         <xsl:variable name="brand_name" select="document(concat('uobject://', $brand))/udata/object" />
         
 <!--        <xsl:variable name="itemo" select="document(concat('upage://', @id))/udata" />-->
+<<<<<<< HEAD
 <script type="text/javascript">
     $( document ).ready(function() {
         ga('ec:addProduct', {
@@ -580,6 +607,8 @@
         });
     });
 </script>
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
         <article>
             
@@ -680,8 +709,11 @@
                         <span class="manufacturer_block">Производитель: <a href="{$brand_name/properties/group/property[@name='linkthis']/value}"><xsl:value-of select="page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/></a></span>
 
                         <span class="articul_block">Артикул: <a href="#"><xsl:value-of select="page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/></a></span>
+<<<<<<< HEAD
 
                         
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                     </div>
 
                     <div class="instock_compare">
@@ -700,12 +732,15 @@
 
                             </xsl:otherwise>
                         </xsl:choose>
+<<<<<<< HEAD
                         <span class="print_block" onclick="location.href='/getpdf2.php?id={page/@id}'">  
 <!--                            <a href="/getpdf2.php?id={page/@id}">-->
                                 
 <!--                            </a>-->
                             версия для печати
                         </span>
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                     </div>
 
 
@@ -780,6 +815,7 @@
                             </xsl:call-template>
                         </a>
                     </xsl:if>
+<<<<<<< HEAD
                     <xsl:if test="page/properties/group/property[@name='foto_razmerov_2']/value">
                         <a href="{page/properties/group/property[@name='foto_razmerov_2']/value}" class="fancybox" rel="group">
                             <xsl:call-template name="thumbing">
@@ -798,6 +834,8 @@
                             </xsl:call-template>
                         </a>
                     </xsl:if>
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
 
                 </div>

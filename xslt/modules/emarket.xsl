@@ -8,14 +8,21 @@
 	<xsl:template match="result[@method = 'purchasing_one_step']">
 		<xsl:variable name="onestep" select="document('udata://emarket/purchasing_one_step/')/udata" />
 		<xsl:variable name="cart" select="document('udata://emarket/cart')/udata" />
+<<<<<<< HEAD
 		<xsl:call-template name="checkout_cart" />
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 		<h1>Оформление заказа</h1>
             <section class="cartpage_sec">
                 <article>
                     <span class="help_checkout">
                     Вы собираетесь купить <span><xsl:value-of select="$cart/summary/amount"  /> шт товара</span> на сумму 
                     <span>
+<<<<<<< HEAD
                     	<xsl:value-of select="$cart/summary/price/actual"  /></span>рублей
+=======
+                    	<xsl:value-of select="$cart/summary/price/actual"  /> руб</span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                     </span>
 
 

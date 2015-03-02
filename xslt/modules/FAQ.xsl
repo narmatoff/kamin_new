@@ -29,7 +29,11 @@
 	<article>
             <div id="faq_question">
                 <h1><xsl:value-of select="@header" /></h1>
+<<<<<<< HEAD
         		<xsl:apply-templates select="document(concat('udata://faq/category//', @pageId, '/10/0/0/?extProps=publish_time,old_name,file'))/udata" />
+=======
+        		<xsl:apply-templates select="document(concat('udata://faq/category//', @pageId, '/10/0/1/?extProps=publish_time,old_name'))/udata" />
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 			</div>
 	</article>
     </xsl:template>
@@ -59,9 +63,13 @@
                     </a>
             </p>
             <p>
+<<<<<<< HEAD
                 <xsl:if test="extended/properties/property[@name='file']/value">
                     <a class="faq_attach" href="{extended/properties/property[@name='file']/value}" target="_blank">Прикрепленный файл</a><br/>
                 </xsl:if>
+=======
+                <!-- <a href="#">Прикрепленный файл</a><br/> -->
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 <a href="javascript://" class="answer_showhide" title="Кликните, чтобы раскрыть ответ">Ответ ></a>
                 <span>
                 
@@ -169,9 +177,12 @@
                      <li>
                         <h1><xsl:value-of select="page//property[@name='question']/value" disable-output-escaping="yes" /></h1>
 			            <p>
+<<<<<<< HEAD
                         <xsl:if test=".//property[@name='file']/value">
                             <a class="faq_attach" href="{.//property[@name='file']/value}" target="_blank">Прикрепленный файл</a><br/>
                         </xsl:if>
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 			               <a style="float:left;" href="javascript://" class="answer_showhide" title="Кликните, чтобы раскрыть ответ">Ответ ></a>
 			                <span>
     			                <xsl:choose>

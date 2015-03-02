@@ -88,11 +88,17 @@
 
                 <xsl:otherwise>
                     <div class="pricenbuttons">
+<<<<<<< HEAD
                         <div class="goodsprice">
 							<span><xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/></span>
                              <i class="icon-roub"></i>
                              
                         </div>
+=======
+                        <span class="goodsprice">
+                                <xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/>
+                             руб</span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                         <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
                         
                         <!-- <input class="buybutton outnstock" type="button" value="Под заказ" /> -->
@@ -172,20 +178,35 @@
         <xsl:choose>
             <xsl:when test="discount">
                
+<<<<<<< HEAD
              <p class="price_word_usualy"><span><xsl:value-of select="price/original"/> </span><i class="icon-roub"></i></p>
                
                 
                     <div class="goodsprice" >
                          <span><xsl:value-of select="format-number($my_var2,'#')" /></span> <i class="icon-roub"></i>
                     </div>
+=======
+<!--             <p class="price_word_usualy"><span><xsl:value-of select="price/original"/> Руб.</span></p>-->
+               
+                
+                    <span class="goodsprice" >
+                         <xsl:value-of select="format-number($my_var2,'#')" /> Руб
+                    </span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                     
                     
                     <span class="salepercent">-17%</span>
             </xsl:when>
             <xsl:otherwise>
+<<<<<<< HEAD
                 <div class="goodsprice">
 					<span><xsl:value-of select="format-number($my_var2,'#')" /></span> <i class="icon-roub"></i>
                 </div>
+=======
+                <span class="goodsprice">
+                    <xsl:value-of select="format-number($my_var2,'#')" /> руб
+                </span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
             </xsl:otherwise>
         </xsl:choose>
         <!-- цена со скидкой

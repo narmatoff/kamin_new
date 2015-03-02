@@ -1,7 +1,11 @@
 $(document).ready(function(){
 	
+<<<<<<< HEAD
 		
 		//разделение чисел на десятки сотни тысячи по классу goodsprice
+=======
+	//разделение чисел на десятки сотни тысячи по классу goodsprice
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 	var priceSep = function (selPriceSep) {
 		$(selPriceSep).each(function () {
 			var str_price = $(this).text();
@@ -9,6 +13,7 @@ $(document).ready(function(){
 		});
 	};
 	
+<<<<<<< HEAD
 priceSep(".goodsprice>span");
 priceSep(".cart_counternsum>p" );
 priceSep(".price_td>span" );
@@ -23,10 +28,25 @@ priceSep(".price_word_usualy>span" );
 	
 	
 	
+=======
+priceSep(".goodsprice");
+priceSep(".cart_counternsum>p" );
+priceSep(".price_td" );
+priceSep(".cart_summary" );
+priceSep(".summa_asidebl" );
+priceSep(".summa_td" );
+priceSep(".help_checkout>span" );
+priceSep(".cart_itogo>div>span" );
+	
+	
+	
+/////////////////////////////////////////////////////////////////////////
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 	
 	
 	
 	
+<<<<<<< HEAD
     var cl = function(text){
   if (console)
     console.log(text);
@@ -101,6 +121,9 @@ priceSep(".price_word_usualy>span" );
 	
 
 
+=======
+	
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 	
 $('#opaopaopapa').bind('submit', function(){
 // alert ('1111');
@@ -154,7 +177,10 @@ $('#valueee').keyup(function() {
 
 
 $("a.more_goods").click(function() {
+<<<<<<< HEAD
 	
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
      $("#clickerator").css('visibility','visible');
     id = $(this).attr('id');
     id_text = "#" + id;
@@ -164,9 +190,21 @@ $("a.more_goods").click(function() {
     tonext =  parseInt($(this).attr("alt"));
     parent =  parseInt($(this).attr("parent"));
     tonext_1 = tonext + 1
+<<<<<<< HEAD
     urla ='/udata://catalog/getObjectsList/notemplate/' + id + '///' + parent + '/280/1' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl'
     
 	
+=======
+    if (parent) {
+        urla = '/udata://catalog/getObjectsList/notemplate/' + id + '///15/' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl';
+		
+    }
+    else
+    {
+         urla ='/udata://catalog/getObjectsList/notemplate/' + id + '///15' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl'
+    } 
+
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 	
 	
     next = tonext_1 * perpage;
@@ -182,6 +220,7 @@ $("a.more_goods").click(function() {
                 if (next>=total){
                     $('.more_goods_inf').text('Показано ' + total + " товаров из " + total );
                     $("a.more_goods").remove();
+<<<<<<< HEAD
 					priceSep(".goodsprice>span" );
 					priceSep(".price_word_usualy>span" );
                 }
@@ -190,12 +229,20 @@ $("a.more_goods").click(function() {
 					priceSep(".goodsprice>span" );
 					priceSep(".price_word_usualy>span" );
 //					
+=======
+					priceSep(".goodsprice" );
+                }
+                else{
+                    $('.more_goods_inf').text('Показано ' + next + " товаров из " + total );
+					priceSep(".goodsprice" );
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 }
                  $("#clickerator").css('visibility','hidden');
 
                 }
 		
 		
+<<<<<<< HEAD
 
 	
             });
@@ -204,6 +251,12 @@ $("a.more_goods").click(function() {
 	
 
 	
+=======
+		
+            });
+
+	
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
     return false;
 	
 	

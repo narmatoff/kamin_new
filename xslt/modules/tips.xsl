@@ -184,20 +184,35 @@
         <xsl:choose>
             <xsl:when test="discount">
                
+<<<<<<< HEAD
              <p class="price_word_usualy"><span><xsl:value-of select="price/original"/> </span><i class="icon-roub"></i></p>
                
                 
                     <div class="goodsprice" >
 						<span><xsl:value-of select="format-number($my_var2,'#')" /></span> <i class="icon-roub"></i>
                     </div>
+=======
+             <p class="price_word_usualy"><span><xsl:value-of select="price/original"/> Руб.</span></p>
+               
+                
+                    <span class="goodsprice" >
+                         <xsl:value-of select="format-number($my_var2,'#')" /> Руб
+                    </span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                     
                     
                     <span class="salepercent"> - <xsl:value-of select="discount/description" disable-output-escaping="yes" /></span>
             </xsl:when>
             <xsl:otherwise>
+<<<<<<< HEAD
                 <div class="goodsprice">
 					<span><xsl:value-of select="format-number($my_var2,'#')" /></span> <i class="icon-roub"></i>
                 </div>
+=======
+                <span class="goodsprice">
+                    <xsl:value-of select="format-number($my_var2,'#')" /> руб
+                </span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
             </xsl:otherwise>
         </xsl:choose>
         
@@ -348,6 +363,7 @@
             </li>
         </xsl:template>
         
+<<<<<<< HEAD
 <!-- Вывод карты на всех страницах! -->
 
 <xsl:template name="contcat_map">
@@ -423,5 +439,7 @@
 </xsl:template>
 
 <!-- Вывод карты на всех страницах! -->
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                             
 </xsl:stylesheet>

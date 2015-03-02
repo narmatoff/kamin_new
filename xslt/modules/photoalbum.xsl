@@ -288,7 +288,11 @@
 					<xsl:with-param name="height">150</xsl:with-param>
 				</xsl:call-template>
             </a>
+<<<<<<< HEAD
             <a style="display: block"  class="fancybox" rel="group" href="{$photo}" title="{.}"><xsl:value-of select="."/></a>
+=======
+            <a style="display: block" href="{@link}" title="{.}"><xsl:value-of select="."/></a>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
         </li>
 		
 		
@@ -407,6 +411,7 @@
 				</xsl:if>
 				<xsl:if test="not(page/properties/group/property[@name='video']/value)">
 					
+<<<<<<< HEAD
 					<xsl:variable name="photo" select="page//property[@name = 'photo']/value/@path" />
 					
 <!--					фото "наши работы" на отдельной странице-->
@@ -415,6 +420,11 @@
 
 			
 			
+=======
+					<xsl:variable name="photo" select="page//property[@name = 'photo']/value" />
+					<img src="{$photo}" width="150" umi:field-name="photo" umi:element-id="{page/@id}" />
+
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 				</xsl:if>
                 <xsl:value-of select="page/properties/group/property[@name='descr']/value" disable-output-escaping="yes"/>
 

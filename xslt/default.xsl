@@ -207,6 +207,7 @@
     
     <link rel="stylesheet" href="{$template-resources}css/jqui.css"/>
     <link rel="stylesheet" href="{$template-resources}css/catalog.css"/>
+<<<<<<< HEAD
     
     <script src="{$template-resources}js/vendor/jquery-1.11.1.js"></script>
 <!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>-->
@@ -214,6 +215,10 @@
                
                 <script src="{$template-resources}js/jquery.fancybox.js"></script>
             <script src="{$template-resources}js/plugins.js"></script>
+=======
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+    <script>window.jQuery || document.write('&lt;script src="{$template-resources}js/vendor/jquery-1.11.0.js">&lt;\/script>')</script>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
     <link rel="stylesheet" href="{$template-resources}css/jquery.fancybox.css" media="screen" />
     
@@ -347,17 +352,30 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                 <img src="{$template-resources}img/strel_top_brands.png" height="15" width="21" alt="стрлк" class="ctrl_actv"/>
                 <div class="clearfix"></div>
             </div>
+<<<<<<< HEAD
 			            <div class="brend_item">
                 <a href="/katalog/dymohody/" title="камины">
                     <span class="dimohodi_img">
                     <!-- на фоне этого спана логотип -->
                     </span>
                     <span>Дымоходы</span>
+=======
+            <div class="brend_item">
+                <a href="http://gekospb.ru/" title="камины">
+                    <span class="elektrost_img">
+                    <!-- на фоне этого спана логотип -->
+                    </span>
+                    <span>Электростанции</span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 </a>
                 <img src="{$template-resources}img/strel_top_brands.png" height="15" width="21" alt="стрлк" class="ctrl_actv"/>
                 <div class="clearfix"></div>
             </div>
+<<<<<<< HEAD
 			            <div class="brend_item ">
+=======
+            <div class="brend_item ">
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 <a href="http://kotly-ctc.ru/" title="камины">
                     <span class="kotli_img">
                     <!-- на фоне этого спана логотип -->
@@ -368,17 +386,28 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                 <div class="clearfix"></div>
             </div>
             <div class="brend_item">
+<<<<<<< HEAD
                 <a href="http://gekospb.ru/" title="камины">
                     <span class="elektrost_img">
                     <!-- на фоне этого спана логотип -->
                     </span>
                     <span>Электростанции</span>
+=======
+                <a href="/katalog/dymohody/" title="камины">
+                    <span class="dimohodi_img">
+                    <!-- на фоне этого спана логотип -->
+                    </span>
+                    <span>Дымоходы</span>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 </a>
                 <img src="{$template-resources}img/strel_top_brands.png" height="15" width="21" alt="стрлк" class="ctrl_actv"/>
                 <div class="clearfix"></div>
             </div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
             <div class="brend_item">
                 <a href="http://1914.ru/catalogue.html" title="камины">
                     <span class="stihl_img">
@@ -500,10 +529,13 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
 
 
         <xsl:apply-templates select="document('udata://menu/draw/14010')/udata" mode="top_menu"/>
+<<<<<<< HEAD
         
 <!--         <div class="clearfix"></div>-->
             <div class="saleall"></div>
             
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
         <div class="search_block">
             <xsl:apply-templates select="document('udata://search/insert_form')/udata" />
             
@@ -518,7 +550,10 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                 <div class="odnkl_btn"><a title="Наша группа в Одноклассниках" href="http://www.odnoklassniki.ru/group/51899147747462" target="_blank"></a></div>
             </div>
             
+<<<<<<< HEAD
            
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
             <div class="clearfix"></div>
         </div> 
         <!-- Place somewhere in the <body> of your page -->
@@ -680,8 +715,11 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                 <xsl:value-of select="result/@header" />
                                             </div>
                                             <xsl:apply-templates select="document('usel://wherebuy/302')" mode="left_menu_where_buy" />
+<<<<<<< HEAD
 
                                             
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                                         </xsl:when>
                                         <xsl:when test="result/page/@parentId=0">
                                             <div class="catmenu_head">
@@ -770,7 +808,11 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                 </span>
                              </li>
                              <li><span class="h_mail_address"></span><a href="mailto:info@kamin.ru?subject=тема письма" alt="Письмо">info@kamin.ru</a></li>
+<<<<<<< HEAD
                              <li><a href="http://dlr.kamin.ru" title="Вход для дилероа" class="diller_entry">вход для дилеров <span></span></a></li>
+=======
+                             <li><a href="http://dlr.kamin.ru" title="Вход для дилероа" class="diller_entry" target="_blank">вход для дилеров <span></span></a></li>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                              <li><a href="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2508/*http://market.yandex.ru/shop/98576/reviews"><img src="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2507/*http://grade.market.yandex.ru/?id=98576&amp;action=image&amp;size=3" border="0" width="200" height="125" alt="Читайте отзывы покупателей и оценивайте качество магазина на Яндекс.Маркете" /></a></li>
                          </ul>
             </div>
@@ -790,10 +832,18 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
         </footer>
 
 
+<<<<<<< HEAD
             <!-- <script type="text/javascript" src="{$template-resources}js/fancybox/jquery.fancybox.js"></script> -->
 <!--            <script src="{$template-resources}js/vendor/jquery.cookie.js"></script>-->
             
 
+=======
+           
+            <!-- <script type="text/javascript" src="{$template-resources}js/fancybox/jquery.fancybox.js"></script> -->
+<!--            <script src="{$template-resources}js/vendor/jquery.cookie.js"></script>-->
+            <script src="{$template-resources}js/jquery.fancybox.js"></script>
+            <script src="{$template-resources}js/plugins.js"></script>
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
             <script src="{$template-resources}js/main.js"></script>
             <script src="{$template-resources}js/clicker.js?q=123456789098765432"></script>
             <script type="text/javascript" src="/js/site/__common.js"></script>
@@ -850,12 +900,46 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
 <!--                                alert ('ну и славненько');-->
                                 $(".region_quwstion_selct").hide();
                                 $("a.ul_towns").trigger('click');
+<<<<<<< HEAD
 <!--                                $('select#region').trigger('click');-->
 });
 				<!-- document.location.href = data; -->
                                         } );
 <!--                          });-->                     
                     });   
+=======
+                                
+                                
+<!--                                $('select#region').trigger('click');-->
+                                
+                            
+                                
+                                
+                                
+                                
+    
+});
+                                
+                                
+                                
+                                <!-- document.location.href = data; -->
+                                        } );
+<!--                          });-->
+                     
+                    });               
+                     
+                      
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                   
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 }); 
             </script>
 

@@ -71,6 +71,7 @@ font-style:normal;
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {display:block;}
 /*** Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.*/
 
+<<<<<<< HEAD
 
 /*rub*/
 @font-face {
@@ -128,6 +129,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 
 
+=======
+>>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 audio,
 canvas,
 video {
