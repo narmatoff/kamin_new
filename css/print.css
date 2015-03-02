@@ -1,0 +1,38 @@
+#printphone{font-family: Arial;font-size: 16px;}
+div#printdesc p, div#printdesc div, div#printdesc span, div#printdesc strong, div#printdesc ul li{font-size: 13px; font-family: Arial;}
+#printtable1{border:0;}
+#printtable1 tr td{font-size: 14px;background-color:#ffffff;}
+#printh1{font-size:22px;}
+#printtable2{border:0;}
+#printtable2 tr td{font-size: 14px;border-right:20px solid #ffffff;background-color:#e6e6e6;}
+#printtable3{border:0;margin-left:20px;}
+#printtable3 tr td{font-size: 14px; padding:10px 0px 10px 0px;}
+#printurl{color:#ff0000;font-weight: bold;font-size: 13px;}
+#printtable4 tr td{border-top: 3px solid #ffffff;background-color:#e6e6e6;}
+#tab2 h3{padding: 0; margin: 0;}
+#tab2 hr{padding: 0; margin: 0;}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    border-bottom:3.9px solid #444;
+    width: 100%;
+    font-size:1em;
+    margin: 0 0 20px 0;
+}
+table tr th {
+    background-color:#444;
+    padding:10px 30px 10px 30px;
+    color:#fff;
+    width: auto;
+    font-size: 13px;
+    font-family: Arial;
+}
+table tr td {
+    padding:10px 6px 10px 20px;
+    text-align: left;
+    /* display: inline-block; */
+    width: auto;
+    font-size: 13px;
+    font-family: Arial;
+    border:0;
+}

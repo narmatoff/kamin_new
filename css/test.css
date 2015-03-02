@@ -1,0 +1,149 @@
+.yandexreview {
+    margin-bottom: 20px;
+}
+.yandexreview__title {
+    position: relative;
+    min-height: 32px;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background: #f6f5f3;
+}
+.yandexreview-user {
+    float: left;
+}
+.yandexreview-user__image {
+    background: url(./images/no_user.png) 0 0 no-repeat;
+    width: 32px;
+    height: 32px;
+    border-right: 1px solid #fff;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+}
+.yandexreview-username {
+    font-size: 15px;
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+}
+.yandexreview-username_anonymous {
+    font-size: 15px;
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+}
+.yandexreview-username:first-letter {
+    color: #f00;
+}
+.yandexreview-usergeo {
+    float: right;
+    line-height: 32px;
+    color: #999;
+    margin-right: 10px;
+}
+.yandexreview-usergeo__date {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    color: rgb(153, 153, 153);
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    text-align: left;
+    width: 97px;
+}
+.yandexreview__rate {
+    margin-bottom: 10px;
+}
+.yandexreview-rating {
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
+    padding-left: 85px;
+    padding-top: 3px;
+}
+.yandexreview-rating_state_1 {
+    display: inline-block;
+    width: 75px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(./images/star_1.png) no-repeat;
+}
+.yandexreview-rating_state_2 {
+    display: inline-block;
+    width: 75px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(./images/star_2.png) no-repeat;
+}
+.yandexreview-rating_state_3 {
+    display: inline-block;
+    width: 75px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(./images/star_3.png) no-repeat;
+}
+.yandexreview-rating_state_4 {
+    display: inline-block;
+    width: 75px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(./images/star_4.png) no-repeat;
+}
+.yandexreview-rating_state_5 {
+    display: inline-block;
+    width: 75px;
+    height: 15px;
+    vertical-align: middle;
+    background: url(./images/star_5.png) no-repeat;
+}
+.yandexreview__delivery {
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 0;
+    color: #999;
+}
+.yandexreview-userverdict {
+    margin-bottom: 8px;
+}
+.yandexreview-userverdict__title {
+    font-weight: bold;
+    display: inline-block;
+}
+.yandexreview-userverdict__text {
+    display: inline-block;
+    line-height: 18px;
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+.yandexreview__footer {
+    display: block;
+    margin: 0 0 10px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.yandexreview-usergrade {
+    text-align: right;
+    color: #999;
+    margin-bottom: 10px;
+    position: relative;
+}
+.yandexreview__pro {
+    color: #239600;
+}
+.yandexreview__contra {
+    color: #ff2f2f;
+}
