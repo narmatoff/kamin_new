@@ -63,11 +63,7 @@
             <xsl:if test="$total&gt;$per_page">
               
                         
-<<<<<<< HEAD
                          <a class="more_goods" id="{page//property[@name='kategory']/value/page/@id}" title="{$per_page}" parent="15" filter="fields_filter[brend]={$parent_obj}" rel="{$total}" alt="1" href="?p=1&amp;fields_filter[brend]={$parent_obj}">показать еще</a>
-=======
-                         <a class="more_goods" id="{page//property[@name='kategory']/value/page/@id}" title="{$per_page}" parent="0" filter="fields_filter[brend]={$parent_obj}" rel="{$total}" alt="1" href="?p=1&amp;fields_filter[brend]={$parent_obj}">показать еще</a>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                     
               
                 <!-- 

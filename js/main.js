@@ -406,21 +406,14 @@ $(document).ready(function () {
         $("#delivery-address-new").attr('value', 'new');
         $('#radio34011').removeAttr('checked');
 
-<<<<<<< HEAD
         
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
 
     });
 
     $("label.emarket-delivery-783").click(function () {
 
-<<<<<<< HEAD
 //        $("fieldset.personalinfo").hide();
-=======
-        $("fieldset.personalinfo").hide();
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
         $("fieldset.deliveryinfo").hide();
         $("fieldset.commentinfo").hide();
         $(".address_samov").show();
@@ -521,7 +514,6 @@ $(document).ready(function () {
 
 
     //    инициализация fancybox
-<<<<<<< HEAD
 //    $(".fancybox").fancybox();
 //    $("#customer_choose").fancybox();
 
@@ -530,11 +522,6 @@ $(".fancybox").fancybox({
 				'transitionIn'	: 'elastic',
 				'transitionOut'	: 'elastic'
 			});
-=======
-    $(".fancybox").fancybox();
-//    $("#customer_choose").fancybox();
-
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
 
 
@@ -593,8 +580,5 @@ $(".fancybox").fancybox({
 	
 
 	
-<<<<<<< HEAD
 	
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 });

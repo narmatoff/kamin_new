@@ -36,10 +36,7 @@
 
 
 					</section>
-<<<<<<< HEAD
 					<div class="clearfix"></div>
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 				</xsl:if>
 				
 				<xsl:if test="page/properties/group/property[@name='fotogalereya']/value/page">
@@ -275,11 +272,7 @@
 			<h1 class="dialog_par"><xsl:value-of select="page/name" disable-output-escaping="yes" /></h1>
 			<h3><a href="http://market.yandex.ru/shop/98576/reviews/" target="_blank">Все отзывы на Яндекс.Маркете</a></h3>
 			<h3><a href="http://market.yandex.ru/shop/98576/reviews/add" target="_blank">Добавить отзыв на Яндекс.Маркете</a></h3>
-<<<<<<< HEAD
 			<xsl:apply-templates select="document('http://kamin.ru/otz.php')/opinion-list/opinion" mode="opinion" />
-=======
-			<xsl:apply-templates select="document('http://cd78273.tmweb.ru/otz.php')/opinion-list/opinion" mode="opinion" />
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 		</article>
 	</xsl:template>
 
@@ -620,7 +613,6 @@
 		</article>	
 	</xsl:template>
 
-<<<<<<< HEAD
 <!-- Где купить в выбранном регионе -->
 <xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='302']">
 	<xsl:variable name="pageParent" select="page/@parentId" />
@@ -713,6 +705,4 @@
 
 
 
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 </xsl:stylesheet>

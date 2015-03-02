@@ -11,24 +11,16 @@
 
 
         <form class="search_hform" method="get" action="/search/search_do">
-<<<<<<< HEAD
             <input type="search" autocomplete="off" class="searchin" value="{$search_string}" name="search_string" placeholder="поиск по названию товара или номеру артикула" />
             <input class="srch_btn" type="submit" name="search" title="Начать поиск" value="" />
             <!-- <button></button> -->
             <ul class="ajax-hint"></ul>
-=======
-            <input type="search" value="{$search_string}" name="search_string" placeholder="поиск по названию товара или номеру артикула" />
-            <input class="srch_btn" type="submit" name="search" title="Начать поиск" value="" />
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
         </form>
 
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
     </xsl:template>
 
     <!-- шаблон страницы с результатами поиска -->

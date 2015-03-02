@@ -92,11 +92,7 @@
 					
 				</table>
 				<div class="cart_itogo">
-<<<<<<< HEAD
 					<div>Итого: <span class="cart_summary"> <xsl:value-of select="udata/summary/price/actual" /></span><i class="icon-roub"></i> </div>
-=======
-					<div>Итого: <span class="cart_summary"> <xsl:value-of select="udata/summary/price/actual" /></span> руб.</div>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 					<a href="/emarket/purchasing_one_step/">Оформить заказ</a>
 				</div>
 			</article>
@@ -128,11 +124,7 @@
 					</a>
 					<h4><a href="{@link}"><xsl:value-of select="extended/properties/property[@name = 'nazvanie']/value" /></a></h4>
 					<span class="manufacturer_block"><xsl:value-of select="extended/properties/property[@name = 'brend']/value/item/@name" /></span>
-<<<<<<< HEAD
 					<span class="summa_asidebl"><span><xsl:value-of select="extended/properties/property[@name = 'price']/value" /></span> <i class="icon-roub"></i></span>
-=======
-					<span class="summa_asidebl"><xsl:value-of select="extended/properties/property[@name = 'price']/value" /> руб</span>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 					<a class="aside_button" href="/emarket/basket/put/element/{@id}">Купить</a>
 					<div class="clearfix"></div>
 				</div>
@@ -166,11 +158,7 @@
 							</div>
 						</td>
 						<td class="price_td">
-<<<<<<< HEAD
 							<span><xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/></span> <i class="icon-roub"></i>
-=======
-							<xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/> р. руб
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 						</td>
 						<td class="count_td">
 
@@ -186,11 +174,7 @@
 							</div>
 						</td>
 						<td class="summa_td cart_item_price_{@id}">
-<<<<<<< HEAD
 							<span><xsl:value-of select="total-price/actual"/></span> <i class="icon-roub"></i>
-=======
-							<xsl:value-of select="total-price/actual"/> руб.
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 <!--							<xsl:value-of select="total-price/@suffix"/>.-->
 						</td>
 						<td class="floating_td">
@@ -216,11 +200,7 @@
 					</a>
 					<h4><a href="{page/@link}"><xsl:value-of select="$item//property[@name = 'nazvanie']/value" /></a></h4>
 					<span class="manufacturer_block"><xsl:value-of select="$item//property[@name = 'brend']/value/item/@name" /></span>
-<<<<<<< HEAD
 					<span class="summa_asidebl"><span><xsl:value-of select="price/actual" /></span> <i class="icon-roub"></i></span>
-=======
-					<span class="summa_asidebl"><xsl:value-of select="$item//property[@name = 'price']/value" /> руб</span>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 					<!-- <a class="aside_button" href="/emarket/basket/put/element/{@id}">Купить</a> -->
 					<div class="clearfix"></div>
 				</div>

@@ -73,11 +73,7 @@
                     <xsl:call-template name="thumbing">
                         <xsl:with-param name="source" select="$page/page/properties/group/property[@name='publish_pic']/value" />
                         <xsl:with-param name="width" select="150" />
-<<<<<<< HEAD
                         <xsl:with-param name="height">200</xsl:with-param>
-=======
-                        <xsl:with-param name="height">150</xsl:with-param>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                     </xsl:call-template>
                 </a>
             </xsl:if>
@@ -212,33 +208,22 @@
                 <xsl:apply-templates select="document(concat('udata://photoalbum/album/',page/properties/group/property[@name='fotogalereya']/value/page/@id ))/udata/items" mode="photos" />                
             </xsl:if>
             <xsl:apply-templates select="page/properties/group/property[@name='otdelnye_foto_iz_fotogalarei']/value/page" mode="only_photo" />
-<<<<<<< HEAD
                
                 
                 
                    
                     
                      
-=======
-                <xsl:if test="page/properties/group[@name='svyazannye_tovary'] or page/properties/group/property[@name='tovary']/value">
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 
                 <xsl:if test="page/properties/group/property[@name='video']/value">
                     <h3>Видео</h3>
                     <ul class="content_gallery">
                         <xsl:apply-templates select="page/properties/group/property[@name='video']/value/page" mode="slider2_video" />
-<<<<<<< HEAD
 <!--                         <xsl:value-of select="page/properties/group/property[@name='video']/value" disable-output-escaping="yes" /> -->
                     </ul>
                 </xsl:if>
                 
  <xsl:if test="page/properties/group[@name='svyazannye_tovary'] or page/properties/group/property[@name='tovary']/value">
-=======
-                        <!-- <xsl:value-of select="page/properties/group/property[@name='video']/value" disable-output-escaping="yes" /> -->
-                    </ul>
-                </xsl:if>
-
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                    <div class="clearfix"></div>
                     <h3>Обратите внимание на товары, которые описаны выше</h3>
                         <div id="catalog_list" class="cat_item_list">

@@ -78,10 +78,6 @@
 	<xsl:include href="modules/emarket.xsl"	/>
 	<xsl:include href="modules/comments.xsl" />
 	<xsl:include href="modules/slider.xsl" />
-<<<<<<< HEAD
-=======
-	<xsl:include href="modules/wherebuy.xsl" />
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 	<xsl:include href="modules/brend_item.xsl" />
 	<xsl:include href="modules/meta.xsl" />
 	<xsl:include href="modules/ganalytics.xsl" />

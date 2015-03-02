@@ -3,11 +3,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="udata[@module = 'comments'][@method = 'insert']">
         <div class="comment">
-<<<<<<< HEAD
             <div class="comment-text"><span>Отзывы пока отсутствуют.</span>
-=======
-            <div class="comment-text"><span>К сожалению, отзывы пока отсутствуют.</span>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
             </div>
         </div>
     </xsl:template>

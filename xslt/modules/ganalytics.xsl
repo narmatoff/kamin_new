@@ -2,18 +2,13 @@
 <!DOCTYPE xsl:stylesheet SYSTEM "ulang://i18n/constants.dtd:file">
 
 <xsl:stylesheet version="1.0"
-<<<<<<< HEAD
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/TR/xlink"
 	xmlns:umi="http://www.umi-cms.ru/TR/umi">
-=======
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:umi="http://www.umi-cms.ru/TR/umi">
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 
 <xsl:template name="ec">
 	
 </xsl:template>
 
-<<<<<<< HEAD
 <xsl:template name="checkout_cart">
 	<!-- <script type="text/javascript">
 		function checkout() {
@@ -34,6 +29,4 @@
 		    });
 </xsl:template>
 
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 </xsl:stylesheet>

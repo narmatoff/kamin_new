@@ -14,7 +14,6 @@
 		</div></div>
 	</xsl:template>
 
-<<<<<<< HEAD
 	<xsl:template match="udata[@module = 'usel'][@method = 'dilers']" mode="official_dlr">
 		<div class="catmenu_head">
 			Фирминные магазины
@@ -35,8 +34,6 @@
 		</li>
 	</xsl:template>
 
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
 	<xsl:template match="page" mode="left_menu_where_buy_one">
 		<xsl:choose>
 			<xsl:when test="document(concat('upage://', $page-id))/udata/page/@link = @link">
@@ -84,15 +81,12 @@
             <xsl:apply-templates select="items/item" mode="level1left" />
             
         </ul>
-<<<<<<< HEAD
 
         <xsl:choose>
         	<xsl:when test="$page-id = 9750"><br/>
 				<xsl:apply-templates select="document('usel://dilers//1')" mode="official_dlr"/>
         	</xsl:when>
         </xsl:choose>
-=======
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
     </xsl:template>
 
 

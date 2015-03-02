@@ -52,20 +52,12 @@
             <xsl:choose>
                 <xsl:when test="not(extended/properties/property[@name='flesh_vmesto_kartinki'])">
                 <a href="{extended/properties/property[@name='ssylka_s_banera']/value}">
-<<<<<<< HEAD
                     <!-- <xsl:call-template name="thumbing">
                                 <xsl:with-param name="source" select="extended/properties/property[@name='header_pic']/value" />
                                 <xsl:with-param name="width" select="1000" />
                                 <xsl:with-param name="height" select="222" />
                     </xsl:call-template> -->
                     <img src="{extended/properties/property[@name='header_pic']/value}" />
-=======
-                    <xsl:call-template name="thumbing">
-                                <xsl:with-param name="source" select="extended/properties/property[@name='header_pic']/value" />
-                                <xsl:with-param name="width" select="1000" />
-                                <xsl:with-param name="height" select="222" />
-                    </xsl:call-template>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
                 </a>
                 </xsl:when>
                  <xsl:otherwise>
@@ -105,7 +97,6 @@
         </li>
     </xsl:template>
 
-<<<<<<< HEAD
 
     <xsl:template match="page" mode="slider_small">
         <li style="background: white;">
@@ -122,16 +113,6 @@
                     </xsl:call-template>
                  </xsl:otherwise>
             </xsl:choose>
-=======
-    
-    <xsl:template match="page" mode="slider_small">
-        <li>
-            <xsl:call-template name="thumbing">
-                        <xsl:with-param name="source" select="extended/properties/property[@name='header_pic']/value" />
-                        <xsl:with-param name="width" select="135" />
-                        <xsl:with-param name="height" select="90" />
-            </xsl:call-template>
->>>>>>> d08d585e609f4965f83d5fd86af427fc61301e3b
         </li>
     </xsl:template>
 
