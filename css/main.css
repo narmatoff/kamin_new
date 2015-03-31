@@ -3166,6 +3166,7 @@ div.back_filterslid {
     margin: 0 25.4px 0 17px;
     text-align: center;
     font-size: 0.9em;
+    position: relative;
 }
 div.back_filterslid label {
     text-indent: inherit;
@@ -4224,6 +4225,7 @@ div.back_filter {
     -webkit-border-bottom-right-radius: 7px;
     border-bottom-right-radius: 7px;
     display: inline-block;
+    position: relative;
 }
 div.back_filter_sort {
     background-color: #fff;
@@ -5388,27 +5390,31 @@ div.catalog_page{
 
 div.SearchHelperText {
 width: auto;
-  height: auto;
-  position: absolute;
-  float: left;
-  /*top: -30px;*/
-  left: 730px;
-    background-image: url(../img/dark_back.png);
-  /* display: none; */
-  margin: 0;
-  padding: 20px;
-  border: 2px solid #F7961E;
+
+height: auto;
+
+position: absolute;
+top: -60px;
+left: 237px;
+background-image: url(../img/dark_back.png);
+margin: 0;
+padding: 20px;
+border: 2px solid #F7961E;
   -webkit-border-radius: 8px;
   -webkit-border-bottom-left-radius: 0;
   -moz-border-radius: 8px;
   -moz-border-radius-bottomleft: 0;
-  border-radius: 8px;
-  border-bottom-left-radius: 0;
-  font-size: 1em;
-  text-decoration: none !important;
-  z-index: 99999;
-  text-align: center;
-  opacity: 0.94 !important;
+border-radius: 8px;
+border-bottom-left-radius: 0;
+
+text-decoration: none !important;
+z-index: 99999;
+text-align: center;
+}
+div.SearchHelperText span{
+    display: block;
+
+    width: 100%;
 }
 
 .country_img{
@@ -5541,5 +5547,4 @@ width: auto;
         page-break-after: avoid;
         
     }
-    
     

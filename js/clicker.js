@@ -381,7 +381,7 @@ $("div.select_filterbl").each(function() {
         var catid = parseInt($('#search_param').data('categoryid'));
         
         $("div.SearchHelperText").remove();
-        $(this).after("<div class='SearchHelperText' style='left: 260px;'></div>");
+        $(this).parent().before("<div class='SearchHelperText'></div>");
         var msg = $('#search_param').serialize();
         $.ajax({
             type: 'get',
@@ -408,7 +408,7 @@ $("div.back_filterslid").each(function() {
         var catid = parseInt($('#search_param').data('categoryid'));
         
         $("div.SearchHelperText").remove();
-        $(this).after("<div class='SearchHelperText'></div>");
+        $(this).parent().before("<div class='SearchHelperText'></div>");
         var msg = $('#search_param').serialize();
         $.ajax({
             type: 'get',
