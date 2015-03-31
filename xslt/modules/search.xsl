@@ -14,7 +14,6 @@
             <input type="search" autocomplete="off" class="searchin" value="{$search_string}" name="search_string" placeholder="поиск по названию товара или номеру артикула" />
             <input class="srch_btn" type="submit" name="search" title="Начать поиск" value="" />
             <!-- <button></button> -->
-<<<<<<< HEAD
             <ul class="ajax_hint" id="ajax_hint" style="border-left-width: 1px;
 border-left-style: solid;
 border-left-color: rgb(221, 221, 221);
@@ -33,9 +32,6 @@ display: block;
 width: 84.7%;">
 		
 	</ul>
-=======
-            <ul class="ajax-hint"></ul>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
         </form>
 
 

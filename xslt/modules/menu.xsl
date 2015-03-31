@@ -13,7 +13,6 @@
 			</select>
 		</div></div>
 	</xsl:template>
-<<<<<<< HEAD
 	
 	<!-- Меню с сортировкой фирменных магазинов -->
 	<xsl:key name="city" match="page" use="@parentId"/>
@@ -53,29 +52,6 @@
 
 	<!-- Меню с сортировкой фирменных магазинов -->
 	
-=======
-
-	<xsl:template match="udata[@module = 'usel'][@method = 'dilers']" mode="official_dlr">
-		<div class="catmenu_head">
-			Фирминные магазины
-		</div>
-		<!-- <xsl:for-each select="page/extended/groups/group/[not(@dep=preceding-sibling::/property[@name = 'region']/value/item/@name)]">
-			<xsl:variable name="city" select="extended/groups/group/property[@name = 'region']/value/item/@name" />
-			<xsl:value-of select="$city" />
-		</xsl:for-each> -->
-		<ul id="my-menu" class="sample-menu"><li class="bgdarked"><ul style="display: block;">
-			<xsl:apply-templates select="page" mode="official_dlr_one" />
-		</ul></li></ul>
-	</xsl:template>
-
-	<xsl:template match="page" mode="official_dlr_one">
-		<li class="dealer">
-			<xsl:value-of select="name"/><br/>
-			т.<xsl:value-of select=".//property[@name = 'phone']/value" disable-output-escaping="yes" />
-		</li>
-	</xsl:template>
-
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 	<xsl:template match="page" mode="left_menu_where_buy_one">
 		<xsl:choose>
 			<xsl:when test="document(concat('upage://', $page-id))/udata/page/@link = @link">
@@ -125,13 +101,8 @@
         </ul>
 
         <xsl:choose>
-<<<<<<< HEAD
         	<xsl:when test="$parents-page-id = 9097"><br/>
 				<xsl:apply-templates select="document('usel://dilers//1//id')" mode="official_dlr"/>
-=======
-        	<xsl:when test="$page-id = 9750"><br/>
-				<xsl:apply-templates select="document('usel://dilers//1')" mode="official_dlr"/>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
         	</xsl:when>
         </xsl:choose>
     </xsl:template>

@@ -33,7 +33,6 @@ priceSep(".price_word_usualy>span" );
   return false;
 };
      /* ---------- ajax search dropdown ------------------ */
-<<<<<<< HEAD
   $('.searchin').click(function(e) {
                 
                 
@@ -43,25 +42,10 @@ priceSep(".price_word_usualy>span" );
                     $(document).bind('click.myEvent', function(e) {
                         if (!firstClick && $(e.target).closest('.ajax_hint').length == 0) {
                             $('.ajax_hint').hide();
-=======
-  var searchInput = $('.searchin');
-  var searchDrop = $('.ajax-hint');
-
-  $('.searchin').click(function(e) {
-                
-                
-                if ($('.ajax-hint').css('display') != 'block') {
-                    $('.ajax-hint').show();
-                    var firstClick = true;
-                    $(document).bind('click.myEvent', function(e) {
-                        if (!firstClick && $(e.target).closest('.ajax-hint').length == 0) {
-                            $('.ajax-hint').hide();
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                             $(document).unbind('click.myEvent');
                         }
                         firstClick = false;
                     });
-<<<<<<< HEAD
                 }               
 	   e.preventDefault();
             });
@@ -93,44 +77,17 @@ priceSep(".price_word_usualy>span" );
         $(this).parent().children('ul').find('li').first().addClass('hover');
       } else {
         $(this).parent().children('ul').find('li').filter('.hover').removeClass('hover').next().addClass('hover');
-=======
-                }
-                
-                e.preventDefault();
-            });
-  searchInput 
-  
-  .bind('keyup', function(e){
-    if (e.keyCode == 38){ //вверх
-      if (searchDrop.find('li').filter('.hover').length == 0){
-        searchDrop.find('li').last().addClass('hover');
-      } else {
-        searchDrop.find('li').filter('.hover').removeClass('hover').prev().addClass('hover');
-      }
-    } else
-    if (e.keyCode == 40){ //вниз
-      if (searchDrop.find('li').filter('.hover').length == 0){        
-        searchDrop.find('li').first().addClass('hover');
-      } else {
-        searchDrop.find('li').filter('.hover').removeClass('hover').next().addClass('hover');
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
       }
     } else
     if (e.keyCode == 13){ //enter
       return false;
       
-<<<<<<< HEAD
       if ($(this).parent().children('ul').find('li').filter('.hover').length){
         window.location.href = $(this).parent().children('ul').find('li').filter('.hover').children('a').attr('href');
-=======
-      if (searchDrop.find('li').filter('.hover').length){
-        window.location.href = searchDrop.find('li').filter('.hover').children('a').attr('href');
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
       }
     } else
     if (e.keyCode == 39){ //вправо
       return false;
-<<<<<<< HEAD
       if ($(this).parent().children('ul').find('li').filter('.hover').length){
         $('.searchin')
           .val( $(this).parent().children('ul').find('li').filter('.hover').text() )
@@ -147,24 +104,6 @@ priceSep(".price_word_usualy>span" );
       });
     } else {
       $('.ajax_hint').parent().children('ul').hide();
-=======
-      if (searchDrop.find('li').filter('.hover').length){
-        searchInput
-          .val( searchDrop.find('li').filter('.hover').text() )
-          .trigger('keyup');
-      } 
-    } else
-    if (searchInput.val().length >= 3 ) {
-      $.ajax({
-        url: '/search.php?s_st=' + searchInput.val(),
-        dataType: 'html',
-        success: function (data) {
-          searchDrop.html(data).show();
-        }
-      });
-    } else {
-      searchDrop.hide();
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
     }
   });
 
@@ -222,7 +161,6 @@ $('#valueee').keyup(function() {
    
 });
 
-<<<<<<< HEAD
 // Загрузка стрницы с доп. товарами.
 // $( document ).ready(function() {
 //     hash = window.location.hash.toString();
@@ -247,8 +185,6 @@ $('#valueee').keyup(function() {
 //     urlancor = '#' + pid + hash;
 //     history.pushState(null, null, urlancor);
 // }
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 
 $("a.more_goods").click(function() {
 	
@@ -257,7 +193,6 @@ $("a.more_goods").click(function() {
     id_text = "#" + id;
     href =  "?" + $(this).attr("filter");
     total = parseInt($(this).attr("rel"));
-<<<<<<< HEAD
     perpage =  parseInt($(this).data("per-page"));
     tonext =  parseInt($(this).attr("alt"));
     parent =  parseInt($(this).attr("parent"));
@@ -281,17 +216,6 @@ $("a.more_goods").click(function() {
     }
     history.pushState(null, null, urlancor);
 
-=======
-    perpage =  parseInt($(this).attr("title"));
-    tonext =  parseInt($(this).attr("alt"));
-    parent =  parseInt($(this).attr("parent"));
-    tonext_1 = tonext + 1
-    urla ='/udata://catalog/getObjectsList/notemplate/' + id + '///' + parent + '/280/1' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl'
-    
-	
-	
-	
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
     next = tonext_1 * perpage;
     jQuery.ajax({
                 url: urla,
@@ -332,11 +256,8 @@ $("a.more_goods").click(function() {
 	
     });
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 //////////////////////////////////////////
 // закладки описания на странице товара //
 //////////////////////////////////////////
@@ -407,7 +328,6 @@ $('div.good_moreinfobtn_details').click(function() {
         $.cookie('submenuMark-' + index, null, {expires: null, path: '/'}); // Delete mark from cookie (submenu is hidden):
     }
 
-<<<<<<< HEAD
 // ajax поиск товаров
 // слайдер
 $(".slider-range").each(function() {
@@ -546,7 +466,5 @@ $(".max_val").blur(function() {
     }
     $(id).slider("values", 1, val);
 });
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 
 });

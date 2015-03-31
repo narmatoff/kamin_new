@@ -43,27 +43,7 @@
                <xsl:value-of select="document(concat('udata://system/convertDate/', @publish_time, '/(d)'))/udata"  disable-output-escaping="yes"/>
               
                 <xsl:choose>
-<<<<<<< HEAD
  <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 1"> января</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 2"> февраля</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 3"> марта</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 4"> апреля</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 5"> мая</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 6"> июня </xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 7"> июля </xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 8"> августа</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 9"> сентября</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 10"> октября</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 11"> ноября</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 12"> декабря</xsl:when>
-=======
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 1"> января</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 2"> февраля</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 3"> марта</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 4"> апреля</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 5"> мая</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 6"> июня </xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 7"> июля </xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 8"> августа</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 9"> сентября</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 10"> октября</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 11"> ноября</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @publish_time, './(n)'))/udata = 12"> декабря</xsl:when>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                         </xsl:choose>
                         <br/>
 
@@ -109,27 +89,7 @@
                <xsl:value-of select="document(concat('udata://system/convertDate/', @update-time, '/(d)'))/udata"  disable-output-escaping="yes"/>
               
                 <xsl:choose>
-<<<<<<< HEAD
  <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 1"> января</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 2"> февраля</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 3"> марта</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 4"> апреля</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 5"> мая</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 6"> июня </xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 7"> июля </xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 8"> августа</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 9"> сентября</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 10"> октября</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 11"> ноября</xsl:when><xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 12"> декабря</xsl:when>
-=======
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 1"> января</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 2"> февраля</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 3"> марта</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 4"> апреля</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 5"> мая</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 6"> июня </xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 7"> июля </xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 8"> августа</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 9"> сентября</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 10"> октября</xsl:when>
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 11"> ноября</xsl:when>
-
-                        <xsl:when test="document(concat('udata://system/convertDate/', @update-time, './(n)'))/udata = 12"> декабря</xsl:when>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                         </xsl:choose>
                         <br/>
 
@@ -154,7 +114,6 @@
                        <div class="clearfix"></div>
             </div>
              <div class="clearfix"></div>
-<<<<<<< HEAD
 
         </div>
          
@@ -225,20 +184,6 @@
        
        
 <!--
-=======
-<!--            <div class="clearfix"></div>-->
-<!--            <a class="newsmorelink" href="{@link}">подробнее</a> -->
-        
-
-            <!-- <div class="news"><span>[<xsl:value-of select="document(concat('udata://system/convertDate/', @publish_time, '/(d.m.Y)'))/udata"  disable-output-escaping="yes"/>]</span>&br;<strong><xsl:value-of select="$page/page/properties/group/property[@name='h1']/value" disable-output-escaping="yes"/></strong>&br;<xsl:value-of select="$page/page/properties/group/property[@name='anons']/value" disable-output-escaping="yes"/><a  href="{@link}" ><strong>[...]</strong></a></div>&br;     -->
-<!--            <div class="clearfix"></div>-->
-        </div>
-         
-    </xsl:template>
-<!-- Новости в салонах... -->
-
-       <xsl:template match="item" mode="stateyki">
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
         <div class="newsblock">
             <xsl:variable name="page" select="document(concat('upage://',@id))/udata" />
             <xsl:if test="$page/page/properties/group/property[@name='publish_pic']/value">
@@ -261,7 +206,6 @@
             
             <div class="clearfix"></div>
         </div>
-<<<<<<< HEAD
 -->
     </xsl:template>
        
@@ -294,13 +238,6 @@
 </xsl:template>
     
     
-=======
-    </xsl:template>
-       
-       
-       
-
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 
     <xsl:template match="result[@module = 'news' and @method = 'item']">
         <article class="news_item">
@@ -313,33 +250,22 @@
               
                
             <span class="opened_news_date">Дата публикации: <xsl:value-of select="$date" /></span>
-<<<<<<< HEAD
               <span class="newsimage">
             
                <xsl:call-template name="thumbing">
-=======
-            <xsl:call-template name="thumbing">
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                 <xsl:with-param name="source" select="page/properties/group/property[@name='publish_pic']/value" />
                 <xsl:with-param name="width" select="150" />
                 <xsl:with-param name="height">200</xsl:with-param>
             </xsl:call-template>
-<<<<<<< HEAD
             </span>
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
             <xsl:value-of select="page//property[@name = 'content']/value" disable-output-escaping="yes" />
             <xsl:if test="page/properties/group/property[@name='fotogalereya']/value/page">
 
                 <xsl:apply-templates select="document(concat('udata://photoalbum/album/',page/properties/group/property[@name='fotogalereya']/value/page/@id ))/udata/items" mode="photos" />                
             </xsl:if>
-<<<<<<< HEAD
             <ul class="content_gallery">
             <xsl:apply-templates select="page/properties/group/property[@name='otdelnye_foto_iz_fotogalarei']/value/page" mode="only_photo" />
               </ul>
-=======
-            <xsl:apply-templates select="page/properties/group/property[@name='otdelnye_foto_iz_fotogalarei']/value/page" mode="only_photo" />
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                
                 
                 
@@ -377,10 +303,7 @@
         <xsl:template match="result[@module = 'news' and @method = 'rubric']">
             <article>
                 <h1 class="dialog_par"><xsl:value-of select="@header"/></h1>
-<<<<<<< HEAD
 <!--
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                 <div class="sortnview"><span>Архив за:</span>
                     <div class="back_filter_sort">
                         <div class="select_sortnview">
@@ -394,21 +317,14 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
 -->
                 <div class="clearfix"></div>
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                 <xsl:choose>
                     <xsl:when test="@pageId='5441'">
                         <xsl:apply-templates select="document(concat('udata://news/lastlist/', @pageId))/udata/items/item" mode="news" />                              </xsl:when>
                     <xsl:otherwise>
-<<<<<<< HEAD
                         <xsl:apply-templates select="document(concat('udata://news/lastlist/', @pageId))/udata/items/item" mode="stateyki" />                        
                     </xsl:otherwise>
-=======
-                        <xsl:apply-templates select="document(concat('udata://news/lastlist/', @pageId))/udata/items/item" mode="stateyki" />                        </xsl:otherwise>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                 </xsl:choose>
                 <!--        <xsl:apply-templates select="document(concat('udata://news/lastlist/', @pageId))/udata/items/item" mode="news" />-->
                 <xsl:call-template name="numpages">

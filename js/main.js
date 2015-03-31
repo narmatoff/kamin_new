@@ -578,7 +578,6 @@ $(".fancybox").fancybox({
 	
 	
 	
-<<<<<<< HEAD
 	
 	
 	
@@ -615,9 +614,6 @@ $(".fancybox").fancybox({
 
 
 	
-=======
-
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 	
 	
 });

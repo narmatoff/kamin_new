@@ -22,11 +22,7 @@
 	
 	</head>
 	<body id="invoice">
-<<<<<<< HEAD
 	<img  src="http://{domain}/templates/kamin/img/logo.png" alt=""/>
-=======
-	<img  src="http://{domain}/templates/tokanet.ru//images/setlogo2.png" alt=""/>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 		<xsl:variable select="document(concat('uobject://',order_id))//property[@name='customer_id']/value/item/@id" name="customer1"/>
 		<p style="font-size:15px;">Здравствуйте, <xsl:value-of select="document(concat('uobject://',$customer1))//property[@name='lname']/value" />&#160;
 					<xsl:value-of select="document(concat('uobject://',$customer1))//property[@name='fname']/value" />&#160;
@@ -39,10 +35,7 @@
 					<tr>
 						<td class="cart_table_img"></td>
 						<td class="cart_table_name">Наименование</td>
-<<<<<<< HEAD
 						<td class="cart_table_name">Артикул</td>
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 						<td class="cart_table_price">Цена, р.</td>
 						<td class="cart_table_num">Количество, шт.</td>
 						<td class="cart_table_priceall">Сумма, р.</td>
@@ -90,7 +83,6 @@
 			<xsl:value-of select="$pay_stat" />
 			<xsl:if test="$pay_stat='1667'">
 				<xsl:apply-templates select="document(concat('uobject://',order_id))/udata/object" mode="bill" />
-<<<<<<< HEAD
 			</xsl:if><br/><br/>
 			---<br/>
 <p>Уважаемый покупатель!</p>
@@ -110,9 +102,6 @@
 <p>С уважением,<br/>
 Компания «Домотехника»<br/>
 http://kamin.ru</p>
-=======
-			</xsl:if>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 				</body>
 		</html>
 	</xsl:template>
@@ -130,11 +119,7 @@ http://kamin.ru</p>
 	
 	</head>
 	<body id="invoice">
-<<<<<<< HEAD
 	<img  src="http://{domain}/templates/kamin/img/logo.png" alt=""/>
-=======
-	<img  src="http://{domain}/templates/tokanet.ru//images/setlogo2.png" alt=""/>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 		<xsl:variable select="document(concat('uobject://',order_id))//property[@name='customer_id']/value/item/@id" name="customer1"/>
 		<p style="font-size:15px;">Здравствуйте, <xsl:value-of select="document(concat('uobject://',$customer1))//property[@name='lname']/value" />&#160;
 					<xsl:value-of select="document(concat('uobject://',$customer1))//property[@name='fname']/value" />&#160;
@@ -147,10 +132,7 @@ http://kamin.ru</p>
 					<tr>
 						<td class="cart_table_img"></td>
 						<td class="cart_table_name">Наименование</td>
-<<<<<<< HEAD
 						<td class="cart_table_name">Артикул</td>
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 						<td class="cart_table_price">Цена, р.</td>
 						<td class="cart_table_num">Количество, шт.</td>
 						<td class="cart_table_priceall">Сумма, р.</td>
@@ -221,11 +203,7 @@ http://kamin.ru</p>
 	
 	</head>
 	<body id="invoice">
-<<<<<<< HEAD
 	<img  src="http://{domain}/templates/kamin/img/logo.png" alt=""/>
-=======
-	<img  src="http://{domain}/templates/tokanet.ru//images/setlogo2.png" alt=""/>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 		<xsl:variable select="document(concat('uobject://',order_id))//property[@name='customer_id']/value/item/@id" name="customer1"/>
 		<p style="font-size:15px;">Здравствуйте, <xsl:value-of select="document(concat('uobject://',$customer1))//property[@name='lname']/value" />&#160;
 					<xsl:value-of select="document(concat('uobject://',$customer1))//property[@name='fname']/value" />&#160;
@@ -238,10 +216,7 @@ http://kamin.ru</p>
 					<tr>
 						<td class="cart_table_img"></td>
 						<td class="cart_table_name">Наименование</td>
-<<<<<<< HEAD
 						<td class="cart_table_name">Артикул</td>
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 						<td class="cart_table_price">Цена, р.</td>
 						<td class="cart_table_num">Количество, шт.</td>
 						<td class="cart_table_priceall">Сумма, р.</td>
@@ -289,7 +264,6 @@ http://kamin.ru</p>
 			<xsl:value-of select="$pay_stat" />
 			<xsl:if test="$pay_stat='1667'">
 				<xsl:apply-templates select="document(concat('uobject://',order_id))/udata/object" mode="bill" />
-<<<<<<< HEAD
 			</xsl:if><br/><br/>
 			---<br/>
 <p>Уважаемый покупатель!</p>
@@ -309,9 +283,6 @@ http://kamin.ru</p>
 <p>С уважением,<br/>
 Компания «Домотехника»<br/>
 http://kamin.ru</p>
-=======
-			</xsl:if>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 				</body>
 		</html>
 		</xsl:template>
@@ -340,7 +311,6 @@ http://kamin.ru</p>
 					
 				</a>
 			</td>
-<<<<<<< HEAD
 			<td class="cart_table_name">
 					<h3 class="cart_p_tit">
 						<xsl:value-of
@@ -351,12 +321,6 @@ http://kamin.ru</p>
 				<p class="cart_p_price">
 					<span class="good_priceview_separate">
 						<xsl:value-of select="ceiling(price/actual)" />
-=======
-			<td class="cart_table_price"> 
-				<p class="cart_p_price">
-					<span class="good_priceview_separate">
-						<xsl:value-of select="price/actual" />
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 					</span>
 				</p>
 			</td>

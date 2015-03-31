@@ -42,13 +42,8 @@
         <div class="cat_item_plits">
             <!--cat_item_list-->
 
-<<<<<<< HEAD
             <div class="maingoodinfo" name="{@id}">
                 <a class="cat_goodimage" href="{@link}" data-id="{@id}">
-=======
-            <div class="maingoodinfo">
-                <a class="cat_goodimage" href="{@link}">
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                     <xsl:call-template name="thumbing">
                         <xsl:with-param name="source" select="$item/page/properties/group/property[@name='foto_1']/value" />
                         <xsl:with-param name="width" select="201" />
@@ -61,16 +56,11 @@
                     <!--закладка Акции-->
                     <xsl:apply-templates select="$item/page/properties/group/property[@name='rasprodazha']/title" mode="rasp_sprite"/>
                     
-<<<<<<< HEAD
                     <!--					плашечка скидки на картинке товара в каталоге-->
 					<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id))/udata" mode="pricesalepercent" />
                     
                 </a>
                 <h4><a href="{@link}" data-id="{@id}"><xsl:value-of select="$item/page/properties/group/property[@name='nazvanie']/value"/></a></h4> 
-=======
-                </a>
-                <h4><a href="{@link}"><xsl:value-of select="$item/page/properties/group/property[@name='nazvanie']/value"/></a></h4> 
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                 <span class="manufacturer_block">Производитель: 
                         <a href="{$brand_name/properties/group/property[@name='linkthis']/value}">
                             <xsl:value-of select="$item/page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/>
@@ -101,15 +91,7 @@
 
                 <xsl:otherwise>
                     <div class="pricenbuttons">
-<<<<<<< HEAD
                         <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
-=======
-                        <div class="goodsprice">
-							<span><xsl:value-of select="$item/page/properties/group/property[@name='price']/value" disable-output-escaping="yes"/></span>
-                             <i class="icon-roub"></i>
-                             
-                        </div>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                         <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
                         
                         <!-- <input class="buybutton outnstock" type="button" value="Под заказ" /> -->
@@ -129,7 +111,6 @@
 
      
      
-<<<<<<< HEAD
      <xsl:template match="udata" mode="pricesalepercent">
 
 
@@ -150,8 +131,6 @@
      
      
      
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
      <!--    шаблоны для ации и распродаж-->
    
     <xsl:template match="title" mode="akcii_sprite">
@@ -216,13 +195,9 @@
                
                 
                     <div class="goodsprice" >
-<<<<<<< HEAD
                          <span><xsl:value-of select="format-number($my_var2,'#')" /></span> 
                          
 						<i class="icon-roub"></i>
-=======
-                         <span><xsl:value-of select="format-number($my_var2,'#')" /></span> <i class="icon-roub"></i>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                     </div>
                     
                     

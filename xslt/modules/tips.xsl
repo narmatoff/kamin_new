@@ -200,18 +200,14 @@
                 </div>
             </xsl:otherwise>
         </xsl:choose>
-<<<<<<< HEAD
            
 
              
 
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
         
         
         
         
-<<<<<<< HEAD
 		
        
 		
@@ -221,8 +217,6 @@
 		
        
 
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
         
         
         
@@ -360,7 +354,6 @@
                 <xsl:value-of select="name" />
             </option>      
 -->
-<<<<<<< HEAD
               
               <xsl:variable name="uobject_country" select="extended/properties/property[@name='strana_proizvoditelya']/value/item/@id" />
                            
@@ -389,12 +382,6 @@
 <!--               |<xsl:value-of select="$uobject_country" />| -->
                		<xsl:value-of select="name" />
                </a>
-=======
-               
-                
-            <li id="{@id}">
-               <a  href="{@link}"> <xsl:value-of select="name" /></a>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
             </li>
         </xsl:template>
         

@@ -15,7 +15,6 @@
             <article>
             	<h1 class="dialog_par"><xsl:value-of select="@header"/></h1>
                 <xsl:apply-templates select="$errors" />
-<<<<<<< HEAD
                 
                 <div class="text_description">
                 
@@ -55,9 +54,6 @@
                 
                 	<xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/>
                 </div>
-=======
-                <xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/>
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 
 				<xsl:if test="page/@type-id='281'">
 					<div>
@@ -128,7 +124,6 @@
 
 	</xsl:template>
 
-<<<<<<< HEAD
 
 	<xsl:template match="page" mode="brends45">
 		
@@ -172,8 +167,6 @@
 
 
 
-=======
->>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 	
 	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='122']">
 				
