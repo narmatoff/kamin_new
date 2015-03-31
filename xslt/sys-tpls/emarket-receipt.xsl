@@ -202,7 +202,11 @@
 							</table>
 							<table border="0" class="margin width_122">
 								<tr>
+<<<<<<< HEAD
 									<td>Сумма платежа  <span class="u" id="py-order-price-1"><xsl:value-of select="floor($price)" /></span> руб. <span class="u"> <xsl:value-of select="ceiling((number($price)-floor($price))*100)" /> </span> коп.</td>
+=======
+									<td>Сумма платежа  <span class="u" id="py-order-price-1"><xsl:value-of select="floor($price)" /></span> руб. <span class="u"> <xsl:value-of select="round((number($price)-floor($price))*100)" /> </span> коп.</td>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 									<td class="right">  Сумма платы за услуги  _____ руб. ____ коп.</td>
 								</tr>
 							</table>
@@ -294,7 +298,11 @@
 							</table>
 							<table border="0" class="margin width_122">
 								<tr>
+<<<<<<< HEAD
 									<td>Сумма платежа <span class="u" id="py-order-price-2"><xsl:value-of select="floor($price)" /></span> руб. <span class="u"> <xsl:value-of select="ceiling((number($price)-floor($price))*100)" /> </span> коп.</td>
+=======
+									<td>Сумма платежа <span class="u" id="py-order-price-2"><xsl:value-of select="floor($price)" /></span> руб. <span class="u"> <xsl:value-of select="round((number($price)-floor($price))*100)" /> </span> коп.</td>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 									<td class="right">Сумма платы за услуги  _____ руб. ____ коп.</td>
 								</tr>
 							</table>

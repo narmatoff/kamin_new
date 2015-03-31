@@ -280,7 +280,11 @@
 
 
 
+<<<<<<< HEAD
 		<li style="">
+=======
+		<li style="width:200px; display: inline-table;">
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
             <a class="fancybox" rel="group" href="{$photo}" title="{.}">
                 <xsl:call-template name="thumbing">
 					<xsl:with-param name="source" select="$photo" />
@@ -301,7 +305,11 @@
 
 
 
+<<<<<<< HEAD
 		<li style="">
+=======
+		<li style="width:200px; display: inline-table;">
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
             <a class="fancybox" rel="group" href="{$photo}" title="{.}">
                 <xsl:call-template name="thumbing">
 					<xsl:with-param name="source" select="$photo" />
@@ -476,7 +484,11 @@
 
 
 
+<<<<<<< HEAD
 		<li style="">
+=======
+		<li style="width:200px; display: inline-table;">
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
             <a class="fancybox" rel="group" href="{$photo}" title="{.}">
                 <xsl:call-template name="thumbing">
 					<xsl:with-param name="source" select="$photo" />
@@ -486,7 +498,10 @@
             </a>
             <a style="display: block" href="{@link}" title="{.}"><xsl:value-of select="name"/></a>
         </li>
+<<<<<<< HEAD
         
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 	</xsl:template>
 
     <xsl:template match="item" mode="photoalbum_list_mainpage">

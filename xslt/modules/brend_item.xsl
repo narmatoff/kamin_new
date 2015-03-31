@@ -13,6 +13,7 @@
         <!-- <xsl:value-of select="$type_id" /> -->
 
         <xsl:variable name="total" select="document(concat('usel://item_brend/', $type_id,'/', $parent_obj))/udata/total" />
+<<<<<<< HEAD
         <xsl:variable name="per_page">
             <xsl:choose>
                 <xsl:when test="$pajax"><xsl:value-of select="12 * $pajax" /></xsl:when>
@@ -27,6 +28,16 @@
                 <div class="text_description">
                 	<xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/>
                 </div>
+=======
+
+        <xsl:variable name="per_page" select="12+1-1"/>
+            
+            
+		    <article>
+            	<h1 class="dialog_par"><xsl:value-of select="@header"/></h1>
+                <xsl:apply-templates select="$errors" />
+                <xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
         
 				<xsl:apply-templates select="$errors" />            
             </article>
@@ -54,6 +65,7 @@
                     <img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="clearfix"></div>
             <!-- end_sort_catalog -->
 
@@ -69,12 +81,24 @@
                     <xsl:otherwise><xsl:apply-templates select="document(concat('usel://item_brend/', $type_id,'/', $parent_obj, '/', 12))/udata/page" mode="catalog_item" />
                     </xsl:otherwise>
                 </xsl:choose>
+=======
+            <!-- end_sort_catalog -->
+
+
+            <div id="catalog_list" class="cat_item_list">
+                <!--cat_item_list-->
+                <!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/')/udata/items/item" mode="categorylist" />  -->
+               
+                   
+                        <xsl:apply-templates select="document(concat('usel://item_brend/', $type_id,'/', $parent_obj))/udata/page" mode="catalog_item" />
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                     
             </div>
             <!--конец списка товаров-->
             <xsl:if test="$total&gt;$per_page">
               
                         
+<<<<<<< HEAD
                          <a class="more_goods" id="{page//property[@name='kategory']/value/page/@id}" title="{$per_page}" parent="15" filter="fields_filter[brend]={$parent_obj}" rel="{$total}" alt="1" href="?p=1&amp;fields_filter[brend]={$parent_obj}">
                             <xsl:attribute name="data-per-page">
                                 <xsl:value-of select="12" />
@@ -85,6 +109,9 @@
                                 </xsl:attribute>
                             </xsl:if>
                             показать еще</a>
+=======
+                         <a class="more_goods" id="{page//property[@name='kategory']/value/page/@id}" title="{$per_page}" parent="15" filter="fields_filter[brend]={$parent_obj}" rel="{$total}" alt="1" href="?p=1&amp;fields_filter[brend]={$parent_obj}">показать еще</a>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                     
               
                 <!-- 
@@ -93,6 +120,7 @@
                         <xsl:with-param name="limit" select="document(concat('udata://catalog/getObjectsList/notemplate/', page//property[@name='kategory']/value/page/@id,'///15?fields_filter[brend]=', $parent_obj))/udata/per_page" />
                     </xsl:call-template>  -->
 
+<<<<<<< HEAD
                 <span class="more_goods_inf">Показано
                     <xsl:choose>
                     <xsl:when test="$pajax">
@@ -101,6 +129,9 @@
                     <xsl:otherwise>12</xsl:otherwise>
                 </xsl:choose>
                     товаров из <xsl:value-of select="$total" /></span>
+=======
+                <span class="more_goods_inf">Показано 12 товаров из <xsl:value-of select="$total" /></span>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
             </xsl:if>
             
             <div id="clickerator">

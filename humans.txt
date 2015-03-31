@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* TEAM */
 	
     Chef:Хан Альберт
@@ -41,3 +42,20 @@
 	Language: Russian
 	Doctype:HTML5
 	IDE: Sublime Text, Brackets, Notepad++, FileZilla, Photoshop
+=======
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <name> -- <role> -- <twitter>
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983

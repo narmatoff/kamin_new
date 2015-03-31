@@ -20,7 +20,11 @@
 <html class="no-js"> <!--<![endif]-->
 <head>
  
+<<<<<<< HEAD
  <link type="text/plain" rel="author" href="{$template-resources}humans.txt" />
+=======
+ <link type="text/plain" rel="author" href="humans.txt" />
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
   
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -501,8 +505,12 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
 
         <xsl:apply-templates select="document('udata://menu/draw/14010')/udata" mode="top_menu"/>
         
+<<<<<<< HEAD
         
 <!--        скидка на все 10%-->
+=======
+<!--         <div class="clearfix"></div>-->
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
             <div class="saleall"></div>
             
         <div class="search_block">
@@ -544,6 +552,7 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                 <section>
                    
                     <xsl:choose>
+<<<<<<< HEAD
 
                         <!-- условие для главной -->
                         <xsl:when test="result/page/@is-default">
@@ -562,24 +571,42 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                             <xsl:apply-templates select="document('udata://core/navibar')/udata"  mode="bread"/>
                         </xsl:otherwise>
 
+=======
+                        <xsl:when test="result/page/@is-default">
+                            <xsl:attribute name="class">mainpage_section</xsl:attribute>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:attribute name="class">secondpage_section</xsl:attribute>
+
+
+                            <xsl:apply-templates select="document('udata://core/navibar')/udata"  mode="bread"/>
+                        </xsl:otherwise>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                     </xsl:choose>
                     <!-- элементы каталога -->
                     <xsl:if test="result/page/@is-default">
                     
                     <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/(katalog)')/udata/items/item" mode="categorylist_main2" />
                    
+<<<<<<< HEAD
                    
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                     
                     </xsl:if>
                 
                             <xsl:apply-templates select="result" disable-output-escaping="yes" />
                         
+<<<<<<< HEAD
 <!--
             <xsl:if test="result/page/@is-default">
 						<div class="sdhsfdh7_1">Показать/Скрыть подробности...</div>
 			</xsl:if>
 -->
                    
+=======
+            
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                     </section>
                     <!-- боковое меню -->
                     <aside>
@@ -614,12 +641,18 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                 
                             </xsl:when>
 
+<<<<<<< HEAD
 
            
 
                             <xsl:otherwise>
                                 <xsl:attribute name="class">secondpage_asd</xsl:attribute>
                                     <xsl:if test="(result/@module='catalog' and result/page/@parentId!=0) or (result/@module='content' and result/page/@type-id='311')">
+=======
+                            <xsl:otherwise>
+                                <xsl:attribute name="class">secondpage_asd</xsl:attribute>
+                                    <xsl:if test="result/@module='catalog'">
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                                         
                                             
                                        
@@ -641,6 +674,7 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                             <xsl:with-param name="object">
                                                                 <xsl:value-of select="result/parents/page[position()=last()]/@link"  />
                                                             </xsl:with-param>
+<<<<<<< HEAD
                                                             <xsl:with-param name="categoryid">
                                                                 <xsl:value-of select="result/parents/page[last()]/@id" />
                                                             </xsl:with-param>
@@ -658,6 +692,12 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                         </xsl:with-param>
                                                     </xsl:apply-templates>
                                                  </xsl:when>
+=======
+                                                        </xsl:apply-templates>
+                                                        
+                                                     
+                                                 </xsl:when>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                                                  <xsl:otherwise> 
                                                         
                                                          <xsl:variable name="item_id" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/lines/item/@id" />
@@ -668,11 +708,19 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                         <xsl:choose>
                                                            <xsl:when test="result/page/@parentId=0">
                                                             
+<<<<<<< HEAD
                                                                 <!-- <xsl:apply-templates select="document('udata://catalog/search////86')" mode="find_model">
                                                                     <xsl:with-param name="type_id">
                                                                         <xsl:value-of select="86" />
                                                                     </xsl:with-param>
                                                                 </xsl:apply-templates> -->
+=======
+                                                                <xsl:apply-templates select="document('udata://catalog/search////86')" mode="find_model">
+                                                                    <xsl:with-param name="type_id">
+                                                                        <xsl:value-of select="86" />
+                                                                    </xsl:with-param>
+                                                                </xsl:apply-templates>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 
                                                             </xsl:when> 
                                                             <xsl:when test="$type_id">
@@ -681,10 +729,13 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                                     <xsl:with-param name="type_id">
                                                                         <xsl:value-of select="$type_id" />
                                                                     </xsl:with-param>
+<<<<<<< HEAD
                                                                     <xsl:with-param name="categoryid">
                                                                         <xsl:value-of select="result/@pageId" />
                                                                     </xsl:with-param>
                                                                     
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                                                                 </xsl:apply-templates>
 
                                                             </xsl:when> 
@@ -694,9 +745,12 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                                     <xsl:with-param name="type_id">
                                                                         <xsl:value-of select="$type_id_other" />
                                                                     </xsl:with-param>
+<<<<<<< HEAD
                                                                     <xsl:with-param name="categoryid">
                                                                         <xsl:value-of select="result/@pageId" />
                                                                     </xsl:with-param>
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                                                             </xsl:apply-templates>
                                                         </xsl:otherwise>
                                                         </xsl:choose>
@@ -719,16 +773,24 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                 <xsl:value-of select="result/@header" />
                                             </div>
                                             <xsl:apply-templates select="document('usel://wherebuy/302')" mode="left_menu_where_buy" />
+<<<<<<< HEAD
                                             <br/>
                                             <xsl:apply-templates select="document('usel://dilers//1//id')" mode="official_dlr"/>
                                             
                                         </xsl:when>
                                         <xsl:when test="result[@module = 'catalog' and @method = 'category']/page[@parentId='0'][@type-guid='catalog-category']">
 <!--
+=======
+
+                                            
+                                        </xsl:when>
+                                        <xsl:when test="result/page/@parentId=0">
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                                             <div class="catmenu_head">
                                                 <xsl:value-of select="result/@header" />
                                             </div>
                                                 <xsl:apply-templates select="document(concat('udata://content/menu/notemplate/0/', result/@pageId))/udata" mode="left_menu"/>
+<<<<<<< HEAD
 -->
                                         </xsl:when>
                                         
@@ -743,6 +805,9 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                         
                                         
                                         
+=======
+                                        </xsl:when>
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
                                         <xsl:otherwise>
                                             <div class="catmenu_head">
                                                 <xsl:value-of select="result/parents/page[position()=1]/name" />

@@ -24,7 +24,10 @@
 	<xsl:param name="param0" />
 	<xsl:param name="flat" />
 	<xsl:param name="p" />
+<<<<<<< HEAD
 	<xsl:param name="pajax" />
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 	<xsl:variable name="user-id" select="/result/user/@id" />
 	<xsl:variable name="region-id" select="/result/user/geo/country" />
     <xsl:variable name="regionsystem" select="document(concat('upage://', $region-id))/udata/page"/>

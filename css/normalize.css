@@ -442,7 +442,12 @@ line-height: 1.75em;
 article ul li{
 margin: 0 0 5px 15px;  
 padding: 0;  
+<<<<<<< HEAD
 list-style-position: outside;    
+=======
+list-style-position: outside;  
+font-size: 0.95em;  
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 line-height: 1.75em;
 }
 
@@ -516,6 +521,7 @@ input {
 }
 /*** Address inconsistent `text-transform` inheritance for `button` and `select`.* All other form control elements do not inherit `text-transform` values.* Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.* Correct `select` style inheritance in Firefox 4+ and Opera.*/
 
+<<<<<<< HEAD
 
 
 /*Стиль placeholder-a*/
@@ -547,6 +553,8 @@ input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s eas
 
 
 
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 button,
 select {
     text-transform:none;

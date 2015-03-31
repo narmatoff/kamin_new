@@ -235,9 +235,12 @@
 			<td class="value">
 				<xsl:value-of select="//property[@name='fname']/value" />
 			</td>
+<<<<<<< HEAD
 			<td class="value">
 				<xsl:value-of select="//property[@name='phone']/value" />
 			</td>
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 		</tr>
 	</xsl:template>
 	
@@ -254,7 +257,10 @@
 				<table id="items" cellspacing="0">
 					<tr>
 						<td>Наименование</td>
+<<<<<<< HEAD
 						<td>Артикул 1С</td>
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 						<td>Цена</td>
 						<td>Скидка</td>
 						<td>Цена с учетом скидки</td>
@@ -281,7 +287,10 @@
 						<td>&#160;</td>
 						<td>&#160;</td>
 						<td>&#160;</td>
+<<<<<<< HEAD
 						<td>&#160;</td>
+=======
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 						<td>
 							<xsl:value-of select="$prefix" />
 							<xsl:value-of select="//property[@name='total_price']/value" />
@@ -295,6 +304,7 @@
 	</xsl:template>
 	
 	<xsl:template match="item" mode="order-item">
+<<<<<<< HEAD
 		<xsl:variable name="item_page"
 			select="document(concat('upage://',page/@id))/udata" />
 		<tr>
@@ -303,6 +313,11 @@
 			</td>
 			<td>
 				<xsl:value-of select="$item_page/page/properties/group/property[@name='1c_product_id']/value" />
+=======
+		<tr>
+			<td>
+				<xsl:value-of select="@name" />
+>>>>>>> 37ce8d8d425dac55521f865dbe9cc165c7b3c983
 			</td>			
 			<td>
 				<xsl:choose>
