@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="flexslider-icon" horiz-adv-x="1000" >
+<font-face font-family="flexslider-icon" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="left-open-big" unicode="&#xf001;" d="m452-20q26-26 0-48-26-26-48 0l-392 394q-24 24 0 50l392 394q22 26 48 0 26-22 0-48l-358-372z" horiz-adv-x="465" />
+<glyph glyph-name="right-open-big" unicode="&#xf002;" d="m13-20l358 370-358 372q-26 26 0 48 26 26 48 0l392-394q24-26 0-50l-392-394q-22-26-48 0-26 22 0 48z" horiz-adv-x="465" />
+<glyph glyph-name="rouble" unicode="&#xf003;" d="m0 136v71q0 8 5 13t13 5h125v66h-125q-8 0-13 5t-5 13v83q0 7 5 12t13 6h125v351q0 8 5 13t13 5h301q111 0 182-69t70-175-70-176-182-68h-190v-66h282q7 0 12-5t5-13v-71q0-8-5-13t-12-5h-282v-107q0-8-6-13t-12-5h-93q-8 0-13 5t-5 13v107h-125q-8 0-13 5t-5 13z m272 274h178q60 0 96 34t36 91-36 90-96 35h-178v-250z" horiz-adv-x="714.3" />
+</font>
+</defs>
+</svg>
