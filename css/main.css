@@ -5389,17 +5389,17 @@ div.catalog_page{
 
 
 div.SearchHelperText {
-width: auto;
+width: 170px;
 
 height: auto;
 
 position: absolute;
 top: -60px;
 left: 237px;
-background-image: url(../img/dark_back.png);
+background: url(../img/dark_back.png);
 margin: 0;
 padding: 20px;
-border: 2px solid #F7961E;
+border: 1px solid #F7961E;
   -webkit-border-radius: 8px;
   -webkit-border-bottom-left-radius: 0;
   -moz-border-radius: 8px;
@@ -5410,11 +5410,20 @@ border-bottom-left-radius: 0;
 text-decoration: none !important;
 z-index: 99999;
 text-align: center;
+-webkit-box-shadow: 3px 3px 15px 0px rgba(50, 50, 50, 0.72);  -moz-box-shadow:    3px 3px 15px 0px rgba(50, 50, 50, 0.72);  box-shadow:         3px 3px 15px 0px rgba(50, 50, 50, 0.72);
+font-size: 12px;
 }
 div.SearchHelperText span{
     display: block;
 
     width: 100%;
+    font-size: 1em;
+}
+div.SearchHelperText button{
+    display: block;
+
+    margin: 15px auto 0 auto;
+    font-size: 1em;
 }
 
 .country_img{
@@ -5547,4 +5556,3 @@ div.SearchHelperText span{
         page-break-after: avoid;
         
     }
-    

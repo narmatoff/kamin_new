@@ -320,8 +320,8 @@
 		</xsl:variable>
 		<!-- sort_catalog    -->
 		<div class="sortnview">
-			<!-- <span>Сортировать по:</span> -->
-			<!-- <div class="back_filter_sort"><div class="select_sortnview"><p></p><select name=""><option class="first" value="">Выберите вариант</option><option value="">Вариант номер один</option><option value="">Вариант номер два</option><option value="">Вариант номер три</option></select></div></div> -->
+			<span>Сортировать по:</span>
+			<div class="back_filter_sort"><div class="select_sortnview"><p></p><select name=""><option class="first" value="">Выберите вариант</option><option value="">Вариант номер один</option><option value="">Вариант номер два</option><option value="">Вариант номер три</option></select></div></div>
 			<div class="floatinrgh_sort"><span>Вид каталога:</span><img class="plitka_view" src="{$template-resources}img/sort_plit.png" height="18" width="31" alt="плитка" /><img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />
 			</div>
 		</div>
@@ -885,12 +885,12 @@
 						 <xsl:when test="@name = 'brend'">
 						 	<!-- <xsl:choose>
 						 		<xsl:when test="$filter">
-									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id, $filter))/udata/items/item" mode="search_select1" />
+									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id, '3321'))/udata/items/item" mode="search_select1" />
 						 		</xsl:when>
 						 		<xsl:otherwise>
-									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id))/udata/items/item" mode="search_select1" />
 						 		</xsl:otherwise>
 						 	</xsl:choose> -->
+									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id))/udata/items/item" mode="search_select1" />
 						 </xsl:when>
 						 <xsl:otherwise>
 							<xsl:apply-templates select="values/item" mode="search_select" />
