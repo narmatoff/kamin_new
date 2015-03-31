@@ -12,7 +12,6 @@
 	<xsl:template match="status_notification">
 		<xsl:variable name="pay_stat" select="document(concat('uobject://',order_id))//property[@name='payment_id']/value/item/@id" />
 	<html>
-
 			<head>
 			<style type="text/css">
 			table td {
