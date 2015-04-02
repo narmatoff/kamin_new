@@ -60,9 +60,6 @@
         <textarea name="{@input_name}" placeholder="{@title}" required="required" type="text" class="pers_kont_textarea">
             <xsl:value-of select="." disable-output-escaping="no"/>
         </textarea>
-        
-        
-
 
     </xsl:template>
 

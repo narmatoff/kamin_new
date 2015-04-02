@@ -214,27 +214,27 @@
 
 .fancybox-title-float-wrap {
 	position: absolute;
-	bottom: 0;
-	right: 50%;
-	margin-bottom: -35px;
+	bottom: 3%;
+	/* right: 50%; */
+	margin-bottom: 0;
 	z-index: 8050;
 	text-align: center;
+	width: 100%;
 }
 
 .fancybox-title-float-wrap .child {
 	display: inline-block;
-	margin-right: -100%;
-	padding: 2px 20px;
+	/* margin-right: -100%; */
+	padding: 12px;
 	background: transparent; /* Fallback for web browsers that doesn't support RGBa */
 	background: rgba(255, 151, 0, 1);
-	-webkit-border-radius: 15px;
-	   -moz-border-radius: 15px;
-	        border-radius: 15px;
+
+
 	text-shadow: 0 1px 2px #838383;
 	color: #FFF;
 	font-weight: bold;
 	line-height: 24px;
-	white-space: nowrap;
+	width: 90%;
 }
 
 .fancybox-title-outside-wrap {

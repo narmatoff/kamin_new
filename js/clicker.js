@@ -186,6 +186,27 @@ $('#valueee').keyup(function() {
 //     history.pushState(null, null, urlancor);
 // }
 
+// сортировка
+
+$(".back_filter_sort").change(function() {
+    hash = window.location.search.toString();
+    if (hash.match(/(\?*)&order_filter\[price\]=0/)) {
+        red = hash.replace(/(\?*)&order_filter\[price\]=0/, '');
+        // if (window.location(red).search.toString()[0] !== '?') {
+        //     red = '?' + red;
+        // };
+    }
+    else if (hash) {
+        red = hash + '&order_filter[price]=0';
+    }
+    else {
+        red = hash + '?&order_filter[price]=0';
+    }
+        console.log(red);
+
+    window.location.search = red;
+});
+
 $("a.more_goods").click(function() {
 	
      $("#clickerator").css('visibility','visible');

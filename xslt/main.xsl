@@ -25,6 +25,7 @@
 	<xsl:param name="flat" />
 	<xsl:param name="p" />
 	<xsl:param name="pajax" />
+	<xsl:param name="order_filter.price" />
 	<xsl:variable name="user-id" select="/result/user/@id" />
 	<xsl:variable name="region-id" select="/result/user/geo/country" />
     <xsl:variable name="regionsystem" select="document(concat('upage://', $region-id))/udata/page"/>

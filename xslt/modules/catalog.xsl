@@ -320,8 +320,29 @@
 		</xsl:variable>
 		<!-- sort_catalog    -->
 		<div class="sortnview">
+			<!-- Сортировка -->
 			<span>Сортировать по:</span>
-			<div class="back_filter_sort"><div class="select_sortnview"><p></p><select name=""><option class="first" value="">Выберите вариант</option><option value="">Вариант номер один</option><option value="">Вариант номер два</option><option value="">Вариант номер три</option></select></div></div>
+			<div class="back_filter_sort">
+				<div class="select_sortnview">
+					<p></p>
+					<select name="">
+						<!-- <option class="first" value="">Выберите вариант</option> -->
+						<option value="">
+							<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
+								<xsl:attribute name="selected">selected</xsl:attribute>
+							</xsl:if>
+							Цене, по возростанию
+						</option>
+						<option value="">
+							<xsl:if test="$order_filter.price=0">
+								<xsl:attribute name="selected">selected</xsl:attribute>
+							</xsl:if>
+							Цене, по убыванию
+						</option>
+					</select>
+				</div>
+			</div>
+			<!-- Сортировка -->
 			<div class="floatinrgh_sort"><span>Вид каталога:</span><img class="plitka_view" src="{$template-resources}img/sort_plit.png" height="18" width="31" alt="плитка" /><img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />
 			</div>
 		</div>
@@ -584,6 +605,8 @@
 			</div>
 			<!--                Конец слайдера товара-->
 		</article>
+		<!-- Наши работы, переменая -->
+			<xsl:variable name="photo_in_object" select="document(concat('usel://item_in_object/', @pageId))" />
 		<article>
 			<div class="good_bookmopt">
 				<ul class="good_bookmarks">
@@ -597,7 +620,10 @@
 					</xsl:if>
 					<li><a name="tab3" href="javascript://">Загрузки</a>
 					</li>
-					<li><a name="tab4" href="javascript://">Отзывы</a>
+					<xsl:if test="$photo_in_object/udata/total != 0">
+						<li><a name="tab4" href="javascript://">Наши работы</a></li>
+					</xsl:if>
+					<li><a name="tab5" href="javascript://">Отзывы</a>
 					</li>
 				</ul>
 				<div id="tab1">
@@ -648,15 +674,22 @@
 						<xsl:apply-templates select="document(concat('uobject://', $brand))/udata/object/properties/group/property[@name='katalogi']/value/page" mode="files" />
 					</ul>
 				</div>
-				<div id="tab4" style="display:none;">
+				<div id="tab5" style="display:none;">
 					<xsl:apply-templates select="document('udata://comments/insert/')/udata" />
 					<xsl:apply-templates select="user" mode="addcomment" />
 				</div>
-				<div id="tab5" style="display:none;">
+			<xsl:if test="$photo_in_object/udata/total != 0">
+				<div id="tab4" style="display:none;">
+					<!-- <ul class="slides"> -->
+						<xsl:apply-templates select="$photo_in_object/udata/page" mode="item_in_object"/>
+					<!-- </ul> -->
+				</div>
+			</xsl:if>
+				<!-- <div id="tab4" style="display:none;">
 					<ul class="content_gallery">
 						<xsl:apply-templates select="page/properties/group/property[@name='video']/value/page" mode="slider2_video" />
 					</ul>
-				</div>
+				</div> -->
 			</div>
 			<div class="clearfix"></div>
 			<xsl:if test="page/properties/group[@name='svyazannye_tovary'] or page/properties/group/property[@name='tovary']/value">
@@ -671,6 +704,18 @@
 				</div>
 			</xsl:if>
 		</article>
+	</xsl:template>
+	<xsl:template match="udata/page" mode="item_in_object">
+		<!-- <li style=""> -->
+            <a class="fancybox" rel="group" href="{.//property[@name = 'photo']/value}" title="{name}" style="margin-right: 20px;">
+
+			<xsl:call-template name="thumbing">
+				<xsl:with-param name="source" select=".//property[@name = 'photo']/value" />
+				<xsl:with-param name="width" select="200" />
+				<xsl:with-param name="height">150</xsl:with-param>
+			</xsl:call-template>
+			</a>
+		<!-- </li> -->
 	</xsl:template>
 	<!--    шаблоны для ации и распродаж-->
 	<xsl:template match="title" mode="akcii_sprite"><span class="akcii_sprite"> <xsl:value-of select="." disable-output-escaping="yes" /></span>

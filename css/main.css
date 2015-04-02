@@ -2858,7 +2858,7 @@ div#catalog_list div.cat_item_plits div.pricenbuttons input.buybutton {
     background-color: #ccc;
     /* cursor: default; */
     margin: 0 auto;
-    padding: 4px 24px 4px 24px;
+    padding: 9px 24px 9px 24px;
 }
 div#catalog_list.cat_item_list div.cat_item_plits {
     clear: both;
@@ -3166,7 +3166,6 @@ div.back_filterslid {
     margin: 0 25.4px 0 17px;
     text-align: center;
     font-size: 0.9em;
-    position: relative;
 }
 div.back_filterslid label {
     text-indent: inherit;
@@ -4225,7 +4224,6 @@ div.back_filter {
     -webkit-border-bottom-right-radius: 7px;
     border-bottom-right-radius: 7px;
     display: inline-block;
-    position: relative;
 }
 div.back_filter_sort {
     background-color: #fff;
@@ -5389,41 +5387,28 @@ div.catalog_page{
 
 
 div.SearchHelperText {
-width: 170px;
-
-height: auto;
-
-position: absolute;
-top: -60px;
-left: 237px;
-background: url(../img/dark_back.png);
-margin: 0;
-padding: 20px;
-border: 1px solid #F7961E;
+width: auto;
+  height: auto;
+  position: absolute;
+  float: left;
+  /*top: -30px;*/
+  left: 730px;
+    background-image: url(../img/dark_back.png);
+  /* display: none; */
+  margin: 0;
+  padding: 20px;
+  border: 2px solid #F7961E;
   -webkit-border-radius: 8px;
   -webkit-border-bottom-left-radius: 0;
   -moz-border-radius: 8px;
   -moz-border-radius-bottomleft: 0;
-border-radius: 8px;
-border-bottom-left-radius: 0;
-
-text-decoration: none !important;
-z-index: 99999;
-text-align: center;
--webkit-box-shadow: 3px 3px 15px 0px rgba(50, 50, 50, 0.72);  -moz-box-shadow:    3px 3px 15px 0px rgba(50, 50, 50, 0.72);  box-shadow:         3px 3px 15px 0px rgba(50, 50, 50, 0.72);
-font-size: 12px;
-}
-div.SearchHelperText span{
-    display: block;
-
-    width: 100%;
-    font-size: 1em;
-}
-div.SearchHelperText button{
-    display: block;
-
-    margin: 15px auto 0 auto;
-    font-size: 1em;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  font-size: 1em;
+  text-decoration: none !important;
+  z-index: 99999;
+  text-align: center;
+  opacity: 0.94 !important;
 }
 
 .country_img{
@@ -5556,3 +5541,4 @@ div.SearchHelperText button{
         page-break-after: avoid;
         
     }
+
