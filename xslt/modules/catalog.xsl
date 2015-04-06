@@ -36,6 +36,24 @@
 	<xsl:when test="page/@parentId=0">
 		<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items" mode="categorylist_main" />
 	</xsl:when>
+	<xsl:when test="(contains(@request-uri, 'fields_filter')) and (document('udata://catalog/getObjectsList/')/udata/total = 0)">
+		<xsl:choose>
+				<xsl:when test="$pajax">
+					<xsl:apply-templates select="document(concat('udata://catalog/getObjectsList///', $pajax * 15,'//5/280/1'))/udata" mode="catalogus_current">
+						<xsl:with-param name="filter">
+							<xsl:value-of select="substring-after(@request-uri,'?')" />
+						</xsl:with-param>
+					</xsl:apply-templates>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates select="document('udata://catalog/getObjectsList/////5/280/1')/udata" mode="catalogus_current">
+						<xsl:with-param name="filter">
+						<xsl:value-of select="substring-after(@request-uri,'?')" /></xsl:with-param>
+					</xsl:apply-templates>
+
+				</xsl:otherwise>
+			</xsl:choose>
+	</xsl:when>
 	<xsl:otherwise>
 		<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorylist_main2" />		
 	</xsl:otherwise>
@@ -307,27 +325,43 @@
 		<xsl:variable name="tonext">
 			<xsl:choose>
 				<xsl:when test="$pajax"><xsl:value-of select="$pajax" /></xsl:when>
-				<xsl:otherwise><xsl:value-of select="document('udata://catalog/getObjectsList/')/udata/numpages/tonext_link/@page-num" /></xsl:otherwise>
+				<xsl:otherwise><xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/numpages/tonext_link/@page-num" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="total" select="document('udata://catalog/getObjectsList/')/udata/total" />
+		<xsl:variable name="total" select="document('udata://catalog/getObjectsList/////5/280/1')/udata/total" />
 		<!-- <xsl:variable name="per_page" select="document('udata://catalog/getObjectsList/')/udata/per_page" /> -->
 		<xsl:variable name="per_page">
 			<xsl:choose>
-				<xsl:when test="$pajax"><xsl:value-of select="(document('udata://catalog/getObjectsList/')/udata/per_page) * $pajax" /></xsl:when>
-				<xsl:otherwise><xsl:value-of select="document('udata://catalog/getObjectsList/')/udata/per_page" /></xsl:otherwise>
+				<xsl:when test="$pajax"><xsl:value-of select="(document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page) * $pajax" /></xsl:when>
+				<xsl:otherwise><xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<!-- sort_catalog    -->
 		<div class="sortnview">
 			<!-- Сортировка -->
 			<span>Сортировать по:</span>
-			<div class="back_filter_sort">
+			<span class="back_filter_sort" style="margin-left: -5px;text-decoration: underline;cursor: pointer;">цене</span>
+			<img>
+				<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
+					<xsl:attribute name="src"><xsl:value-of select="concat($template-resources, '/img/up.png')"/></xsl:attribute>
+					<xsl:attribute name="class">back_filter_sort</xsl:attribute>
+					<xsl:attribute name="alt">сначала дешевые</xsl:attribute>
+					<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
+				</xsl:if>
+				<xsl:if test="$order_filter.price=0">
+					<xsl:attribute name="src"><xsl:value-of select="concat($template-resources, '/img/down.png')"/></xsl:attribute>
+					<xsl:attribute name="class">back_filter_sort</xsl:attribute>
+					<xsl:attribute name="alt">сначала дорогие</xsl:attribute>
+					<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
+				</xsl:if>
+
+			</img>
+			<!-- <div class="back_filter_sort">
 				<div class="select_sortnview">
 					<p></p>
-					<select name="">
+					<select name="">-->
 						<!-- <option class="first" value="">Выберите вариант</option> -->
-						<option value="">
+					<!-- 	<option value="">
 							<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
 								<xsl:attribute name="selected">selected</xsl:attribute>
 							</xsl:if>
@@ -341,7 +375,7 @@
 						</option>
 					</select>
 				</div>
-			</div>
+			</div>  -->
 			<!-- Сортировка -->
 			<div class="floatinrgh_sort"><span>Вид каталога:</span><img class="plitka_view" src="{$template-resources}img/sort_plit.png" height="18" width="31" alt="плитка" /><img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />
 			</div>
@@ -356,8 +390,8 @@
 		</div>
 		<!--конец списка товаров-->
 		<xsl:if test="$total&gt;$per_page">
-			<a class="more_goods" id="{$page-id}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="0" filter="{$filter}" href="?p={$tonext}">
-				<xsl:attribute name="data-per-page"><xsl:value-of select="document('udata://catalog/getObjectsList/')/udata/per_page" /></xsl:attribute>
+			<a class="more_goods" id="{$page-id}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="5" filter="{$filter}" href="?p={$tonext}">
+				<xsl:attribute name="data-per-page"><xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page" /></xsl:attribute>
 				<xsl:if test="$filter">
 					<xsl:attribute name="href">?p=
 						<xsl:value-of select="$tonext" />}&amp;

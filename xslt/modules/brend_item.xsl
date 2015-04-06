@@ -9,8 +9,12 @@
 	<xsl:template match="result[@module = 'content' and @method = 'content'][page/@type-id='311']">
 		<xsl:variable name="parent_obj" select="parents/page[position()=last()]/@object-id" />
 
-        <xsl:variable name="type_id" select="document(concat('upage://',page//property[@name='kategory']/value/page/@id))/udata/page//property[@name='tip_dannyh']/value" />
-        <!-- <xsl:value-of select="$type_id" /> -->
+<!--         <xsl:variable name="type_id" select="document(concat('upage://',page//property[@name='kategory']/value/page/@id))/udata/page//property[@name='tip_dannyh']/value" /> -->
+        <xsl:variable name="type_id" select=".//property[@name = 'kategory']/value/page/@id" />
+        <xsl:value-of select="$type_id" />/
+        <xsl:value-of select="$parent_obj" />
+
+
 
         <xsl:variable name="total" select="document(concat('usel://item_brend/', $type_id,'/', $parent_obj))/udata/total" />
         <xsl:variable name="per_page">
@@ -56,26 +60,64 @@
             </div>
             <div class="clearfix"></div>
             <!-- end_sort_catalog -->
-
-
+            <xsl:variable name="filter">
+                <xsl:choose>
+                    <xsl:when test="contains(@request-uri, 'fields_filter')">
+                        <xsl:value-of select="substring-after(@request-uri,'?')" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="not_filer" />
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
             <div id="catalog_list" class="">
                 <!--cat_item_list-->
                 <!-- <xsl:apply-templates select="document('udata://catalog/getCategoryList/notemplate/')/udata/items/item" mode="categorylist" />  -->
-               
+               <!-- упрощаем вызов шаблона, формируем строку в запрос -->
+               <xsl:variable name="template_param_ajax">
+                   <xsl:choose>
+                       <xsl:when test="$pajax">
+                           <xsl:value-of select="$pajax" />
+                       </xsl:when>
+                       <xsl:otherwise>
+                           <xsl:value-of select="1" />
+                       </xsl:otherwise>
+                   </xsl:choose>
+               </xsl:variable>
+               <xsl:variable name="template_param_sort">
                 <xsl:choose>
-                    <xsl:when test="$pajax">
-                        <xsl:apply-templates select="document(concat('usel://item_brend/', $type_id,'/', $parent_obj, '/', $pajax*12))/udata/page" mode="catalog_item" />
+                    <xsl:when test="$order_filter.price = 0">descending</xsl:when>
+                    <xsl:otherwise>ascending</xsl:otherwise>
+                </xsl:choose>
+               </xsl:variable>
+                <xsl:choose>
+                    <xsl:when test="($filter != not_filer)">
+                        <xsl:apply-templates select="document(concat('udata://catalog/getObjectsList//', $type_id ,'///10/280/1'))/udata" mode="catalog_item">
+                            <xsl:with-param name="filter" select="$filter" />
+                        </xsl:apply-templates>
                     </xsl:when>
-                    <xsl:otherwise><xsl:apply-templates select="document(concat('usel://item_brend/', $type_id,'/', $parent_obj, '/', 12))/udata/page" mode="catalog_item" />
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="document(concat('usel://item_brend/', $type_id,'/', $parent_obj, '/', $template_param_ajax*12, '/', $template_param_sort))/udata/page" mode="catalog_item" />
                     </xsl:otherwise>
                 </xsl:choose>
                     
             </div>
             <!--конец списка товаров-->
+
             <xsl:if test="$total&gt;$per_page">
-              
+                <!-- Фильтр для сортировки -->
+                <xsl:variable name="sort_param">
+                    <xsl:choose>
+                        <xsl:when test="$order_filter.price = 0">
+                            <xsl:value-of select="0" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="1" />
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
                         
-                         <a class="more_goods" id="{page//property[@name='kategory']/value/page/@id}" title="{$per_page}" parent="15" filter="fields_filter[brend]={$parent_obj}" rel="{$total}" alt="1" href="?p=1&amp;fields_filter[brend]={$parent_obj}">
+                         <a class="more_goods" id="{page//property[@name='kategory']/value/page/@id}" title="{$per_page}" parent="15" filter="fields_filter[brend]={$parent_obj}&amp;order_filter[price]={$sort_param}" rel="{$total}" alt="1" href="?p=1&amp;fields_filter[brend]={$parent_obj}">
                             <xsl:attribute name="data-per-page">
                                 <xsl:value-of select="12" />
                             </xsl:attribute>

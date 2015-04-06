@@ -188,7 +188,7 @@ $('#valueee').keyup(function() {
 
 // сортировка
 
-$(".back_filter_sort").change(function() {
+$(".back_filter_sort").click(function() {
     hash = window.location.search.toString();
     if (hash.match(/(\?*)&order_filter\[price\]=0/)) {
         red = hash.replace(/(\?*)&order_filter\[price\]=0/, '');
