@@ -887,6 +887,9 @@
 			</xsl:attribute>
 			<xsl:apply-templates select="group/field" mode="search">
 				<xsl:with-param name="typeid" select="$type_id" /></xsl:apply-templates>
+			<xsl:if test="$order_filter.price=0">
+				<input type="hidden" name="order_filter[price]" value="0" />
+			</xsl:if>
 			<div class="submit_filtbutt">
 				<input type="submit" value="Подобрать" />
 			</div>
