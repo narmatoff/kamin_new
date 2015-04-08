@@ -242,14 +242,25 @@
     <xsl:template match="result[@module = 'news' and @method = 'item']">
         <article class="news_item">
             <xsl:apply-templates select="$errors" />
-            <xsl:variable name="date" select="document(concat('udata://system/convertDate/', page//property[@name = 'publish_time']/value/@unix-timestamp, '/(d.m.Y)'))/udata" />
+
             <h1><xsl:value-of select="page/name" disable-output-escaping="yes" /></h1>
               
-              
-              
-              
-               
-            <span class="opened_news_date">Дата публикации: <xsl:value-of select="$date" /></span>
+				<xsl:choose>
+					<xsl:when test="page[@parentId='4852']">
+						<xsl:variable name="start_date" select="document(concat('udata://system/convertDate/', page//property[@name = 'begin_time']/value/@unix-timestamp, '/(d.m.Y)'))/udata" />
+						<xsl:variable name="end_date" select="document(concat('udata://system/convertDate/', page//property[@name = 'end_time']/value/@unix-timestamp, '/(d.m.Y)'))/udata" />
+						<div class="akcii_pg">
+							<span class="opened_news_date"><b>Начало акции: </b> <xsl:value-of select="$start_date" /></span>
+							<span class="opened_news_date"><b>Конец акции: </b> <xsl:value-of select="$end_date" /></span>
+							<div class="clearfix"></div>
+						</div>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:variable name="date" select="document(concat('udata://system/convertDate/', page//property[@name = 'publish_time']/value/@unix-timestamp, '/(d.m.Y)'))/udata" /><span class="opened_news_date">Дата публикации: <xsl:value-of select="$date" /></span> </xsl:otherwise>
+				</xsl:choose>
+
+
+
               <span class="newsimage">
             
                <xsl:call-template name="thumbing">

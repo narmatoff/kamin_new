@@ -339,8 +339,8 @@
 		<!-- sort_catalog    -->
 		<div class="sortnview">
 			<!-- Сортировка -->
-			<span>Сортировать по:</span>
-			<span class="back_filter_sort" style="margin-left: -5px;text-decoration: underline;cursor: pointer;">цене</span>
+			<span>Сортировать по цене:</span>
+<!--			<span class="back_filter_sort" style="margin-left: -5px;text-decoration: underline;cursor: pointer;">цене</span>-->
 			<img>
 				<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
 					<xsl:attribute name="src"><xsl:value-of select="concat($template-resources, '/img/up.png')"/></xsl:attribute>
