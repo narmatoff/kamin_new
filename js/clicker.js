@@ -131,36 +131,40 @@ $('#opaopaopapa').bind('submit', function(){
 
 });
 
+$(".outnstock").fancybox({
+//	type: "iframe",
+//	href: "#show1",
+//	content: document.getElementById("#show1"),
+	'afterLoad': function () {
+		id = $(this.element).attr('id');
+		$.ajax({
+			url: '/udata://webforms/add/313/?transform=/modules/forms_popap.xsl',
+			dataType: 'html',
+			success: function (data) {
 
- $("a.outnstock").fancybox({
+				text_before = '<h2>Заказать товар</h2>';
 
-            'afterLoad': function(){
-            id = $(this.element).attr('id');
-            $.ajax({
-                url: '/udata://webforms/add/313/?transform=/modules/forms_popap.xsl',
-                dataType: 'html',
-                success: function (data) {
+				text_after = '<input name="data[new][tovar]" type="hidden" value="' + id + '">';
+				// alert (test);
+				$("div#forminputter").html(text_before + data + text_after);
 
-                    text_before =  '<h2>Заказать товар</h2>';
+			}
+		});
+	}
 
-                    text_after = '<input name="data[new][tovar]" type="hidden" value="' + id + '">';
-                // alert (test);
-                    $("div#forminputter").html(text_before + data + text_after);
-
-                }
-            });
-            }
-
-            });
-
-$('#valueee').keyup(function() {
-    nowval = $(this).val();
-    $('#max_obem_parilki_from').attr('value', nowval);
-    $('#min_obem_parilki_to').attr('value', nowval);
-    // alert (nowval);
-   
 });
 
+
+
+
+
+$('#valueee').keyup(function () {
+	nowval = $(this).val();
+	$('#max_obem_parilki_from').attr('value', nowval);
+	$('#min_obem_parilki_to').attr('value', nowval);
+	// alert (nowval);
+
+});
 // Загрузка стрницы с доп. товарами.
 // $( document ).ready(function() {
 //     hash = window.location.hash.toString();

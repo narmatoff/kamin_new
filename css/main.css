@@ -1444,17 +1444,7 @@ div.goodpage_info div.buy_price span.salepercent
             border-radius: 90px;
     background-color: #ed1c24;
 }
-div.goodpage_info div.customer_artic
-{
-    min-height: 117px;
-    margin: 0 0 3px 0;
-    padding: 20px;
 
-    text-align: left;
-
-    background-image: url(../img/light_back.png);
-    background-repeat: repeat;
-}
 div.goodpage_info div.customer_artic span.manufacturer_block
 {
     font-size: 14px;
@@ -1471,6 +1461,11 @@ div.goodpage_info div.customer_artic span.manufacturer_block a
     display: block;
 
     color: #000;
+    margin: 5px 0 0 0;
+}
+div.goodpage_info div.customer_artic span.manufacturer_block a:hover
+{
+text-decoration:underline;
 }
 div.goodpage_info div.customer_artic span.articul_block
 {
@@ -3521,7 +3516,7 @@ section.secondpage_section article.search_results_block ul.search_results li spa
 
 #towars div.flex-viewport ul.slides li
 {
-    margin: 0 30px 50px 0;
+    margin: 0 50px 50px 0;
 }
 
 div.good_bookmopt
@@ -3787,6 +3782,29 @@ div#catalog_list div.cat_item_plits div.pricenbuttons span.goodcompare a:hover
 {
     border: none;
 }
+
+.buybutton{
+    color: #fff;
+    text-decoration: none;
+    background-color: #f7961e;
+    width: 158px;
+    padding: 9px 23px 8px 24px;
+    margin: 0 0 15px 0;
+    font-family: 'a_avantebs';
+    text-transform: uppercase;
+    font-size: 0.8em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    transition: all .1s linear;
+    border: none;
+    outline: none;
+    position: relative;
+    }
 div#catalog_list div.cat_item_plits div.pricenbuttons input.buybutton
 {
     width: 70%;
@@ -3794,9 +3812,6 @@ div#catalog_list div.cat_item_plits div.pricenbuttons input.buybutton
 }
 .buybutton.outnstock
 {
-    /* cursor: default; */
-    margin: 0 auto;
-    padding: 9px 24px 9px 24px;
 
     background-color: #ccc;
 }
@@ -4047,9 +4062,14 @@ div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons span.not_ins
 
 div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons input.buybutton.outnstock
 {
-    cursor: default;
+    cursor: pointer;
+    background-color: #cecece;
+}
+div#catalog_list.cat_item_list div.cat_item_plits div.pricenbuttons input.buybutton.outnstock:hover
+{
 
-    background-color: #ccc;
+
+    background-color: #c6c6c6;
 }
 div.goodpage_info div.instock_compare
 {
@@ -4072,7 +4092,7 @@ div.goodpage_info div.instock_compare span.instok
 div.goodpage_info div.instock_compare span.print_block
 {
     top: 40px;
-    left: 20px;
+
 
     cursor: pointer;
 }
@@ -4282,7 +4302,7 @@ input.buybutton
 
     position: relative;
 
-    width: 145px;
+    width: 107px;
     height: 29px;
     margin: 0;
     padding: 0;
@@ -4311,7 +4331,7 @@ div.goodsprice
 
     display: block;
 
-    margin: 0 0 10px 0;
+    margin: 0 0 18px 0;
 
     text-transform: uppercase;
 }
@@ -4319,6 +4339,12 @@ input.buybutton:hover
 {
     background-color: #fea537;
 }
+input.buybutton.outnstock:hover
+{
+    background-color: #c6c6c6;
+}
+
+
 div.submit_filtbutt input:hover
 {
     background-color: #fea537;
@@ -6807,6 +6833,7 @@ div.goodpage_info div.buy_price
 
     background-color: #ccc !important;
     background-repeat: repeat;
+    height: 8em;
 }
 div.goodpage_info div.buy_price span.salepercent
 {
@@ -6840,6 +6867,8 @@ div.goodpage_info div.customer_artic,
     text-align: left;
 
     background-color: #ccc !important;
+    background-image: url(../img/light_back.png);    background-repeat: repeat;
+    position: relative;
 }
 
 .manufacturer_block
@@ -6987,12 +7016,18 @@ span.print_block
     width: 130px;
     height: 15px;
     margin: 0 auto;
-    margin-top: 20px;
+    margin: 0;
     padding: 0 0 0 25px;
 
     color: #999;
     background-image: url('../img/print.png');
     background-repeat: no-repeat;
+    cursor: pointer;
+}
+span.print_block:hover
+{
+
+   text-decoration:underline;
 }
 
 li.dealer

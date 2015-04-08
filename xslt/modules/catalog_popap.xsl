@@ -92,7 +92,9 @@
                 <xsl:otherwise>
                     <div class="pricenbuttons">
                         <xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
-                        <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
+
+<!--                         <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
+                       					<input rel="nofollow" href="#show1" class="buybutton outnstock" id="{$item/page/@id}" type="submit" value="Под заказ"/>
                         
                         <!-- <input class="buybutton outnstock" type="button" value="Под заказ" /> -->
                         <span class="not_instok">отсутствует</span>

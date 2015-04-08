@@ -156,7 +156,7 @@ html {
     -ms-text-size-adjust:100%;
     /* 2 */
     -webkit-text-size-adjust:100%;
-	
+
     /* 2 */
 }
 /*** Address `font-family` inconsistency between `textarea` and other form* elements.*/
@@ -167,7 +167,7 @@ html,button,input,select,textarea {font-family:'Ubuntu',sans-serif;}
 body {            
     line-height: 1;
     margin: 0;      
-	
+
     padding: 0;
 }
 /* ==========================================================================Links========================================================================== */
@@ -566,12 +566,7 @@ input[type="file"] {
 
 
 
-button,
-html input[type="button"],
-/* 1 */
-
-input[type="reset"],
-input[type="submit"] {
+button, input[type="button"], input[type="reset"], input[type="submit"] {
     -webkit-appearance:button;
     cursor:pointer;
     overflow:visible;
@@ -595,12 +590,7 @@ input[type="submit"] {
     padding: 6px 20px 5px 20px;
 }
 
-button:hover,
-html input[type="button"]:hover,
-/* 1 */
-
-input[type="reset"]:hover,
-input[type="submit"]:hover {
+button:hover,  input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
    background-color: #ffb139;
 
 }

@@ -32,6 +32,12 @@
 	-webkit-border-radius: 4px;
 	   -moz-border-radius: 4px;
 	        border-radius: 4px;
+	/* background: rgba(255, 151, 0, 1); */
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+	-ms-transition: all .3s linear;
+	-o-transition: all .3s linear;
+	transition: all .3s linear;
 }
 
 .fancybox-opened {
@@ -213,7 +219,7 @@
 }
 
 .fancybox-title-float-wrap {
-	position: absolute;
+	/* position: absolute; */
 	bottom: 3%;
 	/* right: 50%; */
 	margin-bottom: 0;
@@ -225,7 +231,7 @@
 .fancybox-title-float-wrap .child {
 	display: inline-block;
 	/* margin-right: -100%; */
-	padding: 12px;
+	padding: 1% 0 1% 0;
 	background: transparent; /* Fallback for web browsers that doesn't support RGBa */
 	background: rgba(255, 151, 0, 1);
 
@@ -234,7 +240,7 @@
 	color: #FFF;
 	font-weight: bold;
 	line-height: 24px;
-	width: 90%;
+	width: 100%;
 }
 
 .fancybox-title-outside-wrap {

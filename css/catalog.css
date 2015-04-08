@@ -238,26 +238,3 @@ cursor: inherit !important;
 
 
 
-.buybutton{
-	position: relative;
-	margin: 0 0 15px 0;
-	padding: 5px 20px 5px 20px;
-	/* display: inline-block; */
-	width: 158px;
-	outline: none;
-	border: none;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	background-color: #f7961e;
-	color: #fff;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: 0.8em;
-	font-family: 'a_avantebs';
-	-webkit-transition: all .1s linear;
-	-moz-transition: all .1s linear;
-	-ms-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	transition: all .1s linear;
-	}

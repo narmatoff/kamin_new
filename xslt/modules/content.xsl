@@ -133,7 +133,7 @@
 	        </xsl:when>
 
 	        <xsl:otherwise>
-	        <span style="float:left;margin:0 20px 0 0; display:inline-block;">
+	        <span style="float:left;margin:20px 20px 0 0; display:inline-block;">
 
 				<xsl:call-template name="thumbing">
 					<xsl:with-param name="source" select=".//property[@name='izobrazhenie_logotipa_brenda']/value" />

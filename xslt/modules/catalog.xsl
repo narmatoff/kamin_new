@@ -470,7 +470,10 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<div class="pricenbuttons">
-						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" /><a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a><span class="not_instok">отсутствует</span>
+						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
+<!--						<a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
+						<input rel="nofollow" class="buybutton outnstock" id="{$item/page/@id}" type="submit" value="Под заказ"/>
+						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
 					</div>
 					<div class="clearfix"></div>
@@ -543,7 +546,11 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<div class="pricenbuttons">
-						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" /><a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a><span class="not_instok">отсутствует</span>
+						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
+<!--						<a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
+					<input rel="nofollow" href="#show1" class="buybutton outnstock" id="{$item/page/@id}" type="submit" value="Под заказ"/>
+
+						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
 					</div>
 					<div class="clearfix"></div>
@@ -617,11 +624,15 @@
 						</xsl:when>
 						<xsl:otherwise>
 							<div class="buy_price">
-								<xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id,'//0'))/udata" mode="price" /><a id="{page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>
+								<xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id,'//0'))/udata" mode="price" />
+
+<!--								<a id="{page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
+					<input id="{page/@id}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
 					<div class="customer_artic"><span class="manufacturer_block">Производитель: <a href="{$brand_name/properties/group/property[@name='linkthis']/value}"><xsl:value-of select="page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/></a></span><span class="articul_block">Артикул: <xsl:value-of select="page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/></span>
+					<span class="print_block" onclick="location.href='/getpdf2.php?id={page/@id}'">версия для печати</span>
 					</div>
 					<div class="instock_compare">
 						<xsl:choose>
@@ -633,7 +644,8 @@
 									<!-- <span class="goodcompare"><a href="/emarket/addToCompare/page/{@id}">сравнить</a></span> -->
 								</div>
 							</xsl:otherwise>
-						</xsl:choose><span class="print_block" onclick="location.href='/getpdf2.php?id={page/@id}'">  <!--                            <a href="/getpdf2.php?id={page/@id}">--><!--                            </a>-->версия для печати</span>
+						</xsl:choose>
+<!--						<span class="print_block" onclick="location.href='/getpdf2.php?id={page/@id}'">версия для печати</span>-->
 					</div>
 				</div>
 			</div>
