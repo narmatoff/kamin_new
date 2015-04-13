@@ -65,11 +65,11 @@
 			</div>
 		</div>
 		
-		
+
 
 	</xsl:template>
 	<xsl:template match="result[@module='emarket' and @method='cart']">
-		
+		<div class="clearfix"></div>
 	<h4>В корзине нет товаров</h4>
 				 <a style="margin-right: 50px;" class="cart_clear_button" onclick="basket.removeAll" type="button"> Очистить</a>
 
@@ -92,7 +92,7 @@
 					
 				</table>
 				<div class="cart_itogo">
-					<div>Итого: <span class="cart_summary"> <xsl:value-of select="udata/summary/price/actual" /></span><i class="icon-roub"></i> </div>
+					<div>Итого: <span class="cart_summary"> <xsl:value-of select="ceiling(udata/summary/price/actual)" /></span><i class="icon-roub"></i> </div>
 					<a href="/emarket/purchasing_one_step/">Оформить заказ</a>
 				</div>
 			</article>
@@ -174,7 +174,7 @@
 							</div>
 						</td>
 						<td class="summa_td cart_item_price_{@id}">
-							<span><xsl:value-of select="total-price/actual"/></span> <i class="icon-roub"></i>
+							<span><xsl:value-of select="ceiling(total-price/actual)"/></span> <i class="icon-roub"></i>
 <!--							<xsl:value-of select="total-price/@suffix"/>.-->
 						</td>
 						<td class="floating_td">

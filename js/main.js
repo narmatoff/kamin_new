@@ -446,7 +446,17 @@ $(document).ready(function () {
 
     });
 
+
+
+
     $("label.emarket-delivery-783").click(function () {
+
+					$(".address_samov input[name='delivery-id']").click(function() {
+   $(this).addClass("checkedbox")
+          .siblings(".address_samov input[name='delivery-id']").removeClass("checkedbox");
+});
+
+
 
 //        $("fieldset.personalinfo").hide();
         $("fieldset.deliveryinfo").hide();
@@ -456,6 +466,7 @@ $(document).ready(function () {
         $('#radio34011').attr('checked', '');
         $("input.emarket-delivery-784, input.emarket-delivery-808").removeAttr('checked');
 
+		$(".address_samov input.css-checkbox2.checkedbox").trigger('click');
         //            $(this).addClass('selected_type_view');
         //            $("img.plitka_view").removeClass('selected_type_view');
 
@@ -498,7 +509,7 @@ $(document).ready(function () {
     $('a.checkout_btnxt').click(function (e) {
         e.preventDefault();
         $("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-                        
+
         
     });
     
@@ -517,6 +528,8 @@ $(document).ready(function () {
 //        console.log(tabIdForButton);
         $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
         $("a.checkout_btnxt").show();
+
+
     });
 
 
@@ -526,6 +539,9 @@ $(document).ready(function () {
 //        console.log(tabIdForButton);
          $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").show();
         $("a.checkout_btnxt").hide();
+
+
+
     });
     //    КОНЕЦ обработка кнопки продолжить в чекауте
     

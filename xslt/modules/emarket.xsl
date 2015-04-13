@@ -283,7 +283,7 @@
 		</div>
 				<xsl:if test="items/item[@type-guid='emarket-delivery-783']">
 					<input checked="checked" type="radio" id="radio34011" class="css-checkbox2"/>
-					<label for="radio34011" class="css-label2 emarket-delivery-783 ">Самовывоз</label><br/>
+					<label id="confirm_optn" for="radio34011" class="css-label2 emarket-delivery-783">Самовывоз</label><br/>
 				</xsl:if>
 				<xsl:apply-templates select="items/item" mode="option_choose" />
 			
@@ -323,28 +323,27 @@
 
 	<xsl:template match="item[@type-guid='emarket-delivery-783']" mode="option_choose">
 	</xsl:template>
-
-	<xsl:template match="item[@type-guid='emarket-delivery-783']" mode="option_choose_options">
 		
-	<xsl:variable name="delivertity" select="document(concat('uobject://', @id))/udata/object//property[@name='region']/value/item/@id"></xsl:variable>
-		<xsl:if test="$delivertity = $system/@object-id">
-			<input type="radio" value="{@id}" name="delivery-id" id="radio{@id}" class="css-checkbox2">
+			<xsl:template match="item[@type-guid='emarket-delivery-783']" mode="option_choose_options">
+
+			<xsl:variable name="delivertity" select="document(concat('uobject://', @id))/udata/object//property[@name='region']/value/item/@id"></xsl:variable>
+			<xsl:if test="$delivertity = $system/@object-id">
+				<input type="radio" value="{@id}" name="delivery-id" id="radio{@id}" class="css-checkbox2">
 				<xsl:if test="position()=1">
 					<xsl:attribute name="checked">checked</xsl:attribute>
+					<xsl:attribute name="class">css-checkbox2 checkedbox</xsl:attribute>
 				</xsl:if>
-			</input>
+				</input>
 
 
 
-	        <label for="radio{@id}" class="css-label2 {@type-guid} " ><xsl:value-of select="@name" /></label>
-	       <br/>	
-		</xsl:if>
-		
-	</xsl:template>
+				<label for="radio{@id}" class="css-label2 {@type-guid} ">
+					<xsl:value-of select="@name" />
+				</label>
+				<br/>
+			</xsl:if>
 
-	
-
-
+		</xsl:template>
 
 
 
@@ -668,7 +667,7 @@
                             	<xsl:value-of select="amount"/>
                             </td>
                             <td class="summa_td">
-                            	<xsl:value-of select="total-price/actual"/> руб.
+                            	<xsl:value-of select="ceiling(total-price/actual)"/> руб.
 <!--                            	<xsl:value-of select="price/@suffix"/>-->
                             </td>
                             <td class="floating_td"></td>

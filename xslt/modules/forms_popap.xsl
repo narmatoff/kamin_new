@@ -49,12 +49,12 @@
         
 
     </xsl:template>
-    <xsl:template match="field[@type = 'string'][not(@required)][@name!='tovar']"
+    <xsl:template match="field[@type = 'string'][not(@required)][@name!='tovar'][@name!='cena'][@name!='artikul']"
         mode="form-fields">
         <input placeholder="{@title}" name="{@input_name}" id="n{@id}" required="" type="text" value="{.}" class="pers_kont_default"/>
 
     </xsl:template>
-    <xsl:template match="field[@type = 'text' and @required='required'][@name!='tovar']"
+    <xsl:template match="field[@type = 'text' and @required='required'][@name!='tovar'][@name!='cena'][@name!='artikul']"
         mode="form-fields">
         
         <textarea name="{@input_name}" placeholder="{@title}" required="required" type="text" class="pers_kont_textarea">

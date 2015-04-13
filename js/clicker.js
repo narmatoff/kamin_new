@@ -134,9 +134,13 @@ $('#opaopaopapa').bind('submit', function(){
 $(".outnstock").fancybox({
 //	type: "iframe",
 //	href: "#show1",
+
+
 //	content: document.getElementById("#show1"),
 	'afterLoad': function () {
 		id = $(this.element).attr('id');
+        price = $(this.element).attr('data-price');
+        article = $(this.element).attr('data-article');
 		$.ajax({
 			url: '/udata://webforms/add/313/?transform=/modules/forms_popap.xsl',
 			dataType: 'html',
@@ -144,7 +148,7 @@ $(".outnstock").fancybox({
 
 				text_before = '<h2>Заказать товар</h2>';
 
-				text_after = '<input name="data[new][tovar]" type="hidden" value="' + id + '">';
+				text_after = '<input name="data[new][tovar]" type="hidden" value="' + id + '"><input name="data[new][cena]" type="hidden" value="' + price + '"><input name="data[new][artikul]" type="hidden" value="' + article + '">';
 				// alert (test);
 				$("div#forminputter").html(text_before + data + text_after);
 

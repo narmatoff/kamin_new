@@ -187,7 +187,6 @@ function cookieDel(index) {
         var value_min = parseInt( $( min_val ).attr('value')  );
         var value_max = parseInt( $( max_val ).attr('value')  );
         var max =  parseInt( $( max_val ).attr('rel') );
-
   
         $( this ).slider({
             range: true,
@@ -200,8 +199,8 @@ function cookieDel(index) {
 
                 $( max_val ).val(ui.values[ 1 ]);
 //                $( ".max_val" ).attr("class","max_val"+unic_nubr);
-
             }
+			
 //             stop: function(event, ui) {
 //                 var msg   = $('#search_form').serialize();
 //                 $.ajax({

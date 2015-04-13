@@ -472,7 +472,7 @@
 					<div class="pricenbuttons">
 						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
 <!--						<a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
-						<input rel="nofollow" class="buybutton outnstock" id="{$item/page/@id}" type="submit" value="Под заказ"/>
+						<input rel="nofollow" class="buybutton outnstock" id="{$item/page/@id}"   data-price="{$item/page/properties/group/property[@name='price']/value}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" type="submit" value="Под заказ"/>
 						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
 					</div>
@@ -548,7 +548,7 @@
 					<div class="pricenbuttons">
 						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
 <!--						<a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
-					<input rel="nofollow" href="#show1" class="buybutton outnstock" id="{$item/page/@id}" type="submit" value="Под заказ"/>
+					<input rel="nofollow" href="#show1" class="buybutton outnstock" id="{$item/page/@id}"   data-price="{$item/page/properties/group/property[@name='price']/value}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" type="submit" value="Под заказ"/>
 
 						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -627,7 +627,7 @@
 								<xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id,'//0'))/udata" mode="price" />
 
 <!--								<a id="{page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
-					<input id="{page/@id}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
+					<input id="{page/@id}"   data-price="{page/properties/group/property[@name='price']/value}" data-article="{page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
