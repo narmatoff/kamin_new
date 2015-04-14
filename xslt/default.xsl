@@ -657,6 +657,9 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                             <xsl:value-of select="result/page//property[@name='kategory']/value/page/@id" />
                                                         </xsl:with-param>
                                                         <xsl:with-param name="dont_show_brend" select="1"/>
+                                                        <xsl:with-param name="parent_obj" >
+                                                            <xsl:value-of select="result/parents/page[position()=last()]/@object-id"/>
+                                                        </xsl:with-param>
 
 
                                                     </xsl:apply-templates>

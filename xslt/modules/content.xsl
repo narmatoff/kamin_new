@@ -136,7 +136,7 @@
 	        <span style="float:left;margin:20px 20px 0 0; display:inline-block;">
 
 				<xsl:call-template name="thumbing">
-					<xsl:with-param name="source" select=".//property[@name='izobrazhenie_logotipa_brenda']/value" />
+					<xsl:with-param name="source" select=".//property[@name='logotip_brenda_str_br']/value" />
 					<xsl:with-param name="width" select="150" />
 					<xsl:with-param name="height">77</xsl:with-param>
 				</xsl:call-template>
