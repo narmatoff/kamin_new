@@ -95,8 +95,14 @@
 		</xsl:choose>
     
         <ul id="my-menu" class="sample-menu">
-
-            <xsl:apply-templates select="items/item" mode="level1left" />
+			<xsl:choose>
+				<xsl:when test="$parents-page-id = 4852">
+            		<xsl:apply-templates select="document('usel://stateyki')/udata/page" mode="level1leftstateyki" />
+				</xsl:when>
+				<xsl:otherwise>
+            		<xsl:apply-templates select="items/item" mode="level1left" />
+				</xsl:otherwise>
+			</xsl:choose>
             
         </ul>
 
@@ -107,6 +113,19 @@
         </xsl:choose>
     </xsl:template>
 
+	<xsl:template match="page" mode="level1leftstateyki">
+		<li>
+			<xsl:choose>
+				<xsl:when test="@id = $page-id">
+					<xsl:attribute name="class">bgdarked</xsl:attribute>
+					<a class="selected collapsible expanded" href="{@link}" ><xsl:value-of select="./name" disable-output-escaping="yes" /></a>
+				</xsl:when>
+				<xsl:otherwise>
+					<a class="collapsible collapsed" href="{@link}" ><xsl:value-of select="./name" disable-output-escaping="yes" /></a>
+				</xsl:otherwise>
+			</xsl:choose>
+		</li>
+	</xsl:template>
 
 	<xsl:template match="item" mode="level1left">
 		<xsl:choose>
@@ -114,7 +133,16 @@
 			<xsl:otherwise>
 				<li>
 					<a class="collapsible collapsed" href="{@link}" ><xsl:value-of select="@name" disable-output-escaping="yes" /></a>
-					<xsl:apply-templates select="document(concat('udata://content/menu///', @id))/udata/items" mode="level2"/>
+					<xsl:choose>
+						<xsl:when test="$page-id = 4852">
+							<ul>
+							<xsl:apply-templates select="document('usel://stateyki')/udata/page" mode="level2stateyki"/>
+							</ul>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:apply-templates select="document(concat('udata://content/menu///', @id))/udata/items" mode="level2"/>
+						</xsl:otherwise>
+					</xsl:choose>
 				</li>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -219,6 +247,14 @@
 		
 	</xsl:template>
 
+	<xsl:template match="page" mode="level2stateyki">
+		<li>
+
+			<a href="{@link}">
+				<xsl:value-of select="./name" disable-output-escaping="yes" />
+			</a>
+		</li>
+	</xsl:template>
 
 	<xsl:template match="item" mode="accio_main">
 		<xsl:variable name="page" select="document(concat('upage://', @id))/udata/page/properties//property[@name='header_pic']/value"/>

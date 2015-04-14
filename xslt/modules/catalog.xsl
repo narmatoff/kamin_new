@@ -472,7 +472,7 @@
 					<div class="pricenbuttons">
 						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
 <!--						<a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
-						<input rel="nofollow" class="buybutton outnstock" id="{$item/page/@id}"   data-price="{$item/page/properties/group/property[@name='price']/value}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" type="submit" value="Под заказ"/>
+						<input rel="nofollow" class="buybutton outnstock" id="{$item/page/@id}"   data-price="{document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata/price/actual}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" type="submit" value="Под заказ"/>
 						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
 					</div>
@@ -548,7 +548,7 @@
 					<div class="pricenbuttons">
 						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
 <!--						<a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
-					<input rel="nofollow" href="#show1" class="buybutton outnstock" id="{$item/page/@id}"   data-price="{$item/page/properties/group/property[@name='price']/value}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" type="submit" value="Под заказ"/>
+					<input rel="nofollow" href="#show1" class="buybutton outnstock" id="{$item/page/@id}"   data-price="{document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata/price/actual}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" type="submit" value="Под заказ"/>
 
 						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -627,7 +627,7 @@
 								<xsl:apply-templates select="document(concat('udata://emarket/price/', page/@id,'//0'))/udata" mode="price" />
 
 <!--								<a id="{page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a>-->
-					<input id="{page/@id}"   data-price="{page/properties/group/property[@name='price']/value}" data-article="{page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
+					<input id="{page/@id}"   data-price="{page/properties/group/property[@name='price']/value}" data-article="{document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata/price/actual}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
@@ -889,6 +889,7 @@
 		<xsl:param name="type_id" />
 		<xsl:param name="object" />
 		<xsl:param name="categoryid" />
+		<xsl:param name="dont_show_brend" select="0" />
 		<form action="" id="search_param" method="get">
 			<xsl:if test="$object">
 				<xsl:attribute name="action">
@@ -898,7 +899,11 @@
 				<xsl:value-of select="$categoryid" />
 			</xsl:attribute>
 			<xsl:apply-templates select="group/field" mode="search">
-				<xsl:with-param name="typeid" select="$type_id" /></xsl:apply-templates>
+				<xsl:with-param name="typeid" select="$type_id" />
+				<xsl:with-param name="categoryid" select="$categoryid" />
+				<xsl:with-param name="dont_show_brend" select="$dont_show_brend" />
+
+			</xsl:apply-templates>
 			<xsl:if test="$order_filter.price=0">
 				<input type="hidden" name="order_filter[price]" value="0" />
 			</xsl:if>
@@ -966,36 +971,58 @@
 	<!-- <xsl:templatematch="field[@data-type = 'relation' or @data-type = 'symlink'][@name!='pennyj' or @name!='koncentrat']" mode="search"><span class="name"><xsl:value-of select="@title"/></span><xsl:apply-templates select="values/item" mode="search"><xsl:sort select="@id"/><xsl:with-param name="name" select="@name"/></xsl:apply-templates></xsl:template> -->
 	<xsl:template match="field[@data-type = 'relation']" mode="search">
 		<xsl:param name="typeid" />
-		<div class="back_filter">
+		<xsl:param name="categoryid"/>
+		<xsl:param name="dont_show_brend"/>
+		<xsl:value-of select="$dont_show_brend" />
+		<xsl:choose>
+			<xsl:when test="@name = 'brend' and $dont_show_brend = 1">
+
+				оляля
+
+			</xsl:when>
+			<xsl:otherwise>
+
+
+				<div class="back_filter">
 			<div class="select_filterbl">
 				<p></p>
+
+
 				<select id="{@name}" name="fields_filter[{@name}]">
 					<option class="first" value="">
 						<xsl:value-of select="@title" />
 					</option>
 					<!--  <xsl:choose><xsl:when test="$typeid = '86'"> -->
 
-					<xsl:choose>
+					<!-- <xsl:choose>
 						 <xsl:when test="@name = 'brend'">
-						 	<!-- <xsl:choose>
+						 	<xsl:choose>
 						 		<xsl:when test="$filter">
 									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id, '3321'))/udata/items/item" mode="search_select1" />
 						 		</xsl:when>
 						 		<xsl:otherwise>
-						 		</xsl:otherwise>
-						 	</xsl:choose> -->
-									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id))/udata/items/item" mode="search_select1" />
+						 		</xsl:otherwise>11
+						 	</xsl:choose>
+									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id,/))/udata/items/item" mode="search_select1" />
 						 </xsl:when>
 						 <xsl:otherwise>
 							<xsl:apply-templates select="values/item" mode="search_select" />
 						 </xsl:otherwise>
-					</xsl:choose>
+					</xsl:choose> -->
+
+					<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $categoryid,'/', @name))/udata/items/item" mode="search_select" />
 
 					<!-- </xsl:when><xsl:otherwise><xsl:apply-templates select="document(concat('usel://select/', @name,'/', $typeid))/udata" mode="brands"><xsl:with-param name="selected_id"><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param></xsl:apply-templates></xsl:otherwise></xsl:choose> -->
 					<!--  -->
 				</select>
 			</div>
 		</div>
+
+
+			</xsl:otherwise>
+		</xsl:choose>
+		<!-- <xsl:value-of select="$categoryid" /> -->
+
 	</xsl:template>
 	<xsl:template match="udata" mode="brands">
 		<xsl:param name="selected_id" />
@@ -1010,7 +1037,7 @@
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
-	<xsl:template match="field/values/item" mode="search_select">
+	<xsl:template match="item" mode="search_select">
 		<option value="{@id}">
 			<xsl:if test="@selected">
 				<xsl:attribute name="selected">selected</xsl:attribute>

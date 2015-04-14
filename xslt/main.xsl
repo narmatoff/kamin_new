@@ -84,5 +84,6 @@
 	<xsl:include href="modules/meta.xsl" />
 	<xsl:include href="modules/ganalytics.xsl" />
 	<xsl:include href="modules/menu_draw.xsl" />
+	<xsl:include href="modules/payment.xsl" />
 	
 </xsl:stylesheet> 

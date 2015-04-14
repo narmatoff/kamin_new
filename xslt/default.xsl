@@ -656,6 +656,9 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
                                                         <xsl:with-param name="categoryid">
                                                             <xsl:value-of select="result/page//property[@name='kategory']/value/page/@id" />
                                                         </xsl:with-param>
+                                                        <xsl:with-param name="dont_show_brend" select="1"/>
+
+
                                                     </xsl:apply-templates>
                                                  </xsl:when>
                                                  <xsl:otherwise> 
