@@ -896,7 +896,10 @@
 		<xsl:param name="type_id" />
 		<xsl:param name="object" />
 		<xsl:param name="categoryid" />
-		<form action="" id="search_param" method="get">
+		<xsl:param name="dont_show_brend" select="0" />
+		<xsl:param name="parent_obj"/>
+		<xsl:variable name="linking" select="document(concat('upage://', $categoryid))/udata/page/@link" />
+		<form action="{$linking}" id="search_param" method="get">
 			<xsl:if test="$object">
 				<xsl:attribute name="action">
 					<xsl:value-of select="$object" /></xsl:attribute>
@@ -905,7 +908,12 @@
 				<xsl:value-of select="$categoryid" />
 			</xsl:attribute>
 			<xsl:apply-templates select="group/field" mode="search">
-				<xsl:with-param name="typeid" select="$type_id" /></xsl:apply-templates>
+				<xsl:with-param name="typeid" select="$type_id" />
+				<xsl:with-param name="categoryid" select="$categoryid" />
+				<xsl:with-param name="dont_show_brend" select="$dont_show_brend" />
+				<xsl:with-param name="parent_obj" select="$parent_obj" />
+
+			</xsl:apply-templates>
 			<xsl:if test="$order_filter.price=0">
 				<input type="hidden" name="order_filter[price]" value="0" />
 			</xsl:if>
@@ -971,22 +979,64 @@
 		<input id="min_{@name}" value="" name="fields_filter[{@name}][0]" type="hidden" />
 	</xsl:template>
 	<!-- <xsl:templatematch="field[@data-type = 'relation' or @data-type = 'symlink'][@name!='pennyj' or @name!='koncentrat']" mode="search"><span class="name"><xsl:value-of select="@title"/></span><xsl:apply-templates select="values/item" mode="search"><xsl:sort select="@id"/><xsl:with-param name="name" select="@name"/></xsl:apply-templates></xsl:template> -->
-	<xsl:template match="field[@data-type = 'relation']" mode="search">
+		<xsl:template match="field[@data-type = 'relation']" mode="search">
 		<xsl:param name="typeid" />
-		<div class="back_filter">
+		<xsl:param name="categoryid"/>
+		<xsl:param name="dont_show_brend"/>
+		<xsl:param name="parent_obj"/>
+
+
+		<!-- <xsl:value-of select="$categoryid" /> -->
+		<xsl:choose>
+			<xsl:when test="@name = 'brend' and $dont_show_brend = 1">
+
+				<input id="{@name}" value="{$parent_obj}" name="fields_filter[{@name}]" type="hidden" />
+
+			</xsl:when>
+			<xsl:otherwise>
+
+
+				<div class="back_filter">
 			<div class="select_filterbl">
 				<p></p>
+
+
 				<select id="{@name}" name="fields_filter[{@name}]">
 					<option class="first" value="">
 						<xsl:value-of select="@title" />
 					</option>
 					<!--  <xsl:choose><xsl:when test="$typeid = '86'"> -->
-					<xsl:apply-templates select="values/item" mode="search_select" />
+
+					<!-- <xsl:choose>
+						 <xsl:when test="@name = 'brend'">
+						 	<xsl:choose>
+						 		<xsl:when test="$filter">
+									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id, '3321'))/udata/items/item" mode="search_select1" />
+						 		</xsl:when>
+						 		<xsl:otherwise>
+						 		</xsl:otherwise>11
+						 	</xsl:choose>
+									<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $page-id,/))/udata/items/item" mode="search_select1" />
+						 </xsl:when>
+						 <xsl:otherwise>
+							<xsl:apply-templates select="values/item" mode="search_select" />
+						 </xsl:otherwise>
+					</xsl:choose> -->
+		<!-- <xsl:value-of select="$categoryid" /> -->
+
+					<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $categoryid,'/', @name))/udata/items/item" mode="search_select" />
+
 					<!-- </xsl:when><xsl:otherwise><xsl:apply-templates select="document(concat('usel://select/', @name,'/', $typeid))/udata" mode="brands"><xsl:with-param name="selected_id"><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param></xsl:apply-templates></xsl:otherwise></xsl:choose> -->
 					<!--  -->
 				</select>
 			</div>
 		</div>
+
+
+			</xsl:otherwise>
+		</xsl:choose>
+		<!-- <xsl:value-of select="$categoryid" /> -->
+
 	</xsl:template>
 	<xsl:template match="udata" mode="brands">
 		<xsl:param name="selected_id" />
@@ -1001,7 +1051,7 @@
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
-	<xsl:template match="field/values/item" mode="search_select">
+	<xsl:template match="item" mode="search_select">
 		<option value="{@id}">
 			<xsl:if test="@selected">
 				<xsl:attribute name="selected">selected</xsl:attribute>

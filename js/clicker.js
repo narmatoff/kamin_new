@@ -122,7 +122,7 @@ $('#opaopaopapa').bind('submit', function(){
                 data: $("#opaopaopapa").serialize(),
                 success: function (data) {
                     // alert ('спасибо')
-                    $('#show1').html('<h2>Спасибо за Ваше обращение!</h2>')
+                    $('#show1').html('<h2>Спасибо за Ваше обращение!</h2>').delay(2000)
 
                 }
             });
@@ -148,7 +148,7 @@ $(".outnstock").fancybox({
 
 				text_before = '<h2>Заказать товар</h2>';
 
-				text_after = '<input name="data[new][tovar]" type="hidden" value="' + id + '"><input name="data[new][cena]" type="hidden" value="' + price + '"><input name="data[new][artikul]" type="hidden" value="' + article + '">';
+				text_after = '<input name="data[new][tovar]" type="hidden" value="' + id + '"><input name="data[new][price]" type="hidden" value="' + price + '"><input name="data[new][artikul]" type="hidden" value="' + article + '">';
 				// alert (test);
 				$("div#forminputter").html(text_before + data + text_after);
 
@@ -391,7 +391,11 @@ $(".slider-range").each(function() {
                     //всплывающая подсказка о кол-ве найденных товаров
                     $("div.SearchHelperText").remove();
                     $(max_val).after("<div class='SearchHelperText'></div>");
-                    $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
+                    if (data.total) {
+                        $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
+                    } else{
+                        $("div.SearchHelperText").html("<span>Ничего не найдено</span><span>Пожалуйста, измените условия поиска.</span>");
+                    };
                     $("div.SearchHelperText").hide();
                     $("div.SearchHelperText").fadeIn('1800');
                     //                          setTimeout(function(){$("div.SearchHelperText").fadeOut('1800')},5000);
@@ -419,7 +423,11 @@ $("div.select_filterbl").each(function() {
             dataType: "json",
             data: msg,
             success: function(data) {
-                $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
+                if (data.total) {
+                        $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
+                    } else{
+                        $("div.SearchHelperText").html("<span>Ничего не найдено</span>");
+                };
                 $("div.SearchHelperText").hide();
                 $("div.SearchHelperText").fadeIn('1800');
                 //                setTimeout(function(){$("div.SearchHelperText").fadeOut('1800')},5000);
@@ -446,7 +454,11 @@ $("div.back_filterslid").each(function() {
             dataType: "json",
             data: msg,
             success: function(data) {
-                $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
+                if (data.total) {
+                        $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
+                    } else{
+                        $("div.SearchHelperText").html("<span>Ничего не найдено</span>");
+                };
                 $("div.SearchHelperText").hide();
                 $("div.SearchHelperText").fadeIn('1800');
                 //                setTimeout(function(){$("div.SearchHelperText").fadeOut('1800')},5000);

@@ -18,7 +18,7 @@
                 
                 <div class="text_description">
                 
-                	 <xsl:choose>
+                <xsl:choose>
                                         <xsl:when test="page/@parentId=4820">
             								
 											
@@ -52,8 +52,10 @@
                                         </xsl:otherwise>
                                     </xsl:choose>
                 
+
+
                 	<xsl:value-of select="page/properties/group/property[@name='content']/value" disable-output-escaping="yes"/>
-                </div>
+                	</div>
 
 				<xsl:if test="page/@type-id='281'">
 					<div>
@@ -128,7 +130,7 @@
 	<xsl:template match="page" mode="brends45">
 		
 		<xsl:choose>
-			 <xsl:when test="not(.//property[@name='izobrazhenie_logotipa_brenda']/value)">
+			 <xsl:when test="not(.//property[@name='logotip_brenda_str_br']/value)">
 	            <!--когда логотип отсутствует выводим ничего -->
 	        </xsl:when>
 
@@ -143,11 +145,11 @@
 				
 				<xsl:choose>
 				<xsl:when test="not(.//property[@name='oficialnyj_sajt']/value)">
-	            <!--когда логотип отсутствует выводим ничего -->
+	            <!--когда ссылка отсутствует выводим ничего -->
 	        </xsl:when>
 	        
 	        <xsl:otherwise>
-				<a class="learn_more" href="{.//property[@name='oficialnyj_sajt']/value}" target="_blank" style="display:block;margin:30px 0 20px 0;">Официальный сайт</a>
+				<a class="learn_more" href="{.//property[@name='oficialnyj_sajt']/value}" rel="nofollow" target="_blank" style="display:block;margin:30px 0 20px 0;">Официальный сайт</a>
 				</xsl:otherwise>
 				
 				</xsl:choose>
@@ -159,9 +161,6 @@
 		
 		
 	</xsl:template>
-
-
-
 
 
 
