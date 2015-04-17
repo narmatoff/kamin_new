@@ -507,6 +507,25 @@ $(document).ready(function () {
 	}
 
 
+
+
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////
+		//				проверка адреса доставки(если активировано)				//
+		//////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+		//		чекер адресной формы
+		var checkingerPers = false;
+		var checkingerAddr = false;
+
 	//проверка полей на лету
 	$('[type=text]').blur(function () {
 		if ($(this).val().length > 0) {
@@ -517,103 +536,161 @@ $(document).ready(function () {
 		}
 	});
 
+
+
+
+
+
+
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////
+		//				проверка адреса доставки(если активировано)				//
+		//			   в эту Hu/////////nu луше не вникать, а переписать заново!//
+		//////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 	var counterTText;
+	var counterTText2;
+
+	//	проверяторы - заполнены ли все поля
 	var jhgJdsg = [];
+	var jhgJdsg2 = [];
+
+
+function showValues() {
+      var str = $("form#payment_choose :input").val.serialize();
+
+	console.log(str);
+    }
+
+
 	$('a.checkout_btnxt').bind('click', function (e) {
 
+
+
+showValues();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if ($('.commentinfo').css('display') === "none") {
+
+			checkingerAddr = false;
+		} else {
+
+			checkingerAddr = true;
+
+			$('.commentinfo input[type=text]').each(function () {
+
+				//		очистка массива
+				do{
+					jhgJdsg2.length = 0;
+				}
+				while(jhgJdsg2.length > 5)
+
+
+
+
+				counterTText2 = !$(this).val().length;
+				jhgJdsg2.push(counterTText2)
+
+				//подсветка полей если не заполнены при нажатии продолжить
+				if (!$(this).val().length) {
+
+					e.preventDefault();
+					$(this).css('outline', '1px solid red');
+
+				}
+
+			});
+
+
+		}
+		///////////////////////////////////////////////////////////////////
 
 		$('.personalinfo input[type=text]').each(function () {
 
 			//		очистка массива
-			if (jhgJdsg.length > 4) {
+			do{
 				jhgJdsg.length = 0;
 			}
+			while(jhgJdsg.length > 4)
+
 
 			counterTText = !$(this).val().length;
 			jhgJdsg.push(counterTText)
 
+			//подсветка полей при нажатии продолжить
 			if (!$(this).val().length) {
 				event.preventDefault();
 				$(this).css('outline', '1px solid red');
+
+
 			}
-
-
-			//
-			//проверка полей при нажатии продолжить
-
 
 		});
 
-		var boolEn = !jhgJdsg[0] && !jhgJdsg[1] && !jhgJdsg[2] && !jhgJdsg[3] && !jhgJdsg[4];
-		//	console.log(boolEn);
 
-		if (!boolEn) {
+//		console.log(!(!!jhgJdsg[0] === !!jhgJdsg[1] === !!jhgJdsg[2] === !!jhgJdsg[3] === !!jhgJdsg[4]));
+		if (!!jhgJdsg[0] == !!jhgJdsg[1] == !!jhgJdsg[2] == !!jhgJdsg[3] == !!jhgJdsg[4]) {
+
 
 			e.preventDefault();
 			$(this).css('outline', '1px solid red');
-			//									alert("Заполните обязательные поля, отмеченные красным.");
-
-
+			checkingerAddr=false;
 		} else {
-
-
-
+//			checkingerPers=true;
 			e.preventDefault();
 
-			//			не обязательно, подсветка устраняется другим способом
+
+			//	не обязательно, подсветка устраняется другим способом
 			$(this).css('outline', 'none');
 
-			$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-
-
-
-
-
-
-
+			if (checkingerAddr === false) {
+				$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
+			}
 
 		}
 
-		//
-		//		if($('.commentinfo input[type=text]').is(':visible')){
-		//
-		//
-		//					$('.commentinfo input[type=text]').each(function () {
-		//
-		//		//проверка полей при нажатии продолжить
-		//		if (!$(this).val().length) {
-		//
-		//			e.preventDefault();
-		//			$(this).css('outline', '1px solid red');
-		//			//									alert("Заполните обязательные поля, отмеченные красным.");
-		//
-		//		} else {
-		//
-		//			$(this).css('outline', 'none');
-		//			e.preventDefault();
-		////							$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-		//		}
-		//
-		//	});
-		//
-		//
-		//
-		//	}
-		//	else{
-		//
-		//
-		//		console.log("дисплей ноне");
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//	}
-		//
-		//
+
+
+
+		if (!jhgJdsg2[0] || !jhgJdsg2[1] || !jhgJdsg2[2] || !jhgJdsg2[3] || !jhgJdsg2[4] || !jhgJdsg2[5]) {
+
+			e.preventDefault();
+			$(this).css('outline', '1px solid red');
+			checkingerAddr = false;
+			//				console.log("не заполнена вторая форма");
+		} else {
+			e.preventDefault();
+
+			//	не обязательно, подсветка устраняется другим способом
+			$(this).css('outline', 'none');
+
+			if (checkingerAddr === true) {
+
+				$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
+			}
+
+		}
+
+
 
 
 

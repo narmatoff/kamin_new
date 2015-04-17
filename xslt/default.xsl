@@ -1012,6 +1012,7 @@ var LiveTex = {
                         <div class="clearfix"></div>
                     </div>
                 </form>
+                <div id="opaopaopapa2" style="display:none;"><h2>Спасибо за Ваше обращение!</h2></div>
                  </article>                  
             </div>
         </div>

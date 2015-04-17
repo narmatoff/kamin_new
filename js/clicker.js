@@ -122,7 +122,8 @@ $('#opaopaopapa').bind('submit', function(){
                 data: $("#opaopaopapa").serialize(),
                 success: function (data) {
                     // alert ('спасибо')
-                    $('#show1').html('<h2>Спасибо за Ваше обращение!</h2>').delay(2000)
+                    $('#opaopaopapa').fadeOut(0).delay(5000).fadeIn(0);
+                    $('#opaopaopapa2').fadeIn(0).delay(4900).fadeOut(0);
 
                 }
             });
