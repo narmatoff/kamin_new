@@ -153,8 +153,8 @@
                             <div class="clearfix"></div>
                             <p class="nexting_btn">
                               
-                               <input style="display:none;" type="submit" value="Продолжить" />
-                               <a class="checkout_btnxt" type="submit" href="javascript://">Продолжить</a>
+                               <input style="display:none;" class="checkout_btnxt disabled" type="submit" value="Продолжить" />
+                               <a class="checkout_btnxt disabled" type="submit" href="javascript://">Продолжить</a>
                                <span></span>
                            </p>
                             <div class="clearfix"></div>

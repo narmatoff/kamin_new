@@ -2,507 +2,467 @@
 
 $(document).ready(function () {
 
-	////////////////////////////////////////////////////////////////////////
-	// выделенный лого в топе шапки(не работает http://toster.ru/q/29215) //
-	////////////////////////////////////////////////////////////////////////
-	var bp = $("div.brends_block div.brend_item.focus_brand span:first-child").css('background-position');
-	var bpFirstPart = bp.slice(0, bp.indexOf(' '));
-	var bpSecondPart = "0";
-	$("div.brends_block div.brend_item.focus_brand span:first-child").css({
-		backgroundPosition: bpFirstPart + ' ' + bpSecondPart
-	});
-
-
-	////////////////////////////////////////////
-	// фикс для стилизации селектов(списков) //
-	////////////////////////////////////////////
-	///
-
-
-
-	///выбрать город
-
-
-	//    $('div.ul_towns select').each(function () {
-	//        $(this).siblings('p').text($(this).children('option:selected').text());
-	//    });
-	//    $('div.ul_towns select').change(function () {
-	//        $(this).siblings('p').text($(this).children('option:selected').text());
-	//    });
-	//
-	//
-	//    Подставка региона в параграф в шапке
-	var RegTxtName = $('ul#region li.first').text();
-	//    console.log(RegTxtName);
-	$('.ul_towns p').text(RegTxtName);
-	$('.ul_towns p').attr('title', RegTxtName);
-
-
-
-
-
-
-	$('div.chul_towns select').each(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-	$('div.chul_towns select').change(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-
-	// в фильтре
-	$('div.select_filterbl select').each(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-	$('div.select_filterbl select').change(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-
-	$('div.select_filterbl2 select').each(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-	$('div.select_filterbl2 select').change(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-
-
-	// в сортировке
-	$('div.select_sortnview select').each(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-	$('div.select_sortnview select').change(function () {
-		$(this).siblings('p').text($(this).children('option:selected').text());
-	});
-
-
-	//////////////////////////////////
-	// слайдер                     //
-	// проверка мобильного браузера //
-	//////////////////////////////////
-
-
-	if (isMobile.any()) {
-		// // навигация по слайдеру с превьюшками
-		// The slider being synced must be initialized first
-		$('#carousel').flexslider({
-			animation: "slide",
-			controlNav: true,
-			animationLoop: false,
-			slideshow: false,
-			itemWidth: 137,
-			itemHeight: 90,
-			itemMargin: 22,
-			controlNav: false,
-			directionNav: true,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: true,
-			asNavFor: '#slider'
-		});
-
-		$('#slider').flexslider({
-			animation: "slide",
-			controlNav: false,
-			directionNav: true,
-			animationLoop: false,
-			slideshow: true,
-			slideshowSpeed: 10800, //Integer: Set the speed of the slideshow cycling, in milliseconds
-			animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
-			itemWidth: 1000,
-			itemHeight: 222,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: true,
-			sync: "#carousel"
-		});
-
-		//        Карусель на странице товара
-		$('#carousel2').flexslider({
-			animation: "slide",
-			slideshow: false,
-			itemWidth: 110,
-			itemHeight: 109,
-			itemMargin: 5,
-			controlNav: false,
-			directionNav: true,
-			direction: "vertical",
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: true,
-			animationLoop: true,
-			asNavFor: '#slider2'
-		});
-
-		$('#slider2').flexslider({
-			//          animation: "slide",
-			controlNav: false,
-			directionNav: false,
-			direction: "vertical",
-			animationLoop: true,
-			slideshow: false,
-			slideshowSpeed: 6000, //Integer: Set the speed of the slideshow cycling, in milliseconds
-			animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
-			itemWidth: 450,
-			itemHeight: 450,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: true,
-			sync: "#carousel2"
-		});
-
-
-
-		//        карусель похожих товаров
-		$('#towars').flexslider({
-			animation: "slide",
-			controlNav: true,
-			animationLoop: false,
-			slideshow: false,
-			itemWidth: 207,
-			itemHeight: 556,
-			itemMargin: 50,
-			controlNav: false,
-			directionNav: true,
-			slideshow: true,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: true
-
-		});
-
-		//        карусель объектов на товара товаров
-		$('#tow_obj').flexslider({
-			animation: "slide",
-			controlNav: true,
-			animationLoop: false,
-			slideshow: false,
-			itemWidth: 207,
-			itemHeight: 410,
-			itemMargin: 30,
-			controlNav: false,
-			directionNav: true,
-			slideshow: true,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: true
-
-		});
-
-	} else {
-		// слайдер
-		// // навигация по слайдеру с превьюшками
-		// The slider being synced must be initialized first
-		$('#carousel').flexslider({
-			animation: "slide",
-			controlNav: true,
-			animationLoop: false,
-			slideshow: false,
-			itemWidth: 137,
-			itemHeight: 90,
-			itemMargin: 22,
-			controlNav: false,
-			directionNav: true,
-			direction: "horizontal",
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: false,
-			asNavFor: '#slider'
-		});
-
-		$('#slider').flexslider({
-			animation: "slide",
-			controlNav: false,
-			directionNav: true,
-			direction: "horizontal",
-			animationLoop: false,
-			slideshow: true,
-			slideshowSpeed: 10800, //Integer: Set the speed of the slideshow cycling, in milliseconds
-			animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
-			itemWidth: 1000,
-			itemHeight: 222,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: false,
-			sync: "#carousel"
-		});
-
-
-
-		//        Галерея в товарах
-		$('#carousel2').flexslider({
-			animation: "slide",
-			slideshow: false,
-			itemWidth: 110,
-			itemHeight: 109,
-			itemMargin: 5,
-			controlNav: false,
-			directionNav: true,
-			direction: "vertical",
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: false,
-			animationLoop: true,
-			asNavFor: '#slider2'
-
-
-
-
-		});
-		$('#slider2').flexslider({
-			//          animation: "slide",
-			controlNav: false,
-			directionNav: false,
-			direction: "vertical",
-			animationLoop: true,
-			slideshow: false,
-			slideshowSpeed: 6000, //Integer: Set the speed of the slideshow cycling, in milliseconds
-			animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
-			itemWidth: 450,
-			itemHeight: 450,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: false,
-			sync: "#carousel2"
-		});
-
-
-		//        карусель похожих товаров
-		$('#towars').flexslider({
-			animation: "slide",
-			controlNav: true,
-			animationLoop: false,
-			slideshow: false,
-			itemWidth: 207,
-			itemHeight: 556,
-			itemMargin: 50,
-			controlNav: false,
-			directionNav: true,
-			direction: "horizontal",
-			slideshow: true,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: false
-
-		});
-
-		//        карусель объектов товаров
-		$('#tow_obj').flexslider({
-			animation: "slide",
-			controlNav: true,
-			animationLoop: false,
-			slideshow: false,
-			itemWidth: 207,
-			itemHeight: 444,
-			itemMargin: 30,
-			controlNav: false,
-			directionNav: true,
-			direction: "horizontal",
-			slideshow: true,
-			// useCSS must be unenabled for remove bug from floating text-block on slides
-			useCSS: false
-
-		});
-
-
-
-	}
-
-
-	//////////////////////////////////////////
-	// сворачивание/разворачивание каталога //
-	//////////////////////////////////////////
-	$(document).ready(function () {
-		$('ul#my-menu ul').each(function (i) { // Check each submenu:
-			//            $(this).prev().removeClass('expanded').addClass('collapsed');
-			//$(this).css('display', 'none');
-			$(this).prev().addClass('collapsible').click(function () { // Attach an event listener
-				$(this).parent().addClass('bgdarked');
-				var this_i = $('ul#my-menu ul').index($(this).next()); // The index of the submenu of the clicked link
-				if ($(this).next().css('display') == 'none') {
-					$(this).next().slideDown(200, function () { // Show submenu:
-						$(this).prev().removeClass('collapsed').addClass('expanded');
-					});
-				} else {
-					$(this).next().slideUp(200, function () { // Hide submenu:
-						$(this).parent().removeClass('bgdarked');
-						$(this).prev().removeClass('expanded').addClass('collapsed');
-					});
-				}
-				return false; // Prohibit the browser to follow the link address
-			});
-		});
-	});
-
-
-
-	///////////////////////////////
-	// initializ_slider_jqueryUI //
-	///////////////////////////////
-
-	$(".slider-range").each(function () {
-		var id = $(this).attr('id');
-		var max_val = "#max_" + id;
-		var min_val = "#min_" + id;
-		var value_min = parseInt($(min_val).attr('placeholder'));
-		var value_max = parseInt($(max_val).attr('placeholder'));
-		var max = parseInt($(max_val).attr('rel'));
-
-		$(this).slider({
-			range: true,
-			min: 0,
-			max: max,
-			values: [value_min, value_max],
-			slide: function (event, ui) {
-				$(min_val).val(ui.values[0]);
-				//                $( ".min_val" ).attr("class","min_val"+unic_nubr);
-
-				$(max_val).val(ui.values[1]);
-				//                $( ".max_val" ).attr("class","max_val"+unic_nubr);
-
-			}
-
-
-			//             stop: function(event, ui) {
-			//                 var msg   = $('#search_form').serialize();
-			//                 $.ajax({
-			//                   type: 'get',
-			//                   url: '/udata://catalog/getObjectsList/notemplate/3/0/0/100/265/1.json',
-			//                   dataType: "json",
-			//                   data: msg,
-			//                   success: function(data) {
-			//
-			// //всплывающая подсказка о кол-ве найденных товаров
-			//
-			//                           $( "div.SearchHelperText" ).remove();
-			//                           $(max_val).after("<div class='SearchHelperText'></div>");
-			//                           $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
-			//                           $( "div.SearchHelperText" ).hide();
-			//                           $( "div.SearchHelperText" ).fadeIn('1800');
-			// //                          setTimeout(function(){$("div.SearchHelperText").fadeOut('1800')},5000);
-			//                   },
-			//                   error:  function(xhr, str){
-			//                         alert('Возникла ошибка: ' + xhr.responseCode);
-			//                     }
-			//                 });
-			//             }
-
-
-		});
-	});
-
-
-
-
-
-	//sort goods
-	if ($("div#catalog_list").hasClass('cat_item_list')) {
-		$("img.plitka_view").addClass('selected_type_view');
-	} else {
-		$("img.spisok_view").addClass('selected_type_view');
-	}
-	$("img.plitka_view").click(function () {
-		$("div#catalog_list").addClass('cat_item_list');
-		$(this).addClass('selected_type_view');
-		$("img.spisok_view").removeClass('selected_type_view');
-	});
-	$("img.spisok_view").click(function () {
-		$("div#catalog_list").removeClass('cat_item_list');
-		$(this).addClass('selected_type_view');
-		$("img.plitka_view").removeClass('selected_type_view');
-	});
-
-	//	увеличение-уменьшение колличества товаров в корзине
-	var picecountButt_plus = jQuery(".input_pice_count_plus");
-	var picecountButt_minus = jQuery(".input_pice_count_minus");
-
-	picecountButt_plus.click(function () {
-		var cur_value = $(this).parent().parent().children().children('.input_pice_count').attr('value');
-		cur_value = parseInt(cur_value) + 1;
-		$(this).parent().parent().children().children('.input_pice_count').attr('value', cur_value);
-	})
-
-	picecountButt_minus.click(function () {
-		var cur_value = $(this).parent().parent().children().children('.input_pice_count').attr('value');
-		if (cur_value == 0) {
-			return false;
-		} else {
-			cur_value = parseInt(cur_value) - 1;
-			$(this).parent().parent().children().children('.input_pice_count').attr('value', cur_value);
-		}
-	})
-
-
-
-
-
-
-	//всплывающее главное меню
-
-	$('ul#menu li').has('ul').addClass("notemptyli");
-
-
-
-
-	//    checkout radiobuttons
-	$("label.emarket-delivery-784, label.emarket-delivery-808").click(function () {
-
-		$("fieldset.personalinfo").show();
-		$("fieldset.deliveryinfo").show();
-		$("fieldset.commentinfo").show();
-		$(".address_samov").hide();
-		$("#delivery-address-new").attr('value', 'new');
-		$('#radio34011').removeAttr('checked');
-
-
-
-
-	});
-
-
-
-
-	$("label.emarket-delivery-783").click(function () {
-
-		$(".address_samov input[name='delivery-id']").click(function () {
-			$(this).addClass("checkedbox")
-				.siblings(".address_samov input[name='delivery-id']").removeClass("checkedbox");
-		});
-
-
-
-		//        $("fieldset.personalinfo").hide();
-		$("fieldset.deliveryinfo").hide();
-		$("fieldset.commentinfo").hide();
-		$(".address_samov").show();
-		$("#delivery-address-new").attr('value', '');
-		$('#radio34011').attr('checked', '');
-		$("input.emarket-delivery-784, input.emarket-delivery-808").removeAttr('checked');
-
-		$(".address_samov input.css-checkbox2.checkedbox").trigger('click');
-		//            $(this).addClass('selected_type_view');
-		//            $("img.plitka_view").removeClass('selected_type_view');
-
-	});
-
-
-
-	//    закладки в чекауте
-	$("article div.ch_formblock form > span").hide(); // Скрываем содержание
-	$("ul.tabsch li:first").attr("class", "active_chbtn"); // Активируем первую закладку
-	$("article div.ch_formblock form > span:first").fadeIn(); // Выводим содержание
-
-	$('article ul.tabsch li a').click(function (e) {
-		e.preventDefault();
-		$("article div.ch_formblock form > span").hide(); //Скрыть все сожержание
-		$("ul.tabsch li").attr("class", ""); //Сброс класса
-		$(this).parent().attr("class", "active_chbtn"); // Активируем закладку
-		$('#' + $(this).attr('name')).fadeIn(); // Выводим содержание текущей закладки
-		//        console.log("654654654");
-	});
-
-
-
-
-
-	//    обработка кнопки продолжить в чекауте
-	var tabIdForButton;
+    ////////////////////////////////////////////////////////////////////////
+    // выделенный лого в топе шапки(не работает http://toster.ru/q/29215) //
+    ////////////////////////////////////////////////////////////////////////
+    var bp = $("div.brends_block div.brend_item.focus_brand span:first-child").css('background-position');
+    var bpFirstPart = bp.slice(0, bp.indexOf(' '));
+    var bpSecondPart = "0";
+    $("div.brends_block div.brend_item.focus_brand span:first-child").css({
+        backgroundPosition: bpFirstPart + ' ' + bpSecondPart
+    });
+
+
+    ////////////////////////////////////////////
+    // фикс для стилизации селектов(списков) //
+    ////////////////////////////////////////////
+    ///
+
+
+
+    ///выбрать город
+
+
+//    $('div.ul_towns select').each(function () {
+//        $(this).siblings('p').text($(this).children('option:selected').text());
+//    });
+//    $('div.ul_towns select').change(function () {
+//        $(this).siblings('p').text($(this).children('option:selected').text());
+//    });
+//
+//
+//    Подставка региона в параграф в шапке
+    var RegTxtName = $('ul#region li.first').text();
+//    console.log(RegTxtName);
+    $('.ul_towns p').text(RegTxtName);
+    $('.ul_towns p').attr('title',RegTxtName);
+
+
+
+
+
+
+    $('div.chul_towns select').each(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+    $('div.chul_towns select').change(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+
+    // в фильтре
+    $('div.select_filterbl select').each(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+    $('div.select_filterbl select').change(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+
+    $('div.select_filterbl2 select').each(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+    $('div.select_filterbl2 select').change(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+
+
+    // в сортировке
+    $('div.select_sortnview select').each(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+    $('div.select_sortnview select').change(function () {
+        $(this).siblings('p').text($(this).children('option:selected').text());
+    });
+
+
+    //////////////////////////////////
+    // слайдер                     //
+    // проверка мобильного браузера //
+    //////////////////////////////////
+
+
+    if (isMobile.any()) {
+        // // навигация по слайдеру с превьюшками
+        // The slider being synced must be initialized first
+        $('#carousel').flexslider({
+            animation: "slide",
+            controlNav: true,
+            animationLoop: false,
+            slideshow: false,
+            itemWidth: 137,
+            itemHeight: 90,
+            itemMargin: 22,
+            controlNav: false,
+            directionNav: true,
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: true,
+            asNavFor: '#slider'
+        });
+
+        $('#slider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            directionNav: true,
+            animationLoop: false,
+            slideshow: true,
+            slideshowSpeed: 10800, //Integer: Set the speed of the slideshow cycling, in milliseconds
+            animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
+            itemWidth: 1000,
+            itemHeight: 222,
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: true,
+            sync: "#carousel"
+        });
+
+        //        Карусель на странице товара
+        $('#carousel2').flexslider({
+            animation: "slide",
+            slideshow: false,
+            itemWidth: 110,
+            itemHeight: 109,
+            itemMargin: 5,
+            controlNav: false,
+            directionNav: true,
+            direction: "vertical",
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: true,
+            animationLoop: true,
+            asNavFor: '#slider2'
+        });
+
+        $('#slider2').flexslider({
+            //          animation: "slide",
+            controlNav: false,
+            directionNav: false,
+            direction: "vertical",
+            animationLoop: true,
+            slideshow: false,
+            slideshowSpeed: 6000, //Integer: Set the speed of the slideshow cycling, in milliseconds
+            animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
+            itemWidth: 450,
+            itemHeight: 450,
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: true,
+            sync: "#carousel2"
+        });
+
+
+
+//        карусель похожих товаров
+            $('#towars').flexslider({
+            animation: "slide",
+            controlNav: true,
+            animationLoop: false,
+            slideshow: false,
+            itemWidth: 207,
+            itemHeight: 556,
+            itemMargin: 50,
+            controlNav: false,
+            directionNav: true,
+            slideshow: true,
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: true
+
+            });
+
+    } else {
+        // слайдер
+        // // навигация по слайдеру с превьюшками
+        // The slider being synced must be initialized first
+        $('#carousel').flexslider({
+            animation: "slide",
+            controlNav: true,
+            animationLoop: false,
+            slideshow: false,
+            itemWidth: 137,
+            itemHeight: 90,
+            itemMargin: 22,
+            controlNav: false,
+            directionNav: true,
+            direction: "horizontal",
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: false,
+            asNavFor: '#slider'
+        });
+
+        $('#slider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            directionNav: true,
+            direction: "horizontal",
+            animationLoop: false,
+            slideshow: true,
+            slideshowSpeed: 10800, //Integer: Set the speed of the slideshow cycling, in milliseconds
+            animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
+            itemWidth: 1000,
+            itemHeight: 222,
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: false,
+            sync: "#carousel"
+        });
+
+
+
+        //        Галерея в товарах
+        $('#carousel2').flexslider({
+            animation: "slide",
+            slideshow: false,
+            itemWidth: 110,
+            itemHeight: 109,
+            itemMargin: 5,
+            controlNav: false,
+            directionNav: true,
+            direction: "vertical",
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: false,
+            animationLoop: true,
+            asNavFor: '#slider2'
+
+
+
+
+        });
+        $('#slider2').flexslider({
+            //          animation: "slide",
+            controlNav: false,
+            directionNav: false,
+            direction: "vertical",
+            animationLoop: true,
+            slideshow: false,
+            slideshowSpeed: 6000, //Integer: Set the speed of the slideshow cycling, in milliseconds
+            animationSpeed: 1800, //Integer: Set the speed of animations, in milliseconds
+            itemWidth: 450,
+            itemHeight: 450,
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: false,
+            sync: "#carousel2"
+        });
+
+
+        //        карусель похожих товаров
+            $('#towars').flexslider({
+            animation: "slide",
+            controlNav: true,
+            animationLoop: false,
+            slideshow: false,
+            itemWidth: 207,
+            itemHeight: 556,
+            itemMargin: 50,
+            controlNav: false,
+            directionNav: true,
+            direction: "horizontal",
+            slideshow: true,
+            // useCSS must be unenabled for remove bug from floating text-block on slides
+            useCSS: false
+
+        });
+
+
+
+    }
+
+
+    //////////////////////////////////////////
+    // сворачивание/разворачивание каталога //
+    //////////////////////////////////////////
+    $(document).ready(function () {
+        $('ul#my-menu ul').each(function (i) { // Check each submenu:
+            //            $(this).prev().removeClass('expanded').addClass('collapsed');
+            //$(this).css('display', 'none');
+            $(this).prev().addClass('collapsible').click(function () { // Attach an event listener
+                $(this).parent().addClass('bgdarked');
+                var this_i = $('ul#my-menu ul').index($(this).next()); // The index of the submenu of the clicked link
+                if ($(this).next().css('display') == 'none') {
+                    $(this).next().slideDown(200, function () { // Show submenu:
+                        $(this).prev().removeClass('collapsed').addClass('expanded');
+                    });
+                } else {
+                    $(this).next().slideUp(200, function () { // Hide submenu:
+                        $(this).parent().removeClass('bgdarked');
+                        $(this).prev().removeClass('expanded').addClass('collapsed');
+                    });
+                }
+                return false; // Prohibit the browser to follow the link address
+            });
+        });
+    });
+
+
+
+    ///////////////////////////////
+    // initializ_slider_jqueryUI //
+    ///////////////////////////////
+
+    $(".slider-range").each(function () {
+        var id = $(this).attr('id');
+        var max_val = "#max_" + id;
+        var min_val = "#min_" + id;
+        var value_min = parseInt($(min_val).attr('placeholder'));
+        var value_max = parseInt($(max_val).attr('placeholder'));
+        var max = parseInt($(max_val).attr('rel'));
+
+        $(this).slider({
+            range: true,
+            min: 0,
+            max: max,
+            values: [value_min, value_max],
+            slide: function (event, ui) {
+                $(min_val).val(ui.values[0]);
+                //                $( ".min_val" ).attr("class","min_val"+unic_nubr);
+
+                $(max_val).val(ui.values[1]);
+                //                $( ".max_val" ).attr("class","max_val"+unic_nubr);
+
+            }
+
+
+            //             stop: function(event, ui) {
+            //                 var msg   = $('#search_form').serialize();
+            //                 $.ajax({
+            //                   type: 'get',
+            //                   url: '/udata://catalog/getObjectsList/notemplate/3/0/0/100/265/1.json',
+            //                   dataType: "json",
+            //                   data: msg,
+            //                   success: function(data) {
+            //
+            // //всплывающая подсказка о кол-ве найденных товаров
+            //
+            //                           $( "div.SearchHelperText" ).remove();
+            //                           $(max_val).after("<div class='SearchHelperText'></div>");
+            //                           $("div.SearchHelperText").html("<span>Найдено " + data.total + " товаров</span> <button type='submit'>показать</button>");
+            //                           $( "div.SearchHelperText" ).hide();
+            //                           $( "div.SearchHelperText" ).fadeIn('1800');
+            // //                          setTimeout(function(){$("div.SearchHelperText").fadeOut('1800')},5000);
+            //                   },
+            //                   error:  function(xhr, str){
+            //                         alert('Возникла ошибка: ' + xhr.responseCode);
+            //                     }
+            //                 });
+            //             }
+
+
+        });
+    });
+
+
+
+
+
+    //sort goods
+    if ($("div#catalog_list").hasClass('cat_item_list')) {
+        $("img.plitka_view").addClass('selected_type_view');
+    } else {
+        $("img.spisok_view").addClass('selected_type_view');
+    }
+    $("img.plitka_view").click(function () {
+        $("div#catalog_list").addClass('cat_item_list');
+        $(this).addClass('selected_type_view');
+        $("img.spisok_view").removeClass('selected_type_view');
+    });
+    $("img.spisok_view").click(function () {
+        $("div#catalog_list").removeClass('cat_item_list');
+        $(this).addClass('selected_type_view');
+        $("img.plitka_view").removeClass('selected_type_view');
+    });
+
+    //	увеличение-уменьшение колличества товаров в корзине
+    var picecountButt_plus = jQuery(".input_pice_count_plus");
+    var picecountButt_minus = jQuery(".input_pice_count_minus");
+
+    picecountButt_plus.click(function () {
+        var cur_value = $(this).parent().parent().children().children('.input_pice_count').attr('value');
+        cur_value = parseInt(cur_value) + 1;
+        $(this).parent().parent().children().children('.input_pice_count').attr('value', cur_value);
+    })
+
+    picecountButt_minus.click(function () {
+        var cur_value = $(this).parent().parent().children().children('.input_pice_count').attr('value');
+        if (cur_value == 0) {
+            return false;
+        } else {
+            cur_value = parseInt(cur_value) - 1;
+            $(this).parent().parent().children().children('.input_pice_count').attr('value', cur_value);
+        }
+    })
+
+
+
+
+
+
+    //всплывающее главное меню
+
+    $('ul#menu li').has('ul').addClass("notemptyli");
+
+
+
+
+    //    checkout radiobuttons
+    $("label.emarket-delivery-784, label.emarket-delivery-808").click(function () {
+
+        $("fieldset.personalinfo").show();
+        $("fieldset.deliveryinfo").show();
+        $("fieldset.commentinfo").show();
+        $(".address_samov").hide();
+        $("#delivery-address-new").attr('value', 'new');
+        $('#radio34011').removeAttr('checked');
+
+
+
+
+    });
+
+    $("label.emarket-delivery-783").click(function () {
+
+        $(".address_samov input[name='delivery-id']").click(function() {
+            $(this).addClass("checkedbox")
+                .siblings(".address_samov input[name='delivery-id']").removeClass("checkedbox");
+        });
+
+//        $("fieldset.personalinfo").hide();
+        $("fieldset.deliveryinfo").hide();
+        $("fieldset.commentinfo").hide();
+        $(".address_samov").show();
+        $("#delivery-address-new").attr('value', '');
+        $('#radio34011').attr('checked', '');
+        $("input.emarket-delivery-784, input.emarket-delivery-808").removeAttr('checked');
+
+        $(".address_samov input.css-checkbox2.checkedbox").trigger('click');
+        //            $(this).addClass('selected_type_view');
+        //            $("img.plitka_view").removeClass('selected_type_view');
+
+    });
+
+
+
+    //    закладки в чекауте
+    $("article div.ch_formblock form > span").hide(); // Скрываем содержание
+    $("ul.tabsch li:first").attr("class", "active_chbtn"); // Активируем первую закладку
+    $("article div.ch_formblock form > span:first").fadeIn(); // Выводим содержание
+
+    $('article ul.tabsch li a').click(function (e) {
+        e.preventDefault();
+        $("article div.ch_formblock form > span").hide(); //Скрыть все сожержание
+        $("ul.tabsch li").attr("class", ""); //Сброс класса
+        $(this).parent().attr("class", "active_chbtn"); // Активируем закладку
+        $('#' + $(this).attr('name')).fadeIn(); // Выводим содержание текущей закладки
+        //        console.log("654654654");
+    });
+
+
+
+
+
+    //    обработка кнопки продолжить в чекауте
+   var tabIdForButton;
 	var counterLi = $('ul.tabsch li');
 	var countLi = $(counterLi).size();
-	//	console.log(countLi);
+//	console.log(countLi);
 
 
-	//условие, если вкладок в чекауте меньше чем три шт.(фикс от лишнего клика по кнопке "Продолжить")
-	if (countLi < 3) {
+//условие, если вкладок в чекауте меньше чем три шт.(фикс от лишнего клика по кнопке "Продолжить")
+	if (countLi < 3){
 		tabIdForButton = 3;
-	} else {
+	}else{
 		tabIdForButton = 2;
 	}
 
@@ -513,18 +473,78 @@ $(document).ready(function () {
 
 
 
-		//////////////////////////////////////////////////////////////////////////
-		//				проверка адреса доставки(если активировано)				//
-		//////////////////////////////////////////////////////////////////////////
 
 
 
 
 
 
-		//		чекер адресной формы
-		var checkingerPers = false;
-		var checkingerAddr = false;
+
+//    $('a.checkout_btnxt').click(function (e) {
+//        e.preventDefault();
+//
+//
+//
+//        $("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
+//
+//
+//    });
+
+
+
+
+    //    закладки на странице товара
+    $("article div.good_bookmopt > div").hide(); // Скрываем содержание
+    $("article div.good_bookmopt ul.good_bookmarks li:first").attr("class", "active_chbtn"); // Активируем первую закладку
+    $("article div.good_bookmopt > div:first").fadeIn(); // Выводим содержание
+
+    $('article div.good_bookmopt ul.good_bookmarks li a').click(function (e) {
+        e.preventDefault();
+        $("article div.good_bookmopt > div").hide(); //Скрыть все сожержание
+        $("ul.good_bookmarks li").attr("class", ""); //Сброс класса
+        $(this).parent().attr("class", "active_chbtn"); // Активируем закладку
+        $('#' + $(this).attr('name')).fadeIn(); // Выводим содержание текущей закладки
+        //        console.log("654654654");
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	//проверка полей на лету
 	$('[type=text]').blur(function () {
@@ -543,258 +563,229 @@ $(document).ready(function () {
 
 
 
+			/////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////
+	////////////////////////начало валидатора////////////////////
+	/////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////
+
+
+	var validationFRM = function (nameTab) {
+
+		$('#payment_choose #'+nameTab).each(function () {
 
 
 
-		//////////////////////////////////////////////////////////////////////////
-		//				проверка адреса доставки(если активировано)				//
-		//			   в эту Hu/////////nu луше не вникать, а переписать заново!//
-		//////////////////////////////////////////////////////////////////////////
+			// Объявляем переменные (форма и кнопка отправки)
+			var formfield = $(this),
+				btn = formfield.parent().find('.checkout_btnxt');
+
+
+			// Добавляем каждому проверяемому полю, указание что поле пустое
+			formfield.find('.ntSaveForms').addClass('empty_field');
 
 
 
+			// Функция проверки полей формы
+			function checkInput() {
+					formfield.find('.ntSaveForms').each(function () {
+						if ($(this).val() != '') {
 
 
-	var counterTText;
-	var counterTText2;
-
-	//	проверяторы - заполнены ли все поля
-	var jhgJdsg = [];
-	var jhgJdsg2 = [];
+							// Если поле не пустое удаляем класс-указание
+							$(this).removeClass('empty_field');
+						} else {
 
 
-function showValues() {
-      var str = $("form#payment_choose :input").val.serialize();
-
-	console.log(str);
-    }
-
-
-	$('a.checkout_btnxt').bind('click', function (e) {
-
-
-
-showValues();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		if ($('.commentinfo').css('display') === "none") {
-
-			checkingerAddr = false;
-		} else {
-
-			checkingerAddr = true;
-
-			$('.commentinfo input[type=text]').each(function () {
-
-				//		очистка массива
-				do{
-					jhgJdsg2.length = 0;
-				}
-				while(jhgJdsg2.length > 5)
-
-
-
-
-				counterTText2 = !$(this).val().length;
-				jhgJdsg2.push(counterTText2)
-
-				//подсветка полей если не заполнены при нажатии продолжить
-				if (!$(this).val().length) {
-
-					e.preventDefault();
-					$(this).css('outline', '1px solid red');
-
+							// Если поле пустое добавляем класс-указание
+							$(this).addClass('empty_field');
+						}
+					});
 				}
 
+
+				// Функция подсветки незаполненных полей
+			function lightEmpty() {
+//				console.log("111111");
+				formfield.find('.empty_field').css({
+					'outline': '1px solid #d8512d'
+				});
+
+
+//				 Через полсекунды удаляем подсветку
+//				      setTimeout(function(){
+//				        formfield.find('.empty_field').removeAttr('style');
+//				      },1000);
+
+
+			}
+
+
+
+			// Проверка в режиме реального времени
+			setInterval(function () {
+
+
+				// Запускаем функцию проверки полей на заполненность
+				checkInput();
+
+
+				// Считаем к-во незаполненных полей
+				var sizeEmpty = formfield.find('.empty_field').size();
+
+
+				// Вешаем условие-тригер на кнопку отправки формы
+				if (sizeEmpty > 0) {
+					if (btn.hasClass('disabled')) {
+						return false
+					} else {
+						btn.addClass('disabled')
+					}
+				} else {
+					btn.removeClass('disabled')
+
+				}
+			}, 500);
+
+			// Событие клика по кнопке отправить
+			btn.click(function () {
+				if ($(this).hasClass('disabled')) {
+						console.log("не ок");
+
+					// подсвечиваем незаполненные поля и форму не отправляем, если есть незаполненные поля
+					lightEmpty();
+					return false
+				} else {
+
+//					имитируем клик на последнюю закладку
+					$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
+
+						console.log("все ок");
+
+
+					// Все хорошо, все заполнено, отправляем форму
+//					formfield.submit();
+				}
+			});
+		});
+	}
+
+	/////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////
+	//////////////////////////конец валидатора///////////////////
+	/////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+//
+//if ( $("ul.tabsch li").hasClass("active_chbtn")) {
+//
+//
+//    validationFRM("tab1");
+//
+//}
+//
+//
+
+
+
+
+//	обработка закладок
+    $("a[name='tab1']").click(function () {
+        tabIdForButton = 2;
+//        console.log(tabIdForButton);
+        $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
+        $("a.checkout_btnxt").show();
+
+		validationFRM("tab1");
+
+    });
+
+
+    $("a[name='tab2']").click(function () {
+        tabIdForButton = 3;
+//        console.log(tabIdForButton);
+        $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
+        $("a.checkout_btnxt").show();
+
+
+
+		validationFRM("tab2");
+
+
+
+    });
+
+
+
+    $("a[name='tab3']").click(function () {
+        tabIdForButton = 4;
+//        console.log(tabIdForButton);
+         $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").show();
+        $("a.checkout_btnxt").hide();
+    });
+    //    КОНЕЦ обработка кнопки продолжить в чекауте
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //    инициализация fancybox
+//    $(".fancybox").fancybox();
+//    $("#customer_choose").fancybox();
+
+$(".fancybox").fancybox({
+				// 'overlayShow'	: false,
+				'transitionIn'	: 'elastic',
+				'transitionOut'	: 'elastic',
+                'titlePosition'  : 'over',
+//                'width'  : 'auto',
+                'maxHeight'  : '80%'
 			});
 
 
-		}
-		///////////////////////////////////////////////////////////////////
 
-		$('.personalinfo input[type=text]').each(function () {
+//    раскрытие ответа на вопрос в факе
+    $(".answer_showhide").click(function(){
+  $(this).parent().parent().children(".answeronquestionbl").toggleClass("show_answeronquestionbl", 700, "easeOutQuint");
+        $(this).parent().parent().children(".answeronquestionbl");
+        return false;
+});
 
-			//		очистка массива
-			do{
-				jhgJdsg.length = 0;
-			}
-			while(jhgJdsg.length > 4)
 
 
-			counterTText = !$(this).val().length;
-			jhgJdsg.push(counterTText)
 
-			//подсветка полей при нажатии продолжить
-			if (!$(this).val().length) {
-				event.preventDefault();
-				$(this).css('outline', '1px solid red');
+//    плавные якоря в вопросах и ответах
+   $('a[href*=#faq_ask]').bind("click", function(e){
+      var anchor = $(this);
+      $('html, body').stop().animate({
+         scrollTop: $(anchor.attr('href')).offset().top
+      }, 1800);
+      e.preventDefault();
+          return false;
+   });
 
 
-			}
 
-		});
 
-
-//		console.log(!(!!jhgJdsg[0] === !!jhgJdsg[1] === !!jhgJdsg[2] === !!jhgJdsg[3] === !!jhgJdsg[4]));
-		if (!!jhgJdsg[0] == !!jhgJdsg[1] == !!jhgJdsg[2] == !!jhgJdsg[3] == !!jhgJdsg[4]) {
-
-
-			e.preventDefault();
-			$(this).css('outline', '1px solid red');
-			checkingerAddr=false;
-		} else {
-//			checkingerPers=true;
-			e.preventDefault();
-
-
-			//	не обязательно, подсветка устраняется другим способом
-			$(this).css('outline', 'none');
-
-			if (checkingerAddr === false) {
-				$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-			}
-
-		}
-
-
-
-
-		if (!jhgJdsg2[0] || !jhgJdsg2[1] || !jhgJdsg2[2] || !jhgJdsg2[3] || !jhgJdsg2[4] || !jhgJdsg2[5]) {
-
-			e.preventDefault();
-			$(this).css('outline', '1px solid red');
-			checkingerAddr = false;
-			//				console.log("не заполнена вторая форма");
-		} else {
-			e.preventDefault();
-
-			//	не обязательно, подсветка устраняется другим способом
-			$(this).css('outline', 'none');
-
-			if (checkingerAddr === true) {
-
-				$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-			}
-
-		}
-
-
-
-
-
-
-
-	});
-
-
-
-
-
-
-
-
-	//vkladki
-	$("a[name='tab1']").click(function () {
-		tabIdForButton = 2;
-		//        console.log(tabIdForButton);
-		$("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
-		$("a.checkout_btnxt").show();
-
-	});
-
-
-	$("a[name='tab2']").click(function () {
-		tabIdForButton = 3;
-		//        console.log(tabIdForButton);
-		$("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
-		$("a.checkout_btnxt").show();
-
-
-	});
-
-
-
-	$("a[name='tab3']").click(function () {
-		tabIdForButton = 4;
-		//        console.log(tabIdForButton);
-		$("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").show();
-		$("a.checkout_btnxt").hide();
-
-
-
-	});
-	//    КОНЕЦ обработка кнопки продолжить в чекауте
-
-
-
-
-	//    закладки на странице товара
-	$("article div.good_bookmopt > div").hide(); // Скрываем содержание
-	$("article div.good_bookmopt ul.good_bookmarks li:first").attr("class", "active_chbtn"); // Активируем первую закладку
-	$("article div.good_bookmopt > div:first").fadeIn(); // Выводим содержание
-
-	$('article div.good_bookmopt ul.good_bookmarks li a').click(function (e) {
-		e.preventDefault();
-		$("article div.good_bookmopt > div").hide(); //Скрыть все сожержание
-		$("ul.good_bookmarks li").attr("class", ""); //Сброс класса
-		$(this).parent().attr("class", "active_chbtn"); // Активируем закладку
-		$('#' + $(this).attr('name')).fadeIn(); // Выводим содержание текущей закладки
-		//        console.log("654654654");
-	});
-
-
-
-	//    инициализация fancybox
-	//    $(".fancybox").fancybox();
-	//    $("#customer_choose").fancybox();
-
-	$(".fancybox").fancybox({
-		// 'overlayShow'	: false,
-		'transitionIn': 'elastic',
-		'transitionOut': 'elastic',
-		'titlePosition': 'over',
-		//                'width'  : 'auto',
-		'maxHeight': '80%'
-	});
-
-
-
-	//    раскрытие ответа на вопрос в факе
-	$(".answer_showhide").click(function () {
-		$(this).parent().parent().children(".answeronquestionbl").toggleClass("show_answeronquestionbl", 700, "easeOutQuint");
-		$(this).parent().parent().children(".answeronquestionbl");
-		return false;
-	});
-
-
-
-
-	//    плавные якоря в вопросах и ответах
-	$('a[href*=#faq_ask]').bind("click", function (e) {
-		var anchor = $(this);
-		$('html, body').stop().animate({
-			scrollTop: $(anchor.attr('href')).offset().top
-		}, 1800);
-		e.preventDefault();
-		return false;
-	});
-
-
-
-
-	//Кнопка подняться наверх
+//Кнопка подняться наверх
 
 
 	if ($(".site-up").length) {
@@ -813,11 +804,11 @@ showValues();
 					timer = null;
 				}
 
-				//				шевеление при движении
-				//				timer = setTimeout(function () {
-				//					$(".site-up").removeClass("onscroll");
-				//				}, 400);
-				//				$(".site-up").addClass("onscroll");
+//				шевеление при движении
+//				timer = setTimeout(function () {
+//					$(".site-up").removeClass("onscroll");
+//				}, 400);
+//				$(".site-up").addClass("onscroll");
 			});
 		})();
 	}
@@ -826,39 +817,33 @@ showValues();
 
 
 
-
-	//раскрытие текста на главной
-	//	проверка на наличие вложенных тегов в текстовом поле
+//раскрытие текста на главной
+//	проверка на наличие вложенных тегов в текстовом поле
 	if ($(".text_description").children().length <= 7) {
-		$(".text_description").css("height", "inherit");
-		$('.sdhsfdh7_1').css("display", "none");
-	} else {
-		$(".text_description").after("<div class='sdhsfdh7_1'>Больше информации</div>");
-		//	раскрытие/скрытие
-		$(".sdhsfdh7_1").click(function (e) {
-			if ($(".text_description").children().length > 0) {
-				$(".text_description").toggleClass("sdhsfdh7", 1500, "easeInOutExpo");
-				e.preventDefault();
+	$(".text_description").css("height","inherit");
+		$('.sdhsfdh7_1').css("display","none");
+} else {
+	$(".text_description").after("<div class='sdhsfdh7_1'>Больше информации</div>");
+//	раскрытие/скрытие
+	$(".sdhsfdh7_1").click(function (e) {
+		if ($(".text_description").children().length > 0) {
+			$(".text_description").toggleClass("sdhsfdh7", 1500, "easeInOutExpo");
+			e.preventDefault();
+		} else {
+
+		}
+		$('.sdhsfdh7_1').text(function (_, txt) {
+			var ret = '';
+			if (txt == 'Больше информации') {
+				ret = 'Свернуть';
 			} else {
-
+				ret = 'Больше информации';
 			}
-			$('.sdhsfdh7_1').text(function (_, txt) {
-				var ret = '';
-				if (txt == 'Больше информации') {
-					ret = 'Свернуть';
-				} else {
-					ret = 'Больше информации';
-				}
-				return ret;
-			});
-			return false;
+			return ret;
 		});
-	}
-
-
-
-
-
+		return false;
+	});
+}
 
 
 

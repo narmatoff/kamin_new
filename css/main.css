@@ -4573,11 +4573,21 @@ div.ch_formblock form fieldset.commentinfo textarea
     border: 1px solid #c3c3c3;
 }
 
-
+/*
+.empty_field{
+	outline: 1px dotted red;
+}
+*/
 
 /*end filter*/
 
-
+.ntSaveForms{
+	    -webkit-transition: all .5s linear;
+       -moz-transition: all .5s linear;
+        -ms-transition: all .5s linear;
+         -o-transition: all .5s linear;
+            transition: all .5s linear;
+}
 
 
 div.comment
