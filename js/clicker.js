@@ -222,6 +222,7 @@ $("a.more_goods").click(function() {
      $("#clickerator").css('visibility','visible');
     id = $(this).attr('id');
     id_text = "#" + id;
+    id_all = "#" + id + "_all";
     href =  "?" + $(this).attr("filter");
     total = parseInt($(this).attr("rel"));
     perpage =  parseInt($(this).data("per-page"));
@@ -229,7 +230,7 @@ $("a.more_goods").click(function() {
     parent =  parseInt($(this).attr("parent"));
     tonext_1 = tonext + 1
     urla ='/udata://catalog/getObjectsList/notemplate/' + id + '/' + perpage + '//' + parent + '/280/1' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl'
-    console.log(perpage);
+    console.log(urla);
     hash = window.location.search.toString();
     if (hash) {
         if (hash.match(/&pajax=(\d+(\.\d)*)/i)) {
@@ -257,9 +258,13 @@ $("a.more_goods").click(function() {
                 $(id_text).attr("alt", tonext + 1);
                 $(id_text).attr("href", href + "&p=" + tonext_1 );
 
+                $(id_all).attr("alt", tonext + 1);
+                $(id_all).attr("href", href + "&p=" + tonext_1 );
+
                 if (next>=total){
                     $('.more_goods_inf').text('Показано ' + total + " товаров из " + total );
                     $("a.more_goods").remove();
+                    $("a.all_goods").remove();
 					priceSep(".goodsprice>span" );
 					priceSep(".price_word_usualy>span" );
                 }
@@ -287,7 +292,90 @@ $("a.more_goods").click(function() {
 	
     });
 
+$("a.all_goods").click(function() {
 
+     $("#clickerator").css('visibility','visible');
+    id = $(this).attr('id');
+    id = id.substr(0, id.length - 4);
+    id_text = "#" + id;
+    href =  "?" + $(this).attr("filter");
+    // total = parseInt($(this).attr("rel"));
+    perpage =  parseInt($(this).data("per-page"));
+    total =  parseInt($(this).data("total"));
+    tonext =  parseInt($(this).attr("alt"));
+    parent =  parseInt($(this).attr("parent"));
+    tonext_1 = tonext + 1
+    urla ='/udata://catalog/getObjectsList/notemplate/' + id + '/' + perpage + '//' + parent + '/280/1' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl'
+    hash = window.location.search.toString();
+    if (hash) {
+        if (hash.match(/&pajax=(\d+(\.\d)*)/i)) {
+            urlancor = hash.replace(/&pajax=(\d+(\.\d)*)/i, '&pajax=' + tonext_1);
+        }
+        else if (hash.match(/\?pajax=(\d+(\.\d)*)/i)) {
+               urlancor = hash.replace(/\?pajax=(\d+(\.\d)*)/i, '?pajax=' + tonext_1);
+        }
+        else {
+            urlancor = hash + '&pajax=' + tonext_1;
+        }
+    }
+    else {
+        urlancor = '?pajax=' + tonext_1;
+    }
+    history.pushState(null, null, urlancor);
+
+    next = tonext_1 * perpage;
+    all_goods (urla, tonext, href, total, parent, next, perpage)
+    return false;
+    });
+
+function all_goods (urla, tonext, href, total, parent, next, perpage) {
+	jQuery.ajax({
+                url: urla,
+                dataType: 'html',
+                success: function (data) {
+                $(".cat_item_plits:last-child").after(data);
+
+                if (next>=total){
+                    $('.more_goods_inf').text('Показано ' + total + " товаров из " + total );
+                    $("a.more_goods").remove();
+                    $("a.all_goods").remove();
+					priceSep(".goodsprice>span" );
+					priceSep(".price_word_usualy>span" );
+					console.debug("all");
+                }
+                else{
+                	tonext = tonext + 1;
+    				next = tonext * perpage;
+
+                	urla_next = '/udata://catalog/getObjectsList/notemplate/' + id + '/' + perpage + '//' + parent + '/280/1' + href + "&p=" + tonext + '&transform=/modules/catalog_popap.xsl';
+
+                    $('.more_goods_inf').text('Показано ' + next + " товаров из " + total );
+					priceSep(".goodsprice>span" );
+					priceSep(".price_word_usualy>span" );
+					hash = window.location.search.toString();
+					console.info(hash);
+				    if (hash) {
+				        if (hash.match(/&pajax=(\d+(\.\d)*)/i)) {
+				            urlancor = hash.replace(/&pajax=(\d+(\.\d)*)/i, '&pajax=' + tonext);
+				        }
+				        else if (hash.match(/\?pajax=(\d+(\.\d)*)/i)) {
+				               urlancor = hash.replace(/\?pajax=(\d+(\.\d)*)/i, '?pajax=' + tonext);
+				        }
+				        else {
+				            urlancor = hash + '&pajax=' + tonext;
+				        }
+				    }
+   					history.pushState(null, null, urlancor);
+
+                	all_goods (urla_next, tonext, href, total, parent, next, perpage);
+                }
+
+                $("#clickerator").css('visibility','hidden');
+
+                }
+
+            });
+}
 
 //////////////////////////////////////////
 // закладки описания на странице товара //

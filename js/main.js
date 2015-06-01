@@ -23,19 +23,19 @@ $(document).ready(function () {
     ///выбрать город
 
 
-//    $('div.ul_towns select').each(function () {
-//        $(this).siblings('p').text($(this).children('option:selected').text());
-//    });
-//    $('div.ul_towns select').change(function () {
-//        $(this).siblings('p').text($(this).children('option:selected').text());
-//    });
-//
-//
-//    Подставка региона в параграф в шапке
+    //    $('div.ul_towns select').each(function () {
+    //        $(this).siblings('p').text($(this).children('option:selected').text());
+    //    });
+    //    $('div.ul_towns select').change(function () {
+    //        $(this).siblings('p').text($(this).children('option:selected').text());
+    //    });
+    //
+    //
+    //    Подставка региона в параграф в шапке
     var RegTxtName = $('ul#region li.first').text();
-//    console.log(RegTxtName);
+    //    console.log(RegTxtName);
     $('.ul_towns p').text(RegTxtName);
-    $('.ul_towns p').attr('title',RegTxtName);
+    $('.ul_towns p').attr('title', RegTxtName);
 
 
 
@@ -147,8 +147,8 @@ $(document).ready(function () {
 
 
 
-//        карусель похожих товаров
-            $('#towars').flexslider({
+        //        карусель похожих товаров
+        $('#towars').flexslider({
             animation: "slide",
             controlNav: true,
             animationLoop: false,
@@ -162,7 +162,7 @@ $(document).ready(function () {
             // useCSS must be unenabled for remove bug from floating text-block on slides
             useCSS: true
 
-            });
+        });
 
     } else {
         // слайдер
@@ -239,7 +239,7 @@ $(document).ready(function () {
 
 
         //        карусель похожих товаров
-            $('#towars').flexslider({
+        $('#towars').flexslider({
             animation: "slide",
             controlNav: true,
             animationLoop: false,
@@ -395,6 +395,42 @@ $(document).ready(function () {
 
 
 
+    var validateLang = {
+        //        errorTitle: 'Form submission failed!',
+        //        requiredFields: 'You have not answered all required fields',
+        //        badTime: 'You have not given a correct time',
+        badEmail: 'Некорректный e-mail'
+            //        badTelephone: 'You have not given a correct phone number',
+            //        badSecurityAnswer: 'You have not given a correct answer to the security question',
+            //        badDate: 'You have not given a correct date',
+            //        lengthBadStart: 'The input value must be between ',
+            //        lengthBadEnd: ' characters',
+            //        lengthTooLongStart: 'The input value is longer than ',
+            //        lengthTooShortStart: 'The input value is shorter than ',
+            //        notConfirmed: 'Input values could not be confirmed',
+            //        badDomain: 'Incorrect domain value',
+            //        badUrl: 'The input value is not a correct URL',
+            //        badCustomVal: 'The input value is incorrect',
+            //        andSpaces: ' and spaces ',
+            //        badInt: 'The input value was not a correct number',
+            //        badSecurityNumber: 'Your social security number was incorrect',
+            //        badUKVatAnswer: 'Incorrect UK VAT Number',
+            //        badStrength: 'The password isn\'t strong enough',
+            //        badNumberOfSelectedOptionsStart: 'You have to choose at least ',
+            //        badNumberOfSelectedOptionsEnd: ' answers',
+            //        badAlphaNumeric: 'The input value can only contain alphanumeric characters ',
+            //        badAlphaNumericExtra: ' and ',
+            //        wrongFileSize: 'The file you are trying to upload is too large (max %s)',
+            //        wrongFileType: 'Only files of type %s is allowed',
+            //        groupCheckedRangeStart: 'Please choose between ',
+            //        groupCheckedTooFewStart: 'Please choose at least ',
+            //        groupCheckedTooManyStart: 'Please choose a maximum of ',
+            //        groupCheckedEnd: ' item(s)',
+            //        badCreditCard: 'The credit card number is not correct',
+            //        badCVV: 'The CVV number was not correct'
+    };
+
+
 
     //    checkout radiobuttons
     $("label.emarket-delivery-784, label.emarket-delivery-808").click(function () {
@@ -407,18 +443,36 @@ $(document).ready(function () {
         $('#radio34011').removeAttr('checked');
 
 
+        $("#13304").trigger('click');
+
+        $('.commentinfo input').attr({
+            'data-validation': 'required'
+        });
+
+
+
+        //	валидация формы заказа
+        $.validate({
+            language: validateLang,
+            onError: onSubmtClckFu()
+
+        });
+
+
+
+
 
 
     });
 
     $("label.emarket-delivery-783").click(function () {
 
-        $(".address_samov input[name='delivery-id']").click(function() {
+        $(".address_samov input[name='delivery-id']").click(function () {
             $(this).addClass("checkedbox")
                 .siblings(".address_samov input[name='delivery-id']").removeClass("checkedbox");
         });
 
-//        $("fieldset.personalinfo").hide();
+        //        $("fieldset.personalinfo").hide();
         $("fieldset.deliveryinfo").hide();
         $("fieldset.commentinfo").hide();
         $(".address_samov").show();
@@ -430,6 +484,16 @@ $(document).ready(function () {
         //            $(this).addClass('selected_type_view');
         //            $("img.plitka_view").removeClass('selected_type_view');
 
+        $("#13303").trigger('click');
+
+        $('.commentinfo input').removeAttr('data-validation');
+
+        $.validate({
+            language: validateLang,
+            onError: onSubmtClckFu()
+
+        });
+
     });
 
 
@@ -438,7 +502,7 @@ $(document).ready(function () {
     $("article div.ch_formblock form > span").hide(); // Скрываем содержание
     $("ul.tabsch li:first").attr("class", "active_chbtn"); // Активируем первую закладку
     $("article div.ch_formblock form > span:first").fadeIn(); // Выводим содержание
-
+    //	console.log('11111122222');
     $('article ul.tabsch li a').click(function (e) {
         e.preventDefault();
         $("article div.ch_formblock form > span").hide(); //Скрыть все сожержание
@@ -453,42 +517,52 @@ $(document).ready(function () {
 
 
     //    обработка кнопки продолжить в чекауте
-   var tabIdForButton;
-	var counterLi = $('ul.tabsch li');
-	var countLi = $(counterLi).size();
-//	console.log(countLi);
+    var tabIdForButton;
+    var counterLi = $('ul.tabsch li');
+    var countLi = $(counterLi).size();
+    //	console.log(countLi);
 
 
-//условие, если вкладок в чекауте меньше чем три шт.(фикс от лишнего клика по кнопке "Продолжить")
-	if (countLi < 3){
-		tabIdForButton = 3;
-	}else{
-		tabIdForButton = 2;
-	}
+    //условие, если вкладок в чекауте меньше чем три шт.(фикс от лишнего клика по кнопке "Продолжить")
+    if (countLi < 3) {
+        tabIdForButton = 3;
+    } else {
+        tabIdForButton = 2;
+    }
+
+    $('a.checkout_btnxt').click(function (e) {
+        e.preventDefault();
+        $("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
+
+
+    });
+
+
+    $("a[name='tab1']").click(function () {
+        tabIdForButton = 2;
+        //        console.log(tabIdForButton);
+        $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
+        $("a.checkout_btnxt").show();
+
+    });
+
+
+    $("a[name='tab2']").click(function () {
+        tabIdForButton = 3;
+        //        console.log(tabIdForButton);
+        $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
+        $("a.checkout_btnxt").show();
+    });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//    $('a.checkout_btnxt').click(function (e) {
-//        e.preventDefault();
-//
-//
-//
-//        $("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-//
-//
-//    });
+    $("a[name='tab3']").click(function () {
+        tabIdForButton = 4;
+        //        console.log(tabIdForButton);
+        $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").show();
+        $("a.checkout_btnxt").hide();
+    });
+    //    КОНЕЦ обработка кнопки продолжить в чекауте
 
 
 
@@ -509,341 +583,175 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//проверка полей на лету
-	$('[type=text]').blur(function () {
-		if ($(this).val().length > 0) {
-			$(this)
-			$(this).css('outline', 'none');
-		} else {
-			$(this).css('outline', '1px solid red');
-		}
-	});
-
-
-
-
-
-
-
-
-			/////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////
-	////////////////////////начало валидатора////////////////////
-	/////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////
-
-
-	var validationFRM = function (nameTab) {
-
-		$('#payment_choose #'+nameTab).each(function () {
-
-
-
-			// Объявляем переменные (форма и кнопка отправки)
-			var formfield = $(this),
-				btn = formfield.parent().find('.checkout_btnxt');
-
-
-			// Добавляем каждому проверяемому полю, указание что поле пустое
-			formfield.find('.ntSaveForms').addClass('empty_field');
-
-
-
-			// Функция проверки полей формы
-			function checkInput() {
-					formfield.find('.ntSaveForms').each(function () {
-						if ($(this).val() != '') {
-
-
-							// Если поле не пустое удаляем класс-указание
-							$(this).removeClass('empty_field');
-						} else {
-
-
-							// Если поле пустое добавляем класс-указание
-							$(this).addClass('empty_field');
-						}
-					});
-				}
-
-
-				// Функция подсветки незаполненных полей
-			function lightEmpty() {
-//				console.log("111111");
-				formfield.find('.empty_field').css({
-					'outline': '1px solid #d8512d'
-				});
-
-
-//				 Через полсекунды удаляем подсветку
-//				      setTimeout(function(){
-//				        formfield.find('.empty_field').removeAttr('style');
-//				      },1000);
-
-
-			}
-
-
-
-			// Проверка в режиме реального времени
-			setInterval(function () {
-
-
-				// Запускаем функцию проверки полей на заполненность
-				checkInput();
-
-
-				// Считаем к-во незаполненных полей
-				var sizeEmpty = formfield.find('.empty_field').size();
-
-
-				// Вешаем условие-тригер на кнопку отправки формы
-				if (sizeEmpty > 0) {
-					if (btn.hasClass('disabled')) {
-						return false
-					} else {
-						btn.addClass('disabled')
-					}
-				} else {
-					btn.removeClass('disabled')
-
-				}
-			}, 500);
-
-			// Событие клика по кнопке отправить
-			btn.click(function () {
-				if ($(this).hasClass('disabled')) {
-						console.log("не ок");
-
-					// подсвечиваем незаполненные поля и форму не отправляем, если есть незаполненные поля
-					lightEmpty();
-					return false
-				} else {
-
-//					имитируем клик на последнюю закладку
-					$("section.cartpage_sec article ul li a[name='tab" + tabIdForButton + "']").trigger('click');
-
-						console.log("все ок");
-
-
-					// Все хорошо, все заполнено, отправляем форму
-//					formfield.submit();
-				}
-			});
-		});
-	}
-
-	/////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////
-	//////////////////////////конец валидатора///////////////////
-	/////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-//
-//if ( $("ul.tabsch li").hasClass("active_chbtn")) {
-//
-//
-//    validationFRM("tab1");
-//
-//}
-//
-//
-
-
-
-
-//	обработка закладок
-    $("a[name='tab1']").click(function () {
-        tabIdForButton = 2;
-//        console.log(tabIdForButton);
-        $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
-        $("a.checkout_btnxt").show();
-
-		validationFRM("tab1");
-
-    });
-
-
-    $("a[name='tab2']").click(function () {
-        tabIdForButton = 3;
-//        console.log(tabIdForButton);
-        $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").hide();
-        $("a.checkout_btnxt").show();
-
-
-
-		validationFRM("tab2");
-
-
-
-    });
-
-
-
-    $("a[name='tab3']").click(function () {
-        tabIdForButton = 4;
-//        console.log(tabIdForButton);
-         $("section.cartpage_sec article div.ch_formblock form p.nexting_btn input").show();
-        $("a.checkout_btnxt").hide();
-    });
-    //    КОНЕЦ обработка кнопки продолжить в чекауте
-
-
-
-
-
-
-
-
-
-
-
-
-
     //    инициализация fancybox
-//    $(".fancybox").fancybox();
-//    $("#customer_choose").fancybox();
+    //    $(".fancybox").fancybox();
+    //    $("#customer_choose").fancybox();
 
-$(".fancybox").fancybox({
-				// 'overlayShow'	: false,
-				'transitionIn'	: 'elastic',
-				'transitionOut'	: 'elastic',
-                'titlePosition'  : 'over',
-//                'width'  : 'auto',
-                'maxHeight'  : '80%'
-			});
+    $(".fancybox").fancybox({
+        // 'overlayShow'	: false,
+        'transitionIn': 'elastic',
+        'transitionOut': 'elastic',
+        'titlePosition': 'over',
+        //                'width'  : 'auto',
+        'maxHeight': '80%'
+    });
 
 
 
-//    раскрытие ответа на вопрос в факе
-    $(".answer_showhide").click(function(){
-  $(this).parent().parent().children(".answeronquestionbl").toggleClass("show_answeronquestionbl", 700, "easeOutQuint");
+    //    раскрытие ответа на вопрос в факе
+    $(".answer_showhide").click(function () {
+        $(this).parent().parent().children(".answeronquestionbl").toggleClass("show_answeronquestionbl", 700, "easeOutQuint");
         $(this).parent().parent().children(".answeronquestionbl");
         return false;
-});
+    });
 
 
 
 
-//    плавные якоря в вопросах и ответах
-   $('a[href*=#faq_ask]').bind("click", function(e){
-      var anchor = $(this);
-      $('html, body').stop().animate({
-         scrollTop: $(anchor.attr('href')).offset().top
-      }, 1800);
-      e.preventDefault();
-          return false;
-   });
+    //    плавные якоря в вопросах и ответах
+    $('a[href*=#faq_ask]').bind("click", function (e) {
+        var anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $(anchor.attr('href')).offset().top
+        }, 1800);
+        e.preventDefault();
+        return false;
+    });
 
 
 
 
-//Кнопка подняться наверх
+    //Кнопка подняться наверх
 
 
-	if ($(".site-up").length) {
-		(function () {
-			$(".site-up").click(function () {
-				$("html:not(:animated), body:not(animated)").animate({
-					scrollTop: 0
-				}, 600);
-			});
-			var timer;
-			$(window).scroll(function () {
-				var st = $(window).scrollTop();
-				$(".site-up")[st > 250 ? "addClass" : "removeClass"]("show");
-				if (timer) {
-					clearTimeout(timer);
-					timer = null;
-				}
+    if ($(".site-up").length) {
+        (function () {
+            $(".site-up").click(function () {
+                $("html:not(:animated), body:not(animated)").animate({
+                    scrollTop: 0
+                }, 600);
+            });
+            var timer;
+            $(window).scroll(function () {
+                var st = $(window).scrollTop();
+                $(".site-up")[st > 250 ? "addClass" : "removeClass"]("show");
+                if (timer) {
+                    clearTimeout(timer);
+                    timer = null;
+                }
 
-//				шевеление при движении
-//				timer = setTimeout(function () {
-//					$(".site-up").removeClass("onscroll");
-//				}, 400);
-//				$(".site-up").addClass("onscroll");
-			});
-		})();
-	}
-
-
+                //				шевеление при движении
+                //				timer = setTimeout(function () {
+                //					$(".site-up").removeClass("onscroll");
+                //				}, 400);
+                //				$(".site-up").addClass("onscroll");
+            });
+        })();
+    }
 
 
 
-//раскрытие текста на главной
-//	проверка на наличие вложенных тегов в текстовом поле
-	if ($(".text_description").children().length <= 7) {
-	$(".text_description").css("height","inherit");
-		$('.sdhsfdh7_1').css("display","none");
-} else {
-	$(".text_description").after("<div class='sdhsfdh7_1'>Больше информации</div>");
-//	раскрытие/скрытие
-	$(".sdhsfdh7_1").click(function (e) {
-		if ($(".text_description").children().length > 0) {
-			$(".text_description").toggleClass("sdhsfdh7", 1500, "easeInOutExpo");
-			e.preventDefault();
-		} else {
 
-		}
-		$('.sdhsfdh7_1').text(function (_, txt) {
-			var ret = '';
-			if (txt == 'Больше информации') {
-				ret = 'Свернуть';
-			} else {
-				ret = 'Больше информации';
-			}
-			return ret;
-		});
-		return false;
-	});
-}
+
+    //раскрытие текста на главной
+    //	проверка на наличие вложенных тегов в текстовом поле
+    if ($(".text_description").children().length <= 7) {
+        $(".text_description").css("height", "inherit");
+        $('.sdhsfdh7_1').css("display", "none");
+    } else {
+        $(".text_description").after("<div class='sdhsfdh7_1'>Больше информации</div>");
+        //	раскрытие/скрытие
+        $(".sdhsfdh7_1").click(function (e) {
+            if ($(".text_description").children().length > 0) {
+                $(".text_description").toggleClass("sdhsfdh7", 1500, "easeInOutExpo");
+                e.preventDefault();
+            } else {
+
+            }
+            $('.sdhsfdh7_1').text(function (_, txt) {
+                var ret = '';
+                if (txt == 'Больше информации') {
+                    ret = 'Свернуть';
+                } else {
+                    ret = 'Больше информации';
+                }
+                return ret;
+            });
+            return false;
+        });
+    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    //	Валидация формы///////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+
+
+
+
+
+    //	$('#payment_choose').ready(function () {
+
+    var onSubmtClckFu = function () {
+
+
+        $('input[name="submit"]').click(function () {
+            if ($(".personalinfo").children().hasClass("has-error")) {
+                $("section.cartpage_sec article ul li a[name='tab1']").trigger('click');
+                                console.log("есть ошибки в первой форме");
+
+                alert('Пожалуйста, заполните обязательные поля');
+
+            } else if ($("#new-legal-person").children().hasClass("has-error")) {
+                $("section.cartpage_sec article ul li a[name='tab2']").trigger('click');
+                                console.log("есть ошибки во второй форме");
+
+                                alert('Пожалуйста, заполните обязательные поля');
+
+
+            } else if ($(".commentinfo ").children().hasClass("has-error")) {
+                $("section.cartpage_sec article ul li a[name='tab2']").trigger('click');
+                                console.log("есть ошибки в третьей форме");
+
+                                                alert('Пожалуйста, заполните обязательные поля');
+
+            } else {
+                console.log("все ок");
+            }
+        });
+
+    }
+
+
+    // Устанавливаем атрибуты 'src' и 'alt' для элемента img #myPhoto
+
+    $('.personalinfo input').attr({
+        'data-validation': 'required'
+    });
+    $('.personalinfo input[id="50"]').attr({
+        'data-validation': 'email'
+    });
+
+    //	валидация формы заказа
+    $("label.emarket-delivery-783").trigger('click');
+
+
+
+//    Исправить!!!!
+    $('#payment_choose').ready(function () {
+        $("input[name='submit']").trigger('click');
+        console.log('12121212');
+    })
+
+
+
+
+
+
+    //	});
+
+
 
 
 

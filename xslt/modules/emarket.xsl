@@ -45,6 +45,9 @@
                     <div class="ch_formblock">
                        <!--                            ошибки формы заказаз-->
  <xsl:apply-templates select="$errors" />
+
+
+
                         <form id="payment_choose" style="text-align: left;" method="POST" action="/emarket/saveInfo">
                         	<!-- <script>
 						<![CDATA[
@@ -153,7 +156,7 @@
                             <div class="clearfix"></div>
                             <p class="nexting_btn">
                               
-                               <input style="display:none;" class="checkout_btnxt disabled" type="submit" value="Продолжить" />
+                               <input style="display:none;" class="checkout_btnxt" type="submit" name="submit" value="Продолжить" />
                                <a class="checkout_btnxt disabled" type="submit" href="javascript://">Продолжить</a>
                                <span></span>
                            </p>

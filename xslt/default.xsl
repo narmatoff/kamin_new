@@ -1,23 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+
 <!DOCTYPE xsl:stylesheet SYSTEM "ulang://i18n/constants.dtd:file">
-<xsl:stylesheet version="1.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/TR/xlink" xmlns:umi="http://www.umi-cms.ru/TR/umi">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/TR/xlink" xmlns:umi="http://www.umi-cms.ru/TR/umi">
 
 
-    
-<xsl:param name="show">0</xsl:param>
 
-    <xsl:template match="/">
+	<xsl:param name="show">0</xsl:param>
+
+	<xsl:template match="/">
+
+		<xsl:text disable-output-escaping='yes'>
+			&lt;!--[if lt IE 7]&gt; &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt; &lt;!--[if IE 7]&gt; &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt; &lt;!--[if IE 8]&gt; &lt;html class="no-js lt-ie9"&gt; &lt;![endif]--&gt; &lt;!--[if gt IE 8]&gt;&lt;!--&gt;
+		</xsl:text>
+
+		<!--404 check-->
+		<xsl:choose>
+
+			<xsl:when test="result[@module = 'content' and @method = 'notfound']">
 
 
-<xsl:text disable-output-escaping='yes'>
-        &lt;!--[if lt IE 7]&gt;      &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;
-        &lt;!--[if IE 7]&gt;         &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;
-        &lt;!--[if IE 8]&gt;         &lt;html class="no-js lt-ie9"&gt; &lt;![endif]--&gt;
-        &lt;!--[if gt IE 8]&gt;&lt;!--&gt;
-</xsl:text>
 
-<html class="no-js"> <!--<![endif]-->
+
+
+				<html lang="en">
+
+				<head>
+					<meta charset="utf-8" />
+					<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+					<title>Главная Камины</title>
+					<meta name="description" content="" />
+					<meta name="viewport" content="width=device-width, initial-scale=1" />
+					<link rel="stylesheet" href="{$template-resources}css/404.css" />
+				</head>
+
+				<body>
+					<div class="container">
+
+						<header>
+							<a class="logolink" href="/" title="На главную"><img src="{$template-resources}img/404logo.png" alt="kamin.ru" />
+							</a>
+							<div class="title">самый крупный поставщик каминов и топок
+								<br/>в России</div>
+
+							<div class="clearfix"></div>
+						</header>
+
+						<section>
+							<article>
+								<h1>404 Страница не найдена</h1>
+								<p>Запрашиваемая Вами страница не найдена. Возможно она была перемещена, или информация на ней устарела.</p>
+							</article>
+
+							<article>
+								<h2>А теперь хорошие новости:</h2>
+								<img class="goodnews" src="{$template-resources}img/goodnews.png" alt="" />
+								<p>На нашем сайте огромное количество других страниц! Чтобы найти нужную информацию, попробуйте к примеру, следующие страницы:</p>
+								<ul>
+									<li>Можно начать поиск с <a href="">Главной</a>
+									</li>
+									<li>Перейти напрямую в раздел <a href="">Каталог</a>
+									</li>
+									<li>Также можно воспользоваться поисковой строкой</li>
+									<li>Еще у нас шикарный раздел с <a href="">видео-обзорами</a>
+									</li>
+									<li>Огромная база <a href="">Вопросов-Ответов</a>
+									</li>
+								</ul>
+							</article>
+						</section>
+
+
+
+
+
+					</div>
+				</body>
+
+				</html>
+
+
+
+
+			</xsl:when>
+			<xsl:otherwise>
+
+
+				<html class="no-js"> <!--<![endif]-->
 <head>
  
  <link type="text/plain" rel="author" href="{$template-resources}humans.txt" />
@@ -159,11 +229,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="viewport" content="ya-title=fade,ya-dock=#00CCCC" />
     <link rel="stylesheet" href="{$template-resources}css/normalize.css"/>
-    <link rel="stylesheet" href="{$template-resources}css/main.css"/>
+    <link rel="stylesheet" href="{$template-resources}css/main-dist.css"/>
 <!--    <link rel="stylesheet" href="{$template-resources}css/test.css"/>-->
     
-    
-    
+
     <!--    less-->
 <!--
     <link rel="stylesheet/less" href="{$template-resources}css/kamin.less"/>
@@ -211,6 +280,9 @@
     <script src="{$template-resources}js/vendor/jquery-1.11.1.js"></script>
 <!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>-->
     <script>window.jQuery || document.write('&lt;script src="{$template-resources}js/vendor/jquery-1.11.1.js">&lt;\/script>')</script>
+
+              <script data-brackets-id='171' src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+              <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js"></script>
                
                 <script src="{$template-resources}js/jquery.fancybox.js"></script>
             <script src="{$template-resources}js/plugins.js"></script>
@@ -502,8 +574,8 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
         <xsl:apply-templates select="document('udata://menu/draw/14010')/udata" mode="top_menu"/>
         
         
-<!--        скидка на все 10%-->
-            <div class="saleall"></div>
+
+
             
         <div class="search_block">
             <xsl:apply-templates select="document('udata://search/insert_form')/udata" />
@@ -858,6 +930,11 @@ try { var yaCounter27431942 = new Ya.Metrika({id:27431942,
             <script src="{$template-resources}js/clicker.js?q=123456789098765432"></script>
             <script type="text/javascript" src="/js/site/__common.js"></script>
             <script src="{$template-resources}js/jquery.swfobject.1-1-1.min.js"></script>
+
+
+
+
+
            <script>
                 $(document).ready(function() {
                 $(".itemregion").click(function () {
@@ -1022,5 +1099,15 @@ var LiveTex = {
 </html>
 
 
-    </xsl:template>
+
+
+
+			</xsl:otherwise>
+		</xsl:choose>
+
+
+
+
+
+	</xsl:template>
 </xsl:stylesheet>

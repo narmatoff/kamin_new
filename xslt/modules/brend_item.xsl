@@ -127,7 +127,15 @@
                                 </xsl:attribute>
                             </xsl:if>
                             показать еще</a>
-                    
+                    <a class="all_goods" id="{page//property[@name='kategory']/value/page/@id}_all" title="{$per_page}" parent="15" filter="fields_filter[brend]={$parent_obj}&amp;order_filter[price]={$sort_param}" rel="{$total}" alt="1" href="?p=1&amp;fields_filter[brend]={$parent_obj}">
+				<xsl:attribute name="data-per-page"><xsl:value-of select="12" /></xsl:attribute>
+				<xsl:attribute name="data-total"><xsl:value-of select="$total" /></xsl:attribute>
+					<xsl:if test="$pajax">
+                        <xsl:attribute name="alt">
+                            <xsl:value-of select="$pajax" />
+                        </xsl:attribute>
+                    </xsl:if>
+				показать все</a>
               
                 <!-- 
                     <xsl:call-template name="numpages">

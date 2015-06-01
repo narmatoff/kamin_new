@@ -1,10 +1,100 @@
 
 .container {
 	width: 677px;
-	margin: 0 auto;
+	margin: 2% auto;
 
 }
 
 .title {
+	color: #444;
+	float: right;
+	font-size: 1.3em;
+	width: 360px;
+	font-weight: bold;
+	height: 121px;
+	padding: 20px 0 0 0;
+}
+
+.logolink {
+	display: block;
+		float: left;
+}
+
+body {
+	font-size: 18px;
+	font-family: Arial, sans-serif;
+}
+
+.clearfix {
+	clear: both;
+}
+
+section article p {
+	font-size: 14px;
+	color: #6d6d6d;
+	line-height: 20px;
+}
+
+section article h1 {
+	color: #6d6d6d;
+	font-size: 20.67px;
+}
+
+section article h2 {
+	font-size: 20.67px;;
+	color: #6d6d6d;
+}
+
+
+
+ul li {
+	font-size: 14px;
+	color: #6d6d6d;
+	list-style-type: decimal;
+
+
+}
+ul li a{
+
+	color: #F7961E;
+
+
+
+}
+ul li a:hover{
+
+	color: #F7961E;
+	text-decoration: none;
+
+
+}
+ol li {
+	font-size: 14px;
+	color: #6d6d6d;
+
+}
+
+header {
+	margin: 0 0 80px 0;
+}
+
+ol {
+	margin: 0;
+	padding: 0 0 0 50px;
+	line-height: 20px;
+}
+
+.goodnews {
+	position: absolute;
+	top:-55px;
+	left: 297px;
+}
+
+article {
+	position: relative;
+	margin: 50px 0 0 0;
+}
+
+a {
 
 }

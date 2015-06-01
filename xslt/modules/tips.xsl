@@ -149,7 +149,7 @@
         <div>
             <label for="{@id}">
                 <xsl:value-of select="@title" disable-output-escaping="no" /><em>*</em>:</label>
-            <input id="{@id}" placeholder="{@tip}" name="{@input_name}" type="text" value="{.}" class="input ntSaveForms" />
+            <input id="{@id}" placeholder="{@tip}" name="{@input_name}" type="text" value="{.}" class="input ntSaveForms" data-validation-error-msg-required="Обязательное поле"/>
         </div>
     </xsl:template>
     <xsl:template match="field[@name='country']">

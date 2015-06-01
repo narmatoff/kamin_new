@@ -263,16 +263,16 @@
 	
 
 	<xsl:template match="result[@module = 'content' and @method = 'notfound']">
-	 	
-
 
             <article>
             	<h1 class="dialog_par"><xsl:value-of select="@header"/></h1>
 				<xsl:apply-templates select="document('udata://content/sitemap')/udata" />
 			</article>
+
 	</xsl:template>
+
 	
-	
+
 	<xsl:template match="result[@module = 'content' and @method = 'sitemap']">
 		<xsl:apply-templates select="document('udata://content/sitemap//500')/udata/items" />
 	</xsl:template>

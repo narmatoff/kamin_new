@@ -4,14 +4,14 @@
 	<!-- Список товаров -->
 	<xsl:template match="result[@module = 'catalog' and @method = 'category']">
 		<!-- <xsl:value-of select="$filter" /> -->
-		
-		
+
+
 		<h1><xsl:value-of select="@header"/></h1>
-		
-		
+
+
 		<article>
-		
-		
+
+
 			<!-- ////////////////////////////////////-->
 			<xsl:choose>
 				<xsl:when test="$pajax">
@@ -24,57 +24,57 @@
 				<xsl:otherwise>
 					<xsl:apply-templates select="document('udata://catalog/getObjectsList//////280/1')/udata" mode="catalogus_current">
 						<xsl:with-param name="filter">
-						<xsl:value-of select="substring-after(@request-uri,'?')" /></xsl:with-param>
+							<xsl:value-of select="substring-after(@request-uri,'?')" /></xsl:with-param>
 					</xsl:apply-templates>
 
 				</xsl:otherwise>
 			</xsl:choose>
-			
-			
-<!--			вывод каталога для "Главной" и раздела "Каталог"-->
-<xsl:choose>
-	<xsl:when test="page/@parentId=0">
-		<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items" mode="categorylist_main" />
-	</xsl:when>
-	<xsl:when test="(contains(@request-uri, 'fields_filter')) and (document('udata://catalog/getObjectsList/')/udata/total = 0)">
-		<xsl:choose>
-				<xsl:when test="$pajax">
-					<xsl:apply-templates select="document(concat('udata://catalog/getObjectsList///', $pajax * 15,'//5/280/1'))/udata" mode="catalogus_current">
-						<xsl:with-param name="filter">
-							<xsl:value-of select="substring-after(@request-uri,'?')" />
-						</xsl:with-param>
-					</xsl:apply-templates>
+
+
+			<!--			вывод каталога для "Главной" и раздела "Каталог"-->
+			<xsl:choose>
+				<xsl:when test="page/@parentId=0">
+					<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items" mode="categorylist_main" />
+				</xsl:when>
+				<xsl:when test="(contains(@request-uri, 'fields_filter')) and (document('udata://catalog/getObjectsList/')/udata/total = 0)">
+					<xsl:choose>
+						<xsl:when test="$pajax">
+							<xsl:apply-templates select="document(concat('udata://catalog/getObjectsList///', $pajax * 15,'//5/280/1'))/udata" mode="catalogus_current">
+								<xsl:with-param name="filter">
+									<xsl:value-of select="substring-after(@request-uri,'?')" />
+								</xsl:with-param>
+							</xsl:apply-templates>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:apply-templates select="document('udata://catalog/getObjectsList/////5/280/1')/udata" mode="catalogus_current">
+								<xsl:with-param name="filter">
+									<xsl:value-of select="substring-after(@request-uri,'?')" /></xsl:with-param>
+							</xsl:apply-templates>
+
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:apply-templates select="document('udata://catalog/getObjectsList/////5/280/1')/udata" mode="catalogus_current">
-						<xsl:with-param name="filter">
-						<xsl:value-of select="substring-after(@request-uri,'?')" /></xsl:with-param>
-					</xsl:apply-templates>
-
+					<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorylist_main2" />
 				</xsl:otherwise>
+
 			</xsl:choose>
-	</xsl:when>
-	<xsl:otherwise>
-		<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorylist_main2" />		
-	</xsl:otherwise>
-	
-</xsl:choose>
-<!--//////////////////////////////////-->
-			
-			
+			<!--//////////////////////////////////-->
+
+
 
 
 			<!-- <span class="more_goods_inf">Товаров всего <xsl:value-of select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /></span> -->
 			<xsl:apply-templates select="$errors" />
-			
+
 			<div class="text_description">
 				<xsl:value-of select=".//property[@name = 'descr']/value" disable-output-escaping="yes" />
 			</div>
-			
+
 			<xsl:apply-templates select="$errors" />
 		</article>
 	</xsl:template>
-	
+
 	<xsl:template match="item" mode="categorylistimage">
 		<xsl:variable name="catalog_page" select="document(concat('upage://',@id))/udata/page/properties" />
 		<div class="prod_cat_main">
@@ -87,7 +87,7 @@
 			</a>
 		</div>
 	</xsl:template>
-	
+
 	<xsl:template match="item" mode="categorylist">
 		<xsl:variable name="catalog_page" select="document(concat('upage://',@id))/udata/page/properties" />
 		<div class="catalog_one_block">
@@ -103,86 +103,86 @@
 			</p>
 		</div>
 	</xsl:template>
-	
-	
-	
-<!--	шаблон каталога в разделе каталог-->
-<xsl:template match="items" mode="categorylist_main">
-	<div class="catalog_page">
-		<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorii" />
-	</div>
-	<div class="brandslogo_cat">
-		<xsl:apply-templates select="document('usel://brends')/udata/page" mode="brends2" />
-	</div>
-	<div class="clearfix"></div>
-</xsl:template>
-<!--/////////////////////////////////////////////////-->
+
+
+
+	<!--	шаблон каталога в разделе каталог-->
+	<xsl:template match="items" mode="categorylist_main">
+		<div class="catalog_page">
+			<xsl:apply-templates select="document('udata://catalog/getCategoryList///120')/udata/items/item" mode="categorii" />
+		</div>
+		<div class="brandslogo_cat">
+			<xsl:apply-templates select="document('usel://brends')/udata/page" mode="brends2" />
+		</div>
+		<div class="clearfix"></div>
+	</xsl:template>
+	<!--/////////////////////////////////////////////////-->
 
 
 
 
 
 	<!--    ///////////////////////-->
-	
-	
-	
-	
+
+
+
+
 	<xsl:template match="page" mode="brends2">
-		
+
 		<xsl:choose>
-			 <xsl:when test="not(.//property[@name='pokazyvat_logotip_na_stranice_katalog']/value = 1)">
-	            <!--когда логотип отсутствует выводим ничего -->
-	        </xsl:when>
+			<xsl:when test="not(.//property[@name='pokazyvat_logotip_na_stranice_katalog']/value = 1)">
+				<!--когда логотип отсутствует выводим ничего -->
+			</xsl:when>
 
-	        <xsl:otherwise>
-	        	<a href="{@link}">
+			<xsl:otherwise>
+				<a href="{@link}">
 
-				<xsl:call-template name="thumbing">
-					<xsl:with-param name="source" select=".//property[@name='izobrazhenie_logotipa_brenda']/value" />
-					<xsl:with-param name="width" select="115" />
-					<xsl:with-param name="height">77</xsl:with-param>
-				</xsl:call-template>
+					<xsl:call-template name="thumbing">
+						<xsl:with-param name="source" select=".//property[@name='izobrazhenie_logotipa_brenda']/value" />
+						<xsl:with-param name="width" select="115" />
+						<xsl:with-param name="height">77</xsl:with-param>
+					</xsl:call-template>
 
-			</a>	
-	        </xsl:otherwise>	
+				</a>
+			</xsl:otherwise>
 		</xsl:choose>
 
-		
-		
+
+
 	</xsl:template>
-	
-	
-	
-	
+
+
+
+
 	<!--    шаблон каталога на главной и в подкатегориях третьего уровня-->
-<xsl:template match="item" mode="categorylist_main2">
-	<xsl:param name="cat" />
-	<xsl:variable name="catalog_page" select="document(concat('upage://',@id))/udata/page/properties" />
-	<div class="cat_item">
-		<div class="image_radius">
-			<a href="{@link}" title="Перейти к категории">
-				<xsl:if test="$cat">
-					<xsl:attribute name="href">
-						<xsl:value-of select="@link" />?fields_filter[brend]=
-						<xsl:value-of select="$cat" /></xsl:attribute>
-				</xsl:if>
+	<xsl:template match="item" mode="categorylist_main2">
+		<xsl:param name="cat" />
+		<xsl:variable name="catalog_page" select="document(concat('upage://',@id))/udata/page/properties" />
+		<div class="cat_item">
+			<div class="image_radius">
+				<a href="{@link}" title="Перейти к категории">
+					<xsl:if test="$cat">
+						<xsl:attribute name="href">
+							<xsl:value-of select="@link" />?fields_filter[brend]=
+							<xsl:value-of select="$cat" /></xsl:attribute>
+					</xsl:if>
+					<xsl:call-template name="thumbing">
+						<xsl:with-param name="source" select="$catalog_page/group/property[@name='menu_pic_a']/value" />
+						<xsl:with-param name="width" select="167" />
+						<xsl:with-param name="height">167</xsl:with-param>
+					</xsl:call-template>
+				</a>
+			</div>
+			<div class="cat_icon_block">
 				<xsl:call-template name="thumbing">
-					<xsl:with-param name="source" select="$catalog_page/group/property[@name='menu_pic_a']/value" />
-					<xsl:with-param name="width" select="167" />
-					<xsl:with-param name="height">167</xsl:with-param>
+					<xsl:with-param name="source" select="$catalog_page/group/property[@name='header_pic']/value" />
+					<xsl:with-param name="width" select="72" />
+					<xsl:with-param name="height">72</xsl:with-param>
 				</xsl:call-template>
-			</a>
+			</div>
+			<h4><a href="{@link}"><xsl:if test="$cat"><xsl:attribute name="href"><xsl:value-of select="@link"/>?fields_filter[brend]=<xsl:value-of select="$cat" /></xsl:attribute></xsl:if><xsl:value-of select="."/></a><font style="font-size:12px;font-weight:normal;">(Товаров <xsl:value-of select="document(concat('udata://catalog/getObjectsList/notemplate/',@id,'///3/15'))/udata/total" />)</font></h4><span></span>
 		</div>
-		<div class="cat_icon_block">
-			<xsl:call-template name="thumbing">
-				<xsl:with-param name="source" select="$catalog_page/group/property[@name='header_pic']/value" />
-				<xsl:with-param name="width" select="72" />
-				<xsl:with-param name="height">72</xsl:with-param>
-			</xsl:call-template>
-		</div>
-		<h4><a href="{@link}"><xsl:if test="$cat"><xsl:attribute name="href"><xsl:value-of select="@link"/>?fields_filter[brend]=<xsl:value-of select="$cat" /></xsl:attribute></xsl:if><xsl:value-of select="."/></a><font style="font-size:12px;font-weight:normal;">(Товаров <xsl:value-of select="document(concat('udata://catalog/getObjectsList/notemplate/',@id,'///3/15'))/udata/total" />)</font></h4><span></span>
-	</div>
-</xsl:template>
+	</xsl:template>
 	<!--        //////////////////-->
 
 
@@ -193,9 +193,9 @@
 	<xsl:template match="item" mode="categorii">
 		<xsl:param name="cat" />
 		<xsl:variable name="catalog_page" select="document(concat('upage://',@id))/udata/page/properties" />
-		
+
 		<div class="cat_item2">
-				<h4>
+			<h4>
 					<a href="{@link}" title="Перейти к категории">
 						<xsl:if test="$cat">
 							<xsl:attribute name="href">
@@ -205,31 +205,31 @@
 						<xsl:value-of select="."/>
 					</a>
 				</h4>
-						<ul>
-								<xsl:variable name="podcatalog_page_id" select="@id" />
-							
-							<xsl:apply-templates select="document(concat('udata://catalog/getCategoryList/0/',$podcatalog_page_id))/udata/items/item" mode="podcategorii" />
+			<ul>
+				<xsl:variable name="podcatalog_page_id" select="@id" />
+
+				<xsl:apply-templates select="document(concat('udata://catalog/getCategoryList/0/',$podcatalog_page_id))/udata/items/item" mode="podcategorii" />
 
 
-						</ul>
-					</div>
-	</xsl:template>	
-	
-	
-	
+			</ul>
+		</div>
+	</xsl:template>
+
+
+
 	<!--        //////////////////-->
 	<xsl:template match="item" mode="podcategorii">
 		<li>
 			<a href="{@link}">
-				<xsl:value-of  select="."/>
+				<xsl:value-of select="." />
 			</a>
 		</li>
 	</xsl:template>
 	<!--        //////////////////-->
-	
-	
-	
-	
+
+
+
+
 	<xsl:template match="item" mode="categorylist_main_brend">
 		<xsl:param name="cat" />
 		<xsl:variable name="catalog_page" select="document(concat('upage://',@id))/udata/page/properties" />
@@ -256,7 +256,12 @@
 					<xsl:with-param name="height">72</xsl:with-param>
 				</xsl:call-template>
 			</div>
-			<h4><a href="{@link}"><xsl:if test="$cat"><xsl:attribute name="href"><xsl:value-of select="@link"/>?fields_filter[brend]=<xsl:value-of select="$cat" /></xsl:attribute></xsl:if><xsl:value-of select="."/></a></h4><span></span>
+			<xsl:variable name="type_id" select="document(concat('upage://',@id))//property[@name = 'kategory']/value/page/@id" />
+			<xsl:variable name="obj_id" select="document(concat('upage://',$page-id))/udata/page/@object-id" />
+
+			<h4><a href="{@link}"><xsl:if test="$cat"><xsl:attribute name="href"><xsl:value-of select="@link"/>?fields_filter[brend]=<xsl:value-of select="$cat" /></xsl:attribute></xsl:if><xsl:value-of select="."/></a><font style="font-size:12px;font-weight:normal;">(Товаров <xsl:value-of select="document(concat('usel://item_brend/', $type_id,'/', $obj_id))/udata/total" />)</font></h4><span></span>
+			<xsl:value-of select="$type_id" />|||||
+			<xsl:value-of select="$obj_id" />
 		</div>
 	</xsl:template>
 	<xsl:template match="field" mode="properties_title">
@@ -275,18 +280,20 @@
 			<span>Сортировать по цене: </span>
 			<!-- <span class="back_filter_sort" style="margin-left: -5px;text-decoration: underline;cursor: pointer;">цене</span> -->
 			<img>
-				<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
-					<xsl:attribute name="src"><xsl:value-of select="concat($template-resources, '/img/up.png')"/></xsl:attribute>
-					<xsl:attribute name="class">back_filter_sort</xsl:attribute>
-					<xsl:attribute name="alt">сначала дешевые</xsl:attribute>
-					<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
-				</xsl:if>
-				<xsl:if test="$order_filter.price=0">
-					<xsl:attribute name="src"><xsl:value-of select="concat($template-resources, '/img/down.png')"/></xsl:attribute>
-					<xsl:attribute name="class">back_filter_sort</xsl:attribute>
-					<xsl:attribute name="alt">сначала дорогие</xsl:attribute>
-					<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
-				</xsl:if>
+			<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
+				<xsl:attribute name="src">
+					<xsl:value-of select="concat($template-resources, '/img/up.png')" /></xsl:attribute>
+				<xsl:attribute name="class">back_filter_sort</xsl:attribute>
+				<xsl:attribute name="alt">сначала дешевые</xsl:attribute>
+				<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
+			</xsl:if>
+			<xsl:if test="$order_filter.price=0">
+				<xsl:attribute name="src">
+					<xsl:value-of select="concat($template-resources, '/img/down.png')" /></xsl:attribute>
+				<xsl:attribute name="class">back_filter_sort</xsl:attribute>
+				<xsl:attribute name="alt">сначала дорогие</xsl:attribute>
+				<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
+			</xsl:if>
 
 			</img>
 			<!-- <span>Сортировать по:</span> -->
@@ -342,16 +349,20 @@
 		<xsl:param name="filter" />
 		<xsl:variable name="tonext">
 			<xsl:choose>
-				<xsl:when test="$pajax"><xsl:value-of select="$pajax" /></xsl:when>
-				<xsl:otherwise><xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/numpages/tonext_link/@page-num" /></xsl:otherwise>
+				<xsl:when test="$pajax">
+					<xsl:value-of select="$pajax" /></xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/numpages/tonext_link/@page-num" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="total" select="document('udata://catalog/getObjectsList/////5/280/1')/udata/total" />
 		<!-- <xsl:variable name="per_page" select="document('udata://catalog/getObjectsList/')/udata/per_page" /> -->
 		<xsl:variable name="per_page">
 			<xsl:choose>
-				<xsl:when test="$pajax"><xsl:value-of select="(document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page) * $pajax" /></xsl:when>
-				<xsl:otherwise><xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page" /></xsl:otherwise>
+				<xsl:when test="$pajax">
+					<xsl:value-of select="(document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page) * $pajax" /></xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<!-- sort_catalog    -->
@@ -360,18 +371,20 @@
 			<span>Сортировать по цене: </span>
 			<!-- <span class="back_filter_sort" style="margin-left: -5px;text-decoration: underline;cursor: pointer;">цене</span> -->
 			<img>
-				<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
-					<xsl:attribute name="src"><xsl:value-of select="concat($template-resources, '/img/up.png')"/></xsl:attribute>
-					<xsl:attribute name="class">back_filter_sort</xsl:attribute>
-					<xsl:attribute name="alt">сначала дешевые</xsl:attribute>
-					<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
-				</xsl:if>
-				<xsl:if test="$order_filter.price=0">
-					<xsl:attribute name="src"><xsl:value-of select="concat($template-resources, '/img/down.png')"/></xsl:attribute>
-					<xsl:attribute name="class">back_filter_sort</xsl:attribute>
-					<xsl:attribute name="alt">сначала дорогие</xsl:attribute>
-					<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
-				</xsl:if>
+			<xsl:if test="($order_filter.price=1) or (not($order_filter.price))">
+				<xsl:attribute name="src">
+					<xsl:value-of select="concat($template-resources, '/img/up.png')" /></xsl:attribute>
+				<xsl:attribute name="class">back_filter_sort</xsl:attribute>
+				<xsl:attribute name="alt">сначала дешевые</xsl:attribute>
+				<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
+			</xsl:if>
+			<xsl:if test="$order_filter.price=0">
+				<xsl:attribute name="src">
+					<xsl:value-of select="concat($template-resources, '/img/down.png')" /></xsl:attribute>
+				<xsl:attribute name="class">back_filter_sort</xsl:attribute>
+				<xsl:attribute name="alt">сначала дорогие</xsl:attribute>
+				<xsl:attribute name="style">margin-left: -5px;</xsl:attribute>
+			</xsl:if>
 
 			</img>
 			<!-- <span>Сортировать по:</span> -->
@@ -389,14 +402,29 @@
 		</div>
 		<!--конец списка товаров-->
 		<xsl:if test="$total&gt;$per_page">
-			<a class="more_goods" id="{$page-id}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="5" filter="{$filter}" href="?p={$tonext}">
-				<xsl:attribute name="data-per-page"><xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page" /></xsl:attribute>
-				<xsl:if test="$filter">
-					<xsl:attribute name="href">?p=
-						<xsl:value-of select="$tonext" />}&amp;
-						<xsl:value-of select="$filter" /></xsl:attribute>
-				</xsl:if>показать еще</a>
-			<!-- <xsl:call-template name="numpages"><xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /><xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" /></xsl:call-template>  --><span class="more_goods_inf">Показано <xsl:value-of select="$per_page" /> товаров из <xsl:value-of select="$total" /></span>
+
+			<div class="show_buttons">
+				<a class="more_goods" id="{$page-id}" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="5" filter="{$filter}" href="?p={$tonext}">
+					<xsl:attribute name="data-per-page">
+						<xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page" /></xsl:attribute>
+					<xsl:if test="$filter">
+						<xsl:attribute name="href">?p=
+							<xsl:value-of select="$tonext" />}&amp;
+							<xsl:value-of select="$filter" /></xsl:attribute>
+					</xsl:if>показать еще</a>
+				<a class="all_goods" id="{$page-id}_all" title="{$per_page}" rel="{$total}" alt="{$tonext}" parent="5" filter="{$filter}" href="?p={$tonext}">
+					<xsl:attribute name="data-per-page">
+						<xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/per_page" /></xsl:attribute>
+					<xsl:attribute name="data-total">
+						<xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/total" /></xsl:attribute>
+
+					<xsl:if test="$filter">
+						<xsl:attribute name="href">?
+							<xsl:value-of select="$filter" /></xsl:attribute>
+					</xsl:if>показать все</a>
+			</div>
+			<!-- <xsl:call-template name="numpages"><xsl:with-param name="total" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/total" /><xsl:with-param name="limit" select="document('udata://catalog/getObjectsList/notemplate////15')/udata/per_page" /></xsl:call-template>  -->
+			<span class="more_goods_inf">Показано <xsl:value-of select="$per_page" /> товаров из <xsl:value-of select="$total" /></span>
 		</xsl:if>
 		<div style="display:none">
 			<xsl:call-template name="numpages">
@@ -412,14 +440,14 @@
 	<xsl:template match="udata" mode="catalogus_current">
 		<!-- <p>К сожалению таких товаров не найдено!</p>-->
 	</xsl:template>
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<!-- Товар в списке -->
 	<xsl:template match="item" mode="catalog_item">
 		<xsl:variable name="item" select="document(concat('upage://', @id))/udata" />
@@ -439,18 +467,18 @@
 					<xsl:apply-templates select="$item/page/properties/group/property[@name='akcionnyj_tovar']/title" mode="akcii_sprite" />
 					<!--закладка Акции-->
 					<xsl:apply-templates select="$item/page/properties/group/property[@name='rasprodazha']/title" mode="rasp_sprite" />
-					
-					
-<!--					плашечка скидки на картинке товара в каталоге-->
-					<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id))/udata" mode="pricesalepercent" />
-					
 
-					
-					
-					
-					
-					
-					
+
+					<!--					плашечка скидки на картинке товара в каталоге-->
+					<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id))/udata" mode="pricesalepercent" />
+
+
+
+
+
+
+
+
 				</a>
 				<h4><a href="{@link}" data-id="{@id}"><xsl:value-of select="$item/page/properties/group/property[@name='nazvanie']/value"/></a></h4> <span class="manufacturer_block">Производитель: <a href="{$brand_name/properties/group/property[@name='linkthis']/value}"><xsl:value-of select="$item/page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/></a></span><span class="articul_block">Артикул:  <a href="{@link}"><xsl:value-of select="$item/page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/></a></span>
 				<p>
@@ -472,7 +500,7 @@
 						<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata" mode="price" />
 
 						<!-- <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a> -->
-						<input id="{$item/page/@id}" data-tovarname="{$item/page/properties/group/property[@name='brend']/value/item/@name}" data-price="{format-number(document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata/price/actual,'#')}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
+						<input id="{$item/page/@id}" data-tovarname="{$item/page/properties/group/property[@name='brend']/value/item/@name}" data-price="{format-number(document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata/price/actual,'#')}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ" />
 
 						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -483,25 +511,25 @@
 		</div>
 		<!--конец списка товаров-->
 	</xsl:template>
-	
-	
-				<xsl:template match="udata" mode="pricesalepercent">
 
 
-					<xsl:choose>
-						<xsl:when test="discount">
+	<xsl:template match="udata" mode="pricesalepercent">
+
+
+		<xsl:choose>
+			<xsl:when test="discount">
 
 
 
-							<span class="salepercent"> - <xsl:value-of select="discount/description" disable-output-escaping="yes" /></span>
+				<span class="salepercent"> - <xsl:value-of select="discount/description" disable-output-escaping="yes" /></span>
 
 
-						</xsl:when>
-						<xsl:otherwise>
-							
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:template>
+			</xsl:when>
+			<xsl:otherwise>
+
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 
 
 	<xsl:template match="page" mode="catalog_item">
@@ -522,13 +550,13 @@
 					<xsl:apply-templates select="$item/page/properties/group/property[@name='akcionnyj_tovar']/title" mode="akcii_sprite" />
 					<!--закладка Акции-->
 					<xsl:apply-templates select="$item/page/properties/group/property[@name='rasprodazha']/title" mode="rasp_sprite" />
-					
-					
+
+
 					<!--					плашечка скидки на картинке товара в каталоге-->
 					<xsl:apply-templates select="document(concat('udata://emarket/price/', $item/page/@id))/udata" mode="pricesalepercent" />
-					
-					
-					
+
+
+
 				</a>
 				<h4><a href="{@link}"><xsl:value-of select="$item/page/properties/group/property[@name='nazvanie']/value"/></a></h4> <span class="manufacturer_block">Производитель: <a href="{$brand_name/properties/group/property[@name='linkthis']/value}"><xsl:value-of select="$item/page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/></a></span><span class="articul_block">Артикул:  <a href="{@link}"><xsl:value-of select="$item/page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/></a></span>
 				<p>
@@ -551,7 +579,7 @@
 
 						<!-- <a id="{$item/page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a> -->
 
-						<input id="{$item/page/@id}"  data-tovarname="{$item/page/properties/group/property[@name='brend']/value/item/@name}" data-price="{format-number(document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata/price/actual,'#')}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
+						<input id="{$item/page/@id}" data-tovarname="{$item/page/properties/group/property[@name='brend']/value/item/@name}" data-price="{format-number(document(concat('udata://emarket/price/', $item/page/@id,'//0'))/udata/price/actual,'#')}" data-article="{$item/page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ" />
 
 						<span class="not_instok">отсутствует</span>
 						<!-- <span class="goodcompare"><a href="/emarket/addToCompare/{@id}">сравнить</a></span> -->
@@ -631,14 +659,14 @@
 
 								<!-- <a id="{page/@id}" href="#show1" class="buybutton outnstock">Под заказ</a> -->
 
-								<input id="{page/@id}"  data-tovarname="{page/properties/group/property[@name='brend']/value/item/@name}" data-price="{format-number(document(concat('udata://emarket/price/', page/@id,'//0'))/udata/price/actual,'#')}" data-article="{page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ"/>
+								<input id="{page/@id}" data-tovarname="{page/properties/group/property[@name='brend']/value/item/@name}" data-price="{format-number(document(concat('udata://emarket/price/', page/@id,'//0'))/udata/price/actual,'#')}" data-article="{page/properties/group/property[@name='artikul']/value}" href="#show1" class="buybutton outnstock" rel="nofollow" type="submit" value="Под заказ" />
 
 
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
 					<div class="customer_artic"><span class="manufacturer_block">Производитель: <a href="{$brand_name/properties/group/property[@name='linkthis']/value}"><xsl:value-of select="page/properties/group/property[@name='brend']/value/item/@name" disable-output-escaping="yes"/></a></span><span class="articul_block">Артикул: <xsl:value-of select="page/properties/group/property[@name='artikul']/value" disable-output-escaping="yes"/></span>
-					<span class="print_block" onclick="location.href='/getpdf2.php?id={page/@id}'">версия для печати</span>
+						<span class="print_block" onclick="location.href='/getpdf2.php?id={page/@id}'">версия для печати</span>
 					</div>
 					<div class="instock_compare">
 						<xsl:choose>
@@ -658,6 +686,7 @@
 		</article>
 		<!-- Наши работы, переменая -->
 		<xsl:variable name="photo_in_object" select="document(concat('usel://item_in_object/', @pageId))" />
+		<xsl:variable name="video_in_brends" select="document(concat('usel://brend_video/', .//property[@name='brend']/value/item/@id))" />
 		<article>
 			<div class="good_bookmopt">
 				<ul class="good_bookmarks">
@@ -665,14 +694,15 @@
 					</li>
 					<li><a name="tab2" href="javascript://">Характеристики</a>
 					</li>
-					<xsl:if test="page/properties/group/property[@name='video']/value/page">
+					<xsl:if test="((page/properties/group/property[@name='video']/value/page) or ($video_in_brends/udata/total !=0))">
 						<li><a name="tab6" href="javascript://">Видео</a>
 						</li>
 					</xsl:if>
 					<li><a name="tab3" href="javascript://">Загрузки</a>
 					</li>
 					<xsl:if test="$photo_in_object/udata/total != 0">
-						<li><a name="tab4" href="javascript://">Наши работы</a></li>
+						<li><a name="tab4" href="javascript://">Наши работы</a>
+						</li>
 					</xsl:if>
 					<li><a name="tab5" href="javascript://">Отзывы</a>
 					</li>
@@ -723,6 +753,8 @@
 				<div id="tab3" style="display:none;">
 					<ul>
 						<xsl:apply-templates select="document(concat('uobject://', $brand))/udata/object/properties/group/property[@name='katalogi']/value/page" mode="files" />
+						<xsl:apply-templates select="document(concat('usel://brend_pdf/', @pageId))/udata/item" mode="brand_pdf" />
+						<xsl:apply-templates select="document(concat('usel://brend_pdf_too/', $brand))/udata/item" mode="brand_pdf" />
 					</ul>
 				</div>
 				<div id="tab5" style="display:none;">
@@ -732,13 +764,14 @@
 				<xsl:if test="$photo_in_object/udata/total != 0">
 					<div id="tab4" style="display:none;">
 						<!-- <ul class="slides"> -->
-							<xsl:apply-templates select="$photo_in_object/udata/page" mode="item_in_object"/>
+						<xsl:apply-templates select="$photo_in_object/udata/page" mode="item_in_object" />
 						<!-- </ul> -->
 					</div>
 				</xsl:if>
 				<div id="tab6" style="display:none;">
 					<ul class="content_gallery">
 						<xsl:apply-templates select="page/properties/group/property[@name='video']/value/page" mode="slider2_video" />
+						<xsl:apply-templates select="$video_in_brends/udata/page" mode="slider2_video" />
 					</ul>
 				</div>
 			</div>
@@ -759,7 +792,7 @@
 	<!-- Шаблон вывода в закладке наши работы -->
 	<xsl:template match="udata/page" mode="item_in_object">
 		<!-- <li style=""> -->
-            <a class="fancybox" rel="group" href="{.//property[@name = 'photo']/value}" title="{name}" >
+		<a class="fancybox" rel="group" href="{.//property[@name = 'photo']/value}" title="{name}">
 
 			<xsl:call-template name="thumbing">
 				<xsl:with-param name="source" select=".//property[@name = 'photo']/value" />
@@ -767,7 +800,7 @@
 				<xsl:with-param name="height">150</xsl:with-param>
 				<xsl:with-param name="class">item_in_object</xsl:with-param>
 			</xsl:call-template>
-			</a>
+		</a>
 		<!-- </li> -->
 	</xsl:template>
 	<!--    шаблоны для ации и распродаж-->
@@ -784,6 +817,15 @@
 			</a>
 		</li>
 	</xsl:template>
+	<xsl:template match="item" mode="brand_pdf">
+		<xsl:variable name="file" select="document(concat('uobject://', @id))/udata/object/properties/group/property[@name='fs_file']/value" />
+		<li>
+			<a href="{$file}" target="_blank">
+				<xsl:value-of select="@name" />
+			</a>
+		</li>
+	</xsl:template>
+
 	<xsl:template match="udata" mode="brand">
 		<a href="#">
 			<xsl:value-of select="object/properties/group/property[@name='h1']/value" />
@@ -897,7 +939,7 @@
 		<xsl:param name="object" />
 		<xsl:param name="categoryid" />
 		<xsl:param name="dont_show_brend" select="0" />
-		<xsl:param name="parent_obj"/>
+		<xsl:param name="parent_obj" />
 		<xsl:variable name="linking" select="document(concat('upage://', $categoryid))/udata/page/@link" />
 		<form action="{$linking}" id="search_param" method="get">
 			<xsl:if test="$object">
@@ -979,12 +1021,11 @@
 		<input id="min_{@name}" value="" name="fields_filter[{@name}][0]" type="hidden" />
 	</xsl:template>
 	<!-- <xsl:templatematch="field[@data-type = 'relation' or @data-type = 'symlink'][@name!='pennyj' or @name!='koncentrat']" mode="search"><span class="name"><xsl:value-of select="@title"/></span><xsl:apply-templates select="values/item" mode="search"><xsl:sort select="@id"/><xsl:with-param name="name" select="@name"/></xsl:apply-templates></xsl:template> -->
-		<xsl:template match="field[@data-type = 'relation']" mode="search">
+	<xsl:template match="field[@data-type = 'relation']" mode="search">
 		<xsl:param name="typeid" />
-		<xsl:param name="categoryid"/>
-		<xsl:param name="dont_show_brend"/>
-		<xsl:param name="parent_obj"/>
-
+		<xsl:param name="categoryid" />
+		<xsl:param name="dont_show_brend" />
+		<xsl:param name="parent_obj" />
 
 		<!-- <xsl:value-of select="$categoryid" /> -->
 		<xsl:choose>
@@ -997,17 +1038,17 @@
 
 
 				<div class="back_filter">
-			<div class="select_filterbl">
-				<p></p>
+					<div class="select_filterbl">
+						<p></p>
 
 
-				<select id="{@name}" name="fields_filter[{@name}]">
-					<option class="first" value="">
-						<xsl:value-of select="@title" />
-					</option>
-					<!--  <xsl:choose><xsl:when test="$typeid = '86'"> -->
+						<select id="{@name}" name="fields_filter[{@name}]">
+							<option class="first" value="">
+								<xsl:value-of select="@title" />
+							</option>
+							<!--  <xsl:choose><xsl:when test="$typeid = '86'"> -->
 
-					<!-- <xsl:choose>
+							<!-- <xsl:choose>
 						 <xsl:when test="@name = 'brend'">
 						 	<xsl:choose>
 						 		<xsl:when test="$filter">
@@ -1022,15 +1063,15 @@
 							<xsl:apply-templates select="values/item" mode="search_select" />
 						 </xsl:otherwise>
 					</xsl:choose> -->
-		<!-- <xsl:value-of select="$categoryid" /> -->
+							<!-- <xsl:value-of select="$categoryid" /> -->
 
-					<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $categoryid,'/', @name))/udata/items/item" mode="search_select" />
+							<xsl:apply-templates select="document(concat('udata://catalog/bsearch/', $categoryid,'/', @name, '/', $parent_obj))/udata/items/item" mode="search_select" />
 
-					<!-- </xsl:when><xsl:otherwise><xsl:apply-templates select="document(concat('usel://select/', @name,'/', $typeid))/udata" mode="brands"><xsl:with-param name="selected_id"><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param></xsl:apply-templates></xsl:otherwise></xsl:choose> -->
-					<!--  -->
-				</select>
-			</div>
-		</div>
+							<!-- </xsl:when><xsl:otherwise><xsl:apply-templates select="document(concat('usel://select/', @name,'/', $typeid))/udata" mode="brands"><xsl:with-param name="selected_id"><xsl:value-of select="values/item[@selected='selected']/@id" /></xsl:with-param></xsl:apply-templates></xsl:otherwise></xsl:choose> -->
+							<!--  -->
+						</select>
+					</div>
+				</div>
 
 
 			</xsl:otherwise>
