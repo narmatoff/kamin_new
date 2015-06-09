@@ -628,6 +628,11 @@
                     <li>
                         <a name="tab5" href="javascript://">Отзывы</a>
                     </li>
+                    <xsl:if test="document(concat('udata://catalog/salonObject/', @pageId))//total &gt; 0">
+	                    <li>
+	                        <a name="tab6" href="javascript://">Уценка в салоне</a>
+	                    </li>
+                    </xsl:if>
                 </ul>
 
                 <div id="tab1">
@@ -652,7 +657,12 @@
 				<div id="tab5" style="display:none;">
                     <xsl:apply-templates select="document('udata://comments/insert/')/udata" />
                     <xsl:apply-templates select="user" mode="addcomment" />
-				</div>	
+				</div>
+				<div id="tab6" style="display:none;">
+					<xsl:apply-templates select="document(concat('udata://catalog/salonObject/', @pageId))" mode="catalogus_current">
+						<xsl:with-param name="in-salon" select="1" />
+					</xsl:apply-templates>
+				</div>
 			</div>
 			</article>	
 	</xsl:template>

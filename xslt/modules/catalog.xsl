@@ -346,6 +346,7 @@
 		<!-- К сожалению таких товаров не найдено! -->
 	</xsl:template>
 	<xsl:template match="udata[lines|items]" mode="catalogus_current">
+		<xsl:param name="in-salon" />
 		<xsl:param name="filter" />
 		<xsl:variable name="tonext">
 			<xsl:choose>
@@ -355,7 +356,9 @@
 					<xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/numpages/tonext_link/@page-num" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="total" select="document('udata://catalog/getObjectsList/////5/280/1')/udata/total" />
+		<xsl:variable name="total">
+			<xsl:value-of select="document('udata://catalog/getObjectsList/////5/280/1')/udata/total"/>
+		</xsl:variable>
 		<!-- <xsl:variable name="per_page" select="document('udata://catalog/getObjectsList/')/udata/per_page" /> -->
 		<xsl:variable name="per_page">
 			<xsl:choose>
@@ -368,6 +371,7 @@
 		<!-- sort_catalog    -->
 		<div class="sortnview">
 			<!-- Сортировка -->
+		<xsl:if test="not($in-salon)">
 			<span>Сортировать по цене: </span>
 			<!-- <span class="back_filter_sort" style="margin-left: -5px;text-decoration: underline;cursor: pointer;">цене</span> -->
 			<img>
@@ -387,6 +391,7 @@
 			</xsl:if>
 
 			</img>
+		</xsl:if>
 			<!-- <span>Сортировать по:</span> -->
 			<!-- <div class="back_filter_sort"><div class="select_sortnview"><p></p><select name=""><option class="first" value="">Выберите вариант</option><option value="">Вариант номер один</option><option value="">Вариант номер два</option><option value="">Вариант номер три</option></select></div></div> -->
 			<div class="floatinrgh_sort"><span>Вид каталога:</span><img class="plitka_view" src="{$template-resources}img/sort_plit.png" height="18" width="31" alt="плитка" /><img class="spisok_view" src="{$template-resources}img/sort_list.png" height="18" width="31" alt="список" />

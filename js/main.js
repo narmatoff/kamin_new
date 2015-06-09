@@ -42,6 +42,7 @@ $(document).ready(function () {
 
 
 
+
     $('div.chul_towns select').each(function () {
         $(this).siblings('p').text($(this).children('option:selected').text());
     });
@@ -688,11 +689,6 @@ $(document).ready(function () {
     ///////////////////////////////////////////////////////////////
 
 
-
-
-
-    //	$('#payment_choose').ready(function () {
-
     var onSubmtClckFu = function () {
 
 
@@ -701,22 +697,22 @@ $(document).ready(function () {
                 $("section.cartpage_sec article ul li a[name='tab1']").trigger('click');
                                 console.log("есть ошибки в первой форме");
 
-                alert('Пожалуйста, заполните обязательные поля');
-
-            } else if ($("#new-legal-person").children().hasClass("has-error")) {
-                $("section.cartpage_sec article ul li a[name='tab2']").trigger('click');
-                                console.log("есть ошибки во второй форме");
-
-                                alert('Пожалуйста, заполните обязательные поля');
-
+//                alert('Пожалуйста, заполните обязательные поля');
 
             } else if ($(".commentinfo ").children().hasClass("has-error")) {
                 $("section.cartpage_sec article ul li a[name='tab2']").trigger('click');
                                 console.log("есть ошибки в третьей форме");
 
-                                                alert('Пожалуйста, заполните обязательные поля');
+//                                                alert('Пожалуйста, заполните обязательные поля');
 
-            } else {
+            } else if ($("#new-legal-person").children().hasClass("has-error")) {
+                $("section.cartpage_sec article ul li a[name='tab2']").trigger('click');
+                                console.log("есть ошибки во второй форме");
+
+//                                alert('Пожалуйста, заполните обязательные поля');
+
+
+            }  else {
                 console.log("все ок");
             }
         });
@@ -724,7 +720,10 @@ $(document).ready(function () {
     }
 
 
-    // Устанавливаем атрибуты 'src' и 'alt' для элемента img #myPhoto
+
+	///////////////////////////////////////////////////////
+	//Обозначаем обязательные поля для первой части формы//
+	///////////////////////////////////////////////////////
 
     $('.personalinfo input').attr({
         'data-validation': 'required'
@@ -743,15 +742,6 @@ $(document).ready(function () {
         $("input[name='submit']").trigger('click');
         console.log('12121212');
     })
-
-
-
-
-
-
-    //	});
-
-
 
 
 
