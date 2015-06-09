@@ -32,7 +32,7 @@
 					<title>Главная Камины</title>
 					<meta name="description" content="" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
-					<link rel="stylesheet" href="{$template-resources}css/404.css" />
+					<link rel="stylesheet" href="{$template-resources}css/404-dist.css" />
 				</head>
 
 				<body>
