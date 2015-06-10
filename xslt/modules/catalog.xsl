@@ -254,6 +254,7 @@
 					</xsl:call-template>
 				</a>
 			</div>
+
 			<div class="cat_icon_block">
 				<xsl:call-template name="thumbing">
 					<xsl:with-param name="source" select="$for_images/group/property[@name='header_pic']/value" />
