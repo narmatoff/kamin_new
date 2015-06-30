@@ -269,7 +269,7 @@ $(document).ready(function () {
         $('ul#my-menu ul').each(function (i) { // Check each submenu:
             //            $(this).prev().removeClass('expanded').addClass('collapsed');
             //$(this).css('display', 'none');
-            $(this).prev().addClass('collapsible').click(function () { // Attach an event listener
+            $(this).prev().addClass('collapsible collapsed').click(function () { // Attach an event listener
                 $(this).parent().addClass('bgdarked');
                 var this_i = $('ul#my-menu ul').index($(this).next()); // The index of the submenu of the clicked link
                 if ($(this).next().css('display') == 'none') {
