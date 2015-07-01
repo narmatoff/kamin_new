@@ -214,6 +214,7 @@
                
                 <script src="{$template-resources}js/jquery.fancybox.js"></script>
             <script src="{$template-resources}js/plugins.js"></script>
+            <script src="{$template-resources}bower_components/jquery.form.validation/form-validator/jquery.form-validator.min.js"></script>
 
     <link rel="stylesheet" href="{$template-resources}css/jquery.fancybox.css" media="screen" />
     

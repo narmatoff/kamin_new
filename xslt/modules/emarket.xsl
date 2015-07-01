@@ -48,7 +48,7 @@
 
 
 
-                        <form id="payment_choose" style="text-align: left;" method="POST" action="/emarket/saveInfo">
+                        <form id="payment_choose" style="text-align: left;" method="POST" action="/emarket/saveInfo" autocomplete="off">
                         	<!-- <script>
 						<![CDATA[
 							window.paymentId = null;
@@ -156,7 +156,7 @@
                             <div class="clearfix"></div>
                             <p class="nexting_btn">
                               
-                               <input style="display:none;" class="checkout_btnxt" type="submit" name="submit" value="Продолжить" />
+                               <input style="display:none;" class="checkout_btnxt ntSaveFormsSubmit" type="submit" name="submit" value="Продолжить" />
                                <a class="checkout_btnxt disabled" type="submit" href="javascript://">Продолжить</a>
                                <span></span>
                            </p>

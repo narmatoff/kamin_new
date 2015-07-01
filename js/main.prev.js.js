@@ -552,22 +552,22 @@ $(document).ready(function () {
 
 
 			// Функция проверки полей формы
-			function checkInput() {
-				formfield.find('.ntSaveForms').each(function () {
-					if ($(this).val() !== '') {
-
-
-						// Если поле не пустое удаляем класс-указание
-						$(this).removeClass('empty_field');
-					} else {
-
-
-						// Если поле пустое добавляем класс-указание
-						$(this).addClass('empty_field');
-
-					}
-				});
-			}
+//			function checkInput() {
+//				formfield.find('.ntSaveForms').each(function () {
+//					if ($(this).val() !== '') {
+//
+//
+//						// Если поле не пустое удаляем класс-указание
+//						$(this).removeClass('empty_field');
+//					} else {
+//
+//
+//						// Если поле пустое добавляем класс-указание
+//						$(this).addClass('empty_field');
+//
+//					}
+//				});
+//			}
 
 
 			// Проверка в режиме реального времени
