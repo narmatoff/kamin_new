@@ -718,28 +718,33 @@ $(document).ready(function () {
 //			        $('input[name="submit"]').click(function () {
 			if ($(".personalinfo").children().hasClass("has-error")) {
 				$("section.cartpage_sec article ul li a[name='tab1']").trigger('click');
-				console.log("есть ошибки в первой форме");
+//				console.log("есть ошибки в первой форме");
+//				alert("Заполните обязательные поля!");
 
 				//                alert('Пожалуйста, заполните обязательные поля');
 
 			} else if ($(".commentinfo ").children().hasClass("has-error")) {
 				$("section.cartpage_sec article ul li a[name='tab2']").trigger('click');
-				console.log("есть ошибки в третьей форме");
+//				console.log("есть ошибки в третьей форме");
+//				alert("Заполните обязательные поля!");
 
 				//                                                alert('Пожалуйста, заполните обязательные поля');
 
 			} else if ($("#new-legal-person").children().hasClass("has-error")) {
 				$("section.cartpage_sec article ul li a[name='tab2']").trigger('click');
-				console.log("есть ошибки во второй форме");
+//				console.log("есть ошибки во второй форме");
+//				alert("Заполните обязательные поля!");
 
 				//                                alert('Пожалуйста, заполните обязательные поля');
 
 
 			} else {
-				console.log("все ок");
+//				console.log("все ок");
 			}
 //			        });
 		}, 300);
+
+
 
 	}
 
@@ -758,6 +763,35 @@ $(document).ready(function () {
 
 	//	валидация формы заказа
 	$("label.emarket-delivery-783").trigger('click');
+
+
+
+
+
+
+
+	//sorting otpions in filter
+	$('.select_filterbl').hover(function () {
+
+		var sort_by_name = function (a, b) {
+			return $(a).text().toLowerCase().localeCompare($(b).text().toLowerCase());
+		}
+
+//		var sort_by_name = function (a, b) {
+//			if (a.innerHTML.toLowerCase() < b.innerHTML.toLowerCase()) return -1;
+//			if (a.innerHTML.toLowerCase() > b.innerHTML.toLowerCase()) return 1;
+//			return 0;
+//		}
+
+		var list = $(".select_filterbl > select > option").get();
+		list.sort(sort_by_name);
+		for (var i = 0; i < list.length; i++) {
+			list[i].parentNode.appendChild(list[i]);
+		}
+	});
+
+
+
 
 
 
